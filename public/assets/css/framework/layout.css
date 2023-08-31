@@ -1,0 +1,199 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 8 version
+*/
+
+@import url("grid.css");
+@import url("flex.css");
+
+.main-container {
+    margin:                         0 auto;
+    -webkit-box-sizing:             border-box;
+            box-sizing:             border-box;
+    display:                        -webkit-box;
+    display:                        -ms-flexbox;
+    display:                        flex;
+    -webkit-box-orient:             vertical;
+    -webkit-box-direction:          normal;
+        -ms-flex-direction:         column;
+            flex-direction:         column;
+    gap:                            10px;
+    max-width:                      var(--containers-max-width);
+    padding:                        20px var(--containers-side-padding);
+    -webkit-animation-name: 		fade-in;
+            animation-name: 		fade-in;
+	-webkit-animation-duration: 	0.5s;
+            animation-duration: 	0.5s;
+    min-height:                     500px;
+}
+
+.main-container h1 {
+    font-size: 1.5rem;
+}
+
+.container {
+    margin:                         0 auto;
+    padding:                        var(--containers-side-padding);
+    max-width:                      var(--containers-max-width);
+    -webkit-box-sizing:             border-box;
+            box-sizing:             border-box;
+}
+
+.nota {
+    font-size:                      10px;
+    margin:                         5px 0 0 0;
+}
+
+.copyright {
+    text-align:                     center;
+    font-size:                      12px;
+}
+
+/*======*/
+/* TEXT */
+/*======*/
+.text-center {
+    text-align:                     center;
+}
+
+.text-right {
+    text-align:                     right;
+}
+
+.text-bold {
+    font-weight:                    bold;
+}
+
+/*==================*/
+/* FLEX & GRID GAPS */
+/*==================*/
+.gap0 {
+    gap:                            0px;
+}
+
+.gap1 {
+    gap:                            5px;
+}
+
+.gap2 {
+    gap:                            10px;
+}
+
+.gap3 {
+    gap:                            15px;
+}
+
+.gap4 {
+    gap:                            20px;
+}
+
+.gap5 {
+    gap:                            25px;
+}
+
+.gap6 {
+    gap:                            30px;
+}
+
+
+/*========*/
+/* WIDTHS */
+/*========*/
+.w90,
+.w80,
+.w70,
+.w60,
+.w50,
+.w40,
+.w30,
+.w20,
+.w10 {
+    width:                          100%;
+    margin:                         0 auto;
+}
+
+.w90 {
+    max-width:                          90%;
+}
+
+.w80 {
+    max-width:                          80%;
+}
+
+.w70 {
+    max-width:                          70%;
+}
+
+.w60 {
+    max-width:                          60%;
+}
+
+.w50 {
+    max-width:                          50%;
+}
+
+.w40 {
+    max-width:                          40%;
+}
+
+.w30 {
+    max-width:                          30%;
+}
+
+.w20 {
+    max-width:                          20%;
+}
+
+.w10 {
+    max-width:                          10%;
+}
+
+/*===============*/
+/* MEDIA QUERIES */
+/*===============*/
+@media(max-width: 1280px)
+{
+
+}
+
+@media(max-width: 1024px)
+{
+    .main-container {
+        padding:                    15px;
+    }
+
+    .flex {
+        gap:                        15px;
+    }
+}
+
+@media(max-width: 900px)
+{
+
+}
+
+@media(max-width: 768px)
+{
+    .flex {
+        gap:                        10px;
+    }
+}
+
+@media(max-width: 600px)
+{
+
+}
+
+@media(max-width: 480px)
+{
+    .flex {
+        gap:                        5px;
+    }
+}
+
+@media(max-width: 320px)
+{
+
+}

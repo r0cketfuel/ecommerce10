@@ -1,0 +1,53 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 8 version
+*/
+
+.flex {
+    display:						-webkit-box;
+    display:						-ms-flexbox;
+    display:						flex;
+    gap:                            20px;
+}
+
+.flex-col {
+    display:						-webkit-box;
+    display:						-ms-flexbox;
+    display:						flex;
+	-webkit-box-orient:				vertical;
+	-webkit-box-direction:			normal;
+	    -ms-flex-direction:			column;
+	        flex-direction:			column;
+    gap:                            20px;
+}
+
+.justify-center {
+    -webkit-box-pack:               center;
+        -ms-flex-pack:              center;
+            justify-content:        center;
+}
+
+.justify-between {
+    -webkit-box-pack:               justify;
+        -ms-flex-pack:              justify;
+            justify-content:        space-between;
+}
+
+.justify-around {
+    -ms-flex-pack:                	distribute;
+        justify-content:            space-around;
+}
+
+.justify-evenly {
+    -webkit-box-pack:               space-evenly;
+        -ms-flex-pack:              space-evenly;
+            justify-content:        space-evenly;
+}
+
+.align-center {
+    -webkit-box-align:              center;
+        -ms-flex-align:             center;
+            align-items:            center;
+}

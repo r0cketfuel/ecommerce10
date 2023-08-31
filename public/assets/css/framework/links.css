@@ -1,0 +1,17 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 8 version
+*/
+
+a {
+    text-decoration:                none;
+}
+
+a:link,
+a:visited,
+a:focus,
+a:active {
+    color:                          unset;
+}

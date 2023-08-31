@@ -1,0 +1,194 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 8 version
+*/
+
+/* Modal background */
+.modal {
+	display: 					none;					/* Hidden by default */
+	position: 					fixed; 					/* Stay in place */
+	z-index: 					10; 					/* Sit on top */
+	left: 						0;
+	top: 						0;
+	width: 						100%; 					/* Full width */
+	height: 					100%; 					/* Full height */
+	background-color: 			rgba(0,0,0,0.6);
+	-webkit-animation-name: 			fade-in;
+	        animation-name: 			fade-in;
+	-webkit-animation-duration: 		0.6s;
+	        animation-duration: 		0.6s;
+}
+
+.modal-content {
+    -webkit-box-sizing:                 border-box;
+            box-sizing:                 border-box;
+	display: 					-webkit-box;
+	display: 					-ms-flexbox;
+	display: 					flex;
+	-webkit-box-orient: 					vertical;
+	-webkit-box-direction: 					normal;
+	    -ms-flex-flow: 					column nowrap;
+	        flex-flow: 					column nowrap;
+	position: 					relative;
+	top:                        50%;
+    -webkit-transform:                  translateY(-50%);
+        -ms-transform:                  translateY(-50%);
+            transform:                  translateY(-50%);
+	margin: 					0 auto;
+	border:						1px solid #fefefe;
+	-webkit-box-shadow: 				0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	        box-shadow: 				0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	
+	/* DEFAULT SETTINGS */
+	width:						500px;
+    max-width:                  calc(100vw - 20px);
+	background:					white;
+	-webkit-animation-name: 			animate-top;
+	        animation-name: 			animate-top;
+	-webkit-animation-duration: 		0.6s;
+	        animation-duration: 		0.6s;
+}
+
+.modal-header {
+	display: 					-webkit-box;
+	display: 					-ms-flexbox;
+	display: 					flex;
+	-webkit-box-orient: 					horizontal;
+	-webkit-box-direction: 					normal;
+	    -ms-flex-flow: 					row nowrap;
+	        flex-flow: 					row nowrap;
+	-webkit-box-pack: 			justify;
+	    -ms-flex-pack: 			justify;
+	        justify-content: 			space-between;
+	-webkit-box-align: 				center;
+	    -ms-flex-align: 				center;
+	        align-items: 				center;
+	font-size: 					16px;
+	color: 						white;
+	padding: 					5px 10px;
+	text-transform:				uppercase;
+}
+
+.modal-header h1 {
+	font-size:					15px;
+    margin:                     0px;
+}
+
+.modal.modal-success .modal-header {
+	background-color: 			#28a745;
+}
+
+.modal.modal-error .modal-header {
+	background-color: 			red;
+}
+
+.modal.modal-primary .modal-header {
+	background-color: 			#007bff;
+}
+
+.modalClose {
+	font-weight: 				bold;
+    width:                      25px;
+	text-align: 				center;
+}	
+
+.modalClose:hover, .modalClose:focus {
+	color: 						black;
+	text-decoration: 			none;
+	cursor: 					pointer;
+}
+
+.modal-body {
+	display: 					-webkit-box;
+	display: 					-ms-flexbox;
+	display: 					flex;
+	-webkit-box-orient:					vertical;
+	-webkit-box-direction:					normal;
+	    -ms-flex-flow:					column nowrap;
+	        flex-flow:					column nowrap;
+	-webkit-box-pack: 			justify;
+	    -ms-flex-pack: 			justify;
+	        justify-content: 			space-between;
+    gap:                        10px;
+	padding:					10px;
+}
+
+.image-modal-content {
+	display: 					-webkit-box;
+	display: 					-ms-flexbox;
+	display: 					flex;
+	-webkit-box-pack: 			center;
+	    -ms-flex-pack: 			center;
+	        justify-content: 			center;
+	margin-top:					100px;
+	position: 					relative;
+	-webkit-animation-name: 			animate-top;
+	        animation-name: 			animate-top;
+	-webkit-animation-duration: 		0.5s;
+	        animation-duration: 		0.5s;
+	margin: 					100px 20px 0 20px;
+}	
+
+.image-modal-content img {
+	height:						100%;
+	width: 						100%;
+	max-width:					1280px;
+}	
+
+.modal-footer {
+	padding: 					2px 16px;
+	background-color: 			#5cb85c;
+	color: 						white;
+}
+
+@-webkit-keyframes animate-top
+{
+	from {top: -300px; opacity: 0} to {top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%); opacity: 1}
+}
+
+@keyframes animate-top
+{
+	from {top: -300px; opacity: 0} to {top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%); opacity: 1}
+}
+
+@-webkit-keyframes animate-left
+{
+	from {left: -300px; opacity: 0} to {left: 0; opacity: 1}
+}
+
+@keyframes animate-left
+{
+	from {left: -300px; opacity: 0} to {left: 0; opacity: 1}
+}
+
+@-webkit-keyframes animate-right
+{
+	from {right: -300px; opacity: 0} to {right: 0; opacity: 1}
+}
+
+@keyframes animate-right
+{
+	from {right: -300px; opacity: 0} to {right: 0; opacity: 1}
+}
+
+@-webkit-keyframes fade-in
+{
+	from {opacity: 0} to {opacity: 1}
+}
+
+@keyframes fade-in
+{
+	from {opacity: 0} to {opacity: 1}
+}
+
+@-webkit-keyframes zoom
+{
+	from {-webkit-transform:scale(0);transform:scale(0)} to {-webkit-transform:scale(1);transform:scale(1)}
+}
+
+@keyframes zoom
+{
+	from {-webkit-transform:scale(0);transform:scale(0)} to {-webkit-transform:scale(1);transform:scale(1)}
+}

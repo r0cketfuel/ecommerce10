@@ -1,0 +1,33 @@
+@import url("/assets/framework/framework.css");
+@import url("/assets/fonts/fonts.css");
+@import url("table.css");
+@import url("header.css");
+@import url("navbar.css");
+
+html {
+    background-color:               rgb(240,240,240);
+}
+
+body {
+	font: 					        14px Poppins-Regular;
+    color:                          #2f2f2f;
+}
+
+.img-preview {
+	position: 					absolute;
+	top: 						0;
+	bottom: 					0;
+	width: 						100%;
+	display: 					flex;
+	align-items: 				center;
+	justify-content: 			center;
+	background: 				#ccc;
+	border: 					1px solid gray;
+}
+
+label.fileUpload {
+	display: 					inline-block;
+	position: 					relative;
+	height: 					400px;
+	width: 						100%;
+}

@@ -1,0 +1,120 @@
+@import url("/assets/css/framework/framework.css");
+@import url("headers.css");
+@import url("navbar.css");
+@import url("footers.css");
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+	--breadcrumb-background:		none;
+    --breadcrumb-border:			none;
+
+	--top-footer-background: 		#15161D;
+	--top-footer-border-color:		#d2143c;
+
+	--bottom-footer-background: 	#1E1F29;
+}
+
+html {
+    background-color:               rgb(250,250,250);
+}
+
+body {
+    font-size:                      0.8125rem;
+	font-family: 					'Poppins', sans-serif;
+    color:                          #2f2f2f;
+}
+
+ul.product-list {
+    list-style:                     none;
+	display:						grid;
+    padding:                        0;
+    grid-template-columns:			repeat(auto-fit, minmax(260px, 1fr));
+	gap:							20px;
+}
+
+.tile-info {
+	display:						flex;
+	flex-flow:						column nowrap;
+	gap:							10px;
+	border-radius:					5px;
+	padding: 						10px;
+	/*border: 						1px solid rgb(230,230,230);*/
+	/*background:					white;*/
+}
+
+.tile-info h1, .tile-info h2 {
+	margin: 						0;
+}
+
+.tile-info h1 {
+	text-transform:					uppercase;
+	font-size:						24px;
+}
+
+.tile-info h2 {
+	font-size:						15px;
+	color: 							rgb(70,70,70);
+}
+
+.discount {
+	background:						rgb(250,180,180);
+	color:							red;
+	font-size:						11px;
+	font-weight: 					bold;
+	padding: 						4px;
+}
+
+p.info-msg {
+	font-size: 						11px;
+}
+
+.tab-content {
+	display: 						none;
+    min-height:						200px;
+	width: 							100%;
+}
+
+.user-review {
+	display: 						flex;
+	flex-flow: 						column nowrap;
+	gap: 							10px;
+	margin-bottom: 					10px;
+	padding: 						10px;
+	border: 						1px solid rgb(230,230,230);
+}
+
+.user-review > div {
+	display: 						flex;
+	flex-flow: 						row nowrap;
+	gap: 							10px;
+	margin-bottom:					10px;
+}
+
+.user-review > div > div {
+	display: 						flex;
+	flex-flow: 						column nowrap;
+}
+
+.user-review > div > div div:nth-child(2) {
+	font-size: 						10px;
+	color: 							gray;
+}
+
+.user-review-picture {
+	padding: 						10px;
+	border: 						1px solid rgb(220,220,220);
+	background: 					#183153;
+	color: 							white
+}
+
+#minusButton, #plusButton {
+    background:                     none;
+    border:                         none;
+    color:                          unset;
+}
+
+#addToCartQty {
+    text-align:                     center;
+    border:                         none;
+}
