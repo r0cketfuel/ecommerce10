@@ -1,5 +1,6 @@
 .newsletter {
 	border-top: 					1px solid rgb(200,200,200);
+	min-height: 					160px;
 }
 
 .newsletter-container {
