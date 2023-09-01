@@ -10,26 +10,16 @@
         <link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
         <!-- Scripts -->
-		<script defer src="{{asset('/assets/js/framework/bodyFadeIn.js')}}"></script>
 		<script defer src="{{asset('/assets/js/framework/scroll.js')}}"></script>
 		<script defer src="{{asset('/assets/js/framework/navbar.js')}}"></script>
         <script defer src="{{asset('/assets/js/framework/preloader.js')}}"></script>
     </head>
 	<body id="top">
-        
+
+        @include("site.layout.preloader")
+
         @include("site.layout.backToTop")
 
-        <!-- Preloader -->
-        <div class="preloader preloader-dark">
-            <div class="lds-ellipsis">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-        <!-- Preloader End -->
-        
         <div class="hero-background">
             <header>
                 <div class="container">
