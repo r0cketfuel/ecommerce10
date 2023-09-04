@@ -56,9 +56,7 @@
                                 <li data-value="{{$item->id}}"><i class="fa-solid fa-heart fa-lg"></i></li>
                             @endauth
                             <a href="shop/item/{{$item->id}}">
-                                <li>
-                                    <i class="fa-solid fa-circle-info fa-lg"></i>
-                                </li>
+                                <li><i class="fa-solid fa-circle-info fa-lg"></i></li>
                             </a>
                         </ul>
                     </div>
