@@ -6,7 +6,7 @@
         </div>
         <div class="modal-body">
             <div class="flex">
-                <img id="image" src="" alt="imagen" style="height: 25%; width: 25%;">
+                <img id="image" src="{{config('constants.product_images') . '/no-image.png'}}" alt="imagen" style="height: 25%; width: 25%;">
                 <div class="grid" style="flex: 1 1; grid-auto-rows: 1fr">
 
                     <!-- Precio -->

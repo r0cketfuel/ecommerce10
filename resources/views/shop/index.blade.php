@@ -53,11 +53,15 @@
                     <div class="product-card-extra">
                         <ul>
                             @auth
-                                <li data-value="{{$item->id}}"><i class="fa-solid fa-heart fa-lg"></i></li>
+                                <li data-value="{{$item->id}}">
+                                    <i class="fa-solid fa-heart fa-lg"></i>
+                                </li>
                             @endauth
-                            <a href="shop/item/{{$item->id}}">
-                                <li><i class="fa-solid fa-circle-info fa-lg"></i></li>
-                            </a>
+                            <li>
+                                <a href="shop/item/{{$item->id}}">
+                                    <i class="fa-solid fa-circle-info fa-lg"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="product-card-info">
