@@ -61,7 +61,7 @@ Route::controller(AjaxController::class)->group(function () {
     Route::post('shop/ajax/suscribe',           'suscribe');
 
     // Rutas que requieren autenticación
-    Route::middleware(['user.auth'])->group(function () {
+    Route::middleware(['auth:web'])->group(function () {
         Route::post('shop/ajax/agregaFavorito',     'agregaFavorito');
         Route::post('shop/ajax/aplicaCupon',        'aplicaCupon');
         Route::post('shop/ajax/eliminaFavorito',    'eliminaFavorito');
