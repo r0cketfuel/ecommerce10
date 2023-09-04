@@ -40,44 +40,7 @@
         <!-- /Barra superior de búsqueda -->
         
         <!-- Items -->
-        <ul class="product-list">
-            @foreach ($items as $item)
-            <li class="product-card">
-                    <div class="product-card-image">
-                        @if ($item['foto_1'])
-                            <img loading="lazy" src="{{config('constants.product_images')}}/{{$item->id}}/thumbs/{{$item->foto_1}}" alt="imagen">
-                        @else
-                            <img loading="lazy" src="{{config('constants.product_images')}}/no-image.png" alt="imagen">
-                        @endif
-                    </div>
-                    <div class="product-card-extra">
-                        <ul>
-                            @auth
-                                <li data-value="{{$item->id}}">
-                                    <i class="fa-solid fa-heart fa-lg"></i>
-                                </li>
-                            @endauth
-                            <li>
-                                <a href="shop/item/{{$item->id}}">
-                                    <i class="fa-solid fa-circle-info fa-lg"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="product-card-info">
-                        <div>
-                            <div>{{$item->nombre}}</div>
-                            <div>{{$item->descripcion}}</div>
-                        </div>
-                        <div class="precio">{{_money($item->precio)}}</div>
-                    </div>
-                    <div class="product-card-cart">
-                        <button class="btn-primary btn-rounded" value="{{$item->id}}"><span><i class="fa-solid fa-cart-plus"></i></span>Agregar al carrito</button>
-                    </div>
-                </li>
-                @endforeach
-            </ul>
-            <!-- /Items -->
+        @include("shop.layout.product-list")
 
         <!-- Paginador -->
         {{$items->links("shop.layout.paginator")}}
