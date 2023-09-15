@@ -7,19 +7,21 @@
 
         <!-- Hojas de estilo -->
         <link rel="stylesheet"	href="{{config('constants.shop_css')}}style.css">
-        @yield("css")
+		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        
+		@yield("css")
         
         <!-- Scripts -->
-		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         <script defer src="{{config('constants.framework_js')}}scroll.js"></script>
-        @yield("js")
+        
+		@yield("js")
 
         @yield("inlineCSS")
 	</head>
 	<body id="top">
         @include("shop.layout.headers")
-        @include("shop.layout.whatsappBubble")
         @include("shop.layout.backToTop")
+        @include("shop.layout.whatsappBubble")
 
         @yield("body")
         
