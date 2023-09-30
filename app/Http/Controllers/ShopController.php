@@ -247,6 +247,8 @@ class ShopController extends Controller
     public function logout(UserController $user)
     {
         $user->logout();
+
+        session()->flush();
     
         return redirect("/shop");
     }
