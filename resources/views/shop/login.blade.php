@@ -15,23 +15,6 @@
                 margin: var(--containers-side-padding);
             }
     
-            .main-frame .register-link {
-                height: 				var(--controls-height);
-                width: 					100%;
-                cursor: 				pointer;
-                box-sizing: 			border-box;
-                font-size: 				13px;
-                text-transform: 		uppercase;
-                border: 				1px solid #6c757d;
-                background-color: 		#6c757d;
-                color: 					white;
-                border-radius:          var(--controls-height);
-                padding:                0;
-                display:                flex;
-                justify-content:        center;
-                align-items:            center;
-            }
-    
             .main-frame {
                 margin:                 0 auto;
                 min-height:             500px;
@@ -54,8 +37,8 @@
     
             }
     
+            .main-frame .register-link,
             .main-frame .password-recovery-link {
-                display:                block;
                 color:                  #007bff;
                 text-align:             right;
             }
@@ -137,11 +120,12 @@
                 <div class="top-frame">
                     <img src="{{config('constants.images')}}/bag.jpg" alt="bag">
                     <h1>{{session("infoComercio.nombre")}}</h1>
+                    <p>No tenés una cuenta? <a class="register-link" href="/shop/register">Registrarse</a></p>
                 </div>
                 <div class="middle-frame">
                     <div class="input-group">
-                        <label>Usuario o email<input form="form-login" type="text" name="username"></label>
-                        <label>Password<input form="form-login" type="password" name="password"></label>
+                        <label>Usuario o email<input form="form-login" type="text" name="username" required></label>
+                        <label>Password<input form="form-login" type="password" name="password" required></label>
                         <div class="flex justify-between">
                             <div class="radio-fix">
                                 <input form="form-login" type="checkbox" name="check_remember"><label>Recordarme</label>
@@ -149,12 +133,11 @@
                             <a class="password-recovery-link" href="/shop/recovery">Recuperar contraseña</a>
                         </div>
                         <div style="flex: 1 1;"></div>
-                        <button form="form-login" type="submit" class="btn-primary btn-rounded">Ingresar</button>
-                        <a class="register-link" href="/shop/register">Registrarse</a>
+                        <button form="form-login" type="submit" class="btn-primary">Ingresar</button>
                     </div>
                 </div>
                 <div class="bottom-frame">
-                    <button form="form-guest" name="button_guest" type="submit" class="btn-secondary btn-rounded">Continuar sin registro</button>
+                    <button form="form-guest" name="button_guest" type="submit" class="btn-secondary">Continuar sin registro</button>
                 </div>
             </div>
 
