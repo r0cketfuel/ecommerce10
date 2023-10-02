@@ -1,16 +1,18 @@
-@import url("/assets/framework/framework.css");
-@import url("/assets/fonts/fonts.css");
+@import url("/assets/css/framework/framework.css");
 @import url("table.css");
 @import url("header.css");
 @import url("navbar.css");
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 html {
-    background-color:               rgb(240,240,240);
+    background-color:			rgb(240,240,240);
 }
 
 body {
-	font: 					        14px Poppins-Regular;
-    color:                          #2f2f2f;
+	font-family: 				'Poppins', sans-serif;
+	font-size: 					13px;
+    color:                      #2f2f2f;
 }
 
 .img-preview {

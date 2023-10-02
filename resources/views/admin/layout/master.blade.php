@@ -7,15 +7,15 @@
 
         <!-- Hojas de estilo -->
         <link rel="stylesheet"	href="{{config('constants.admin_css')}}style.css">
+		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         @yield("css")
         
         <!-- Scripts -->
         <script defer src="{{config('constants.framework_js')}}scroll.js"></script>
-        <script src="{{asset('/assets/fontawesome/js/all.js')}}"></script>
         @yield("js")
 
         @yield("inlineCSS")
-    </head>
+	</head>
 	<body id="top">
         @include("admin.layout.backToTop")
         @yield("body")

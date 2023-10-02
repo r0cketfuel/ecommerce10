@@ -1,8 +1,8 @@
 <div class="slideshow">
     @for($i=0;$i<count($banners);$i++)
         <div class="slide">
-            <a href="shop/banners/{{$banners[$i]['link']}}">
-                <img src="{{config('constants.banners')}}/{{$banners[$i]['imagen']}}" alt="imagen">
+            <a href="shop/banners/{{ $banners[$i]['link'] }}">
+                <img src="{{ $banners[$i]['imagen'] }}" alt="imagen">
             </a>
         </div>
     @endfor

@@ -21,7 +21,8 @@ class Banner extends Model
         "descripcion",
         "link",
         "valido_desde",
-        "valido_hasta"
+        "valido_hasta",
+        "activo"
     ];
     
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -31,7 +32,19 @@ class Banner extends Model
         // Método que retorna una colección con los banners promocionales vigentes a la fecha //
         //====================================================================================//
 
-        return(Banner::all()->where("valido_desde","<=",date("Y-m-d H:i:s"))->where("valido_hasta",">=",date("Y-m-d H:i:s")));
+        $banners = Banner::where("valido_desde", "<=", date("Y-m-d H:i:s"))->where("valido_hasta", ">=", date("Y-m-d H:i:s"))->where("activo", True)->get();
+    
+        // Agregar rutas de imágenes según configuración
+        foreach ($banners as $banner) {
+            $banner->imagen = config("constants.banners") . '/' . $banner->imagen;
+        }
+    
+        return $banners;
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public static function detalle($id)
+    {
+        return(Banner::where('id', $id)->first());
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
