@@ -60,7 +60,7 @@
     
                 <label>
                     Activo
-                    <input form="form" type="checkbox" name="activo" @if(old('activo')) checked @endif>
+                    <input form="form" type="checkbox" name="activo" value="1" @if(old('activo')) checked @endif>
                 </label>
     
                 <button form="form" class="btn-primary">Guardar</button>
