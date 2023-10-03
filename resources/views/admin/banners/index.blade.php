@@ -52,8 +52,8 @@
                     <td><img src="{{ $banner->imagen }}" alt="{{ $banner->descripcion }}" width="100"></td>
                     <td>{{ $banner->descripcion }}</td>
                     <td><a href="/{{ $banner->link }}">/{{ $banner->link }}</a></td>
-                    <td>{{ $banner->valido_desde }}</td>
-                    <td>{{ $banner->valido_hasta }}</td>
+                    <td>{{ _dateTime($banner->valido_desde) }}</td>
+                    <td>{{ _dateTime($banner->valido_hasta) }}</td>
                     <td class="text-center">
                         <label class="switch">
                             <input type="checkbox" id="{{ $banner->id }}" @if($banner->activo) checked @endif>
