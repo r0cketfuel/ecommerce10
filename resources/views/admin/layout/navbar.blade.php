@@ -1,7 +1,7 @@
 <nav>
     <div class="navbar">
         <div class="logo">
-            <a href="/admin">{{ session("infoComercio.nombre") }}</a>
+            <a href="/admin/dashboard">{{ session("infoComercio.nombre") }}</a>
         </div>
 		<div class="responsive-nav-icon">
 			<div class="font-awesome-icon-bars">
