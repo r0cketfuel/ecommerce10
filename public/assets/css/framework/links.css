@@ -5,6 +5,10 @@
 * Browsers: last 8 version
 */
 
+:root {
+    --controls-height:              32px;
+}
+
 a {
     text-decoration:                none;
 }
@@ -17,10 +21,23 @@ a:active {
 }
 
 a.btn-link {
-	padding:                        10px;
-    border-radius:                  4px;
-    text-align:                     center;
-    color:                          white;
+	height: 						var(--controls-height);
+	width: 							100%;
+	cursor: 						pointer;
+	-webkit-box-sizing: 			border-box;
+            box-sizing: 			border-box;
+	font-size: 						13px;
+	text-transform: 				uppercase;
+	border: 						1px solid #6c757d;
+	background-color: 				#6c757d;
+	color: 							white;
+	border-radius: 					4px;
+	outline: 						none;
+    padding:                        0;
+    display:                        flex;
+    flex-flow:                      row nowrap;
+    justify-content:                center;
+    align-items:                    center;
 }
 
 .btn-link-primary {
