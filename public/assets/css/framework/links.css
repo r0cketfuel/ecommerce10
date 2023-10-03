@@ -15,3 +15,20 @@ a:focus,
 a:active {
     color:                          unset;
 }
+
+a.btn-link {
+	padding:                        10px;
+    border-radius:                  4px;
+    text-align:                     center;
+    color:                          white;
+}
+
+.btn-link-primary {
+    border: 						1px solid #007bff;
+	background-color: 				#007bff;
+}
+
+/* MARGEN BOTONES CON FONTAWESOME */
+a span {
+	margin-right: 					10px;
+}

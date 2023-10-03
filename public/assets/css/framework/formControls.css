@@ -241,14 +241,6 @@ button.btn-danger {
 	background-color: 				#dc3545;
 }
 
-button.btn-link {
-	border: 						none;
-	background: 				    none;
-    height:                         unset;
-    width:                          unset;
-    color:                          unset;
-}
-
 /* MARGEN BOTONES CON FONTAWESOME */
 button span {
 	margin-right: 					10px;

@@ -31,7 +31,9 @@
             </div>
         @endif
 
-        <a href="articulos/create">Nuevo</a>
+        <div class="flex">
+            <a class="btn-link btn-link-primary" href="articulos/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
+        </div>
 
         <table>
             <thead>
