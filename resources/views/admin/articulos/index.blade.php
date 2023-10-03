@@ -1,6 +1,6 @@
 @extends("admin.layout.master")
 
-@section("title","Banners")
+@section("title","Artículos")
 
 @section("body")
     <div class="main-container">
@@ -32,6 +32,53 @@
         @endif
 
         <a href="articulos/create">Nuevo</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Moneda</th>
+                    <th>Categoría</th>
+                    <th>Subcategoría</th>
+                    <th>Estado</th>
+                    <th>Visualizaciones</th>
+                    <th>Foto 1</th>
+                    <th>Foto 2</th>
+                    <th>Foto 3</th>
+                    <th>Foto 4</th>
+                    <th>Foto 5</th>
+                    <th>Foto 6</th>
+                    <th>Foto 7</th>
+                    <th>Foto 8</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($articulos as $articulo)
+                    <tr>
+                        <td>{{ $articulo->codigo }}</td>
+                        <td>{{ $articulo->nombre }}</td>
+                        <td>{{ $articulo->descripcion }}</td>
+                        <td>{{ $articulo->precio }}</td>
+                        <td>{{ $articulo->moneda }}</td>
+                        <td>{{ $articulo->categoria_id }}</td>
+                        <td>{{ $articulo->subcategoria_id }}</td>
+                        <td>{{ $articulo->estado }}</td>
+                        <td>{{ $articulo->visualizaciones }}</td>
+                        <td>{{ $articulo->foto_1 }}</td>
+                        <td>{{ $articulo->foto_2 }}</td>
+                        <td>{{ $articulo->foto_3 }}</td>
+                        <td>{{ $articulo->foto_4 }}</td>
+                        <td>{{ $articulo->foto_5 }}</td>
+                        <td>{{ $articulo->foto_6 }}</td>
+                        <td>{{ $articulo->foto_7 }}</td>
+                        <td>{{ $articulo->foto_8 }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
 
     </div>
 @endsection
