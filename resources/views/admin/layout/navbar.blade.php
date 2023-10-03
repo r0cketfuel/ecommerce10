@@ -1,5 +1,8 @@
 <nav>
-	<div class="navbar">
+    <div class="navbar">
+        <div class="logo">
+            <a href="/admin">{{ session("infoComercio.nombre") }}</a>
+        </div>
 		<div class="responsive-nav-icon">
 			<div class="font-awesome-icon-bars">
 				<i class="fa-solid fa-bars"></i>
@@ -14,15 +17,33 @@
 			</div>
 			<ul class="links">
                 
-                <!-- Menú Artículos -->
                 <li class='main-menu'>
                     <div>
-                        <a class='main-menu-link' href="#">Artículos</a>
-                        <i class='fa-solid fa-chevron-down menu-arrow arrow'></i>
+                        <a class='main-menu-link' href="#">Administración</a>
+                        <i class='fa-solid fa-caret-down menu-arrow arrow'></i>
                     </div>
                     <ul class="main-menu-links sub-menu">
-                        <a class='submenu-link' href='/admin/articulos/nuevo'><li class='more'>Nuevo</li></a>
-                        <a class='submenu-link' href='/admin/articulos/listado'><li class='more'>Listado</li></a>
+
+                        <li class="more">
+                            <div>
+                                <a class="submenu-link" href="#">Artículos</a>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/articulos/nuevo">Nuevo</a></li>
+                                <li><a href="/admin/articulos/listado">Listado</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="more">
+                            <div>
+                                <a class="submenu-link" href="#">Banners</a>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/banners/listado">Listado</a></li>
+                            </ul>
+                        </li>                        
                     </ul>
                 </li>                
                 

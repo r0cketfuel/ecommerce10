@@ -14,9 +14,7 @@ nav {
 
 nav .navbar {
 	display: 					    flex;
-	align-items: 				    center;
-	gap: 						    50px;
-	text-transform: 			    uppercase;
+	flex-flow: 						column nowrap;
     background-color:               black;
 }
 
@@ -31,15 +29,13 @@ nav .navbar .sub-menu {
 	padding: 					    0;
 }
 
-/* OPCIONAL */
 nav .navbar .logo {
-	padding:					    10px;
+	padding:					    10px 0 5px 10px;
 }
 
-/* OPCIONAL */
 nav .navbar .logo a {
 	color:						    var(--navbar-logo-font-color);
-	font-size: 					    30px;
+	font-size: 					    26px;
 	text-decoration: 			    none;
 }
 
@@ -60,7 +56,8 @@ nav .navbar .links li {
 	background:					    none;
 }
 
-nav .navbar .links li.main-menu div, nav .navbar .links li.main-menu li.more div {
+nav .navbar .links li.main-menu div,
+nav .navbar .links li.main-menu li.more div {
 	width: 						    100%;
 	display: 					    flex;
 	align-items: 				    center;
@@ -106,7 +103,6 @@ nav .navbar .links li .sub-menu {
 	animation-name: 			    fadein;
 	animation-duration: 		    0.3s;
 	min-width: 					    150px;
-	border-radius: 				    4px;
 	font-size:					    13px;
 }
 
@@ -120,7 +116,6 @@ nav .navbar .links li:hover .sub-menu {
 
 nav .navbar .links li .sub-menu li {
 	padding: 					    0 10px;
-	border-bottom: 				    1px solid rgb(255,0,0);
 }
 
 nav .navbar .links li .sub-menu li:hover {
@@ -155,6 +150,17 @@ nav .navbar .responsive-nav-icon {
 	display: 					    none;
 }
 
+@media (max-width:900px) {
+
+	nav .navbar .logo a {
+		font-size: 					24px;
+	}
+
+	nav .navbar .nav-links {
+		font-size: 					12px;
+	}
+}
+
 @media (max-width:768px) {
 
 	nav .navbar .logo {
@@ -164,6 +170,7 @@ nav .navbar .responsive-nav-icon {
 	nav .navbar .responsive-nav-icon {
 		display: 				    block;
 		cursor: 				    pointer;
+		padding: 10px;
 	}
 
 	/* SIDEBAR LOGO & BOTON CERRAR */
@@ -208,7 +215,8 @@ nav .navbar .responsive-nav-icon {
 		padding:				    0;
 	}
 
-	nav .navbar .links li.main-menu div, nav .navbar .links li.main-menu li.more div {
+	nav .navbar .links li.main-menu div,
+	nav .navbar .links li.main-menu li.more div {
 		width: 						unset
 	}
 
