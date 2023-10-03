@@ -17,6 +17,7 @@
         @yield("inlineCSS")
 	</head>
 	<body id="top">
+        @include("admin.layout.navbar")
         @include("admin.layout.backToTop")
         @yield("body")
 	</body>
