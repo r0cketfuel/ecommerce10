@@ -118,6 +118,10 @@ nav .navbar .links li .sub-menu li {
 	padding: 					    0 10px;
 }
 
+nav .navbar .links li .sub-menu li a {
+	width: 					    	100%;
+}
+
 nav .navbar .links li .sub-menu li:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
@@ -138,8 +142,12 @@ nav .navbar .links li .sub-menu .more-sub-menu {
 	display: 					    none;
 }
 
-.links li .sub-menu .more:hover .more-sub-menu {
+nav .links li .sub-menu .more:hover .more-sub-menu {
 	display: 					    block;
+}
+
+nav .links li .sub-menu .more:hover .more-sub-menu a {
+	width: 							100%;
 }
 
 nav .navbar .nav-links .sidebar-logo {
@@ -157,7 +165,7 @@ nav .navbar .responsive-nav-icon {
 	}
 
 	nav .navbar .nav-links {
-		font-size: 					12px;
+		font-size: 					13px;
 	}
 }
 
@@ -276,11 +284,6 @@ nav .navbar .responsive-nav-icon {
 		display: 				    none;
 	}
 
-	.navbar .links li .sub-menu .more span {
-		/* display: 				flex; */
-		/* align-items: 			center; */
-	}
-	
 	/* DESACTIVA LA APARICION DEL SUBMENU AL PASAR CON EL MOUSE */
 	nav .navbar .links li:hover .sub-menu {
 		display: 				    none;

@@ -26,22 +26,20 @@
 
                         <li class="more">
                             <div>
-                                <a class="submenu-link" href="#">Artículos</a>
+                                <div class="submenu-link">Artículos</div>
                                 <i class="fa-solid fa-caret-right more-arrow arrow"></i>
                             </div>
                             <ul class="more-sub-menu sub-menu">
-                                <li><a href="/admin/articulos/create">Nuevo</a></li>
                                 <li><a href="/admin/articulos/">Listado</a></li>
                             </ul>
                         </li>
 
                         <li class="more">
                             <div>
-                                <a class="submenu-link" href="#">Banners</a>
+                                <div class="submenu-link">Banners</div>
                                 <i class="fa-solid fa-caret-right more-arrow arrow"></i>
                             </div>
                             <ul class="more-sub-menu sub-menu">
-                                <li><a href="/admin/banners/create">Nuevo</a></li>
                                 <li><a href="/admin/banners/">Listado</a></li>
                             </ul>
                         </li>                        
@@ -55,7 +53,7 @@
                         <i class='fa-solid fa-chevron-down menu-arrow arrow'></i>
                     </div>
                     <ul class="main-menu-links sub-menu">
-                        <a class='submenu-link' href='/admin/ordenes/listado'><li class='more'>listado</li></a>
+                        <li class='more'><a class='submenu-link' href='/admin/ordenes/listado'>listado</a></li>
                     </ul>
                 </li>
 
@@ -66,8 +64,8 @@
                         <i class='fa-solid fa-chevron-down menu-arrow arrow'></i>
                     </div>
                     <ul class="main-menu-links sub-menu">
-                        <a class='submenu-link' href='/admin/listados/simple'><li class='more'>Listado simple</li></a>
-                        <a class='submenu-link' href='/admin/listados/filtros'><li class='more'>Listado con filtros</li></a>
+                        <li class='more'><a class='submenu-link' href='/admin/listados/simple'>Listado simple</a></li>
+                        <li class='more'><a class='submenu-link' href='/admin/listados/filtros'>Listado con filtros</a></li>
                     </ul>
                 </li>
 
@@ -78,7 +76,7 @@
                         <i class='fa-solid fa-chevron-down menu-arrow arrow'></i>
                     </div>
                     <ul class="main-menu-links sub-menu">
-                        <a class='submenu-link' href='/admin/clientes/listado/listado'><li class='more'>Listado</li></a>
+                        <li class='more'><a class='submenu-link' href='/admin/clientes/listado/listado'>Listado</a></li>
                     </ul>
                 </li>
 

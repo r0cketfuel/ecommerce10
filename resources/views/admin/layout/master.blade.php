@@ -6,7 +6,13 @@
         <title>@yield("title") - {{session("infoComercio.nombre")}}</title>
 
         <!-- Hojas de estilo -->
+		<link rel="stylesheet"	href="{{config('constants.framework_css')}}framework.css">
+
         <link rel="stylesheet"	href="{{config('constants.admin_css')}}style.css">
+		<link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
+		<link rel="stylesheet"	href="{{config('constants.admin_css')}}header.css">
+		<link rel="stylesheet"	href="{{config('constants.admin_css')}}navbar.css">
+
 		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         @yield("css")
         
