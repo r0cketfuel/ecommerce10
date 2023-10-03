@@ -2,57 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Banner\StoreBannerRequest;
-use App\Http\Requests\Banner\UpdateBannerRequest;
-use App\Models\Banner;
+use App\Http\Requests\Articulo\StoreArticuloRequest;
+use App\Http\Requests\Articulo\UpdateArticuloRequest;
+use App\Models\Articulo;
 
-class BannerController extends Controller
+class ArticuloController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
-        $banners = Banner::vigentes();
-
-        return view("admin.banners.index", compact('banners'));
+        return view("admin.articulos.index");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function create()
     {
-        return view("admin.banners.create");
+        //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function store(StoreBannerRequest $request)
-    {
-        $banner = new Banner;
-        $banner = Banner::make($request->validated());
-        $banner->save();
-
-        return redirect()->route('banners.index')->with('success', 'Banner creado exitosamente');
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function show($id)
-    {
-        if(is_numeric($id))
-        {
-            $banner = Banner::detalle($id);
-
-            return view("admin.banners.show", compact('banner'));
-        }
-
-        return redirect()->route('admin.dashboard')->with('danger', 'Error');
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function edit(Banner $banner)
+    public function store(StoreArticuloRequest $request)
     {
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function update(UpdateBannerRequest $request, Banner $banner)
+    public function show(Articulo $articulo)
     {
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function destroy(Banner $banner)
+    public function edit(Articulo $articulo)
+    {
+        //
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function update(UpdateArticuloRequest $request, Articulo $articulo)
+    {
+        //
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function destroy(Articulo $articulo)
     {
         //
     }

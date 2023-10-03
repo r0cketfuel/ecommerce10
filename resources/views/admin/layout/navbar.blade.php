@@ -30,8 +30,7 @@
                                 <i class="fa-solid fa-caret-right more-arrow arrow"></i>
                             </div>
                             <ul class="more-sub-menu sub-menu">
-                                <li><a href="/admin/articulos/nuevo">Nuevo</a></li>
-                                <li><a href="/admin/articulos/listado">Listado</a></li>
+                                <li><a href="/admin/articulos/">Listado</a></li>
                             </ul>
                         </li>
 
@@ -41,7 +40,7 @@
                                 <i class="fa-solid fa-caret-right more-arrow arrow"></i>
                             </div>
                             <ul class="more-sub-menu sub-menu">
-                                <li><a href="/admin/banners/listado">Listado</a></li>
+                                <li><a href="/admin/banners/">Listado</a></li>
                             </ul>
                         </li>                        
                     </ul>
