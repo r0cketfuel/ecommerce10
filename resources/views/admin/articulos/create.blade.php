@@ -6,6 +6,7 @@
     <link rel="stylesheet"	href="{{config('constants.framework_css')}}modal.css">
     <link rel="stylesheet"	href="{{config('constants.framework_css')}}layout.css">
     <link rel="stylesheet"	href="{{config('constants.framework_css')}}panel.css">
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}alert.css">
 @endsection
 
 @section("body")
@@ -46,41 +47,47 @@
                     <div class="panel-content">
                         <fieldset>
                             <legend>Categoría</legend>
-                            <select form="form-upload" id="categoria_id" name="categoria_id">
+                            <select form="form" id="categoria_id" name="categoria" value="{{ old('categoria') }}">
                                 <option value="" disabled selected>Categoría</option>
                                 @foreach ($categorias as $categoria)
                                     <option value="{{ $categoria['id'] }}">{{ $categoria['nombre'] }}</option>
                                 @endforeach
                             </select>
 
-                            <select form="form-upload" id="subcategoria_id" name="subcategoria_id" disabled>
+                            <select form="form" id="subcategoria_id" name="subcategoria" disabled value="{{ old('subcategoria') }}">
                                 <option value="" disabled selected>Subcategoría</option>
                             </select>
                             <div class="flex">
-                                <button form="form-upload" type="button" class="openModal" id="boton_agregar_categoria"><span><i class="fa-solid fa-plus"></i></span>Categoría</button>
-                                <button form="form-upload" type="button" class="openModal" id="boton_agregar_subcategoria"><span><i class="fa-solid fa-plus"></i></span>Subcategoría</button>
+                                <button type="button" class="openModal" id="boton_agregar_categoria"><span><i class="fa-solid fa-plus"></i></span>Categoría</button>
+                                <button type="button" class="openModal" id="boton_agregar_subcategoria"><span><i class="fa-solid fa-plus"></i></span>Subcategoría</button>
                             </div>
                         </fieldset>
 
                         <fieldset>
                             <legend>Datos principales</legend>
                             <div class="flex">
-                                <label for="codigo">Codigo</label>
-                                <input type="text" id="codigo" name="codigo" class="{{ $errors->has('codigo') ? 'form-error' : '' }}" value="{{ old('codigo') }}" required>
+                                <label>
+                                    Codigo
+                                    <input form="form" type="text" name="codigo" class="{{ $errors->has('codigo') ? 'form-error' : '' }}" value="{{ old('codigo') }}" required>
+                                </label>
                                 @if ($errors->has('codigo'))
                                     <p class="field-validation-msg"><i class="fa-solid fa-triangle-exclamation"></i> {{ $errors->first('codigo') }}</p>
                                 @endif
                             </div>
                             <div class="flex">
-                                <label for="nombre">Nombre</label>
-                                <input type="text" id="nombre" name="nombre" class="{{ $errors->has('nombre') ? 'form-error' : '' }}" value="{{ old('nombre') }}" required>
+                                <label>
+                                    Nombre
+                                    <input form="form" type="text" name="nombre" class="{{ $errors->has('nombre') ? 'form-error' : '' }}" value="{{ old('nombre') }}" required>
+                                </label>
                                 @if ($errors->has('nombre'))
                                     <p class="field-validation-msg"><i class="fa-solid fa-triangle-exclamation"></i> {{ $errors->first('nombre') }}</p>
                                 @endif
                             </div>
                             <div class="flex">
-                                <label for="descripcion">Descripción</label>
-                                <input type="text" id="descripcion" name="descripcion" class="{{ $errors->has('descripcion') ? 'form-error' : '' }}" value="{{ old('descripcion') }}" required>
+                                <label>
+                                    Descripción
+                                    <input form="form" type="text" name="descripcion" class="{{ $errors->has('descripcion') ? 'form-error' : '' }}" value="{{ old('descripcion') }}" required>
+                                </label>
                                 @if ($errors->has('descripcion'))
                                     <p class="field-validation-msg"><i class="fa-solid fa-triangle-exclamation"></i> {{ $errors->first('descripcion') }}</p>
                                 @endif
@@ -90,19 +97,23 @@
                         <fieldset>
                             <legend>Datos principales</legend>
                             <div class="flex">
-                                <label for="precio">Precio</label>
-                                <input type="text" id="precio" name="precio" class="{{ $errors->has('precio') ? 'form-error' : '' }}" value="{{ old('precio') }}" required>
+                                <label>
+                                    Precio
+                                    <input form="form" type="text" name="precio" class="{{ $errors->has('precio') ? 'form-error' : '' }}" value="{{ old('precio') }}" required>
+                                </label>
                                 @if ($errors->has('precio'))
                                     <p class="field-validation-msg"><i class="fa-solid fa-triangle-exclamation"></i> {{ $errors->first('precio') }}</p>
                                 @endif
                             </div>
                             <div class="flex">
-                                <label for="moneda">Moneda</label>
-                                <select id="moneda" name="moneda" class="{{ $errors->has('moneda') ? 'form-error' : '' }}" required>
-                                    <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1" {{ old('moneda') == 1 ? 'selected' : '' }}>Pesos</option>
-                                    <option value="2" {{ old('moneda') == 2 ? 'selected' : '' }}>Dólares</option>
-                                </select>
+                                <label>
+                                    Moneda
+                                    <select form="form" name="moneda" class="{{ $errors->has('moneda') ? 'form-error' : '' }}" required>
+                                        <option value="" disabled selected>Seleccione...</option>
+                                        <option value="1" {{ old('moneda') == 1 ? 'selected' : '' }}>Pesos</option>
+                                        <option value="2" {{ old('moneda') == 2 ? 'selected' : '' }}>Dólares</option>
+                                    </select>
+                                </label>
                                 @if ($errors->has('moneda'))
                                     <p class="field-validation-msg"><i class="fa-solid fa-triangle-exclamation"></i> {{ $errors->first('moneda') }}</p>
                                 @endif
@@ -119,11 +130,11 @@
                                         <option value="{{ $talle['id'] }}">{{ $talle['talle'] }}</option>
                                     @endforeach
                                 </select>
-                                <input form="form-upload" type="number" name="stock[]" placeholder="Stock" min="1" required>
-                                <input form="form-upload" type="color"  name="color[]">
+                                <input form="form" type="number" name="stock[]" placeholder="Stock" min="1" required>
+                                <input form="form" type="color"  name="color[]">
                                 <button class="btn-danger" onclick="eliminarAtributo(this.parentNode);" style="width: 70px; display: block"><i class="fa-solid fa-trash-can"></i></button>
                             </div>
-                            <button form="form-upload" type="button" onclick="agregarAtributo();"><span><i class="fa-solid fa-plus"></i></span>Atributo</button>
+                            <button form="form" type="button" onclick="agregarAtributo();"><span><i class="fa-solid fa-plus"></i></span>Atributo</button>
                         </fieldset>
 
                         <script>
@@ -144,11 +155,13 @@
 
                         <fieldset>
                             <legend>Presentación</legend>
-                            <label for="detalle">Detalle del artículo</label>
-                            <textarea id="detalle" name="detalle" form="form-upload">{{ old('detalle') }}</textarea>
+                            <label>
+                                Detalle del artículo
+                                <textarea id="detalle" name="detalle" form="form">{{ old('detalle') }}</textarea>
+                            </label>
                         </fieldset>
 
-                        <button form="form-upload" type="submit" class="btn-primary"><span><i class="fa-solid fa-plus"></i></span>Publicar artículo</button>
+                        <button form="form" type="submit" class="btn-primary"><span><i class="fa-solid fa-plus"></i></span>Publicar artículo</button>
                     </div>
                 </div>
             </div>
@@ -167,7 +180,7 @@
             </div>
         </div>
 
-        <form id="form-upload" method="post" enctype="multipart/form-data" action="{{ route('articulos.store') }}">@csrf</form>
+        <form id="form" method="post" enctype="multipart/form-data" action="{{ route('articulos.store') }}">@csrf</form>
     </div>
 
 

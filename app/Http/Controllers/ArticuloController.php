@@ -32,7 +32,12 @@ class ArticuloController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function store(StoreArticuloRequest $request)
     {
-        //
+        $articulo = new Articulo;
+
+        $articulo = Articulo::make($request->validated());
+        $articulo->save();
+    
+        return response()->json($articulo, 201);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function show(Articulo $articulo)
