@@ -20,7 +20,7 @@ class FacturaSeeder extends Seeder
             "apellidos"         => "Apellido",
             "nombres"           => "Nombres",
             "tipo_documento_id" => 1,
-            "nro_documento"     => "12345678",
+            "documento_nro"     => "12345678",
             "cuil"              => "20123456782",
             "cuit"              => "",
             "domicilio"         => "Domicilio",

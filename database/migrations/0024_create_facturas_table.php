@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('nombres', 50);
             $table->unsignedTinyInteger('tipo_documento_id');
             $table->foreign('tipo_documento_id')->references('id')->on('tipos_documentos');
-            $table->string('nro_documento', 8);
+            $table->string('documento_nro', 8);
             $table->string('cuil', 11)->nullable();
             $table->string('cuit', 11)->nullable();
             $table->string('domicilio', 50);

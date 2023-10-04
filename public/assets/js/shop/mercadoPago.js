@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function ()
                         apellidos:                  apellidos.value,
                         nombres:                    nombres.value,
                         tipo_documento_id:          tipo_documento_id.value,
-                        nro_documento:              documento_nro.value,
+                        documento_nro:              documento_nro.value,
                         localidad:                  localidad.value,
                         codigo_postal:              codigo_postal.value,
                         domicilio:                  domicilio.value,
