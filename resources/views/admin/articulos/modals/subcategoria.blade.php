@@ -25,7 +25,7 @@
                 <input type='text' required id='modal_descripcion_subcategoria' placeholder='Descripcion'>
             </label>
 
-            <button id='modal_button_agregar_subcategoria' class='btn-primary'><span><i class='fa-solid fa-plus'></i></span>Agregar</button>
+            <button id='boton_agregar_subcategoria_modal' class='btn-primary'><span><i class='fa-solid fa-plus'></i></span>Agregar</button>
 
         </div>
     </div>

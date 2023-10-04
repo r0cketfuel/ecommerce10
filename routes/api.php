@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\ArticuloController;
+use App\Http\Controllers\Api\CategoriaController;
+use App\Http\Controllers\Api\SubcategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('articulos', ArticuloController::class);
+Route::apiResource('articulos',     ArticuloController::class);
+Route::apiResource('categorias',    CategoriaController::class);
+Route::apiResource('subcategorias', SubcategoriaController::class);

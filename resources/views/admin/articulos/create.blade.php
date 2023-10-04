@@ -174,79 +174,97 @@
     <script>
         document.addEventListener("DOMContentLoaded", load, false);
 
-        const modalAgregarCategoria     = document.getElementById("modal_agregar_categoria");
-        const modalAgregarSubcategoria  = document.getElementById("modal_agregar_subcategoria");
+        const modalAgregarCategoria         = document.getElementById("modal_agregar_categoria");
+        const modalAgregarSubcategoria      = document.getElementById("modal_agregar_subcategoria");
 
-        const selectCategorias          = document.getElementById("categoria_id");
-        const selectSubcategorias       = document.getElementById("subcategoria_id");
+        const botonAgregarCategoriaModal    = document.getElementById("boton_agregar_categoria_modal")
+        const botonAgregarSubcategoriaModal = document.getElementById("boton_agregar_subcategoria_modal")
+
+        const selectCategorias              = document.getElementById("categoria_id");
+        const selectSubcategorias           = document.getElementById("subcategoria_id");
         
-        const botonAgregarCategoria     = document.getElementById("boton_agregar_categoria");
-        const botonAgregarSubcategoria  = document.getElementById("boton_agregar_subcategoria");
+        const botonAgregarCategoria         = document.getElementById("boton_agregar_categoria");
+        const botonAgregarSubcategoria      = document.getElementById("boton_agregar_subcategoria");
         
         function load()
         {
-            botonAgregarCategoria.addEventListener("click",     agregarCategoriaClick,      false);
-            botonAgregarSubcategoria.addEventListener("click",  agregarSubcategoriaClick,   false);
-            selectCategorias.addEventListener("change",         categoriasChangeEvent,      false);
+            botonAgregarCategoria.addEventListener("click",         modalAgregarCategoriaShow,      false);
+            botonAgregarSubcategoria.addEventListener("click",      modalAgregarSubcategoriaShow,   false);
+
+            botonAgregarCategoriaModal.addEventListener("click",    agregarCategoriaClick,          false);
+            botonAgregarSubcategoriaModal.addEventListener("click", agregarSubcategoriaClick,       false);
+
+            selectCategorias.addEventListener("change",             categoriasChangeEvent,          false);
         }
 
-        function agregarCategoriaClick()
+        function modalAgregarCategoriaShow()
         {
-            //Controles del modal
-            let inputName           = document.getElementById("modal_nombre_categoria");
-            let inputDescripcion    = document.getElementById("modal_descripcion_categoria");
-            let buttonLabel 	    = botonAgregarCategoria.innerHTML;
-
             modalAgregarCategoria.style.display = "block";
-            botonAgregarCategoria.disabled 	    = true;
-            
-            let xhttp 	    = new XMLHttpRequest()
-            let url 	    = "/admin/ajax/agregaCategoria";
-            let parametros  = {};
-            
-            parametros["nombre"]        = inputName.value;
-            parametros["descripcion"]   = inputDescripcion.value;
-            
-            xhttp.onreadystatechange = function()
-            {
-                if(this.readyState == 4 && this.status == 200)
+        }
+
+        function modalAgregarSubcategoriaShow()
+        {
+            modalAgregarSubcategoria.style.display = "block";
+        }
+
+        async function agregarCategoriaClick()
+        {
+            try {
+                const inputName = document.getElementById("modal_nombre_categoria");
+                const inputDescripcion = document.getElementById("modal_descripcion_categoria");
+                const buttonLabel = botonAgregarCategoria.innerHTML;
+
+                botonAgregarCategoria.disabled = true;
+
+                const url = "/api/categorias";
+                const parametros = {
+                    nombre:         inputName.value,
+                    descripcion:    inputDescripcion.value,
+                };
+
+                const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(parametros),
+                });
+
+                if (response.status === 200)
                 {
-                    //Reset boton agregar
-                    botonAgregarCategoria.innerHTML = buttonLabel;
+                    // Reset boton agregar
                     botonAgregarCategoria.disabled = false;
 
-                    //Reset controles
-                    inputName.value         = "";
-                    inputDescripcion.value  = "";
-                    
-                    //Reset select categorías
-                    selectCategorias.disabled        = true;
-                    selectCategorias.options.length  = 0;
-                    addOption(selectCategorias,"","Categoría",true,true);
-                    
-                    //Reset select subcategorías
-                    selectSubcategorias.disabled        = true;
-                    selectSubcategorias.options.length  = 0;
-                    addOption(selectSubcategorias,"","Subcategoría",true,true);
-                    
-                    //Recarga categorías
-                    const array = JSON.parse(this.responseText);
-                    for(let i=0;i<array.length;++i)
-                        addOption(selectCategorias, array[i]["id"], array[i]["nombre"], false, false);
+                    // Reset controles
+                    inputName.value = "";
+                    inputDescripcion.value = "";
 
-                    //Selecciona la nueva categoría
+                    // Reset select categorías
+                    selectCategorias.disabled = true;
+                    selectCategorias.innerHTML = '<option value="" selected>Categoría</option>';
 
-                    //Habilita select categorías y cierra el modal
+                    // Reset select subcategorías
+                    selectSubcategorias.disabled = true;
+                    selectSubcategorias.innerHTML = '<option value="" selected>Subcategoría</option>';
+
+                    // Recarga categorías
+                    const data = await response.json();
+                    data.forEach((categoria) => {
+                        addOption(selectCategorias, categoria.id, categoria.nombre, false, false);
+                    });
+
+                    // Selecciona la nueva categoría
+
+                    // Habilita select categorías y cierra el modal
                     selectCategorias.disabled = false;
-                    modalClose(1);
 
-                    createAlert("success", "Categoría creada exitosamente");
+                    console.log("Categoría creada exitosamente");
                 }
             }
-
-            xhttp.open("POST", url, true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("parametros=" + JSON.stringify(parametros));
+            catch (error)
+            {
+                console.error("Error al agregar categoría:", error);
+            }
         }
 
         function agregarSubcategoriaClick()
@@ -318,14 +336,13 @@
         {
             let parametros  = {};
             let xhttp 	    = new XMLHttpRequest()
-            let url 	    = "/admin/ajax/listadoSubcategorias";
+            let url 	    = "/api/subcategorias/" + selectCategorias.value;
             
             //Reset select subcategorías
             selectSubcategorias.disabled        = true;
             selectSubcategorias.options.length  = 0;
             addOption(selectSubcategorias,"","Subcategoría",true,true);
 
-            parametros["categoria_id"] = selectCategorias.value;
             xhttp.onreadystatechange = function()
             {
                 if(this.readyState == 4 && this.status == 200)
@@ -341,7 +358,7 @@
                 }
             }
 
-            xhttp.open("POST", url, true);
+            xhttp.open("GET", url, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("parametros=" + JSON.stringify(parametros));
         }
