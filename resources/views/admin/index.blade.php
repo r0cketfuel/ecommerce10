@@ -136,7 +136,7 @@
 
             <div class="main-frame">
                 <div class="top-frame">
-                    <img src="{{config('constants.images')}}gear.jpg" alt="gear">
+                    <img src="{{config('constants.images')}}/gear.jpg" alt="gear">
                     <h1>{{session("infoComercio.nombre")}}</h1>
                     <h2>Panel de administración</h2>
                 </div>
