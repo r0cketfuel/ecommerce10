@@ -3,6 +3,7 @@
 @section("title","Pago")
 
 @section("css")
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}panel.css">
 @endsection
 
 @section("inlineCSS")
