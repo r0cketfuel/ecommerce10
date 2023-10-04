@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Articulo\StoreArticuloRequest;
 use App\Http\Requests\Articulo\UpdateArticuloRequest;
+
 use App\Models\Articulo;
+use App\Models\Categoria;
+use App\Models\Subcategoria;
+use App\Models\Talle;
 
 class ArticuloController extends Controller
 {
@@ -18,7 +22,12 @@ class ArticuloController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function create()
     {
-        return view("admin.articulos.create");
+        $categorias     = Categoria::all();
+        $subcategorias  = Subcategoria::all();
+
+        $talles = Talle::all();
+
+        return view("admin.articulos.create", compact('categorias', 'subcategorias', 'talles'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function store(StoreArticuloRequest $request)
