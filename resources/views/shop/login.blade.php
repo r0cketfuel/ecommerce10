@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{str_replace('_', '-', app()->getLocale())}}">
 	<head>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ingreso de usuarios - {{session("infoComercio.nombre")}}</title>
         
         <!-- Hojas de estilo -->
         <link rel="stylesheet"	href="{{config('constants.shop_css')}}style.css">
+        <link rel="stylesheet"	href="{{config('constants.framework_css')}}alert.css">
+        <link rel="stylesheet"	href="{{config('constants.framework_css')}}layout.css">
 
         <!-- Scripts -->
         <script src="{{asset('/assets/fontawesome/js/all.js')}}"></script>

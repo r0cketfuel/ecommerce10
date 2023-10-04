@@ -2,6 +2,12 @@
 
 @section("title", "Nuevo artículo")
 
+@section("css")
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}modal.css">
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}layout.css">
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}panel.css">
+@endsection
+
 @section("body")
     <div class="main-container">
         <h1>Nuevo artículo</h1>

@@ -2,10 +2,14 @@
 
 @section("title","Banners")
 
+@section("css")
+    <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
+@endsection
+
 @section("body")
     <div class="main-container">
 
-        <h1>Banners Home</h1>
+        <h1>Listado de banners</h1>
 
         @if ($errors->any())
             <div class="alert danger">
@@ -31,9 +35,7 @@
             </div>
         @endif
 
-        <div class="flex">
-            <div style="width: 100px"><a class="btn-link btn-link-primary" href="banners/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a></div>
-        </div>
+        <a class="btn-link btn-link-primary w100px" href="banners/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
 
         <table>
             <thead>

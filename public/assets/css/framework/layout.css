@@ -8,43 +8,6 @@
 @import url("grid.css");
 @import url("flex.css");
 
-.main-container {
-    margin:                         0 auto;
-    -webkit-box-sizing:             border-box;
-            box-sizing:             border-box;
-    display:                        -webkit-box;
-    display:                        -ms-flexbox;
-    display:                        flex;
-    -webkit-box-orient:             vertical;
-    -webkit-box-direction:          normal;
-        -ms-flex-direction:         column;
-            flex-direction:         column;
-    gap:                            10px;
-    max-width:                      var(--containers-max-width);
-    padding:                        20px var(--containers-side-padding);
-    -webkit-animation-name: 		fade-in;
-            animation-name: 		fade-in;
-	-webkit-animation-duration: 	0.5s;
-            animation-duration: 	0.5s;
-    min-height:                     500px;
-}
-
-.main-container h1 {
-    font-size: 1.5rem;
-}
-
-.container {
-    margin:                         0 auto;
-    padding:                        var(--containers-side-padding);
-    max-width:                      var(--containers-max-width);
-    -webkit-box-sizing:             border-box;
-            box-sizing:             border-box;
-}
-
-.nota {
-    font-size:                      10px;
-    margin:                         5px 0 0 0;
-}
 
 .copyright {
     text-align:                     center;

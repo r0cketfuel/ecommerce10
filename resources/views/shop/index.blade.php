@@ -6,6 +6,7 @@
     <link rel="stylesheet"	href="{{config('constants.shop_css')}}carousel.css">
     <link rel="stylesheet"	href="{{config('constants.shop_css')}}productCards.css">
     <link rel="stylesheet"	href="{{config('constants.shop_css')}}newsletter.css">
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}modal.css">
 @endsection
 
 @section("js")

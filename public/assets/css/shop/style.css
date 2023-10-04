@@ -1,4 +1,10 @@
-@import url("/assets/css/framework/framework.css");
+@import url("/assets/css/framework/normalize.css");
+@import url("/assets/css/framework/scrollbar.css");
+@import url("/assets/css/framework/backToTop.css");
+@import url("/assets/css/framework/links.css");
+@import url("/assets/css/framework/formControls.css");
+@import url("/assets/css/framework/whatsappBubble.css");
+
 @import url("headers.css");
 @import url("navbar.css");
 @import url("footers.css");
@@ -6,6 +12,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
+    --containers-max-width:     	1366px;
+    --containers-side-padding:		10px;
+
 	--breadcrumb-background:		none;
     --breadcrumb-border:			none;
 
@@ -23,6 +32,39 @@ body {
     font-size:                      0.8125rem;
 	font-family: 					'Poppins', sans-serif;
     color:                          #2f2f2f;
+}
+
+.main-container {
+    margin:                         0 auto;
+    -webkit-box-sizing:             border-box;
+            box-sizing:             border-box;
+    display:                        -webkit-box;
+    display:                        -ms-flexbox;
+    display:                        flex;
+    -webkit-box-orient:             vertical;
+    -webkit-box-direction:          normal;
+        -ms-flex-direction:         column;
+            flex-direction:         column;
+    gap:                            10px;
+    max-width:                      var(--containers-max-width);
+    padding:                        20px var(--containers-side-padding);
+    -webkit-animation-name: 		fade-in;
+            animation-name: 		fade-in;
+	-webkit-animation-duration: 	0.5s;
+            animation-duration: 	0.5s;
+    min-height:                     500px;
+}
+
+.main-container h1 {
+    font-size: 1.5rem;
+}
+
+.container {
+    margin:                         0 auto;
+    padding:                        var(--containers-side-padding);
+    max-width:                      var(--containers-max-width);
+    -webkit-box-sizing:             border-box;
+            box-sizing:             border-box;
 }
 
 ul.product-list {

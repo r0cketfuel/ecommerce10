@@ -93,7 +93,7 @@ nav .navbar .links li .arrow {
 
 nav .navbar .links li .sub-menu {
 	position: 					    absolute;
-	top: 						    35px;
+	top: 						    36px;
 	left: 						    0;
 	line-height: 				    40px;
 	background:					    var(--navbar-menu-background);

@@ -38,7 +38,7 @@ class Articulo extends Model
     public function atributos()
     {
         //=============================================================//
-        // Relación articulos[id] con atributos_articulos[articulo_id] //
+        // Relación artículos[id] con atributos_articulos[articulo_id] //
         //=============================================================//
         return $this->hasMany(AtributoArticulo::class);
     }
@@ -46,7 +46,7 @@ class Articulo extends Model
     public function categoria()
     {
         //====================================================//
-        // Relación articulos[categoria_id] -> categorias[id] //
+        // Relación artículos[categoria_id] -> categorias[id] //
         //====================================================//
         return($this->belongsTo(Categoria::class));
     }
@@ -54,7 +54,7 @@ class Articulo extends Model
     public function subcategoria()
     {
         //==========================================================//
-        // Relación articulos[subcategoria_id] -> subcategorias[id] //
+        // Relación artículos[subcategoria_id] -> subcategorias[id] //
         //==========================================================//
         return($this->belongsTo(Subcategoria::class));
     }

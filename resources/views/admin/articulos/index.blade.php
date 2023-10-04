@@ -2,10 +2,14 @@
 
 @section("title","Artículos")
 
+@section("css")
+    <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
+@endsection
+
 @section("body")
     <div class="main-container">
 
-        <h1>Artículos Home</h1>
+        <h1>Listado de artículos</h1>
 
         @if ($errors->any())
             <div class="alert danger">
@@ -31,9 +35,7 @@
             </div>
         @endif
 
-        <div class="flex">
-            <div style="width: 100px"><a class="btn-link btn-link-primary" href="articulos/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a></div>
-        </div>
+        <a class="btn-link btn-link-primary w100px" href="articulos/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
 
         <table>
             <thead>
@@ -63,10 +65,18 @@
                         <td>{{ $articulo->codigo }}</td>
                         <td>{{ $articulo->nombre }}</td>
                         <td>{{ $articulo->descripcion }}</td>
-                        <td>{{ $articulo->precio }}</td>
+                        <td>{{ _money($articulo->precio) }}</td>
                         <td>{{ $articulo->moneda }}</td>
-                        <td>{{ $articulo->categoria_id }}</td>
-                        <td>{{ $articulo->subcategoria_id }}</td>
+                        <td>
+                            @if(isset($articulo->categoria))
+                                {{ $articulo->categoria->nombre }}
+                            @endif
+                        </td>
+                        <td>
+                            @if(isset($articulo->subcategoria))
+                                {{ $articulo->subcategoria->nombre }}
+                            @endif
+                        </td>
                         <td>{{ $articulo->visualizaciones }}</td>
                         <td>{{ $articulo->foto_1 }}</td>
                         <td>{{ $articulo->foto_2 }}</td>
@@ -77,11 +87,11 @@
                         <td>{{ $articulo->foto_7 }}</td>
                         <td>{{ $articulo->foto_8 }}</td>
                         <td class="text-center">
-                        <label class="switch">
-                            <input type="checkbox" id="{{ $articulo->id }}" @if($articulo->estado) checked @endif>
-                            <div class="slider round"></div>
-                        </label>
-                    </td>
+                            <label class="switch">
+                                <input type="checkbox" id="{{ $articulo->id }}" @if($articulo->estado) checked @endif>
+                                <div class="slider round"></div>
+                            </label>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

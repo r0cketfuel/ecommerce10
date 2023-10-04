@@ -153,26 +153,6 @@
 	from {top: -300px; opacity: 0} to {top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%); opacity: 1}
 }
 
-@-webkit-keyframes animate-left
-{
-	from {left: -300px; opacity: 0} to {left: 0; opacity: 1}
-}
-
-@keyframes animate-left
-{
-	from {left: -300px; opacity: 0} to {left: 0; opacity: 1}
-}
-
-@-webkit-keyframes animate-right
-{
-	from {right: -300px; opacity: 0} to {right: 0; opacity: 1}
-}
-
-@keyframes animate-right
-{
-	from {right: -300px; opacity: 0} to {right: 0; opacity: 1}
-}
-
 @-webkit-keyframes fade-in
 {
 	from {opacity: 0} to {opacity: 1}
