@@ -69,24 +69,27 @@ class Articulo extends Model
             //Datos de la tabla
             $articulo = Articulo::where("id",$id)->where("estado",1)->first();
             
-            //Agregado de rutas de imágenes según configuracíon y atributo miniaturas
-            for($i=1;$i<=8;$i++)
+            if($articulo)
             {
-                $foto       = "foto_"       . $i;
-                $miniatura  = "miniatura_"  . $i;
-                if($articulo->$foto !== NULL)
+                //Agregado de rutas de imágenes según configuracíon y atributo miniaturas
+                for($i=1;$i<=8;$i++)
                 {
-                    $articulo->$miniatura   = config("constants.product_images") . "/" . $id . "/thumbs/" . $articulo->$foto;
-                    $articulo->$foto        = config("constants.product_images") . "/" . $id . "/"        . $articulo->$foto;
+                    $foto       = "foto_"       . $i;
+                    $miniatura  = "miniatura_"  . $i;
+                    if($articulo->$foto !== NULL)
+                    {
+                        $articulo->$miniatura   = config("constants.product_images") . "/" . $id . "/thumbs/" . $articulo->$foto;
+                        $articulo->$foto        = config("constants.product_images") . "/" . $id . "/"        . $articulo->$foto;
+                    }
+                    else
+                    {
+                        $articulo->$miniatura   = config("constants.product_images") . "/no-image.png";
+                        $articulo->$foto        = config("constants.product_images") . "/no-image.png";                    
+                    }
                 }
-                else
-                {
-                    $articulo->$miniatura   = config("constants.product_images") . "/no-image.png";
-                    $articulo->$foto        = config("constants.product_images") . "/no-image.png";                    
-                }
+                
+                return($articulo);
             }
-            
-            return($articulo);
         }
         
         return(null);
