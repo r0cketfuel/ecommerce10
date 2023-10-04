@@ -29,8 +29,10 @@
 
         <!-- Barra superior de búsqueda -->
         <div class="flex justify-between align-center">
-            <div><span class="text-bold">Mostrando: </span>{{$busqueda["titulo"]}}</div>
             <div>
+                <span class="text-bold">Mostrando: </span>{{$busqueda["titulo"]}}
+            </div>
+            <div class="w150px">
                 <select id="sortBy">
                     <option value="" disabled selected>Ordenar...</option>
                     <option value="1">Menor precio</option>

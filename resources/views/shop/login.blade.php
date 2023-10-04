@@ -8,7 +8,6 @@
         <!-- Hojas de estilo -->
         <link rel="stylesheet"	href="{{config('constants.shop_css')}}style.css">
         <link rel="stylesheet"	href="{{config('constants.framework_css')}}alert.css">
-        <link rel="stylesheet"	href="{{config('constants.framework_css')}}layout.css">
 
         <!-- Scripts -->
         <script src="{{asset('/assets/fontawesome/js/all.js')}}"></script>
