@@ -57,8 +57,8 @@
                                 <option value="" disabled selected>Subcategoría</option>
                             </select>
                             <div class="flex">
-                                <button form="form-upload" type="button" class="openModal" data-modal="1"><span><i class="fa-solid fa-plus"></i></span>Categoría</button>
-                                <button form="form-upload" type="button" class="openModal" data-modal="2"><span><i class="fa-solid fa-plus"></i></span>Subcategoría</button>
+                                <button form="form-upload" type="button" class="openModal" id="boton_agregar_categoria"><span><i class="fa-solid fa-plus"></i></span>Categoría</button>
+                                <button form="form-upload" type="button" class="openModal" id="boton_agregar_subcategoria"><span><i class="fa-solid fa-plus"></i></span>Subcategoría</button>
                             </div>
                         </fieldset>
 
@@ -174,19 +174,20 @@
     <script>
         document.addEventListener("DOMContentLoaded", load, false);
 
-        $('.cropme').simpleCropper();
+        const modalAgregarCategoria     = document.getElementById("modal_agregar_categoria");
+        const modalAgregarSubcategoria  = document.getElementById("modal_agregar_subcategoria");
 
-        const selectCategorias          = document.getElementById("categoria");
-        const selectSubcategorias       = document.getElementById("subcategoria");
+        const selectCategorias          = document.getElementById("categoria_id");
+        const selectSubcategorias       = document.getElementById("subcategoria_id");
         
-        const botonAgregarCategoria     = document.getElementById("modal_button_agregar_categoria");
-        const botonAgregarSubcategoria  = document.getElementById("modal_button_agregar_subcategoria");
+        const botonAgregarCategoria     = document.getElementById("boton_agregar_categoria");
+        const botonAgregarSubcategoria  = document.getElementById("boton_agregar_subcategoria");
         
         function load()
         {
-            botonAgregarCategoria.addEventListener("click", agregarCategoriaClick, false);
-            botonAgregarSubcategoria.addEventListener("click", agregarSubcategoriaClick, false);
-            selectCategorias.addEventListener("change", categoriasChangeEvent, false);
+            botonAgregarCategoria.addEventListener("click",     agregarCategoriaClick,      false);
+            botonAgregarSubcategoria.addEventListener("click",  agregarSubcategoriaClick,   false);
+            selectCategorias.addEventListener("change",         categoriasChangeEvent,      false);
         }
 
         function agregarCategoriaClick()
@@ -196,9 +197,8 @@
             let inputDescripcion    = document.getElementById("modal_descripcion_categoria");
             let buttonLabel 	    = botonAgregarCategoria.innerHTML;
 
-            botonAgregarCategoria.disabled 	= true;
-            botonAgregarCategoria.innerHTML = "";
-            botonAgregarCategoria.classList.add("button--loading");
+            modalAgregarCategoria.style.display = "block";
+            botonAgregarCategoria.disabled 	    = true;
             
             let xhttp 	    = new XMLHttpRequest()
             let url 	    = "/admin/ajax/agregaCategoria";
@@ -212,7 +212,6 @@
                 if(this.readyState == 4 && this.status == 200)
                 {
                     //Reset boton agregar
-                    botonAgregarCategoria.classList.remove("button--loading");
                     botonAgregarCategoria.innerHTML = buttonLabel;
                     botonAgregarCategoria.disabled = false;
 
@@ -258,9 +257,8 @@
             let inputDescripcion        = document.getElementById("modal_descripcion_subcategoria");
             let buttonLabel 	        = botonAgregarSubcategoria.innerHTML;
 
-            botonAgregarSubcategoria.disabled   = true;
-            botonAgregarSubcategoria.innerHTML 	= "";
-            botonAgregarSubcategoria.classList.add("button--loading");
+            modalAgregarSubcategoria.style.display  = "block";
+            botonAgregarSubcategoria.disabled       = true;
 
             let xhttp 	= new XMLHttpRequest()
             let url 	= "/admin/ajax/agregaSubcategoria";
@@ -275,7 +273,6 @@
                 if(this.readyState == 4 && this.status == 200)
                 {             
                     //Reset boton agregar
-                    botonAgregarSubcategoria.classList.remove("button--loading");
                     botonAgregarSubcategoria.innerHTML = buttonLabel;
                     botonAgregarSubcategoria.disabled = false;
 
