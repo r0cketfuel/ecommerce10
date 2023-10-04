@@ -160,7 +160,7 @@ class PaymentController extends Controller
                                                     "email"             => $data["email"],
                                                     "identification"    => array(
                                                         "type"          => $data["tipo_documento_id"],
-                                                        "number"        => $data["nro_documento"]
+                                                        "number"        => $data["documento_nro"]
                                                     )
                                                 ),
                 "payment_method_id"         => $payment_method_id,
@@ -208,7 +208,7 @@ class PaymentController extends Controller
                                                     "email"             => $data["email"],
                                                     "identification"    => array(
                                                         "type"          => $data["tipo_documento_id"],
-                                                        "number"        => $data["nro_documento"]
+                                                        "number"        => $data["documento_nro"]
                                                     )
                                                 ),
                 "payment_method_id"         => $payment_method_id,
@@ -262,7 +262,7 @@ class PaymentController extends Controller
             "apellidos"         => $fields["apellidos"],
             "nombres"           => $fields["nombres"],
             "tipo_documento_id" => $tipoDocumentoId,
-            "nro_documento"     => $fields["nro_documento"],
+            "documento_nro"     => $fields["documento_nro"],
             "domicilio"         => $fields["domicilio"],
             "domicilio_nro"     => $fields["domicilio_nro"],
             "domicilio_piso"    => $fields["domicilio_piso"],
