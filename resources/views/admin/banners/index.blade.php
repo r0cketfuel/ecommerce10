@@ -4,6 +4,7 @@
 
 @section("css")
     <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}alert.css">
 @endsection
 
 @section("body")

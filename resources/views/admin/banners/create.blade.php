@@ -2,11 +2,14 @@
 
 @section("title","Nuevo banner")
 
+@section("css")
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}panel.css">
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}alert.css">
+@endsection
+
 @section("body")
     <div class="main-container">
-
-        <h1>Banners create</h1>
-
+        
         @if ($errors->any())
             <div class="alert danger">
                 <ul>
@@ -14,22 +17,11 @@
                         <li>{{$error}}</li>
                     @endforeach
                 </ul>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             </div>
         @endif
 
-        @if (session("success"))
-            <div class="alert success">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                {{session("success")}}
-            </div>
-        @endif
-
-        @if (session("error"))
-            <div class="alert danger">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                {{session("error")}}
-            </div>
-        @endif
+        <h1>Nuevo banner</h1>
 
         <div class="panel">
             <div class="panel-content">
@@ -40,12 +32,12 @@
     
                 <label>
                     Descripción
-                    <input  form="form" type="text" name="descripcion" value="{{ old('descripcion') }}">
+                    <input  form="form" type="text" name="descripcion" value="{{ old('descripcion') }}" placeholder="Breve descripción del banner">
                 </label>
     
                 <label>
                     Link
-                    <input  form="form" type="text" name="link" value="{{ old('link') }}">
+                    <input  form="form" type="text" name="link" value="{{ old('link') }}" placeholder="Página a donde lleva el banner">
                 </label>
     
                 <label>
@@ -59,8 +51,7 @@
                 </label>
     
                 <label>
-                    Activo
-                    <input form="form" type="checkbox" name="activo" value="1" @if(old('activo')) checked @endif>
+                    <div class="radio-fix"><input form="form" type="checkbox" name="activo" value="1" @if(old('activo')) checked @endif>Activo</div>
                 </label>
     
                 <button form="form" class="btn-primary">Guardar</button>
