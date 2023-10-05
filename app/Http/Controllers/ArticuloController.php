@@ -15,7 +15,7 @@ class ArticuloController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
-        $articulos = Articulo::all();
+        $articulos = Articulo::all()->where("activo", True);
 
         return view("admin.articulos.index", compact('articulos'));
     }
