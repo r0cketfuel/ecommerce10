@@ -27,7 +27,7 @@
             <div class="panel-content">
                 <label>
                     Imágen
-                    <input  form="form" type="text" name="imagen" value="{{ old('imagen') }}">
+                    <input  form="form" type="file" name="imagen" value="{{ old('imagen') }}">
                 </label>
     
                 <label>
@@ -58,7 +58,7 @@
             </div>
         </div>
         
-        <form id="form" method="post" action="{{ route('banners.store') }}">@csrf</form>
+        <form id="form" method="post"  enctype="multipart/form-data" action="{{ route('banners.store') }}">@csrf</form>
 
     </div>
 @endsection

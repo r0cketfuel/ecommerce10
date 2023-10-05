@@ -22,12 +22,12 @@ class StoreBannerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'imagen'        => array('required'),
-            'descripcion'   => array('required','string','max:255'),
-            'link'          => array('required','string'),
-            'valido_desde'  => array('required','date'),
-            'valido_hasta'  => array('required','date'),
-            'activo'        => array('nullable')
+            'imagen'        => array('required', 'image'),
+            'descripcion'   => array('required', 'string','max:255'),
+            'link'          => array('required', 'string'),
+            'valido_desde'  => array('required', 'date'),
+            'valido_hasta'  => array('required', 'date'),
+            'activo'        => array('nullable', 'integer')
         ];
     }
 
