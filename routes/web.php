@@ -10,7 +10,8 @@ use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\BannerController;
-
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\SubcategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,10 +89,10 @@ Route::prefix('admin')->group(function () {
     Route::middleware(['auth:admin'])->group(function () {
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
         
-        // Rutas CRUD para Artículos
-        Route::resource('articulos', ArticuloController::class);
-
-        // Rutas CRUD para Banners
-        Route::resource('banners', BannerController::class);
+        // Rutas CRUD
+        Route::resource('articulos',        ArticuloController::class);
+        Route::resource('banners',          BannerController::class);
+        Route::resource('categorias',       CategoriaController::class);
+        Route::resource('subcategorias',    SubcategoriaController::class);
     });
 });
