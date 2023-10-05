@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('foto_6',50)->nullable()->default(NULL);
             $table->string('foto_7',50)->nullable()->default(NULL);
             $table->string('foto_8',50)->nullable()->default(NULL);
+            $table->boolean('activo')->default(true);
             $table->comment('Tabla con la información principal de los artículos del sistema');
         });
     }
