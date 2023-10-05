@@ -10,19 +10,17 @@
 @section("body")
     <div class="main-container">
 
-        <h1>Listado de banners</h1>
-
         @if ($errors->any())
             <div class="alert danger">
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li>{{$error}}</li>
+                    <li>{{$error}}</li>
                     @endforeach
                 </ul>
             </div>
-        @endif
-
-        @if (session("success"))
+            @endif
+            
+            @if (session("success"))
             <div class="alert success">
                 {{session("success")}}
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -30,11 +28,13 @@
         @endif
 
         @if (session("error"))
-            <div class="alert danger">
-                {{session("error")}}
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            </div>
+        <div class="alert danger">
+            {{session("error")}}
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
         @endif
+
+        <h1>Listado de banners</h1>
 
         <a class="btn-link btn-link-primary w100px" href="banners/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
 

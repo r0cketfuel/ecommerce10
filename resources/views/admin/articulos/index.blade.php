@@ -10,8 +10,6 @@
 @section("body")
     <div class="main-container">
 
-        <h1>Listado de artículos</h1>
-
         @if ($errors->any())
             <div class="alert danger">
                 <ul>
@@ -35,6 +33,8 @@
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             </div>
         @endif
+
+        <h1>Listado de artículos</h1>
 
         <a class="btn-link btn-link-primary w100px" href="articulos/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
 
