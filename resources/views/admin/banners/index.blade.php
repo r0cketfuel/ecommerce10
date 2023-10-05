@@ -24,15 +24,15 @@
 
         @if (session("success"))
             <div class="alert success">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 {{session("success")}}
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             </div>
         @endif
 
         @if (session("error"))
             <div class="alert danger">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 {{session("error")}}
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             </div>
         @endif
 
