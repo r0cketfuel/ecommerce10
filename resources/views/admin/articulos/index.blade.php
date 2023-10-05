@@ -48,7 +48,6 @@
                     <th>Moneda</th>
                     <th>Categoría</th>
                     <th>Subcategoría</th>
-                    <th>Estado</th>
                     <th>Visualizaciones</th>
                     <th>Foto 1</th>
                     <th>Foto 2</th>
@@ -58,7 +57,7 @@
                     <th>Foto 6</th>
                     <th>Foto 7</th>
                     <th>Foto 8</th>
-                    <th>Activo</th>
+                    <th>Estado</th>
                 </tr>
             </thead>
             <tbody>
@@ -79,7 +78,6 @@
                                 {{ $articulo->subcategoria->nombre }}
                             @endif
                         </td>
-                        <td>{{ $articulo->estado }}</td>
                         <td>{{ $articulo->visualizaciones }}</td>
                         <td>{{ $articulo->foto_1 }}</td>
                         <td>{{ $articulo->foto_2 }}</td>
@@ -91,7 +89,7 @@
                         <td>{{ $articulo->foto_8 }}</td>
                         <td class="text-center">
                             <label class="switch">
-                                <input type="checkbox" id="{{ $articulo->id }}" @if($articulo->activo) checked @endif>
+                                <input type="checkbox" id="{{ $articulo->id }}" @if($articulo->estado) checked @endif>
                                 <div class="slider round"></div>
                             </label>
                         </td>
