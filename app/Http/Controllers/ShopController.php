@@ -77,6 +77,8 @@ class ShopController extends Controller
             
             if($item)
             {
+                Articulo::incrementaVisualizacion($id);
+
                 $rating     = Rating::getRatingArticulo($id);
                 $detalle    = DetalleArticulo::detalle($id);
                 $reviews    = Review::reviews($id);
