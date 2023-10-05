@@ -102,7 +102,7 @@ class Articulo extends Model
         // Método que devuelve un listado de artículos //
         //=============================================//
 
-        $query = Articulo::where("estado", 1);
+        $query = Articulo::where("estado", 1)->where("activo", True);
 
         if(isset($search["query"]))
         {
