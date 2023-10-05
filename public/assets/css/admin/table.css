@@ -27,6 +27,11 @@ table td {
     padding: 6px 10px;
 }
 
+table tbody tr:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
 table tr:nth-child(2n) td {
     background-color: rgba(180, 180, 180, 0.1);
 }
