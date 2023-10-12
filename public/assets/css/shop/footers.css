@@ -1,5 +1,4 @@
-.top-footer
-{
+.top-footer {
 	color:							white;
 	background: 					var(--top-footer-background);
 	border-top: 					3px solid var(--top-footer-border-color);
@@ -12,8 +11,7 @@
 	padding:						0;
 }
 
-.top-footer-container
-{
+.top-footer-container {
 	margin:							0 auto;
 	max-width:						var(--containers-max-width);
 	display:						flex;
@@ -23,34 +21,30 @@
 	padding:						var(--containers-side-padding);
 }
 
-.top-footer a:link, .top-footer a:visited
-{
+.top-footer a:link, 
+.top-footer a:visited {
 	color:							white;
 }
 
-.top-footer-title
-{
+.top-footer-title {
 	margin-bottom:					25px;
 	text-transform: 				uppercase;
 	font-size: 						14px;
 	color: 							#fff;
 }
 
-.footer-links span
-{
+.footer-links span {
 	display: 						inline-block;
 	color: 							#D10024;
 	width:							25px;
 }
 
-.bottom-footer
-{
+.bottom-footer {
 	color:							#B9BABC;
 	background: 					var(--bottom-footer-background);
 }
 
-.bottom-footer-container
-{
+.bottom-footer-container {
 	margin:							0 auto;
 	max-width:						var(--containers-max-width);
 	display:						flex;
@@ -61,24 +55,21 @@
 	padding:						var(--containers-side-padding);
 }
 
-.footer-section
-{
+.footer-section {
 	width: 							100%;
 }
 
-.footer-section p, .footer-section .top-footer-title
-{
+.footer-section p,
+.footer-section .top-footer-title {
 	overflow: 						hidden;
 	text-overflow: 					ellipsis;
 }
 
-.footer-section li
-{
+.footer-section li {
 	margin-bottom: 					10px;
 }
 
-.footer-payments
-{
+.footer-payments {
 	display: 						flex;
 	flex-flow: 						row nowrap;
 	justify-content:	 			center;
@@ -86,13 +77,11 @@
 	font-size: 						clamp(24px,3vw,36px);
 }
 
-.footer-payments img
-{
+.footer-payments img {
     width:                          10%;
 }
 
-img.afip
-{
+img.afip {
 	height: 						130px;
 	width:							100px;
 	object-fit: 					scale-down;

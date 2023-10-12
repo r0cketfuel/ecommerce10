@@ -1,12 +1,10 @@
-.product-stars span
-{
+.product-stars span {
 	font-size:						20px;
 	color:							rgb(240,240,50);
 	cursor: 						pointer;
 }
 
-.product-average
-{
+.product-average {
 	margin-left: 					10px;
 	display:						inline-block;
 }
