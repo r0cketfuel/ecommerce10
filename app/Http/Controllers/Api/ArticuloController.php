@@ -53,7 +53,11 @@ class ArticuloController extends Controller
      */
     public function update(Request $request, Articulo $articulo)
     {
-        //
+        $data = $request->all();
+        
+        $articulo->update($data);
+    
+        return response()->json(['message' => 'Artículo actualizado con éxito']);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     /**

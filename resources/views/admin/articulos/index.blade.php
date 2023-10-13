@@ -49,14 +49,6 @@
                     <th class="text-left">Categoría</th>
                     <th class="text-left">Subcategoría</th>
                     <th class="text-center">Visualizaciones</th>
-                    <th class="text-left">Foto 1</th>
-                    <th class="text-left">Foto 2</th>
-                    <th class="text-left">Foto 3</th>
-                    <th class="text-left">Foto 4</th>
-                    <th class="text-left">Foto 5</th>
-                    <th class="text-left">Foto 6</th>
-                    <th class="text-left">Foto 7</th>
-                    <th class="text-left">Foto 8</th>
                     <th class="text-center">Estado</th>
                 </tr>
             </thead>
@@ -79,14 +71,6 @@
                             @endif
                         </td>
                         <td class="text-right">{{ $articulo->visualizaciones }}</td>
-                        <td class="text-left">{{ $articulo->foto_1 }}</td>
-                        <td class="text-left">{{ $articulo->foto_2 }}</td>
-                        <td class="text-left">{{ $articulo->foto_3 }}</td>
-                        <td class="text-left">{{ $articulo->foto_4 }}</td>
-                        <td class="text-left">{{ $articulo->foto_5 }}</td>
-                        <td class="text-left">{{ $articulo->foto_6 }}</td>
-                        <td class="text-left">{{ $articulo->foto_7 }}</td>
-                        <td class="text-left">{{ $articulo->foto_8 }}</td>
                         <td class="text-center">
                             <label class="switch">
                                 <input type="checkbox" id="{{ $articulo->id }}" @if($articulo->estado) checked @endif>
@@ -99,4 +83,43 @@
         </table>
 
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const switches = [...document.querySelectorAll("input[type='checkbox']")];
+
+            for (let i = 0; i < switches.length; ++i) {
+                switches[i].addEventListener("change", function () {
+                    const articleId = switches[i].getAttribute('id');
+                    const newState = switches[i].checked ? 1 : 0;
+                    ajaxItemDisable(articleId, newState);
+                    return false;
+                });
+            }
+        });
+
+        async function ajaxItemDisable(articleId, newState) {
+            try {
+                const response = await fetch(`/api/articulos/${articleId}`, {
+                    method: "PUT",
+                    headers: {
+                        'Accept':       'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ estado: newState })
+                });
+
+                if (response.ok) {
+                    // Actualización exitosa, puedes realizar acciones adicionales aquí
+                } else {
+                    // Manejar errores si es necesario
+                    console.error('Error al cambiar el estado del artículo');
+                }
+            } catch (error) {
+                console.error('Error en la solicitud:', error);
+            }
+        }
+    </script>
+
 @endsection
