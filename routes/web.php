@@ -62,6 +62,8 @@ Route::post('shop/process_payment', [PaymentController::class, 'process_payment'
 Route::controller(AjaxController::class)->group(function () {
     Route::post('shop/ajax/infoItem',           'infoItem');
     Route::post('shop/ajax/atributosItem',      'atributosItem');
+    Route::post('shop/ajax/getItemInfoAndAttributes/{id}',      'getItemInfoAndAttributes');
+    
     Route::post('shop/ajax/updateCart',         'updateCart');
     Route::post('shop/ajax/suscribe',           'suscribe');
 

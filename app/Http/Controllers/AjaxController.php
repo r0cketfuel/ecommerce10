@@ -123,4 +123,11 @@ class AjaxController extends Controller
         echo json_encode(MedioEnvio::costo($request->input("medio_id")));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function getItemInfoAndAttributes($id) {
+        $articulo = Articulo::with('atributos')->find($id);
+
+        return response()->json(['itemInfo' => $articulo]);
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
 }
