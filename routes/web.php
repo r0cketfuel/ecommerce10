@@ -39,7 +39,7 @@ Route::prefix('shop')->controller(ShopController::class)->group(function () {
     Route::get('logout',				'logout');
 
     // Rutas que requieren autenticación
-    Route::middleware(['auth:web'])->group(function () {
+    Route::middleware(['extend.auth'])->group(function () {
         Route::get('favoritos',        	'favoritos');
         Route::get('checkout',         	'checkout');
         Route::post('checkout',        	'checkout');
@@ -50,9 +50,10 @@ Route::prefix('shop')->controller(ShopController::class)->group(function () {
 });
 
 Route::prefix('shop')->controller(UserController::class)->group(function () {
-    Route::post('login',           'login');
-    Route::post('register',        'register');
-    Route::post('recovery',        'recovery');
+    Route::post('login',                'login');
+    Route::post('login/guest',          'loginGuest')->name('login.guest');
+    Route::post('register',             'register');
+    Route::post('recovery',             'recovery');
 });
 
 // Procesador de pagos

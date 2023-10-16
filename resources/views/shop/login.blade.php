@@ -9,9 +9,6 @@
         <link rel="stylesheet"	href="{{config('constants.shop_css')}}style.css">
         <link rel="stylesheet"	href="{{config('constants.framework_css')}}alert.css">
 
-        <!-- Scripts -->
-        <script src="{{asset('/assets/fontawesome/js/all.js')}}"></script>
-
         <style>
             .alert-container {
                 margin: var(--containers-side-padding);
@@ -139,14 +136,14 @@
                     </div>
                 </div>
                 <div class="bottom-frame">
-                    <button form="form-guest" name="button_guest" type="submit" class="btn-secondary">Continuar sin registro</button>
+                    <button form="form-guest" type="submit" class="btn-secondary">Continuar sin registro</button>
                 </div>
             </div>
 
         </div>
             
         <form id="form-login" method="post" autocomplete="off">@csrf</form>
-        <form id="form-guest" method="post" autocomplete="off">@csrf</form>
+        <form id="form-guest" method="post" autocomplete="off" action="{{ route('login.guest') }}">@csrf</form>
 
 	</body>
 </html>

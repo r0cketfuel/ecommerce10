@@ -5,13 +5,18 @@
             <ul>
                 <li>
                     @auth
-                        <a href="/shop/logout">{{auth()->user()->username}}&nbsp;<i class="fa-solid fa-user-gear"></i></a> 
-                        <a href="/shop/logout">Salir&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></a>  
+                        <a href="/shop/account">{{auth()->user()->username}}&nbsp;<i class="fa-solid fa-user-gear"></i></a>
+                        <a href="/shop/logout">Salir&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                     @endauth
                     @guest
-                        <a href="{{ route('user.login') }}"><i class="fa-solid fa-user"></i>&nbsp;Ingresar</a>
+                        @if (session('shop.usuario.datos.id') == -1)
+                            <a href="/shop/account">{{ session('shop.usuario.datos.username') }}&nbsp;<i class="fa-solid fa-user-gear"></i></a>
+                            <a href="/shop/logout">Salir&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                        @else
+                            <a href="{{ route('user.login') }}"><i class="fa-solid fa-user"></i>&nbsp;Ingresar</a>
+                        @endif
                     @endguest
-                </li>
+                </li>   
             </ul>
         </div>
     </div>
