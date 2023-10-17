@@ -18,29 +18,29 @@ class SubcategoriaController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function store(StoreSubcategoriaRequest $request)
     {
-        $categoria = new Subcategoria;
+        $subcategoria = new Subcategoria;
 
-        $categoria = Subcategoria::make($request->validated());
-        $categoria->save();
+        $subcategoria = Subcategoria::make($request->validated());
+        $subcategoria->save();
     
-        return response()->json($categoria, 201, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        return response()->json($subcategoria, 201, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }    
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function show(Subcategoria $categoria)
+    public function show(Subcategoria $subcategoria)
     {
-        return response()->json($categoria, 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        return response()->json($subcategoria, 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function update(UpdateSubcategoriaRequest $request, Subcategoria $categoria)
+    public function update(UpdateSubcategoriaRequest $request, Subcategoria $subcategoria)
     {
-        $categoria->update($request->all());
+        $subcategoria->update($request->all());
     
         return response()->json(['message' => 'Subcategoría actualizada con éxito']);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function destroy(Subcategoria $categoria)
+    public function destroy(Subcategoria $subcategoria)
     {
-        Subcategoria::eliminaSubcategoria($categoria->id);
+        Subcategoria::eliminaSubcategoria($subcategoria->id);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
