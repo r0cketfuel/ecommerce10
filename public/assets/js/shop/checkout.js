@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", load, false);
 
-const subtotal          = document.getElementById("sub-total");
+
 const envio             = document.getElementById("envio");
 const descuentos        = document.getElementById("descuentos");
 const total             = document.getElementById("total");

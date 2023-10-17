@@ -5,10 +5,12 @@
 @section("css")
     <link rel="stylesheet"	href="{{config('constants.shop_css')}}productCards.css">
     <link rel="stylesheet"	href="{{config('constants.framework_css')}}panel.css">
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}modal.css">
 @endsection
 
 @section("js")
     <script defer src="{{config('constants.shop_js')}}ajax.js"></script>
+    <script defer src="{{config('constants.shop_js')}}cart.js"></script>
     <script defer src="{{config('constants.shop_js')}}checkout.js"></script>
 @endsection
 
@@ -37,6 +39,8 @@
 
     <!-- Contenido de la página -->
     <div class="main-container">
+
+    @include("shop.layout.modals.addItem")
 
         @if(count($checkout["items"])>0)
 
