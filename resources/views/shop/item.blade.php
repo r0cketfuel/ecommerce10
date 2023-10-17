@@ -1,6 +1,10 @@
 @extends("shop.layout.master")
 
-@section("title","Artículo: ")
+@php
+    $title = $item->nombre;
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet"	href="{{config('constants.shop_css')}}carousel.css">
