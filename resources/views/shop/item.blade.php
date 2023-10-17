@@ -7,6 +7,7 @@
     <link rel="stylesheet"	href="{{config('constants.shop_css')}}tiles.css">
     <link rel="stylesheet"	href="{{config('constants.shop_css')}}productRating.css">
     <link rel="stylesheet"	href="{{config('constants.framework_css')}}tabs.css">
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}modal.css">
 @endsection
 
 @section("js")
