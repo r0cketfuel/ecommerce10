@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Categoria\StoreCategoriaRequest;
+use App\Http\Requests\Categoria\UpdateCategoriaRequest;
+
 use App\Models\Categoria;
-use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
@@ -14,34 +16,26 @@ class CategoriaController extends Controller
         return response()->json(Categoria::all(), 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function store(Request $request)
+    public function store(StoreCategoriaRequest $request)
     {
-        // Validación de datos de entrada
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'descripcion' => 'string|max:255',
-        ]);
-    
-        // Crear una nueva instancia de Categoria
-        $categoria = new Categoria();
-        $categoria->nombre = $request->input('nombre');
-        $categoria->descripcion = $request->input('descripcion');
-    
-        // Guardar la nueva categoría en la base de datos
+        $categoria = new Categoria;
+
+        $categoria = Categoria::make($request->validated());
         $categoria->save();
     
-        // Devolver una respuesta JSON con la nueva categoría creada
-        return response()->json($categoria, 201);
+        return response()->json($categoria, 201, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }    
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function show(Categoria $categoria)
     {
-        return response()->json([$categoria], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        return response()->json($categoria, 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function update(Request $request, Categoria $categoria)
+    public function update(UpdateCategoriaRequest $request, Categoria $categoria)
     {
-        //
+        $categoria->update($request->all());
+    
+        return response()->json(['message' => 'Categoría actualizada con éxito']);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function destroy(Categoria $categoria)
