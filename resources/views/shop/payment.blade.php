@@ -80,12 +80,12 @@
 
                         <label>
                             Apellidos
-                            <input  form="form-checkout" type="text" id="apellidos" name="apellidos" required value="{{session('shop.usuario.datos.apellidos')}}">
+                            <input form="form-checkout" type="text" id="apellidos" name="apellidos" required pattern="[a-zA-Z]+" title="Sólo se permiten letras" value="{{session('shop.usuario.datos.apellidos')}}">
                         </label>
 
                         <label>
                             Nombres
-                            <input  form="form-checkout" type="text" id="nombres" name="nombres" required value="{{session('shop.usuario.datos.nombres')}}">
+                            <input  form="form-checkout" type="text" id="nombres" name="nombres" required pattern="[a-zA-Z]+" title="Sólo se permiten letras" value="{{session('shop.usuario.datos.nombres')}}">
                         </label>
                         
                         <label>
@@ -100,7 +100,7 @@
 
                         <label>
                             Número de documento
-                            <input form="form-checkout" type="text" id="documento_nro" name="documento_nro" required value="{{session('shop.usuario.datos.documento_nro')}}">
+                            <input form="form-checkout" type="text" id="documento_nro" name="documento_nro" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.documento_nro')}}">
                         </label>
 
                         <label>
@@ -110,7 +110,7 @@
 
                         <label>
                             Codigo postal
-                            <input form="form-checkout" type="text" id="codigo_postal" name="codigo_postal" required value="{{session('shop.usuario.datos.codigo_postal')}}">
+                            <input form="form-checkout" type="text" id="codigo_postal" name="codigo_postal" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.codigo_postal')}}">
                         </label>
 
                         <label>
@@ -121,7 +121,7 @@
                         <div class="flex">
                             <label>
                                 Domicilio número
-                                <input form="form-checkout" type="text" id="domicilio_nro" name="domicilio_nro" required value="{{session('shop.usuario.datos.domicilio_nro')}}">
+                                <input form="form-checkout" type="text" id="domicilio_nro" name="domicilio_nro" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.domicilio_nro')}}">
                             </label>
                             
                             <label>
@@ -137,15 +137,15 @@
 
                         <label>
                             Teléfono celular
-                            <input form="form-checkout" type="text" id="telefono_celular" name="telefono_celular" required value="{{session('shop.usuario.datos.telefono_celular')}}">
+                            <input form="form-checkout" type="text" id="telefono_celular" name="telefono_celular" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.telefono_celular')}}">
                         </label>
                         <label>
                             Teléfono alternativo
-                            <input form="form-checkout" type="text" id="telefono_alt" name="telefono_alt" value="{{session('shop.usuario.datos.telefono_alt')}}">
+                            <input form="form-checkout" type="text" id="telefono_alt" name="telefono_alt" pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.telefono_alt')}}">
                         </label>
                         <label>
                             Correo electrónico
-                            <input form="form-checkout" type="text" id="email" name="email" required value="{{session('shop.usuario.datos.email')}}">
+                            <input form="form-checkout" type="email" id="email" name="email" required value="{{session('shop.usuario.datos.email')}}">
                         </label>
                     
                     </div>
