@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mercadopago extends Model
+class PagoMercadoPago extends Model
 {
     protected $table    = "pagos_mercadopago";
     public $timestamps  = false;
