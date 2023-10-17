@@ -315,6 +315,11 @@
 /*===============*/
 @media(max-width: 480px)
 {
+    .product-card {
+        height:             auto;
+        max-width:          100%;
+    }
+    
     .product-checkout-card {
         grid-template-areas:			"descripcion    descripcion     descripcion"
                                         "imagen         talleLbl        talle"
