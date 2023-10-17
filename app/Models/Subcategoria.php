@@ -18,8 +18,10 @@ class Subcategoria extends Model
     protected $fillable = [
         "categoria_id",
         "nombre",
-        "descripcion"
+        "descripcion",
+        "activo"
     ];
+
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function articulo()
     {
@@ -35,6 +37,20 @@ class Subcategoria extends Model
         // Relación subcategorías -> categorías //
         //======================================//
         return $this->belongsTo(Categoria::class);
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public static function eliminaSubcategoria(int $id): int
+    {
+        $subcategoria = self::find($id);
+    
+        if($subcategoria)
+        {
+            $subcategoria->update(['activo' => false]);
+    
+            return(1);
+        }
+    
+        return(0);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
