@@ -14,11 +14,6 @@ class CategoriaController extends Controller
         return response()->json(Categoria::all(), 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function create()
-    {
-        //
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function store(Request $request)
     {
         // Validación de datos de entrada
@@ -42,11 +37,6 @@ class CategoriaController extends Controller
     public function show(Categoria $categoria)
     {
         return response()->json([$categoria], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function edit(Categoria $categoria)
-    {
-        //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function update(Request $request, Categoria $categoria)

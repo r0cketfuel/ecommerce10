@@ -14,11 +14,6 @@ class SubcategoriaController extends Controller
         return response()->json(Subcategoria::all(), 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function create()
-    {
-        //
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function store(Request $request)
     {
         //
@@ -27,11 +22,6 @@ class SubcategoriaController extends Controller
     public function show(Subcategoria $subcategoria)
     {
         return response()->json([$subcategoria], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function edit(Subcategoria $subcategoria)
-    {
-        //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function update(Request $request, Subcategoria $subcategoria)

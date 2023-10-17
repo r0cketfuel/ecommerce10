@@ -38,9 +38,6 @@ class ArticuloController extends Controller
         return response()->json(['message' => 'Artículo actualizado con éxito']);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Articulo $articulo)
     {
         Articulo::eliminaArticulo($articulo->id);
