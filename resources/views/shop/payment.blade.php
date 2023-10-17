@@ -218,11 +218,11 @@
                         </div>
                         <div class="flex justify-between">
                             <div class="text-bold">Envío:</div>
-                            <div id="envio">$0,00</div>
+                            <div id="envio">{{ _money(session("shop.checkout.medio_envio.costo")) }}</div>
                         </div>
                         <div class="flex justify-between">
                             <div class="text-bold">Descuentos:</div>
-                            <div id="descuentos">$0,00</div>
+                            <div id="descuentos">{{ _money(0) }}</div>
                         </div>
                         <div style="border-bottom: 1px solid; margin: 5px 0;"><div style="flex: 1 1;"></div></div>
                         <div class="flex justify-between">
