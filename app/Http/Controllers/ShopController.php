@@ -181,7 +181,7 @@ class ShopController extends Controller
             $items[$i]["precio"]        = $info["precio"];
         }
 
-        return view("shop.favoritos",compact("items"));
+        return view("shop.favoritos", compact("items"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function login()
