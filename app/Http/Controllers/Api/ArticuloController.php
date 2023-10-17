@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Articulo\StoreArticuloRequest;
+use App\Http\Requests\Articulo\UpdateArticuloRequest;
+
 use App\Models\Articulo;
 
 class ArticuloController extends Controller
@@ -11,51 +13,27 @@ class ArticuloController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
-        $articulos = Articulo::all();
+        return response()->json(Articulo::all(), 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function store(StoreArticuloRequest $request)
+    {
+        $articulo = new Articulo;
 
-        return response()->json([$articulos], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        $articulo = Articulo::make($request->validated());
+        $articulo->save();
+    
+        return response()->json($articulo, 201, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    /**
-     * Display the specified resource.
-     */
     public function show(Articulo $articulo)
     {
-        //
+        return response()->json($articulo, 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Articulo $articulo)
-    {
-        //
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Articulo $articulo)
-    {
-        $data = $request->all();
-        
-        $articulo->update($data);
+    public function update(UpdateArticuloRequest $request, Articulo $articulo)
+    {        
+        $articulo->update($request->all());
     
         return response()->json(['message' => 'Artículo actualizado con éxito']);
     }
@@ -65,7 +43,7 @@ class ArticuloController extends Controller
      */
     public function destroy(Articulo $articulo)
     {
-        //
+        Articulo::eliminaArticulo($articulo->id);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
