@@ -39,9 +39,9 @@ class RegisterRequest extends FormRequest
             "domicilio_depto"   => array("nullable","max:2","regex:#^[a-zA-Z0-9]*$#"),
             "localidad"         => array("required","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"),
             "codigo_postal"     => array("required","max:10","regex:#^[a-zA-Z0-9]*$#"),
-            "telefono_fijo"     => array("nullable","max:15","regex:#^[0-9]*$#"),
-            "telefono_celular"  => array("required","max:15","regex:#^[0-9]*$#"),
-            "telefono_alt"      => array("nullable","max:15","regex:#^[0-9]*$#"),
+            "telefono_fijo"     => array("nullable","numeric","max:15"),
+            "telefono_celular"  => array("required","numeric","max:15"),
+            "telefono_alt"      => array("nullable","numeric","max:15"),
             "email"             => array("required","unique:usuarios,email"),
         ];
     }
