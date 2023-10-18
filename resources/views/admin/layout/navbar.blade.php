@@ -55,6 +55,16 @@
                             </ul>
                         </li>
 
+                        <li class="more">
+                            <div>
+                                <div class="submenu-link">Usuarios</div>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/usuarios/">Listado</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>                
                 

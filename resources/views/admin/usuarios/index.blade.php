@@ -36,8 +36,6 @@
 
         <h1>Listado de usuarios</h1>
 
-        <a class="btn-link btn-link-primary w100px" href="{{ route('usuarios.create') }}"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
-
         <table>
             <thead>
                 <tr>
