@@ -62,7 +62,7 @@
                 <li class='main-menu'>
                     <div>
                         <a class='main-menu-link' href="#">Ordenes</a>
-                        <i class='fa-solid fa-chevron-down menu-arrow arrow'></i>
+                        <i class='fa-solid fa-caret-down menu-arrow arrow'></i>
                     </div>
                     <ul class="main-menu-links sub-menu">
                         <li class='more'><a class='submenu-link' href='/admin/ordenes/listado'>listado</a></li>
@@ -73,7 +73,7 @@
                 <li class='main-menu'>
                     <div>
                         <a class='main-menu-link' href="#">Listados</a>
-                        <i class='fa-solid fa-chevron-down menu-arrow arrow'></i>
+                        <i class='fa-solid fa-caret-down menu-arrow arrow'></i>
                     </div>
                     <ul class="main-menu-links sub-menu">
                         <li class='more'><a class='submenu-link' href='/admin/listados/simple'>Listado simple</a></li>
@@ -85,10 +85,10 @@
                 <li class='main-menu'>
                     <div>
                         <a class='main-menu-link' href="#">Usuarios</a>
-                        <i class='fa-solid fa-chevron-down menu-arrow arrow'></i>
+                        <i class='fa-solid fa-caret-down menu-arrow arrow'></i>
                     </div>
                     <ul class="main-menu-links sub-menu">
-                        <li class='more'><a class='submenu-link' href='/admin/clientes/listado/listado'>Listado</a></li>
+                        <li class='more'><a class='submenu-link' href='/admin/usuarios'>Listado</a></li>
                     </ul>
                 </li>
 
