@@ -49,12 +49,18 @@ class ArticuloController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function edit(Articulo $articulo)
     {
-        //
+        $categorias     = Categoria::all();
+        $subcategorias  = Subcategoria::all();
+        $talles         = Talle::all();
+
+        return view("admin.articulos.edit", compact('articulo', 'categorias', 'subcategorias', 'talles'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function update(UpdateArticuloRequest $request, Articulo $articulo)
     {        
         $articulo->update($request->all());
+
+        return view("admin.articulos.edit", compact('articulo', 'categorias', 'subcategorias', 'talles'))->with("success", "Artículo actualizado exitosamente");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function destroy(Articulo $articulo)
