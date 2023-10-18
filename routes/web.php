@@ -12,6 +12,7 @@ use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\SubcategoriaController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,5 +98,6 @@ Route::prefix('admin')->group(function () {
         Route::resource('banners',          BannerController::class);
         Route::resource('categorias',       CategoriaController::class);
         Route::resource('subcategorias',    SubcategoriaController::class);
+        Route::resource('usuarios',         UsuarioController::class);
     });
 });
