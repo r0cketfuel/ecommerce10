@@ -4,9 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-use App\Models\Genero;
-use App\Models\TipoDocumento;
-
 class RegisterRequest extends FormRequest
 {
     /**
@@ -24,23 +21,20 @@ class RegisterRequest extends FormRequest
      */
     public function rules(): array
     {
-        $generos        = Genero::count();
-        $tiposDocumento = TipoDocumento::count();
-
         return [
             "username"          => array("required","unique:usuarios,username","min:5","max:16","regex:#^[a-zA-Z0-9]*$#"),
             "password"          => array("required","min:8","max:16"),
             "password_repeat"   => array("same:password"),
             "apellidos"         => array("required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"),
             "nombres"           => array("required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"),
-            "tipo_documento_id" => array("required","integer","min:1","max:" . $tiposDocumento),
+            "tipo_documento_id" => array("required","integer","min:1", "exists:tipos_documentos,id"),
             "documento_nro"     => array("required","unique:usuarios,documento_nro","min:1","max:8"),
-            "genero_id"         => array("integer","min:1","max:" . $generos),
-            "cuil"              => array("nullable","digits:11","regex:#^[0-9]*$#"),
-            "cuit"              => array("nullable","digits:11","regex:#^[0-9]*$#"),
+            "genero_id"         => array("integer","min:1","exists: genero_id"),
+            "cuil"              => array("nullable","numeric","digits:11"),
+            "cuit"              => array("nullable","numeric","digits:11"),
             "fecha_nacimiento"  => array("required","date"),
             "domicilio"         => array("required","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"),
-            "domicilio_nro"     => array("required","max:5","regex:#^[0-9]*$#"),
+            "domicilio_nro"     => array("required","numeric","max:5"),
             "domicilio_piso"    => array("nullable","max:2","regex:#^[a-zA-Z0-9]*$#"),
             "domicilio_depto"   => array("nullable","max:2","regex:#^[a-zA-Z0-9]*$#"),
             "localidad"         => array("required","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"),
@@ -60,22 +54,7 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            "username.min"          => "El nombre de usuario debe tener entre 8 y 16 caracteres",
-            "username.max"          => "El nombre de usuario debe tener entre 8 y 16 caracteres",
-            "username.unique"       => "Ya existe un usuario registrado con ese nombre",
 
-            "password.min"          => "La contraseña debe tener entre 8 y 16 caracteres",
-            "password.max"          => "La contraseña debe tener entre 8 y 16 caracteres",
-            "password_repeat.min"   => "La contraseña debe tener entre 8 y 16 caracteres",
-            "password_repeat.max"   => "La contraseña debe tener entre 8 y 16 caracteres",
-
-            "unique"                => "Ya existe un usuario registrado con la información proporcionada",
-            "regex"                 => "Caracteres no permitidos",
-            "min"                   => "Longitud mínima requerida",
-            "max"                   => "Longitud máxima requerida",
-            "required"              => "Este campo es obligatorio",
-            "same"                  => "Las contraseñas no coinciden",
-            "digits"                => "Error en la longitud de la información ingresada"
         ];
     }
 }

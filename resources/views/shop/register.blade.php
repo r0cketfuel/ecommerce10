@@ -3,6 +3,9 @@
 @section("title","Alta de clientes")
 
 @section("css")
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}alert.css">
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}layout.css">
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}panel.css">
 @endsection
 
 @section("js")
@@ -18,7 +21,7 @@
             <div class="alert danger">Se encontraron errores. Por favor revise la información ingresada</div>
         @endif
 
-        <div class="panel w50">
+        <div class="panel mw50">
             <div class="panel-title">Alta de usuarios</div>
             <div class="panel-content">
                 <fieldset>
