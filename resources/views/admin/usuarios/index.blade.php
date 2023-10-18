@@ -43,14 +43,12 @@
                 <tr>
                     <th class="text-center">ID</th>
                     <th class="text-left">Username</th>
-                    <th class="text-left">Apellidos</th>
-                    <th class="text-left">Nombres</th>
-                    <th class="text-center">Tipo Documento</th>
-                    <th class="text-center">Documento Nro</th>
+                    <th class="text-left">Nombre</th>
+                    <th class="text-center">Documento</th>
                     <th class="text-center">Cuit</th>
                     <th class="text-center">Cuil</th>
                     <th class="text-center">Fecha de Nacimiento</th>
-                    <th class="text-center">Género ID</th>
+                    <th class="text-center">Género</th>
                     <th class="text-center">Domicilio</th>
                     <th class="text-center">Domicilio Nro</th>
                     <th class="text-center">Domicilio Piso</th>
@@ -71,36 +69,39 @@
                     <tr>
                         <td class="text-center">{{ $usuario->id }}</td>
                         <td class="text-left">{{ $usuario->username }}</td>
-                        <td class="text-left">{{ $usuario->apellidos }}</td>
-                        <td class="text-left">{{ $usuario->nombres }}</td>
+                        <td class="text-left">{{ $usuario->apellidos }},<br>{{ $usuario->nombres }}</td>
                         <td class="text-center">
                             @if($usuario->tipoDocumento)
                                 {{ $usuario->tipoDocumento->tipo }}
                             @endif
+                            {{ $usuario->documento_nro }}
                         </td>
-                        <td class="text-center">{{ $usuario->documento_nro }}</td>
                         <td class="text-center">{{ $usuario->cuit }}</td>
                         <td class="text-center">{{ $usuario->cuil }}</td>
-                        <td class="text-center">{{ $usuario->fecha_nacimiento }}</td>
-                        <td class="text-center">{{ $usuario->genero_id }}</td>
-                        <td class="text-center">{{ $usuario->domicilio }}</td>
+                        <td class="text-center">{{ _date($usuario->fecha_nacimiento) }}</td>
+                        <td class="text-left">
+                            @if($usuario->genero)
+                                {{ $usuario->genero->genero }}
+                            @endif
+                        </td>
+                        <td class="text-left">{{ $usuario->domicilio }}</td>
                         <td class="text-center">{{ $usuario->domicilio_nro }}</td>
                         <td class="text-center">{{ $usuario->domicilio_piso }}</td>
                         <td class="text-center">{{ $usuario->domicilio_depto }}</td>
-                        <td class="text-center">{{ $usuario->domicilio_aclaraciones }}</td>
-                        <td class="text-center">{{ $usuario->localidad }}</td>
+                        <td class="text-left">{{ $usuario->domicilio_aclaraciones }}</td>
+                        <td class="text-left">{{ $usuario->localidad }}</td>
                         <td class="text-center">{{ $usuario->codigo_postal }}</td>
-                        <td class="text-center">{{ $usuario->telefono_fijo }}</td>
-                        <td class="text-center">{{ $usuario->telefono_celular }}</td>
-                        <td class="text-center">{{ $usuario->telefono_alt }}</td>
-                        <td class="text-center">{{ $usuario->email }}</td>
+                        <td class="text-right">{{ $usuario->telefono_fijo }}</td>
+                        <td class="text-right">{{ $usuario->telefono_celular }}</td>
+                        <td class="text-right">{{ $usuario->telefono_alt }}</td>
+                        <td class="text-left">{{ $usuario->email }}</td>
                         <td class="text-center">
                             <label class="switch">
                                 <input type="checkbox" id="{{ $usuario->id }}" @if($usuario->estado) checked @endif>
                                 <div class="slider round"></div>
                             </label>
                         </td>
-                        <td class="text-center">{{ $usuario->creado }}</td>
+                        <td class="text-center">{{ _dateTime($usuario->creado) }}</td>
                     </tr>
                 @endforeach
             </tbody>

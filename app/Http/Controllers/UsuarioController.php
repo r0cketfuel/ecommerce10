@@ -13,10 +13,9 @@ class UsuarioController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
-        $usuarios           = Usuario::all();
-        $tiposDocumentos    = TipoDocumento::all();
+        $usuarios = Usuario::all();
 
-        return view("admin.usuarios.index", compact('usuarios', 'tiposDocumentos'));
+        return view("admin.usuarios.index", compact('usuarios'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function create()
