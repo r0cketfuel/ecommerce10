@@ -94,7 +94,12 @@
                         <td class="text-center">{{ $usuario->telefono_celular }}</td>
                         <td class="text-center">{{ $usuario->telefono_alt }}</td>
                         <td class="text-center">{{ $usuario->email }}</td>
-                        <td class="text-center">{{ $usuario->estado }}</td>
+                        <td class="text-center">
+                            <label class="switch">
+                                <input type="checkbox" id="{{ $usuario->id }}" @if($usuario->estado) checked @endif>
+                                <div class="slider round"></div>
+                            </label>
+                        </td>
                         <td class="text-center">{{ $usuario->creado }}</td>
                     </tr>
                 @endforeach

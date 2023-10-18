@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'failed'            => 'Credenciales inválidas',
-    'auth.unconfirmed'  => 'Su cuenta no está activada. Debe activar su cuenta para poder continuar',
-    'password'          => 'Password incorrecto',
-    'throttle'          => 'Demasiados intentos. Intente nuevamente en :segundos segundos',
+    'failed'        => 'Credenciales inválidas',
+    'unconfirmed'   => 'Su cuenta no está activada. Debe activar su cuenta para poder continuar',
+    'password'      => 'Password incorrecto',
+    'throttle'      => 'Demasiados intentos. Intente nuevamente en :segundos segundos',
 
 ];
