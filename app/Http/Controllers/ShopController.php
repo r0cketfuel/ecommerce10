@@ -62,6 +62,9 @@ class ShopController extends Controller
             }
         }
         
+        if($request->filled("orderby"))
+            $busqueda["params"]["orderby"] = $request->input("orderby");
+
         // Listado de artículos
         $items = Articulo::search($busqueda["params"])->appends(request()->query());
 
