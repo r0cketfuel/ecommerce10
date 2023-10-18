@@ -123,8 +123,8 @@
                 </div>
                 <div class="middle-frame">
                     <div class="input-group">
-                        <label>Usuario o email<input form="form-login" type="text" name="username" required></label>
-                        <label>Password<input form="form-login" type="password" name="password" required></label>
+                        <label>Usuario o email<input form="form-login" type="text" name="username" required maxlength="16"></label>
+                        <label>Password<input form="form-login" type="password" name="password" required maxlength="16"></label>
                         <div class="flex justify-between">
                             <div class="radio-fix">
                                 <input form="form-login" type="checkbox" name="check_remember"><label>Recordarme</label>

@@ -74,9 +74,11 @@ class UserLoginRequest extends FormRequest
     public function messages()
     {
         return [
-            "username"              => "Ingrese un nombre de usuario o una dirección de correo válida",
-            "password.min"          => "La contraseña debe tener mínimo 8 caracteres",
-            "password.max"          => "La contraseña debe tener máximo 16 caracteres",
+            "username"      => "Ingrese un nombre de usuario o una dirección de correo válida",
+            "username.min"  => "El nombre de usuario debe tener mínimo 5 caracteres",
+            "username.max"  => "El nombre de usuario debe tener máximo 16 caracteres",
+            "password.min"  => "La contraseña debe tener mínimo 8 caracteres",
+            "password.max"  => "La contraseña debe tener máximo 16 caracteres",
         ];
     }
 }
