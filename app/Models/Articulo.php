@@ -121,8 +121,9 @@ class Articulo extends Model
         if(isset($search["subcategoria"]))
             $query->where("subcategoria_id", $search["subcategoria"]);
 
-        if(isset($search["orderby"]))
-            $query->orderBy($search["orderby"], "ASC");
+        if(isset($search["sort"]))
+            if(isset($search["order"]))
+                $query->orderBy($search["sort"], $search["order"]);
             
         return($query->paginate(config("constants.pagination")));
 	}
