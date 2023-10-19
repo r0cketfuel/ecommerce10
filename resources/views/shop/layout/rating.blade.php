@@ -6,7 +6,7 @@
         @for($i=$rating->stars+1;$i<=5;$i++)
             <span style='color: grey;'><i class='fa-solid fa-star'></i></span>
         @endfor
-        <div class="product-average">{{$rating->promedio}}/5,00</div>
+        <div class="product-average">{{ $rating->promedio }}/5,00</div>
     </div>
-    <div class="product-votes">{{$rating->puntuaciones}} votos</div>
+    <div class="product-votes">{{ $rating->puntuaciones }} {{ __('general.votes') }}</div>
 </div>

@@ -6,14 +6,16 @@
                 <li>
                     @auth
                         <a href="/shop/account">{{ auth()->user()->username }}&nbsp;<i class="fa-solid fa-user-gear"></i></a>
-                        <a href="/shop/logout">Salir&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                        &nbsp;|&nbsp; 
+                        <a href="/shop/logout">{{ __('general.logout') }}&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                     @endauth
                     @guest
                         @if (session('shop.usuario.datos.id') == -1)
                             <a href="/shop/account">{{ session('shop.usuario.datos.username') }}&nbsp;<i class="fa-solid fa-user-gear"></i></a>
-                            <a href="/shop/logout">Salir&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                            &nbsp;|&nbsp; 
+                            <a href="/shop/logout">{{ __('general.logout') }}&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                         @else
-                            <a href="{{ route('user.login') }}"><i class="fa-solid fa-user"></i>&nbsp;Ingresar</a>
+                            <a href="{{ route('user.login') }}"><i class="fa-solid fa-user"></i>&nbsp;{{ __('general.login') }}</a>
                         @endif
                     @endguest
                 </li>   
@@ -31,7 +33,7 @@
                 </div>
                 <div class="search-bar">
                     <form id="form-search" action="/shop"></form>
-                    <input  form="form-search" type="search" name="busqueda" value="{{ isset($busqueda['searchbar']) ? $busqueda['searchbar'] : '' }}" placeholder="Buscar...">
+                    <input  form="form-search" type="search" name="busqueda" value="{{ isset($busqueda['searchbar']) ? $busqueda['searchbar'] : '' }}" placeholder="{{ __('general.search') }}...">
                     <button form="form-search" type="submit" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
                 <div class="iconos">
@@ -40,7 +42,7 @@
                             <div class="wishlist-container-icon">
                                 <i class="fa-solid fa-heart"></i>
                                 <div class="qty" id="heart">{{ $favoritosItemQty }}</div>
-                                <div class="shopping-cart-container-label">Favoritos</div>
+                                <div class="shopping-cart-container-label">{{ __('general.favorites') }}</div>
                             </div>
                         </a>
                     </div>
@@ -49,7 +51,7 @@
                             <div class="shopping-cart-container-icon">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 <div class="qty" id="qty">{{ $shoppingCartItemQty }}</div>
-                                <div class="shopping-cart-container-label">Carrito</div>
+                                <div class="shopping-cart-container-label">{{ __('general.cart') }}</div>
                             </div>
                         </a>
                     </div>

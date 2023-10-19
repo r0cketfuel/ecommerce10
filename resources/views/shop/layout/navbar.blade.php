@@ -7,7 +7,7 @@
         </div>
         <div class="nav-links">
             <div class="sidebar-logo">
-                <span class="logo-name">{{session("infoComercio.nombre")}}</span>
+                <span class="logo-name">{{ session("infoComercio.nombre") }}</span>
                 <div class="font-awesome-icon-close">
                     <i class="fa-solid fa-x fa-lg"></i>
                 </div>
@@ -23,13 +23,13 @@
                         @foreach($categorias as $categoria)
                             <li class="more">
                                 <div>
-                                    <a class="submenu-link" href="/shop?categoria={{$categoria->id}}">{{$categoria->nombre}}</a>
+                                    <a class="submenu-link" href="/shop?categoria={{ $categoria->id }}">{{ $categoria->nombre }}</a>
                                     <i class="fa-solid fa-caret-right more-arrow arrow"></i>
                                 </div>
                                 <ul class="more-sub-menu sub-menu">
                                     @foreach($subcategorias as $subcategoria)
                                         @if($subcategoria->categoria_id == $categoria->id)
-                                            <li><a href="/shop?subcategoria={{$subcategoria->id}}">{{$subcategoria->nombre}}</a></li>
+                                            <li><a href="/shop?subcategoria={{ $subcategoria->id }}">{{ $subcategoria->nombre }}</a></li>
                                         @endif
                                     @endforeach
                                 </ul>
@@ -47,13 +47,13 @@
                         @foreach($categorias as $categoria)
                             <li class="more">
                                 <div>
-                                    <a class="submenu-link" href="/shop?categoria={{$categoria->id}}">{{$categoria->nombre}}</a>
+                                    <a class="submenu-link" href="/shop?categoria={{ $categoria->id }}">{{ $categoria->nombre }}</a>
                                     <i class="fa-solid fa-caret-right more-arrow arrow"></i>
                                 </div>
                                 <ul class="more-sub-menu sub-menu">
                                     @foreach($subcategorias as $subcategoria)
                                         @if($subcategoria->categoria_id == $categoria->id)
-                                            <li><a href="/shop?subcategoria={{$subcategoria->id}}">{{$subcategoria->nombre}}</a></li>
+                                            <li><a href="/shop?subcategoria={{ $subcategoria->id }}">{{ $subcategoria->nombre }}</a></li>
                                         @endif
                                     @endforeach
                                 </ul>
@@ -71,13 +71,13 @@
                         @foreach($categorias as $categoria)
                             <li class="more">
                                 <div>
-                                    <a class="submenu-link" href="/shop?categoria={{$categoria->id}}">{{$categoria->nombre}}</a>
+                                    <a class="submenu-link" href="/shop?categoria={{ $categoria->id }}">{{ $categoria->nombre }}</a>
                                     <i class="fa-solid fa-caret-right more-arrow arrow"></i>
                                 </div>
                                 <ul class="more-sub-menu sub-menu">
                                     @foreach($subcategorias as $subcategoria)
                                         @if($subcategoria->categoria_id == $categoria->id)
-                                            <li><a href="/shop?subcategoria={{$subcategoria->id}}">{{$subcategoria->nombre}}</a></li>
+                                            <li><a href="/shop?subcategoria={{ $subcategoria->id }}">{{ $subcategoria->nombre }}</a></li>
                                         @endif
                                     @endforeach
                                 </ul>
@@ -95,13 +95,13 @@
                         @foreach($categorias as $categoria)
                             <li class="more">
                                 <div>
-                                    <a class="submenu-link" href="/shop?categoria={{$categoria->id}}">{{$categoria->nombre}}</a>
+                                    <a class="submenu-link" href="/shop?categoria={{ $categoria->id }}">{{ $categoria->nombre }}</a>
                                     <i class="fa-solid fa-caret-right more-arrow arrow"></i>
                                 </div>
                                 <ul class="more-sub-menu sub-menu">
                                     @foreach($subcategorias as $subcategoria)
                                         @if($subcategoria->categoria_id == $categoria->id)
-                                            <li><a href="/shop?subcategoria={{$subcategoria->id}}">{{$subcategoria->nombre}}</a></li>
+                                            <li><a href="/shop?subcategoria={{ $subcategoria->id }}">{{ $subcategoria->nombre }}</a></li>
                                         @endif
                                     @endforeach
                                 </ul>
