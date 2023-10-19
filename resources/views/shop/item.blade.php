@@ -12,6 +12,7 @@
     <link rel="stylesheet"	href="{{ config('constants.shop_css') }}productRating.css">
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}tabs.css">
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}modal.css">
+    <link rel="stylesheet"	href="{{ config('constants.shop_css') }}breadcrumb.css">
 @endsection
 
 @section("js")
@@ -28,6 +29,12 @@
 
     <!-- Contenido de la página -->
     <div class="main-container">
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/shop">Home</a> > Detalle item
+        </div>
+
         <!-- Grid -->
         <div class="grid grid-cols-12 grid-align-start">
             <!-- Mosaicos -->
@@ -116,7 +123,7 @@
                         </div>
 
                         <div style="flex-grow: 1"></div>
-                    <button id="button_addToCart" value="{{ $item->id }}" class="btn-primary"><span><i class="fa-solid fa-cart-plus"></i></span>{{ __s('general.addtocart') }}</button>
+                    <button id="button_addToCart" value="{{ $item->id }}" class="btn-primary"><span><i class="fa-solid fa-cart-plus"></i></span>{{ __('general.addtocart') }}</button>
                 </div>
             </div>
             <!-- /Panel info -->

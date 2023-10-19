@@ -16,9 +16,6 @@
     --containers-max-width:     	1366px;
     --containers-side-padding:		10px;
 
-	--breadcrumb-background:		none;
-    --breadcrumb-border:			none;
-
 	--top-footer-background: 		#15161D;
 	--top-footer-border-color:		#d2143c;
 
@@ -48,7 +45,7 @@ body {
             flex-direction:         column;
     gap:                            10px;
     max-width:                      var(--containers-max-width);
-    padding:                        20px var(--containers-side-padding);
+    padding:                        40px var(--containers-side-padding);
     -webkit-animation-name: 		fade-in;
             animation-name: 		fade-in;
 	-webkit-animation-duration: 	0.5s;
