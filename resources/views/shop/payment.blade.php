@@ -3,7 +3,8 @@
 @section("title","Pago")
 
 @section("css")
-    <link rel="stylesheet"	href="{{config('constants.framework_css')}}panel.css">
+    <link rel="stylesheet"	href="{{ config('constants.framework_css') }}panel.css">
+    <link rel="stylesheet"	href="{{ config('constants.shop_css') }}breadcrumb.css">
 @endsection
 
 @section("inlineCSS")
@@ -68,6 +69,11 @@
 
     <!-- Contenido de la página -->
     <div class="main-container">
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/shop">Home</a> > <a href="/shop/checkout">Checkout</a> > Facturación
+        </div>
 
         <!-- Grid -->
         <div class="payment-grid">
