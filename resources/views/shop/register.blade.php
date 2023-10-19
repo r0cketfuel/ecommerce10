@@ -53,24 +53,28 @@
                     <legend>Datos personales</legend>
 
                     <div class="flex">
-                        <label>Apellidos
+                        <label>
+                            Apellidos
                             <input required form="form" type="text" name="apellidos" value="{{  old('apellidos') }}" {{ ($errors->first("apellidos") ? " class=form-error" : "") }}>
                             {!! $errors->first("apellidos", "<p class='field-validation-msg'>:message</p>") !!}
                         </label>
 
-                        <label>Nombres
+                        <label>
+                            Nombres
                             <input required form="form" type="text" name="nombres" value="{{  old('nombres') }}" {{ ($errors->first("nombres") ? " class=form-error" : "") }}>
                             {!! $errors->first("nombres", "<p class='field-validation-msg'>:message</p>") !!}
                         </label>
                     </div>
 
                     <div class="flex">
-                        <label>Fecha de nacimiento
+                        <label>
+                            Fecha de nacimiento
                             <input required form="form" type="date" name="fecha_nacimiento" max="{{  date('Y-m-d') }}" value="{{ old('fecha_nacimiento') }}">
                             {!! $errors->first("fecha_nacimiento", "<p class='field-validation-msg'>:message</p>") !!}
                         </label>
 
-                        <label>Género
+                        <label>
+                            Género
                             <select required form="form" name="genero_id" {{ ($errors->first("genero_id") ? " class=form-error" : "") }}>
                                 <option value="" selected disabled>Seleccione</option>
                                 @foreach ($generos as $genero)
@@ -81,7 +85,8 @@
                         </label>
                     </div>
 
-                    <label>Tipo de documento
+                    <label>
+                        Tipo de documento
                         <select required form="form" name="tipo_documento_id" {{ ($errors->first("tipo_documento_id") ? " class=form-error" : "") }}>
                             <option value="" selected disabled>Seleccione</option>
                             @foreach ($tiposDocumentos as $tipoDocumento)
@@ -91,67 +96,80 @@
                         {!! $errors->first("tipo_documento_id", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Nro de documento
+                    <label>
+                        Número de documento
                         <input required form="form" type="text"  name="documento_nro" value="{{ old('documento_nro') }}" {{ ($errors->first("documento_nro") ? " class=form-error" : "") }}>
                         {!! $errors->first("documento_nro", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Cuil
+                    <label>
+                        Cuil
                         <input form="form" type="text" name="cuil" value="{{ old('cuil') }}" {{ ($errors->first("cuil") ? " class=form-error" : "") }}>
                         {!! $errors->first("cuil", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Cuit
+                    <label>
+                        Cuit
                         <input form="form" type="text" name="cuit" value="{{ old('cuit') }}" {{ ($errors->first("cuit") ? " class=form-error" : "") }}>
                         {!! $errors->first("cuit", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Domicilio
+                    <label>
+                        Domicilio
                         <input required form="form" type="text" name="domicilio" value="{{ old('domicilio') }}" {{ ($errors->first("domicilio") ? " class=form-error" : "") }}>
                         {!! $errors->first("domicilio", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Domicilio nro
+                    <label>
+                        Domicilio número
                         <input required form="form" type="text" name="domicilio_nro" value="{{ old('domicilio_nro') }}" {{ ($errors->first("domicilio_nro") ? " class=form-error" : "") }}>
                         {!! $errors->first("domicilio_nro", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Domicilio piso
+                    <label>
+                        Domicilio piso
                         <input form="form" type="text" name="domicilio_piso" value="{{ old('domicilio_piso') }}" {{ ($errors->first("domicilio_piso") ? " class=form-error" : "") }}>
                         {!! $errors->first("domicilio_piso", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Domicilio depto
+                    <label>
+                        Domicilio depto
                         <input form="form" type="text" name="domicilio_depto" value="{{ old('domicilio_depto') }}" {{ ($errors->first("domicilio_depto") ? " class=form-error" : "") }}>
                         {!! $errors->first("domicilio_depto", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Localidad
+                    <label>
+                        Localidad
                         <input required form="form" type="text" name="localidad" value="{{ old('localidad') }}" {{ ($errors->first("localidad") ? " class=form-error" : "") }}>
                         {!! $errors->first("localidad", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Código postal
+                    <label>
+                        Código postal
                         <input required form="form" type="text" name="codigo_postal" value="{{ old('codigo_postal') }}" {{ ($errors->first("codigo_postal") ? " class=form-error" : "") }}>
                         {!! $errors->first("codigo_postal", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Teléfono fijo
+                    <label>
+                        Teléfono fijo
                         <input form="form" type="text" name="telefono_fijo" value="{{ old('telefono_fijo') }}" {{ ($errors->first("telefono_fijo") ? " class=form-error" : "") }}>
                         {!! $errors->first("telefono_fijo", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Teléfono celular
+                    <label>
+                        Teléfono celular
                         <input required form="form" type="text" name="telefono_celular" value="{{ old('telefono_celular') }}" {{ ($errors->first("telefono_celular") ? " class=form-error" : "") }}>
                         {!! $errors->first("telefono_celular", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Teléfono alternativo
+                    <label>
+                        Teléfono alternativo
                         <input form="form" type="text" name="telefono_alt" value="{{ old('telefono_alt') }}" {{ ($errors->first("telefono_alt") ? " class=form-error" : "") }}>
                         {!! $errors->first("telefono_alt", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
 
-                    <label>Correo electrónico
+                    <label>
+                        Correo electrónico
                         <input required form="form" type="text" name="email" value="{{ old('email') }}" {{ ($errors->first("email") ? " class=form-error" : "") }}>
                         {!! $errors->first("email", "<p class='field-validation-msg'>:message</p>") !!}
                     </label>
