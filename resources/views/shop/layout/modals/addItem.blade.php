@@ -2,26 +2,26 @@
 <div class="modal" id="modal-add">
     <div class="modal-content" style="padding: 10px;">
         <div class="modal-header" style="color: black;">
-            <h1>Agregar producto al carrito</h1><span class="modalClose" onclick="this.parentElement.parentElement.parentElement.style.display='none'">X</span>
+            <h1>{{ __('general.additemtocart') }}</h1><span class="modalClose" onclick="this.parentElement.parentElement.parentElement.style.display='none'">X</span>
         </div>
         <div class="modal-body">
             <div class="flex">
-                <img id="image" src="{{config('constants.product_images') . '/no-image.png'}}" alt="imagen" style="height: 25%; width: 25%;">
+                <img id="image" src="{{ config('constants.product_images') . '/no-image.png' }}" alt="imagen" style="height: 25%; width: 25%;">
                 <div class="grid" style="flex: 1 1; grid-auto-rows: 1fr">
 
                     <!-- Precio -->
                     <div class="flex justify-between align-center">
-                        <div>Precio:</div>
+                        <div>{{ __('general.price') }}:</div>
                         <div id="precio">-</div>
                     </div>
                     <!-- /Precio -->
 
                     <!-- Atributo Tamaño -->
                     <div class="flex justify-between align-center">
-                        <div>Talle:</div>
+                        <div>{{ __('general.sizes') }}:</div>
                         <div style="display: flex;">
                             <select id="sizes">
-                                <option value="" disabled selected>Seleccione</option>
+                                <option value="" disabled selected>{{ __('general.select_option') }}</option>
                             </select>
                         </div>
                     </div>
@@ -29,10 +29,10 @@
                     
                     <!-- Atributo Color -->
                     <div class="flex justify-between align-center">
-                        <div>Color:</div>
+                        <div>{{ __('general.colors') }}:</div>
                         <div style="display: flex;">
                             <select id="colors">
-                                <option value="" disabled selected>Seleccione</option>
+                                <option value="" disabled selected>{{ __('general.select_option') }}</option>
                             </select>
                         </div>
                     </div>
@@ -40,14 +40,14 @@
 
                     <!-- Stock disponible -->
                     <div class="flex justify-between align-center">
-                        <div>Stock disponible:</div>
+                        <div>{{ __('general.stock_available') }}:</div>
                         <div id="stock">-</div>
                     </div>                         
                     <!-- /Stock disponible -->
 
                     <!-- Cantidad -->
                     <div id="qtyControl" class="flex justify-between align-center">
-                        <div>Cantidad:</div>
+                        <div>{{ __('general.quantity') }}:</div>
                         <div style="display: flex; max-width: 120px;">
                             <button id="minusButton"><i class="fa-solid fa-minus"></i></button>
                             <input 	id="addToCartQty" type="number">
@@ -57,13 +57,13 @@
 
                     <!-- subtotal -->
                     <div class="flex justify-between align-center">
-                        <div>Subtotal:</div>
+                        <div>{{ __('general.subtotal') }}:</div>
                         <div id="subtotal">-</div>
                     </div>
 
                 </div>
             </div>
-            <button id="button_addToCart" class="btn-primary"><span><i class="fa-solid fa-plus"></i></span>Agregar</button>
+            <button id="button_addToCart" class="btn-primary"><span><i class="fa-solid fa-plus"></i></span>{{ __('general.addtocart') }}</button>
         </div>
     </div>
 </div>

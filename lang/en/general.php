@@ -32,13 +32,20 @@ return [
 
     'email'             => 'Email address',
 
-    'votes'             => 'votes',
+    'votes'             => 'votos',
 
     'addtocart'         => 'Add to cart',
+    'additemtocart'     => 'Add item to cart',
+    
+    'sort'              => 'Order',
+    'price_lowest'      => 'Price: Highest',
+    'price_highest'     => 'Price: Lowest',
 
-    'showing'           => 'Showing',
-
-    'sort'              => 'Sort',
-    'price_lowest'      => 'Lowest price',
-    'price_highest'     => 'Highest price',
+    'price'             => 'Price',
+    'sizes'             => 'Sizes',
+    'colors'            => 'Colors',
+    'stock_available'   => 'Stock available',
+    'quantity'          => 'Quantity',
+    'subtotal'          => 'Subtotal',
+    'select_option'     => 'Select',
 ];

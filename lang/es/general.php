@@ -35,10 +35,17 @@ return [
     'votes'             => 'votos',
 
     'addtocart'         => 'Agregar al carrito',
-
-    'showing'           => 'Mostrando',
-
+    'additemtocart'     => 'Agregar producto al carrito',
+    
     'sort'              => 'Ordenar',
     'price_lowest'      => 'Menor precio',
     'price_highest'     => 'Mayor precio',
+
+    'price'             => 'Precio',
+    'sizes'             => 'Talles',
+    'colors'            => 'Colores',
+    'stock_available'   => 'Stock disponible',
+    'quantity'          => 'Cantidad',
+    'subtotal'          => 'Subtotal',
+    'select_option'     => 'Seleccione',
 ];
