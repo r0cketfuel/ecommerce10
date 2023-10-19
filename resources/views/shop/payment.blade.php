@@ -189,7 +189,7 @@
 
                         <div>5031 7557 3453 0604</div>
 
-                        <label>Número de tarjeta: <div id="form-checkout__cardNumber"       class="container"></div></label>
+                        <label>Número de tarjeta<div id="form-checkout__cardNumber"         class="container"></div></label>
                         <label>Fecha de expiración<div id="form-checkout__expirationDate"   class="container"></div></label>
                         <label>Código de seguridad<div id="form-checkout__securityCode"     class="container"></div></label>
                         <label>Titular de la tarjeta<input id="form-checkout__cardholderName"></label>
@@ -214,7 +214,7 @@
                     <div class="flex-col gap1">
                         <div class="flex justify-between">
                             <div class="text-bold">Subtotal:</div>
-                            <div id="sub-total">{{_money(session("shop.checkout.total"))}}</div>
+                            <div id="sub-total">{{_money(session("shop.checkout.total_items"))}}</div>
                         </div>
                         <div class="flex justify-between">
                             <div class="text-bold">Envío:</div>
