@@ -3,15 +3,15 @@
 @section("title","Checkout")
 
 @section("css")
-    <link rel="stylesheet"	href="{{config('constants.shop_css')}}productCards.css">
-    <link rel="stylesheet"	href="{{config('constants.framework_css')}}panel.css">
-    <link rel="stylesheet"	href="{{config('constants.framework_css')}}modal.css">
+    <link rel="stylesheet"	href="{{ config('constants.shop_css') }}productCards.css">
+    <link rel="stylesheet"	href="{{ config('constants.framework_css') }}panel.css">
+    <link rel="stylesheet"	href="{{ config('constants.framework_css') }}modal.css">
 @endsection
 
 @section("js")
-    <script defer src="{{config('constants.shop_js')}}ajax.js"></script>
-    <script defer src="{{config('constants.shop_js')}}cart.js"></script>
-    <script defer src="{{config('constants.shop_js')}}checkout.js"></script>
+    <script defer src="{{ config('constants.shop_js') }}ajax.js"></script>
+    <script defer src="{{ config('constants.shop_js') }}cart.js"></script>
+    <script defer src="{{ config('constants.shop_js') }}checkout.js"></script>
 @endsection
 
 @section("inlineCSS")
@@ -70,25 +70,25 @@
                                     $total          = _money($total);
 
                                     $opciones       = $checkout["items"][$i]["opciones"];
-                                    $talle_id       = "";
-                                    $color          = "";
+                                    $talle_id       = $checkout["items"][$i]["opciones"]["talle_id"]    ?? null;
+                                    $color          = $checkout["items"][$i]["opciones"]["color"]       ?? null;
                                 @endphp
             
-                                <ul class="product-checkout-card" data-id="{{$id}}">
-                                    <li>{{$cantidad}} x <span>{{$descripcion}}</span></li>
-                                    <li><img src="{{$foto}}" alt="imagen"></li>
+                                <ul class="product-checkout-card" data-id="{{ $id }}">
+                                    <li>{{ $cantidad }} x <span>{{ $descripcion }}</span></li>
+                                    <li><img src="{{ $foto }}" alt="imagen"></li>
                                     <li>Talle</li>
-                                    <li></li>
+                                    <li>{{ $talle_id }}</li>
                                     <li>Color</li>
-                                    <li></li>
+                                    <li>{{ $color }}</li>
                                     <li>Precio</li>
-                                    <li class="precio">{{$precio}}</li>
+                                    <li class="precio">{{ $precio }}</li>
                                     <li>Subtotal</li>
-                                    <li class="subtotal">{{$subtotal}}</li>
+                                    <li class="subtotal">{{ $subtotal }}</li>
                                     <div class="product-checkout-card-extra">
                                         <ul>
-                                            <li><button class="btn-link" data-id="{{$id}}" data-talle_id="{{$talle_id}}" data-color="{{$color}}" onclick="modalUpdateItem(this.dataset)"><i class="fa-solid fa-pen"></i></button></li>
-                                            <li><button class="btn-link" data-id="{{$id}}" data-talle_id="{{$talle_id}}" data-color="{{$color}}" onclick="itemRemove(this.dataset)"><i class="fa-solid fa-xmark"></i></button></li>
+                                            <li><button class="btn-link" data-id="{{ $id }}" data-talle_id="{{ $talle_id }}" data-color="{{ $color }}" onclick="modalUpdateItem(this.dataset)"><i class="fa-solid fa-pen"></i></button></li>
+                                            <li><button class="btn-link" data-id="{{ $id }}" data-talle_id="{{ $talle_id }}" data-color="{{ $color }}" onclick="itemRemove(this.dataset)"><i class="fa-solid fa-xmark"></i></button></li>
                                         </ul>
                                     </div>
                                 </ul>
@@ -105,11 +105,11 @@
                                 @foreach($mediosPagoListado as $medio)
                                     <div class="radio-fix">
                                         @if($medioPagoSeleccionado == $medio["id"])
-                                            <input form="form" type="radio" required name="radio_medioPago" value="{{$medio['id']}}" checked>
+                                            <input form="form" type="radio" required name="radio_medioPago" value="{{ $medio['id'] }}" checked>
                                         @else
-                                            <input form="form" type="radio" required name="radio_medioPago" value="{{$medio['id']}}">
+                                            <input form="form" type="radio" required name="radio_medioPago" value="{{ $medio['id'] }}">
                                         @endif
-                                        <label>{{$medio["medio"]}}</label>
+                                        <label>{{ $medio["medio"] }}</label>
                                     </div>
                                 @endforeach
                             </div>
@@ -125,11 +125,11 @@
                                 @foreach($mediosEnvioListado as $envio)
                                     <div class="radio-fix">
                                         @if($medioEnvioSeleccionado == $envio["id"])
-                                            <input form="form" type="radio" required name="radio_medioEnvio" value="{{$envio['id']}}" checked>
+                                            <input form="form" type="radio" required name="radio_medioEnvio" value="{{ $envio['id'] }}" checked>
                                         @else
-                                            <input form="form" type="radio" required name="radio_medioEnvio" value="{{$envio['id']}}">
+                                            <input form="form" type="radio" required name="radio_medioEnvio" value="{{ $envio['id'] }}">
                                         @endif
-                                        <label>{{$envio["medio"]}} @if(isset($envio["costo"])) ({{_money($envio["costo"])}}) @endif</label>
+                                        <label>{{ $envio["medio"] }} @if(isset($envio["costo"])) ({{ _money($envio["costo"]) }}) @endif</label>
                                     </div>
                                 @endforeach
                             </div>
@@ -140,33 +140,33 @@
                                 <div class="input-group">
                                     <label>
                                         Código Postal:
-                                        <input form="form" type="text" name="input_codigoPostal" value="{{session('shop.usuario.datos.codigo_postal')}}">
+                                        <input form="form" type="text" name="input_codigoPostal" value="{{ session('shop.usuario.datos.codigo_postal') }}">
                                     </label>
                                     <label>
                                         Ciudad:
-                                        <input form="form" type="text" name="input_ciudad" value="{{session('shop.usuario.datos.localidad')}}">
+                                        <input form="form" type="text" name="input_ciudad" value="{{ session('shop.usuario.datos.localidad') }}">
                                     </label>
                                     <label>
                                         Domicilio
-                                        <input form="form" type="text" name="input_domicilio" value="{{session('shop.usuario.datos.domicilio')}}">
+                                        <input form="form" type="text" name="input_domicilio" value="{{ session('shop.usuario.datos.domicilio') }}">
                                     </label>
                                     <div class="flex">
                                         <label>
                                             Número
-                                            <input form="form" name="input_domicilioNro" value="{{session('shop.usuario.datos.domicilio_nro')}}">
+                                            <input form="form" name="input_domicilioNro" value="{{ session('shop.usuario.datos.domicilio_nro') }}">
                                         </label>
                                         <label>
                                             Piso
-                                            <input form="form" name="input_domicilioPiso" value="{{session('shop.usuario.datos.domicilio_piso')}}">
+                                            <input form="form" name="input_domicilioPiso" value="{{ session('shop.usuario.datos.domicilio_piso') }}">
                                         </label>
                                         <label>
                                             Departamento
-                                            <input form="form" name="input_domicilioDepto" value="{{session('shop.usuario.datos.domicilio_depto')}}">
+                                            <input form="form" name="input_domicilioDepto" value="{{ session('shop.usuario.datos.domicilio_depto') }}">
                                         </label>
                                     </div>
                                     <label>
                                         Instrucciones de entrega
-                                        <textarea form="form" name="textarea_aclaraciones">{{session('shop.usuario.datos.domicilio_aclaraciones')}}</textarea>
+                                        <textarea form="form" name="textarea_aclaraciones">{{ session('shop.usuario.datos.domicilio_aclaraciones') }}</textarea>
                                     </label>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@
                             <div class="flex-col gap1">
                                 <div class="flex justify-between">
                                     <div class="text-bold">Subtotal:</div>
-                                    <div id="sub-total">{{$total}}</div>
+                                    <div id="sub-total">{{ $total }}</div>
                                 </div>
                                 <div class="flex justify-between">
                                     <div class="text-bold">Envío:</div>
