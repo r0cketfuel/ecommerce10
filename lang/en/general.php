@@ -36,6 +36,8 @@ return [
 
     'addtocart'         => 'Add to cart',
 
+    'showing'           => 'Showing',
+
     'sort'              => 'Sort',
     'price_lowest'      => 'Lowest price',
     'price_highest'     => 'Highest price',
