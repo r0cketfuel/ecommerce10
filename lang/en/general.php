@@ -35,4 +35,8 @@ return [
     'votes'             => 'votes',
 
     'addtocart'         => 'Add to cart',
+
+    'sort'              => 'Sort',
+    'price_lowest'      => 'Lowest price',
+    'price_highest'     => 'Highest price',
 ];

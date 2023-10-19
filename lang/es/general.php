@@ -35,4 +35,8 @@ return [
     'votes'             => 'votos',
 
     'addtocart'         => 'Agregar al carrito',
+
+    'sort'              => 'Ordenar',
+    'price_lowest'      => 'Menor precio',
+    'price_highest'     => 'Mayor precio',
 ];
