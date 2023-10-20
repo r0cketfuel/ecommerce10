@@ -48,4 +48,10 @@ return [
     'quantity'          => 'Quantity',
     'subtotal'          => 'Subtotal',
     'select_option'     => 'Select',
+
+    'login_button'          => 'Login',
+    'register_link'         => 'Sign up',
+    'register_msg'          => 'Dont have an account?',
+    'forgot_password_msg'   => 'Forgot password?',
+    'remember_check'        => 'Remember me',
 ];

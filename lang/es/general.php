@@ -13,39 +13,45 @@ return [
     |
     */
 
-    'login'             => 'Ingresar',
-    'logout'            => 'Salir',
+    'login'                 => 'Ingresar',
+    'logout'                => 'Salir',
 
-    'favorites'         => 'Favoritos',
-    'cart'              => 'Carritos',
+    'favorites'             => 'Favoritos',
+    'cart'                  => 'Carritos',
 
-    'search'            => 'Buscar',
-    'showing'           => 'Mostrando',
+    'search'                => 'Buscar',
+    'showing'               => 'Mostrando',
 
-    'suscribe'          => 'Suscribirse',
+    'suscribe'              => 'Suscribirse',
 
-    'about'             => 'Acerca de',
-    'contact'           => 'Contacto',
+    'about'                 => 'Acerca de',
+    'contact'               => 'Contacto',
 
-    'suscription_msg'   => 'Suscribite a nuestro newsletter para recibir las últimas novedades',
-    'follow_msg'        => 'También podes seguirnos en nuestras redes',
+    'suscription_msg'       => 'Suscribite a nuestro newsletter para recibir las últimas novedades',
+    'follow_msg'            => 'También podes seguirnos en nuestras redes',
 
-    'email'             => 'Correo electrónico',
+    'email'                 => 'Correo electrónico',
 
-    'votes'             => 'votos',
+    'votes'                 => 'votos',
 
-    'addtocart'         => 'Agregar al carrito',
-    'additemtocart'     => 'Agregar producto al carrito',
+    'addtocart'             => 'Agregar al carrito',
+    'additemtocart'         => 'Agregar producto al carrito',
     
-    'sort'              => 'Ordenar',
-    'price_lowest'      => 'Menor precio',
-    'price_highest'     => 'Mayor precio',
+    'sort'                  => 'Ordenar',
+    'price_lowest'          => 'Menor precio',
+    'price_highest'         => 'Mayor precio',
 
-    'price'             => 'Precio',
-    'sizes'             => 'Talles',
-    'colors'            => 'Colores',
-    'stock_available'   => 'Stock disponible',
-    'quantity'          => 'Cantidad',
-    'subtotal'          => 'Subtotal',
-    'select_option'     => 'Seleccione',
+    'price'                 => 'Precio',
+    'sizes'                 => 'Talles',
+    'colors'                => 'Colores',
+    'stock_available'       => 'Stock disponible',
+    'quantity'              => 'Cantidad',
+    'subtotal'              => 'Subtotal',
+    'select_option'         => 'Seleccione',
+    
+    'login_button'          => 'Ingresar',
+    'register_link'         => 'Registrarse',
+    'register_msg'          => 'No tenés una cuenta?',
+    'forgot_password_msg'   => 'Olvidaste tu contraseña?',
+    'remember_check'        => 'Recordarme',
 ];

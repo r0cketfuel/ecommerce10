@@ -1,149 +1,148 @@
 <!DOCTYPE html>
-<html lang="{{str_replace('_', '-', app()->getLocale())}}">
-	<head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ingreso de usuarios - {{session("infoComercio.nombre")}}</title>
-        
-        <!-- Hojas de estilo -->
-        <link rel="stylesheet"	href="{{config('constants.shop_css')}}style.css">
-        <link rel="stylesheet"	href="{{config('constants.framework_css')}}alert.css">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso de usuarios - {{ session("infoComercio.nombre") }}</title>
 
-        <style>
-            .alert-container {
-                margin: var(--containers-side-padding);
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="{{ config('constants.shop_css') }}style.css">
+    <link rel="stylesheet" href="{{ config('constants.framework_css') }}alert.css">
+
+    <style>
+        .login-container {
+            margin:             0;
+            padding:            0;
+            height:             100vh;
+            display:            flex;
+            justify-content:    center;
+            align-items:        center;
+        }
+
+        .login-panel {
+            display:            flex;
+            width:              100%;
+            max-width:          600px;
+            margin:             0 20px;
+            background-color:   white;
+            min-height:         400px;
+            border-radius:      10px;
+            box-shadow:         0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+
+        .left-panel, .right-panel {
+            display:                flex;
+            flex-direction:         column;
+            justify-content:        center;
+            width:                  50%;
+            padding:                20px;
+            box-sizing:             border-box;
+        }
+
+        .left-panel {
+            border-radius:          10px 0 0 10px;
+            justify-content:        space-between;
+        }
+
+        .left-panel h1 {
+            text-align:             center;
+        }
+
+        .left-panel p {
+            margin:                 0;
+        }
+        
+        .right-panel {
+            border-radius:          0 10px 10px 0;
+            text-align:             center;
+            background:             -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+            background:             linear-gradient(to right, #FF4B2B, #FF416C);
+            background-repeat:      no-repeat;
+            background-size:        cover;
+            background-position:    0 0;
+            color:                  white;
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+
+            .login-panel {
+                flex-direction: column;
+                margin: 0 50px;
             }
-    
-            .main-frame {
-                margin:                 0 auto;
-                min-height:             500px;
-                min-width:              300px;
-                max-width:              400px;
-                border:                 1px solid rgb(220,220,220);
-                display:                flex;
-                flex-flow:              column nowrap;
-                background-color:       white;
-                border-radius:          10px;
-                box-shadow:             0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    
-                position:               absolute;
-                left:                   50%;
-                transform:              translateX(-50%);
-    
-                animation-fill-mode:    both;
-                animation-name:         animate-top;
-                animation-duration: 	0.75s;
-    
+
+            .right-panel {
+                display: none;
             }
-    
-            .main-frame .register-link,
-            .main-frame .password-recovery-link {
-                color:                  #007bff;
-                text-align:             right;
+
+            .left-panel {
+                flex: 1;
+                width: 100%;
             }
-    
-            .main-frame .top-frame,
-            .main-frame .middle-frame,
-            .main-frame .bottom-frame {
-                padding:                20px;
-            }
-    
-            .main-frame .top-frame {
-                display:                flex;
-                flex-flow:              column;
-                justify-content:        center;
-                align-items:            center;
-                gap:                    10px;
-                border-bottom:          1px solid rgb(220,220,220);
-            }
-            
-            .main-frame .top-frame img {
-                width:                  30%;
-                object-fit:             contain;
-            }
-    
-            .main-frame .middle-frame {
-                display:                flex;
-                flex-flow:              column;
-                flex:                   1 1;
-                border-bottom:          1px solid rgb(220,220,220);
-            }
-            
-            .main-frame .middle-frame .input-group {
-                display:                flex;
-                flex-flow:              column;
-                flex:                   1 1;
-            }
-    
-            .main-frame h1 {
-                margin:                 0;
-                padding:                0;
-                font-size:              18px;
-                text-align:             center;
-            }
-    
-            @keyframes animate-top
-            {
-                from {top: -100%; opacity: 0} to {top: 10%; opacity: 1}
-            }
-        </style>
+
+        }
+    </style>
 
     </head>
-	<body id="top">
-        <div class="main-container">
-        
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <div class="alert danger">
-                        <div>{{$error}}</div>
-                        <div class="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
-                    </div>
-                @endforeach
-            @endif
+    <body>
 
-            @if (session("success"))
-                <div class="alert success">
-                    <div>{{session("success")}}</div>
-                    <div class="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
-                </div>
-            @endif
-
-            @if (session("error"))
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
                 <div class="alert danger">
-                    <div>{{session("error")}}</div>
+                    <div>{{$error}}</div>
                     <div class="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
                 </div>
-            @endif
+            @endforeach
+        @endif
 
-            <div class="main-frame">
-                <div class="top-frame">
-                    <img src="{{config('constants.images')}}/bag.jpg" alt="bag">
-                    <h1>{{session("infoComercio.nombre")}}</h1>
-                    <p>No tenés una cuenta? <a class="register-link" href="/shop/register">Registrarse</a></p>
-                </div>
-                <div class="middle-frame">
+        @if (session("success"))
+            <div class="alert success">
+                <div>{{session("success")}}</div>
+                <div class="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
+            </div>
+        @endif
+
+        @if (session("error"))
+            <div class="alert danger">
+                <div>{{session("error")}}</div>
+                <div class="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
+            </div>
+        @endif
+
+        <div class="login-container">
+            <div class="login-panel">
+                <div class="left-panel">
+                    <h1>Login</h1>
+                    <p>{{ __('general.register_msg') }} <a class="register-link" href="/shop/register">{{ __('general.register_link') }}</a></p>
                     <div class="input-group">
-                        <label>Usuario o email<input form="form-login" type="text" name="username" required maxlength="16"></label>
-                        <label>Password<input form="form-login" type="password" name="password" required maxlength="16"></label>
-                        <div class="flex justify-between">
-                            <div class="radio-fix">
-                                <input form="form-login" type="checkbox" name="check_remember"><label>Recordarme</label>
-                            </div>
-                            <a class="password-recovery-link" href="/shop/recovery">Recuperar contraseña</a>
+                        <label>
+                            Usuario o email
+                            <input form="form-login" type="text" name="username" required maxlength="16">
+                        </label>
+                        <label>
+                            Password
+                            <input form="form-login" type="password" name="password" required maxlength="16">
+                        </label>
+                        <div class="radio-fix">
+                            <input form="form-login" type="checkbox" name="check_remember">
+                            <label>Recordarme</label>
                         </div>
-                        <div style="flex: 1 1;"></div>
-                        <button form="form-login" type="submit" class="btn-primary">Ingresar</button>
                     </div>
+                    <a class="password-recovery-link" href="/shop/recovery">{{ __('general.forgot_password_msg') }}</a>
+                    <button form="form-login" type="submit" class="btn-primary">{{ __('general.login_button') }}</button>
                 </div>
-                <div class="bottom-frame">
-                    <button form="form-guest" type="submit" class="btn-secondary">Continuar sin registro</button>
+                <div class="right-panel">
+                    <div>
+                        <h2>{{ session("infoComercio.nombre") }}</h2>
+                    </div>
                 </div>
             </div>
-
         </div>
-            
+
         <form id="form-login" method="post" autocomplete="off">@csrf</form>
         <form id="form-guest" method="post" autocomplete="off" action="{{ route('login.guest') }}">@csrf</form>
-
-	</body>
+    </body>
 </html>
