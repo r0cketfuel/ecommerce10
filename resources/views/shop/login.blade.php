@@ -11,23 +11,23 @@
 
     <style>
         .login-container {
-            margin:             0;
-            padding:            0;
-            height:             100vh;
-            display:            flex;
-            justify-content:    center;
-            align-items:        center;
+            margin:                 0;
+            padding:                0;
+            height:                 100vh;
+            display:                flex;
+            justify-content:        center;
+            align-items:            center;
         }
 
         .login-panel {
-            display:            flex;
-            width:              100%;
-            max-width:          600px;
-            margin:             0 20px;
-            background-color:   white;
-            min-height:         400px;
-            border-radius:      10px;
-            box-shadow:         0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            display:                flex;
+            width:                  100%;
+            max-width:              600px;
+            margin:                 0 20px;
+            background-color:       white;
+            min-height:             400px;
+            border-radius:          10px;
+            box-shadow:             0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         }
 
         .left-panel, .right-panel {
@@ -48,7 +48,7 @@
             text-align:             center;
         }
 
-        .left-panel p {
+        .left-panel p, .left-panel a {
             margin:                 0;
         }
         
@@ -64,23 +64,23 @@
         }
 
         h1, h2 {
-            margin: 0;
+            margin:                 0;
         }
 
         @media (max-width: 600px) {
 
             .login-panel {
-                flex-direction: column;
-                margin: 0 50px;
+                flex-direction:     column;
+                margin:             0 50px;
             }
 
             .right-panel {
-                display: none;
+                display:            none;
             }
 
             .left-panel {
-                flex: 1;
-                width: 100%;
+                flex:               1;
+                width:              100%;
             }
 
         }
@@ -133,10 +133,12 @@
                     </div>
                     <a class="password-recovery-link" href="/shop/recovery">{{ __('general.forgot_password_msg') }}</a>
                     <button form="form-login" type="submit" class="btn-primary">{{ __('general.login_button') }}</button>
+                    <button form="form-guest" type="submit" class="btn-secondary">{{ __('general.login_guest_button') }}</button>
                 </div>
                 <div class="right-panel">
                     <div>
                         <h2>{{ session("infoComercio.nombre") }}</h2>
+                        <h4>{{ session("infoComercio.slogan") }}</h4>
                     </div>
                 </div>
             </div>
