@@ -25,7 +25,7 @@
             max-width:              600px;
             margin:                 0 20px;
             background-color:       white;
-            min-height:             400px;
+            min-height:             450px;
             border-radius:          10px;
             box-shadow:             0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         }
@@ -132,8 +132,10 @@
                         </div>
                     </div>
                     <a class="password-recovery-link" href="/shop/recovery">{{ __('general.forgot_password_msg') }}</a>
-                    <button form="form-login" type="submit" class="btn-primary">{{ __('general.login_button') }}</button>
-                    <button form="form-guest" type="submit" class="btn-secondary">{{ __('general.login_guest_button') }}</button>
+                    <div class="input-group">
+                        <button form="form-login" type="submit" class="btn-primary">{{ __('general.login_button') }}</button>
+                        <button form="form-guest" type="submit" class="btn-secondary">{{ __('general.login_guest_button') }}</button>
+                    </div>
                 </div>
                 <div class="right-panel">
                     <div>
