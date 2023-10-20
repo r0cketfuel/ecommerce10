@@ -44,6 +44,10 @@
             justify-content:        space-between;
         }
 
+        input {
+            background-color:       #eee;
+        }
+
         .left-panel h1 {
             text-align:             center;
         }
