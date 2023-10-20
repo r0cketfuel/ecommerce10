@@ -51,6 +51,10 @@
         .left-panel p, .left-panel a {
             margin:                 0;
         }
+
+        .left-panel span {
+            color:                  #5ca4d1;
+        }
         
         .right-panel {
             border-radius:          0 10px 10px 0;
@@ -68,7 +72,6 @@
         }
 
         @media (max-width: 600px) {
-
             .login-panel {
                 flex-direction:     column;
                 margin:             0 50px;
@@ -82,7 +85,6 @@
                 flex:               1;
                 width:              100%;
             }
-
         }
     </style>
 
@@ -116,7 +118,7 @@
             <div class="login-panel">
                 <div class="left-panel">
                     <h1>Login</h1>
-                    <p>{{ __('general.register_msg') }} <a class="register-link" href="/shop/register">{{ __('general.register_link') }}</a></p>
+                    <p>{{ __('general.register_msg') }} <a class="register-link" href="/shop/register"><span>{{ __('general.register_link') }}</span></a></p>
                     <div class="input-group">
                         <label>
                             Usuario o email
