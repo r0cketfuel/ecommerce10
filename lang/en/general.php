@@ -50,7 +50,7 @@ return [
     'select_option'         => 'Select',
 
     'login_button'          => 'Login',
-    'loguin_gest_button'    => 'Continue as guest',
+    'login_guest_button'    => 'Continue as guest',
     'register_link'         => 'Sign up',
     'register_msg'          => 'Dont have an account?',
     'forgot_password_msg'   => 'Forgot password?',
