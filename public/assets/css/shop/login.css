@@ -19,32 +19,25 @@
     animation-duration:         1s;
     animation-timing-function:  cubic-bezier(0.645, 0.045, 0.355, 1);
     animation-fill-mode:        forwards;
-    border-radius:              8px;
+    border-radius:              12px;
     overflow:                   hidden;
 }
 
 .modal-login-panel {
-    -webkit-box-sizing:             border-box;
-            box-sizing:             border-box;
-	display: 						-webkit-box;
-	display: 						-ms-flexbox;
-	display: 						flex;
-    flex-direction:                 row;
-	position: 						relative;
-	top:                        	50%;
-    -webkit-transform:              translateY(-50%);
-        -ms-transform:              translateY(-50%);
-            transform:              translateY(-50%);
-	margin: 						0 auto;
-	-webkit-box-shadow: 			0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-		box-shadow: 				0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-sizing:                 border-box;
+    display: 					flex;
+    flex-direction:             row;
+	position: 					relative;
+	top:                        50%;
+    left:                       50%;
+    transform:                  translate(-50%, -50%);
+	box-shadow: 			    0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 	
 	/* DEFAULT SETTINGS */
-    width:                      100%;
-    max-width:                  600px;
-    margin:                     0 20px;
+	width:						600px;
+    max-width:                  calc(100vw - 50px);
     min-height:                 450px;
-    border-radius:              8px;
+    border-radius:              12px;
     overflow:                   hidden;
 }
 
