@@ -15,10 +15,10 @@
                             &nbsp;|&nbsp; 
                             <a href="/shop/logout">{{ __('general.logout') }}&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                         @else
-                            <a href="{{ route('user.login') }}"><i class="fa-solid fa-user"></i>&nbsp;{{ __('general.login') }}</a>
+                            <a href="{{ route('user.login') }}" id="login-link"><i class="fa-solid fa-user"></i>&nbsp;{{ __('general.login') }}</a>
                         @endif
                     @endguest
-                </li>   
+                </li>
             </ul>
         </div>
     </div>
@@ -65,3 +65,21 @@
         </div>
     </div>
 </header>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        //return;
+
+        var loginLink   = document.getElementById("login-link");
+        var modalLogin  = document.getElementById("modal-login");
+
+        // Agrega un controlador de eventos al enlace de inicio de sesión
+        loginLink.addEventListener("click", function(event) {
+            event.preventDefault(); // Evita que el enlace se abra
+
+            // Muestra el modal de inicio de sesión
+            modalLogin.style.display = "block";
+        });
+    });
+</script>

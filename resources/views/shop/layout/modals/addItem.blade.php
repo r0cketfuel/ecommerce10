@@ -1,4 +1,3 @@
-<!-- Modal -->
 <div class="modal" id="modal-add">
     <div class="modal-content" style="padding: 10px;">
         <div class="modal-header" style="color: black;">
@@ -67,4 +66,3 @@
         </div>
     </div>
 </div>
-<!-- /Modal -->

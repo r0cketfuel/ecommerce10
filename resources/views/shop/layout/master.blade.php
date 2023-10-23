@@ -10,6 +10,7 @@
 
         <!-- Hojas de estilo -->
         <link rel="stylesheet"	href="{{config('constants.shop_css')}}style.css">
+        <link rel="stylesheet"	href="{{config('constants.shop_css')}}login.css">
 		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 		@yield("css")
         
@@ -20,6 +21,7 @@
         @yield("inlineCSS")
 	</head>
 	<body id="top">
+        @include("shop.layout.modals.modalLogin")
         @include("shop.layout.headers")
         @include("shop.layout.backToTop")
         @include("shop.layout.whatsappBubble")

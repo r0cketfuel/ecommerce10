@@ -51,7 +51,7 @@ Route::prefix('shop')->controller(ShopController::class)->group(function () {
 });
 
 Route::prefix('shop')->controller(UserController::class)->group(function () {
-    Route::post('login',                'login');
+    Route::post('login',                'login')->name('login.user');
     Route::post('login/guest',          'loginGuest')->name('login.guest');
     Route::post('register',             'register');
     Route::post('recovery',             'recovery');
