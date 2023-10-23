@@ -27,10 +27,12 @@
             </div>
         </div>
         <div class="right-panel">
+            <div style="text-align:right; cursor: pointer" onclick="this.parentElement.parentElement.parentElement.parentElement.style.display='none'">X</div>
             <div>
                 <h2>{{ session("infoComercio.nombre") }}</h2>
                 <h4>{{ session("infoComercio.slogan") }}</h4>
             </div>
+            <div></div>
         </div>
     </div>
 
