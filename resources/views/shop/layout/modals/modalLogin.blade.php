@@ -19,19 +19,17 @@
                     <label>Recordarme</label>
                 </div>
             </div>
-            <a class="password-recovery-link" href="/shop/recovery">{{ __('general.forgot_password_msg') }}</a>
+            <a class="password-recovery-link" href="/shop/recovery">{{ __('general.forgot_password_msg') }} Recuperar contraseña</a>
             <div class="input-group">
                 <button form="form-login" type="submit" class="btn-primary">{{ __('general.login_button') }}</button>
                 <button form="form-guest" type="submit" class="btn-secondary">{{ __('general.login_guest_button') }}</button>
             </div>
         </div>
         <div class="right-panel">
-            <div style="text-align:right; cursor: pointer" onclick="this.parentElement.parentElement.parentElement.style.display='none'">X</div>
             <div>
                 <h2>{{ session("infoComercio.nombre") }}</h2>
                 <h4>{{ session("infoComercio.slogan") }}</h4>
             </div>
-            <div></div>
         </div>
     </div>
 
