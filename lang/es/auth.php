@@ -15,7 +15,7 @@ return [
 
     'failed'        => 'Credenciales inválidas',
     'unconfirmed'   => 'Su cuenta no está activada. Debe activar su cuenta para poder continuar',
-    'password'      => 'Password incorrecto',
+    'password'      => 'La contraseña es incorrecta',
     'throttle'      => 'Demasiados intentos. Intente nuevamente en :segundos segundos',
 
 ];
