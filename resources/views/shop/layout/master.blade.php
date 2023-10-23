@@ -17,6 +17,7 @@
         
         <!-- Scripts -->
         <script defer src="{{config('constants.framework_js')}}scroll.js"></script>
+        <script defer src="{{config('constants.framework_js')}}navbar.js"></script>
 		@yield("js")
 
         @yield("inlineCSS")

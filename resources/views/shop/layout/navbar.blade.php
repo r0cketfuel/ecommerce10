@@ -1,6 +1,6 @@
 <div class="navbar-container">
     <div class="navbar">
-        <div class="responsive-nav-icon">
+        <div class="responsive-nav-icon" id="responsive-nav">
             <div class="font-awesome-icon-bars">
                 <i class="fa-solid fa-bars"></i>
             </div>
