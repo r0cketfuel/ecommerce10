@@ -44,7 +44,7 @@
                     <div class="input-group">
                         <label>
                             Usuario o email
-                            <input form="form-login" type="text" name="username" required maxlength="16">
+                            <input form="form-login" type="text" name="username" required maxlength="16" autofocus>
                         </label>
                         <label>
                             Password
