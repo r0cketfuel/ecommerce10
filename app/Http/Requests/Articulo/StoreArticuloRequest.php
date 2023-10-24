@@ -40,16 +40,4 @@ class StoreArticuloRequest extends FormRequest
             'activo'        => array('nullable'),
         ];
     }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages(): array
-    {
-        return [
-            "required" => "Este campo es obligatorio",
-        ];
-    }
 }
