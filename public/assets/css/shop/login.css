@@ -19,7 +19,7 @@
     animation-duration:         1s;
     animation-timing-function:  cubic-bezier(0.645, 0.045, 0.355, 1);
     animation-fill-mode:        forwards;
-    border-radius:              12px;
+    border-radius:              8px;
     overflow:                   hidden;
 }
 
@@ -37,7 +37,7 @@
 	width:						650px;
     max-width:                  calc(100vw - 50px);
     min-height:                 450px;
-    border-radius:              12px;
+    border-radius:              8px;
     overflow:                   hidden;
 }
 
