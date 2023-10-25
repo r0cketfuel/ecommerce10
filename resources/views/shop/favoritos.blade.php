@@ -29,10 +29,10 @@
             <ul class="favourites-list">
                 @foreach($items as $item)
                     <li class="favourite-card">
-                        <div><?=$item["descripcion"]?></div>
-                        <div class="favourite-card-image"><img src="<?=$item["miniatura_1"]?>" alt="imagen del producto"></div>
-                        <div><?=_money($item["precio"])?></div>
-                        <div><button class="btn-danger" value="<?=$item["articulo_id"]?>"><span><i class="fa-solid fa-trash"></i></span>Eliminar</button></div>
+                        <div>{{ $item["descripcion"] }}</div>
+                        <div class="favourite-card-image"><img src="{{ $item['miniatura_1'] }}" alt="imagen del producto"></div>
+                        <div>{{ $item["precio"] }}</div>
+                        <div><button class="btn-danger" value="{{ $item['articulo_id'] }}"><span><i class="fa-solid fa-trash"></i></span>Eliminar</button></div>
                     </li>
                 @endforeach
             </ul>

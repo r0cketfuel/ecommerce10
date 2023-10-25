@@ -184,7 +184,7 @@ class ShopController extends Controller
 
             $items[$i]["miniatura_1"]   = $info["miniatura_1"];
             $items[$i]["descripcion"]   = $info["descripcion"];
-            $items[$i]["precio"]        = $info["precio"];
+            $items[$i]["precio"]        = _money($info["precio"]);
         }
 
         return view("shop.favoritos", compact("items"));
