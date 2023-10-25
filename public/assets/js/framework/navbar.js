@@ -35,3 +35,13 @@ function sidebarOpenClose() {
         navLinks.style.left = "-100%";
     }
 }
+
+function mainMenuClick()
+{
+    return;
+}
+
+function subMenuClick()
+{
+    return;
+}
