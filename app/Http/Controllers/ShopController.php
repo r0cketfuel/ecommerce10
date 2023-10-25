@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Services\ShoppingCartService;
 use App\Services\Barcode128;
+use App\Services\MercadoPago;
+
+
 
 use App\Models\Articulo;
 use App\Models\Banner;
@@ -19,7 +22,8 @@ use App\Models\Rating;
 use App\Models\Review;
 use App\Models\Subcategoria;
 use App\Models\TipoDocumento;
-use App\Models\MercadoPago;
+
+//use App\Models\MercadoPago;
 
 class ShopController extends Controller
 {
@@ -227,15 +231,21 @@ class ShopController extends Controller
         //1314307973 -> Pagofácil
         //1314307973 -> Rapipago
 
-        $mercadoPago    = new MercadoPago;
+        // $mercadoPago    = new MercadoPago;
+        // $estado         = $mercadoPago->infoPago($id);
+        
+        // $barcode = new Barcode128;
+        // $barcode->setData($estado["barcode"]["content"]);
+        // $barcode->setDimensions(350, 50);
+        // $barcode->draw();
+        // $image = $barcode->base64();
+
+        
+        $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
         $estado         = $mercadoPago->infoPago($id);
         
-        $barcode = new Barcode128;
-        $barcode->setData($estado["barcode"]["content"]);
-        $barcode->setDimensions(350, 50);
-        $barcode->draw();
-        $image = $barcode->base64();
-
+        $image = null;
+        
         return view("shop.infoPago", compact("estado", "image"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
