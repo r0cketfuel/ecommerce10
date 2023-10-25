@@ -77,11 +77,14 @@
         var modalLogin  = document.getElementById("modal-login");
 
         // Agrega un controlador de eventos al enlace de inicio de sesión
-        loginLink.addEventListener("click", function(event) {
-            event.preventDefault(); // Evita que el enlace se abra
+        if(loginLink)
+        {
+            loginLink.addEventListener("click", function(event) {
+                event.preventDefault(); // Evita que el enlace se abra
 
-            // Muestra el modal de inicio de sesión
-            modalLogin.style.display = "block";
-        });
+                // Muestra el modal de inicio de sesión
+                modalLogin.style.display = "block";
+            });
+        }
     });
 </script>
