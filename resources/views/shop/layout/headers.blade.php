@@ -33,8 +33,10 @@
                 </div>
                 <div class="search-bar">
                     <form id="form-search" action="/shop"></form>
-                    <input  form="form-search" type="search" name="busqueda" value="{{ isset($busqueda['searchbar']) ? $busqueda['searchbar'] : '' }}" placeholder="{{ __('general.search') }}...">
-                    <button form="form-search" type="submit" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <div class="input-container">
+                        <input form="form-search" type="text" name="busqueda" value="{{ isset($busqueda['searchbar']) ? $busqueda['searchbar'] : '' }}" placeholder="{{ __('general.search') }}...">
+                        <button form="form-search" type="submit" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
                 </div>
                 <div class="iconos">
                     <div>
@@ -75,14 +77,11 @@
         var modalLogin  = document.getElementById("modal-login");
 
         // Agrega un controlador de eventos al enlace de inicio de sesión
-        if(loginLink)
-        {
-            loginLink.addEventListener("click", function(event) {
-                event.preventDefault(); // Evita que el enlace se abra
+        loginLink.addEventListener("click", function(event) {
+            event.preventDefault(); // Evita que el enlace se abra
 
-                // Muestra el modal de inicio de sesión
-                modalLogin.style.display = "block";
-            });
-        }
+            // Muestra el modal de inicio de sesión
+            modalLogin.style.display = "block";
+        });
     });
 </script>

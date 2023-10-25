@@ -92,7 +92,13 @@ header li {
 {
     display:                        flex;
     flex-flow:                      row nowrap;
-    width: 100%;
+    width: 							100%;
+}
+
+.main-header .search-bar .input-container {
+	position: 						relative;
+    display: 						inline-block;
+	width: 							100%;
 }
 
 .main-header .main-header-top .iconos

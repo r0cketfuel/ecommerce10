@@ -316,7 +316,12 @@ button.btn-search {
         -ms-flex-align:             center;
             align-items:            center;
     max-width:                      40px;
-    border-radius:                  0;
+	background: 					none;
+	border: 						none;
+	color: 							black;
+    position: 						absolute;
+    top: 							0;
+    right: 							0;
 }
 
 button.btn-newsletter {
