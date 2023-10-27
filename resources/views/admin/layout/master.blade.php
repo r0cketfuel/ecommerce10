@@ -13,13 +13,14 @@
         
         <!-- Scripts -->
         <script defer src="{{config('constants.framework_js')}}scroll.js"></script>
+		<script defer src="{{config('constants.framework_js')}}navbar.js"></script>
         @yield("js")
 
         @yield("inlineCSS")
 	</head>
 	<body id="top">
-        @include("admin.layout.navbar")
-        @include("admin.layout.backToTop")
-        @yield("body")
+		@include("admin.layout.navbar")
+		@include("admin.layout.backToTop")
+		@yield("body")
 	</body>
 </html>
