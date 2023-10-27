@@ -113,4 +113,34 @@ class Usuario extends Authenticatable
             set: function ($value) { return ucwords(strtolower($value)); }
         );
     }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function validaCuit($cuit)
+    {
+        if(strlen($cuit) == 11) 
+        {
+            $rv = false;
+            $resultado = 0;
+            
+            $codes = "6789456789";
+            $verificador = intVal($cuit[strlen($cuit)-1]);
+            
+            $x = 0;
+            
+            while ($x < 10)
+            {
+                $digitoValidador = intVal(substr($codes, $x, 1));
+                $digito = intVal(substr($cuit, $x, 1));
+                $digitoValidacion = $digitoValidador * $digito;
+                $resultado += $digitoValidacion;
+                $x++;
+            }
+            $resultado = intVal($resultado) % 11;
+            $rv = $resultado == $verificador;
+            return $rv;
+
+        }
+        
+        return(false);
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
