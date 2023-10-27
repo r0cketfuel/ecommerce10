@@ -4,15 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
         menuOpenBtn.addEventListener("click", sidebarOpenClose);
     }
 
-    const mainMenuLinks = document.querySelectorAll(".main-menu-link");
-    mainMenuLinks.forEach(link => {
-        link.addEventListener("click", mainMenuClick);
-    });
+	const mainMenu = document.querySelectorAll(".main-menu-link");
+	for(let i=0;i<mainMenu.length;i++)
+		mainMenu[i].addEventListener('click', function() { mainMenuClick(i); return false });
 
-    const subMenuLinks = document.querySelectorAll(".submenu-link");
-    subMenuLinks.forEach(link => {
-        link.addEventListener("click", subMenuClick);
-    });
+	const subMenu = document.querySelectorAll(".submenu-link");
+	for(let i=0;i<subMenu.length;i++)
+		subMenu[i].addEventListener('click', function() { subMenuClick(i); return false });
     
 });
 
@@ -36,12 +34,32 @@ function sidebarOpenClose() {
     }
 }
 
-function mainMenuClick()
+//==========================//
+// MAIN MENU CLICK FUNCTION //
+//==========================//
+function mainMenuClick(index)
 {
-    return;
+	let navLinks = document.querySelectorAll(".main-menu");
+
+	//CIERRA TODOS LOS MENUES ACTIVOS
+	for(let i=0;i<navLinks.length;i++)
+		if(i!=index)
+			navLinks[i].classList.remove("active");
+
+	navLinks[index].classList.toggle("active");
 }
 
-function subMenuClick()
+//========================//
+// SUBMENU CLICK FUNCTION //
+//========================//
+function subMenuClick(index)
 {
-    return;
+	let submenuLinks = document.querySelectorAll(".more");
+
+	//CIERRA TODOS LOS SUBMENUES ACTIVOS
+	for(let i=0;i<submenuLinks.length;i++)
+		if(i!=index)
+		submenuLinks[i].classList.remove("active");
+
+	submenuLinks[index].classList.toggle("active");
 }
