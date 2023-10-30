@@ -113,7 +113,7 @@
 
                         <label>
                             Teléfono fijo
-                            <input form="form" type="text" id="telefono_fijo" name="telefono_fijo" required value="{{ session('shop.usuario.datos.telefono_fijo') }}">
+                            <input form="form" type="text" id="telefono_fijo" name="telefono_fijo" value="{{ session('shop.usuario.datos.telefono_fijo') }}">
                         </label>
 
                         <label>
