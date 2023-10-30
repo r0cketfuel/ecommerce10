@@ -70,7 +70,7 @@ nav .navbar .links li a {
 	color: 						    var(--navbar-font-color);
 }
 
-nav .navbar .links .submenu-link {
+nav .navbar .links .submenu-link li {
 	color: 						    var(--navbar-menu-font-color);
 }
 

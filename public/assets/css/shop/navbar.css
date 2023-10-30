@@ -1,5 +1,10 @@
 :root {
+    --navbar-font-color:			white;
+	--navbar-logo-font-color:		white;
+	--navbar-menu-font-color:		black;
 	--navbar-sidebar-font-color:	white;
+
+	--navbar-menu-background:		rgb(240,240,240);
 	--navbar-sidebar-background:	black;
 }
 
