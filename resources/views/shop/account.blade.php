@@ -29,42 +29,45 @@
                         <div class="flex">
                             <label>
                                 Apellidos
-                                <input form="form" id="apellidos" name="apellidos" value="{{ session('shop.usuario.apellidos') }}">
+                                <input disabled value="{{ session('shop.usuario.datos.apellidos') }}">
                             </label>
                             <label>
                                 Nombres
-                                <input form="form" id="nombres" name="nombres" value="{{ session('shop.usuario.nombres') }}">
+                                <input disabled value="{{ session('shop.usuario.datos.nombres') }}">
                             </label>
                         </div>
+
+                        <label>
+                            Tipo de documento
+                            <select disabled>
+                                <option value="" selected disabled>Seleccione</option>
+                                @foreach($tiposDocumentos as $tipoDocumento)
+                                    <option value="{{ $tipoDocumento->id }}" @if (session('shop.usuario.datos.tipo_documento_id') == $tipoDocumento->id) selected @endif>{{$tipoDocumento->tipo}}</option>
+                                @endforeach
+                            </select>
+                        </label>
+
+                        <label>
+                            Número de documento
+                            <input disabled value="{{ session('shop.usuario.datos.documento_nro') }}">
+                        </label>
 
                         <div class="flex">
                             <label>
                                 Fecha de nacimiento
-                                <input form="form" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ session('shop.usuario.datos.fecha_nacimiento') }}">
+                                <input form="form" type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ session('shop.usuario.datos.fecha_nacimiento') }}">
                             </label>
 
                             <label>
                                 Género
                                 <select form="form" id="genero_id" name="genero_id">
-                                    <option value="" disabled selected>Seleccione...</option>
-                                </select> value="{{ session('shop.usuario.genero_id') }}">
-                            </label>
-
-                            <label>
-                                Tipo de documento
-                                <select form="form" id="tipo_documento_id" name="tipo_documento_id" required>
-                                    <option value="" selected disabled>Seleccione</option>
-                                    @foreach($tiposDocumentos as $tipoDocumento)
-                                        <option value="{{ $tipoDocumento->id }}" @if(session('shop.usuario.datos.tipo_documento_id') == $tipoDocumento->id) selected @endif>{{$tipoDocumento->tipo}}</option>
+                                    <option value="" disabled selected>Seleccione</option>
+                                    @foreach ($generos as $genero)
+                                        <option value="{{ $genero->id }}" @if (session('shop.usuario.datos.genero_id') == $genero->id) selected @endif> {{ $genero->genero }}</option>
                                     @endforeach
                                 </select>
                             </label>
                         </div>
-
-                        <label>
-                            Número de documento
-                            <input form="form" id="documento_nro" name="documento_nro" value="{{ session('shop.usuario.datos.documento_nro') }}">
-                        </label>
 
                         <label>
                             Cuil
@@ -125,7 +128,7 @@
 
                         <label>
                             Correo electrónico
-                            <input form="form" type="text" id="email" name="email" required value="{{ session('shop.usuario.datos.email') }}">
+                            <input type="email" disabled value="{{ session('shop.usuario.datos.email') }}">
                         </label>
 
                         <button form="form" name="form" class="btn-primary">Guardar cambios</button>
