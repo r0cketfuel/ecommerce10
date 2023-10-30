@@ -29,7 +29,7 @@ class RegisterRequest extends FormRequest
             "nombres"           => array("required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"),
             "tipo_documento_id" => array("required","integer","min:1", "exists:tipos_documentos,id"),
             "documento_nro"     => array("required","unique:usuarios,documento_nro","min:1","max:8"),
-            "genero_id"         => array("integer","min:1","exists: genero_id"),
+            "genero_id"         => array("integer","min:1","exists: generos,id"),
             "cuil"              => array("nullable","numeric","digits:11"),
             "cuit"              => array("nullable","numeric","digits:11"),
             "fecha_nacimiento"  => array("required","date"),
