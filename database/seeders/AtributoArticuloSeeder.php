@@ -17,7 +17,7 @@ class AtributoArticuloSeeder extends Seeder
             "articulo_id"   => 1,
             "talle_id"      => NULL,
             "color"         => NULL,
-            "compra_min"    => 2,
+            "compra_min"    => 1,
             "compra_max"    => 5,
             "stock"         => 100,
             "foto"          => NULL
