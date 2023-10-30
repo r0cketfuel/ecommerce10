@@ -1,19 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Categoria\StoreCategoriaRequest;
-use App\Http\Requests\Categoria\UpdateCategoriaRequest;
-use App\Models\Categoria;
+use App\Http\Controllers\Controller;
 
-class CategoriaController extends Controller
+use App\Http\Requests\Subcategoria\StoreSubcategoriaRequest;
+use App\Http\Requests\Subcategoria\UpdateSubcategoriaRequest;
+
+use App\Models\Subcategoria;
+
+class SubcategoriaController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
-        $categorias = Categoria::all();
+        $subcategorias = Subcategoria::with("categoria")->get();
 
-        return view("admin.categorias.index", compact('categorias'));
+        return view("admin.subcategorias.index", compact('subcategorias'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function create()
@@ -21,27 +24,27 @@ class CategoriaController extends Controller
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function store(StoreCategoriaRequest $request)
+    public function store(StoreSubcategoriaRequest $request)
     {
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function show(Categoria $categoria)
+    public function show(Subcategoria $subcategoria)
     {
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function edit(Categoria $categoria)
+    public function edit(Subcategoria $subcategoria)
     {
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function update(UpdateCategoriaRequest $request, Categoria $categoria)
+    public function update(UpdateSubcategoriaRequest $request, Subcategoria $subcategoria)
     {
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function destroy(Categoria $categoria)
+    public function destroy(Subcategoria $subcategoria)
     {
         //
     }

@@ -1,19 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Subcategoria\StoreSubcategoriaRequest;
-use App\Http\Requests\Subcategoria\UpdateSubcategoriaRequest;
-use App\Models\Subcategoria;
+use App\Http\Controllers\Controller;
 
-class SubcategoriaController extends Controller
+use App\Http\Requests\Usuario\StoreUsuarioRequest;
+use App\Http\Requests\Usuario\UpdateUsuarioRequest;
+
+use App\Models\Usuario;
+
+class UsuarioController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
-        $subcategorias = Subcategoria::with("categoria")->get();
+        $usuarios = Usuario::all();
 
-        return view("admin.subcategorias.index", compact('subcategorias'));
+        return view("admin.usuarios.index", compact('usuarios'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function create()
@@ -21,27 +24,29 @@ class SubcategoriaController extends Controller
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function store(StoreSubcategoriaRequest $request)
+    public function store(StoreUsuarioRequest $request)
     {
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function show(Subcategoria $subcategoria)
+    public function show(Usuario $usuario)
     {
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function edit(Subcategoria $subcategoria)
+    public function edit(Usuario $usuario)
     {
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function update(UpdateSubcategoriaRequest $request, Subcategoria $subcategoria)
+    public function update(UpdateUsuarioRequest $request, Usuario $usuario)
     {
-        //
+        $usuario->update($request->all());
+
+        return view("admin.usuarios.edit", compact('usuario'))->with("success", "Usuario actualizado exitosamente");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function destroy(Subcategoria $subcategoria)
+    public function destroy(Usuario $usuario)
     {
         //
     }

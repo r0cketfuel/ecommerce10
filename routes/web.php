@@ -5,14 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaymentController;
 
-use App\Http\Controllers\ArticuloController;
-use App\Http\Controllers\BannerController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\SubcategoriaController;
-use App\Http\Controllers\UsuarioController;
+
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ArticuloController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CategoriaController;
+use App\Http\Controllers\Admin\SubcategoriaController;
+use App\Http\Controllers\Admin\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------

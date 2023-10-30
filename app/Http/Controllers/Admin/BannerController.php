@@ -1,51 +1,61 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Usuario\StoreUsuarioRequest;
-use App\Http\Requests\Usuario\UpdateUsuarioRequest;
+use App\Http\Controllers\Controller;
 
-use App\Models\TipoDocumento;
-use App\Models\Usuario;
+use App\Http\Requests\Banner\StoreBannerRequest;
+use App\Http\Requests\Banner\UpdateBannerRequest;
 
-class UsuarioController extends Controller
+use App\Models\Banner;
+
+class BannerController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
-        $usuarios = Usuario::all();
+        $banners = Banner::vigentes();
 
-        return view("admin.usuarios.index", compact('usuarios'));
+        return view("admin.banners.index", compact('banners'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function create()
     {
-        //
+        return view("admin.banners.create");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function store(StoreUsuarioRequest $request)
+    public function store(StoreBannerRequest $request)
     {
-        //
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function show(Usuario $usuario)
-    {
-        //
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function edit(Usuario $usuario)
-    {
-        //
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function update(UpdateUsuarioRequest $request, Usuario $usuario)
-    {
-        $usuario->update($request->all());
+        $banner = new Banner;
+        $banner = Banner::make($request->validated());
+        $banner->save();
 
-        return view("admin.usuarios.edit", compact('usuario'))->with("success", "Usuario actualizado exitosamente");
+        return redirect()->route('banners.index')->with('success', 'Banner creado exitosamente');
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function destroy(Usuario $usuario)
+    public function show($id)
+    {
+        if(is_numeric($id))
+        {
+            $banner = Banner::detalle($id);
+
+            return view("admin.banners.show", compact('banner'));
+        }
+
+        return redirect()->route('admin.dashboard')->with('danger', 'Error');
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function edit(Banner $banner)
+    {
+        //
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function update(UpdateBannerRequest $request, Banner $banner)
+    {
+        //
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function destroy(Banner $banner)
     {
         //
     }

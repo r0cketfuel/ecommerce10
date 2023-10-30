@@ -1,58 +1,50 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Banner\StoreBannerRequest;
-use App\Http\Requests\Banner\UpdateBannerRequest;
-use App\Models\Banner;
+use App\Http\Controllers\Controller;
 
-class BannerController extends Controller
+use App\Http\Requests\Categoria\StoreCategoriaRequest;
+use App\Http\Requests\Categoria\UpdateCategoriaRequest;
+
+use App\Models\Categoria;
+
+class CategoriaController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
-        $banners = Banner::vigentes();
+        $categorias = Categoria::all();
 
-        return view("admin.banners.index", compact('banners'));
+        return view("admin.categorias.index", compact('categorias'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function create()
     {
-        return view("admin.banners.create");
+        //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function store(StoreBannerRequest $request)
-    {
-        $banner = new Banner;
-        $banner = Banner::make($request->validated());
-        $banner->save();
-
-        return redirect()->route('banners.index')->with('success', 'Banner creado exitosamente');
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function show($id)
-    {
-        if(is_numeric($id))
-        {
-            $banner = Banner::detalle($id);
-
-            return view("admin.banners.show", compact('banner'));
-        }
-
-        return redirect()->route('admin.dashboard')->with('danger', 'Error');
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function edit(Banner $banner)
+    public function store(StoreCategoriaRequest $request)
     {
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function update(UpdateBannerRequest $request, Banner $banner)
+    public function show(Categoria $categoria)
     {
         //
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function destroy(Banner $banner)
+    public function edit(Categoria $categoria)
+    {
+        //
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function update(UpdateCategoriaRequest $request, Categoria $categoria)
+    {
+        //
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function destroy(Categoria $categoria)
     {
         //
     }
