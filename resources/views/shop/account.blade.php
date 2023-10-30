@@ -16,7 +16,10 @@
     <!-- Contenido de la página -->
     <div class="main-container">
 
-        <h1>Mi cuenta</h1>
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/shop">Home</a> > Mi cuenta
+        </div>
 
         <div class="flex-col gap1" style="max-width: 700px">
             <div class="accordion">

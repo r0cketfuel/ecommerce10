@@ -12,9 +12,6 @@
     <script defer src="{{config('constants.shop_js')}}eliminaFavorito.js"></script>
 @endsection
 
-@section("inlineCSS")
-@endsection
-
 @section("body")
 
     <!-- Contenido de la página -->
