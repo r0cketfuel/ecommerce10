@@ -44,7 +44,82 @@ class AdminController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function dashboard()
 	{
-        return view("admin.dashboard");
+        $widgets = [
+            [
+                "title" => "Widget 1",
+                "color" => "red",
+                "value" => rand(0,999),
+                "link"  => ["url" => "/admin", "title" => "Link 1"],
+                "icon"  => "<i class='fa-solid fa-user'></i>",
+                "extra" => "",
+            ],
+            [
+                "title" => "Widget 2",
+                "color" => "orange",
+                "value" => rand(0,999),
+                "link"  => ["url" => "/admin", "title" => "Link 2"],
+                "icon"  => "<i class='fa-solid fa-star'></i>",
+                "extra" => "",
+            ],
+            [
+                "title" => "Widget 3",
+                "color" => "blue",
+                "value" => rand(0,999),
+                "link"  => ["url" => "/admin", "title" => "Link 3"],
+                "icon"  => "<i class='fa-solid fa-bell'></i>",
+                "extra" => "",
+            ],
+            [
+                "title" => "Widget 4",
+                "color" => "green",
+                "value" => rand(0,999),
+                "link"  => ["url" => "/admin", "title" => "Link 4"],
+                "icon"  => "<i class='fa-solid fa-bolt'></i>",
+                "extra" => "",
+            ],
+            [
+                "title" => "Widget 5",
+                "color" => "yellow",
+                "value" => rand(0,999),
+                "link"  => ["url" => "/admin", "title" => "Link 5"],
+                "icon"  => "<i class='fa-solid fa-paperclip'></i>",
+                "extra" => "",
+            ],
+            [
+                "title" => "Widget 6",
+                "color" => "blue",
+                "value" => rand(0,999),
+                "link"  => ["url" => "/admin", "title" => "Link 6"],
+                "icon"  => "<i class='fa-solid fa-user'></i>",
+                "extra" => "",
+            ],
+            [
+                "title" => "Widget 7",
+                "color" => "green",
+                "value" => rand(0,999),
+                "link"  => ["url" => "/admin", "title" => "Link 7"],
+                "icon"  => "<i class='fa-solid fa-truck-fast'></i>",
+                "extra" => "",
+            ],
+            [
+                "title" => "Widget 8",
+                "color" => "red",
+                "value" => rand(0,999),
+                "link"  => ["url" => "/admin", "title" => "Link 8"],
+                "icon"  => "<i class='fa-solid fa-bell'></i>",
+                "extra" => "",
+            ],
+            [
+                "title" => "Widget 9",
+                "color" => "orange",
+                "value" => rand(0,999),
+                "link"  => ["url" => "/admin", "title" => "Link 9"],
+                "icon"  => "<i class='fa-solid fa-bolt'></i>",
+                "extra" => "",
+            ]
+        ];
+
+        return view("admin.dashboard", compact("widgets"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function logout(Request $request)
