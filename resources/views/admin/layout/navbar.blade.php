@@ -10,7 +10,8 @@
 		</div>
 		<div class="nav-links">
 			<div class="sidebar-logo">
-				<span class="logo-name">{{ session("infoComercio.nombre") }}</span>
+				<span class="logo-name">
+                    <a href="/admin">{{ session("infoComercio.nombre") }}</a></span>
 				<div class='font-awesome-icon-close'>
 					<i class="fa-solid fa-x"></i>
 				</div>

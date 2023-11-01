@@ -29,13 +29,13 @@ nav .navbar .sub-menu {
 	padding: 					    0;
 }
 
-nav .navbar .logo {
+nav .navbar .sidebar-logo {
 	padding:					    10px 0 5px 10px;
 }
 
-nav .navbar .logo a {
+nav .navbar .sidebar-logo a {
 	color:						    var(--navbar-logo-font-color);
-	font-size: 					    26px;
+	font-size: 					    22px;
 	text-decoration: 			    none;
 }
 
