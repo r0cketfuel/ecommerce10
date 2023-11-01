@@ -9,6 +9,7 @@ use App\Http\Requests\AdminLoginRequest;
 
 use App\Models\Administrador;
 use App\Models\Usuario;
+use App\Models\Articulo;
 
 class AdminController extends Controller
 {
@@ -55,11 +56,11 @@ class AdminController extends Controller
                 "extra" => "",
             ],
             [
-                "title" => "Widget 2",
+                "title" => "Artículos activos",
                 "color" => "orange",
-                "value" => rand(0,999),
-                "link"  => ["url" => "/admin", "title" => "Link 2"],
-                "icon"  => "<i class='fa-solid fa-star'></i>",
+                "value" => Articulo::all()->where("activo", 1)->count(),
+                "link"  => ["url" => "/admin/articulos", "title" => "Listado"],
+                "icon"  => "<i class='fa-solid fa-box'></i>",
                 "extra" => "",
             ],
             [
