@@ -66,43 +66,110 @@
                         </li>
 
                     </ul>
-                </li>                
+                </li>
                 
-                <!-- Menú Ordenes -->
                 <li class='main-menu'>
                     <div>
-                        <a class='main-menu-link' href="#">Ordenes</a>
+                        <a class='main-menu-link' href="#">Menú 2</a>
                         <i class='fa-solid fa-caret-down menu-arrow arrow'></i>
                     </div>
                     <ul class="main-menu-links sub-menu">
-                        <li class='more'><a class='submenu-link' href='/admin/ordenes/listado'>listado</a></li>
+
+                        <li class="more">
+                            <div>
+                                <div class="submenu-link">Artículos</div>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/articulos/">Listado</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="more">
+                            <div>
+                                <div class="submenu-link">Banners</div>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/banners/">Listado</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="more">
+                            <div>
+                                <div class="submenu-link">Categorías</div>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/categorias/">Categorías</a></li>
+                                <li><a href="/admin/subcategorias/">Subcategorías</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="more">
+                            <div>
+                                <div class="submenu-link">Usuarios</div>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/usuarios/">Listado</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
 
-                <!-- Menú Listados -->
                 <li class='main-menu'>
                     <div>
-                        <a class='main-menu-link' href="#">Listados</a>
+                        <a class='main-menu-link' href="#">Menú 3</a>
                         <i class='fa-solid fa-caret-down menu-arrow arrow'></i>
                     </div>
                     <ul class="main-menu-links sub-menu">
-                        <li class='more'><a class='submenu-link' href='/admin/listados/simple'>Listado simple</a></li>
-                        <li class='more'><a class='submenu-link' href='/admin/listados/filtros'>Listado con filtros</a></li>
+
+                        <li class="more">
+                            <div>
+                                <div class="submenu-link">Artículos</div>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/articulos/">Listado</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="more">
+                            <div>
+                                <div class="submenu-link">Banners</div>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/banners/">Listado</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="more">
+                            <div>
+                                <div class="submenu-link">Categorías</div>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/categorias/">Categorías</a></li>
+                                <li><a href="/admin/subcategorias/">Subcategorías</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="more">
+                            <div>
+                                <div class="submenu-link">Usuarios</div>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/usuarios/">Listado</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
 
-                <!-- Menú Clientes -->
-                <li class='main-menu'>
-                    <div>
-                        <a class='main-menu-link' href="#">Usuarios</a>
-                        <i class='fa-solid fa-caret-down menu-arrow arrow'></i>
-                    </div>
-                    <ul class="main-menu-links sub-menu">
-                        <li class='more'><a class='submenu-link' href='/admin/usuarios'>Listado</a></li>
-                    </ul>
-                </li>
-
-                <!-- Menú Logout -->
                 <li class='main-menu'>
                     <div>
                         <a class='main-menu-link' href="/admin/logout">Logout</a>

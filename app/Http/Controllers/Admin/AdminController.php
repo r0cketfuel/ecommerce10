@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AdminLoginRequest;
 
 use App\Models\Administrador;
+use App\Models\Usuario;
 
 class AdminController extends Controller
 {
@@ -46,10 +47,10 @@ class AdminController extends Controller
 	{
         $widgets = [
             [
-                "title" => "Widget 1",
-                "color" => "red",
-                "value" => rand(0,999),
-                "link"  => ["url" => "/admin", "title" => "Link 1"],
+                "title" => "Usuarios",
+                "color" => "green",
+                "value" => Usuario::all()->count(),
+                "link"  => ["url" => "/admin/usuarios", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-user'></i>",
                 "extra" => "",
             ],
