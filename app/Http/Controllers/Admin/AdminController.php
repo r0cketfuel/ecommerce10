@@ -48,17 +48,33 @@ class AdminController extends Controller
 	{
         $widgets = [
             [
-                "title" => "Usuarios",
+                "title" => "Usuarios activos",
                 "color" => "green",
                 "value" => Usuario::all()->count(),
                 "link"  => ["url" => "/admin/usuarios", "title" => "Listado"],
-                "icon"  => "<i class='fa-solid fa-user'></i>",
+                "icon"  => "<i class='fa-solid fa-user-group'></i>",
+                "extra" => "",
+            ],
+            [
+                "title" => "Usuarios pendientes activación",
+                "color" => "yellow",
+                "value" => Usuario::where("estado",0)->count(),
+                "link"  => ["url" => "/admin/usuarios", "title" => "Listado"],
+                "icon"  => "<i class='fa-solid fa-user-plus'></i>",
                 "extra" => "",
             ],
             [
                 "title" => "Artículos activos",
                 "color" => "orange",
                 "value" => Articulo::all()->where("activo", 1)->count(),
+                "link"  => ["url" => "/admin/articulos", "title" => "Listado"],
+                "icon"  => "<i class='fa-solid fa-box'></i>",
+                "extra" => "",
+            ],
+            [
+                "title" => "Artículos pausados",
+                "color" => "orange",
+                "value" => Articulo::all()->where("estado", 0)->count(),
                 "link"  => ["url" => "/admin/articulos", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-box'></i>",
                 "extra" => "",
