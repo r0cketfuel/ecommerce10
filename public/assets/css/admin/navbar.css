@@ -179,6 +179,7 @@ nav .navbar .responsive-nav-icon {
 		display: 				    block;
 		cursor: 				    pointer;
 		padding: 					10px;
+		font-size: 1.5rem;
 		color: 						var(--navbar-sidebar-font-color);
 	}
 
