@@ -3,7 +3,7 @@
         <div class="logo">
             <a href="/admin/dashboard">{{ session("infoComercio.nombre") }}</a>
         </div>
-		<div class="responsive-nav-icon" id="responsive-nav">>
+		<div class="responsive-nav-icon" id="responsive-nav">
 			<div class="font-awesome-icon-bars">
 				<i class="fa-solid fa-bars"></i>
 			</div>
