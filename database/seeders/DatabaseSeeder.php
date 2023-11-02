@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriaSeeder::class);
         $this->call(SubcategoriaSeeder::class);
         $this->call(ArticuloSeeder::class);
+        $this->call(ImagenArticuloSeeder::class);
         $this->call(DetalleArticuloSeeder::class);
         $this->call(TalleSeeder::class);
         $this->call(AtributoArticuloSeeder::class);

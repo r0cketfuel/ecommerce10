@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Articulo extends Model
 {
@@ -25,77 +25,50 @@ class Articulo extends Model
         "subcategoria_id",
         "estado",
         "visualizaciones",
-        "foto_1",
-        "foto_2",
-        "foto_3",
-        "foto_4",
-        "foto_5",
-        "foto_6",
-        "foto_7",
-        "foto_8",
         "activo"
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function atributos()
     {
-        //=============================================================//
-        // Relación artículos[id] con atributos_articulos[articulo_id] //
-        //=============================================================//
         return $this->hasMany(AtributoArticulo::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function categoria()
     {
-        //====================================================//
-        // Relación artículos[categoria_id] -> categorias[id] //
-        //====================================================//
         return($this->belongsTo(Categoria::class));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function subcategoria()
     {
-        //==========================================================//
-        // Relación artículos[subcategoria_id] -> subcategorias[id] //
-        //==========================================================//
         return($this->belongsTo(Subcategoria::class));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-	public static function info(int $id)
-	{
-        //=========================================================//
-        // FUNCION QUE DEVUELVE LA INFORMACION BASICA DEL ARTICULO //
-        //=========================================================//
-        if($id>0)
+    public function imagenes()
+    {
+        return $this->hasMany(ImagenArticulo::class);
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public static function info(int $id)
+    {
+        if($id > 0)
         {
-            //Datos de la tabla
-            $articulo = Articulo::where("id",$id)->where("estado",1)->first();
-            
+            $articulo = Articulo::where("id", $id)->where("estado", 1)->with('imagenes')->first();
+    
             if($articulo)
             {
-                //Agregado de rutas de imágenes según configuracíon y atributo miniaturas
-                for($i=1;$i<=8;$i++)
+                foreach ($articulo->imagenes as $imagen)
                 {
-                    $foto       = "foto_"       . $i;
-                    $miniatura  = "miniatura_"  . $i;
-                    if($articulo->$foto !== NULL)
-                    {
-                        $articulo->$miniatura   = config("constants.product_images") . "/" . $id . "/thumbs/" . $articulo->$foto;
-                        $articulo->$foto        = config("constants.product_images") . "/" . $id . "/"        . $articulo->$foto;
-                    }
-                    else
-                    {
-                        $articulo->$miniatura   = config("constants.product_images") . "/no-image.png";
-                        $articulo->$foto        = config("constants.product_images") . "/no-image.png";                    
-                    }
+                    $imagen->miniatura  = config("constants.product_images") . "/" . $id . "/thumbs/"   . $imagen->ruta;
+                    $imagen->ruta       = config("constants.product_images") . "/" . $id . "/"          . $imagen->ruta;
                 }
-                
-                return($articulo);
+    
+                return $articulo;
             }
         }
-        
-        return(null);
-	}    
+    
+        return null;
+    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	public static function search(array $search)
 	{
@@ -103,7 +76,7 @@ class Articulo extends Model
         // Método que devuelve un listado de artículos //
         //=============================================//
 
-        $query = Articulo::where("estado", 1)->where("activo", True);
+        $query = Articulo::where("estado", 1)->where("activo", True)->with('imagenes');
 
         if(isset($search["query"]))
         {
@@ -130,11 +103,16 @@ class Articulo extends Model
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function incrementaVisualizacion(int $id): int
     {
-        $articulo = self::find($id);
-        $articulo->increment('visualizaciones');
-        $articulo->save();
-
-        return $articulo->visualizaciones;
+        try
+        {
+            $articulo = self::findOrFail($id);
+            $articulo->increment('visualizaciones');
+            return $articulo->visualizaciones;
+        }
+        catch (ModelNotFoundException $e)
+        {
+            throw new \Exception(trans('messages.articulo_not_found'));
+        }
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function eliminaArticulo(int $id): int

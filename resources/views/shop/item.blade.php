@@ -37,36 +37,59 @@
 
         <!-- Grid -->
         <div class="grid grid-cols-12 grid-align-start">
+
             <!-- Mosaicos -->
             <div class="col-span-7 col-span-900p-12">
                 <div class="product-tile">
                     <div class="tiles-container">
-                        <div class="tile active">
-                            <img src="{{ $item->miniatura_1 }}" alt="miniatura_1">
-                        </div>
-                        <div class="tile main">
-                            <a href="{{ $item->foto_1 }}">
-                                <img id="image" src="{{ $item->miniatura_1 }}" alt="vista_previa">
-                            </a>
-                            <button class="btn btn-next">&gt;</button>
-                            <button class="btn btn-prev">&lt;</button>
-                        </div>
-                        <div class="tile">
-                            <img src="{{ $item->miniatura_2 }}" alt="miniatura_2">
-                        </div>
-                        <div class="tile">
-                            <img src="{{ $item->miniatura_3 }}" alt="miniatura_3">
-                        </div>
-                        <div class="tile">
-                            <img src="{{ $item->miniatura_4 }}" alt="miniatura_4">
-                        </div>
-                        <div class="tile">
-                            <img src="{{ $item->miniatura_5 }}" alt="miniatura_5">
-                        </div>
+                        @if ($item->imagenes->isNotEmpty())
+                            @foreach ($item->imagenes as $imagen)
+                                @if ($loop->first)
+                                    <div class="tile active">
+                                        <img src="{{ $imagen->miniatura }}" alt="{{ $imagen->descripcion }}">
+                                    </div>
+                                    <div class="tile main">
+                                        <a href="{{ $item->imagenes[0]->ruta }}">
+                                            <img id="image" src="{{ $item->imagenes[0]->miniatura }}" alt="vista_previa">
+                                        </a>
+                                        <button class="btn btn-next">&gt;</button>
+                                        <button class="btn btn-prev">&lt;</button>
+                                    </div>
+                                @else
+                                    <div class="tile">
+                                        <img src="{{ $imagen->miniatura }}" alt="{{ $imagen->descripcion }}">
+                                    </div>
+                                @endif
+                            @endforeach
+                        @else
+                            <!-- En caso de que no haya imágenes, puedes mostrar una imagen de reemplazo o un mensaje -->
+                            <div class="tile active">
+                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
+                            </div>
+                            <div class="tile main">
+                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
+                                <button class="btn btn-next">&gt;</button>
+                                <button class="btn btn-prev">&lt;</button>
+                            </div>
+                            <div class="tile">
+                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
+                            </div>
+                            <div class="tile">
+                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
+                            </div>
+                            <div class="tile">
+                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
+                            </div>
+                            <div class="tile">
+                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
             <!-- /Mosaicos -->
+
+
 
             <!-- Panel info -->
             <div class="col-span-5 col-span-900p-12">

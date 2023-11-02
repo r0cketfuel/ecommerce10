@@ -24,14 +24,6 @@ return new class extends Migration
             $table->foreign('subcategoria_id')->references('id')->on('subcategorias')->onDelete('SET NULL');
             $table->unsignedTinyInteger('estado')->default(1);
             $table->unsignedMediumInteger('visualizaciones')->default(0);
-            $table->string('foto_1',50)->nullable()->default(NULL);
-            $table->string('foto_2',50)->nullable()->default(NULL);
-            $table->string('foto_3',50)->nullable()->default(NULL);
-            $table->string('foto_4',50)->nullable()->default(NULL);
-            $table->string('foto_5',50)->nullable()->default(NULL);
-            $table->string('foto_6',50)->nullable()->default(NULL);
-            $table->string('foto_7',50)->nullable()->default(NULL);
-            $table->string('foto_8',50)->nullable()->default(NULL);
             $table->boolean('activo')->default(true);
             $table->comment('Tabla con la información principal de los artículos del sistema');
         });
