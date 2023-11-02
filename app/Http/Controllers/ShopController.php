@@ -75,8 +75,6 @@ class ShopController extends Controller
         // Listado de artículos
         $items = Articulo::search($busqueda["params"])->appends(request()->query());
 
-        //dd($items);
-
         return view("shop.index",compact("busqueda","banners","items"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

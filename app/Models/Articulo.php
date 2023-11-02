@@ -97,8 +97,19 @@ class Articulo extends Model
         if(isset($search["sort"]))
             if(isset($search["order"]))
                 $query->orderBy($search["sort"], $search["order"]);
-            
-        return($query->paginate(config("constants.pagination")));
+        
+        $items = $query->paginate(config("constants.pagination"));
+
+        foreach ($items as $item) {
+            if ($item->imagenes->isNotEmpty()) {
+                foreach ($item->imagenes as $imagen) {
+                    $imagen->miniatura  = asset(config("constants.product_images") . "/" . $item->id . "/thumbs/"   . $imagen->ruta);
+                    $imagen->ruta       = asset(config("constants.product_images") . "/" . $item->id . "/"          . $imagen->ruta);
+                }
+            }
+        }
+    
+        return $items;
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function incrementaVisualizacion(int $id): int

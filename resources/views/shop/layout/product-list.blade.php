@@ -1,16 +1,15 @@
 <ul class="product-list">
     @foreach ($items as $item)
     <li class="product-card">
-        <div class="product-card-image">
-            @if ($item->imagenes->isNotEmpty())
-                @foreach ($item->imagenes as $imagen)
-                    <img loading="lazy" src="{{ $imagen->miniatura }}" alt="imagen">
-                    @break
-                @endforeach
-            @else
-                <img loading="lazy" src="{{ asset('images/content/no-image.png') }}" alt="imagen">
-            @endif
-        </div>
+    <div class="product-card-image">
+    @if ($item->imagenes->isNotEmpty())
+        @foreach ($item->imagenes as $imagen)
+            <img loading="lazy" src="{{ $imagen->ruta }}" alt="{{ $imagen->nombre }}">
+        @endforeach
+    @else
+        <img loading="lazy" src="{{ asset('images/content/no-image.png') }}" alt="imagen">
+    @endif
+</div>
         <div class="product-card-extra">
             <ul>
                 @auth
