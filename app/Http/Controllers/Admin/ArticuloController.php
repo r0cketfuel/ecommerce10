@@ -17,7 +17,7 @@ class ArticuloController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
-        $articulos = Articulo::where("activo", True);
+        $articulos = Articulo::where("activo", True)->get();
 
         return view("admin.articulos.index", compact('articulos'));
     }
@@ -26,8 +26,7 @@ class ArticuloController extends Controller
     {
         $categorias     = Categoria::all();
         $subcategorias  = Subcategoria::all();
-
-        $talles = Talle::all();
+        $talles         = Talle::all();
 
         return view("admin.articulos.create", compact('categorias', 'subcategorias', 'talles'));
     }
