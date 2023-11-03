@@ -34,7 +34,7 @@
                                 <img loading="lazy" src="{{ asset('images/content/no-image.png') }}" alt="imagen">
                             @endif
                         </div>
-                        <div>{{ $item["precio"] }}</div>
+                        <div>{{ _money($item["precio"]) }}</div>
                         <div><button class="btn-danger" value="{{ $item['articulo_id'] }}"><span><i class="fa-solid fa-trash"></i></span>Eliminar</button></div>
                     </li>
                 @endforeach
