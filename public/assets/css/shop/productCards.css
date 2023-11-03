@@ -109,6 +109,10 @@
     cursor:             pointer;
 }
 
+.product-card .product-card-extra li:nth-child(1):hover {
+    color:             red;
+}
+
 .product-card:hover .product-card-cart {
     opacity:            1;
     bottom:             0;
