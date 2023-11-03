@@ -27,7 +27,7 @@ class UserController extends Controller
         if($request->filled("email") && $request->filled("telefono_celular"))
         {
             // Buscar un modelo que coincida con la información ingresada
-            $usuario = Usuario::all()->where("email",$request->get("email"))->where("telefono_celular",$request->get("telefono_celular"))->first();
+            $usuario = Usuario::where("email",$request->get("email"))->where("telefono_celular",$request->get("telefono_celular"))->first();
 
             if($usuario)
             {
