@@ -146,7 +146,7 @@
                         </div>
 
                         <div style="flex-grow: 1"></div>
-                    <button id="button_addToCart" value="{{ $item->id }}" class="btn-primary"><span><i class="fa-solid fa-cart-plus"></i></span>{{ __('general.addtocart') }}</button>
+                    <button id="button_addToCart" value="{{ $item->id }}" class="btn-primary"><span><i class="fa-solid fa-cart-plus"></i></span>{{ __('buttons.addToCart') }}</button>
                 </div>
             </div>
             <!-- /Panel info -->
