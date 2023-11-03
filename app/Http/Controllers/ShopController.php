@@ -181,15 +181,12 @@ class ShopController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function favoritos()
 	{
-        $items = session("shop.usuario.favoritos");
-        for($i=0;$i<count($items);++$i)
-        {
-            $info = Articulo::info(session("shop.usuario.favoritos.$i.articulo_id"))->toArray();
+        // Array de items en sesión
+        $favoritos  = session("shop.usuario.favoritos");
+        $items      = array();
 
-            $items[$i]["miniatura_1"]   = $info["miniatura_1"];
-            $items[$i]["descripcion"]   = $info["descripcion"];
-            $items[$i]["precio"]        = _money($info["precio"]);
-        }
+        for($i=0;$i<count($favoritos);++$i)
+            array_push($items, Articulo::info($favoritos[$i]["articulo_id"]));
 
         return view("shop.favoritos", compact("items"));
 	}

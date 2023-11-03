@@ -28,7 +28,7 @@
             // Método que carga en sesión los items agregados a favoritos //
             //============================================================//
 
-            session()->put("shop.usuario.favoritos", Favorito::all()->where("usuario_id", $usuario_id)->toArray());
+            session()->put("shop.usuario.favoritos", Favorito::find("usuario_id", $usuario_id)->get()->toArray());
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function addItem(int $usuario_id, int $articulo_id): array
