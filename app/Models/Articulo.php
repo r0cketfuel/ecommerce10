@@ -49,21 +49,31 @@ class Articulo extends Model
         return $this->hasMany(ImagenArticulo::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public static function rutaImagenes($items)
+    {
+        foreach ($items as $item) 
+        {
+            if($item->imagenes->isNotEmpty())
+            {
+                foreach ($item->imagenes as $imagen)
+                {
+                    $imagen->miniatura  = asset(config("constants.product_images") . "/" . $item->id . "/thumbs/"   . $imagen->ruta);
+                    $imagen->ruta       = asset(config("constants.product_images") . "/" . $item->id . "/"          . $imagen->ruta);
+                }
+            }
+        }
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function info(int $id)
     {
         if($id > 0)
         {
-            $articulo = Articulo::where("id", $id)->where("estado", 1)->with('imagenes')->first();
+            $articulo = Articulo::where("id", $id)->with('imagenes')->first();
     
             if($articulo)
             {
-                foreach ($articulo->imagenes as $imagen)
-                {
-                    $imagen->miniatura  = config("constants.product_images") . "/" . $id . "/thumbs/"   . $imagen->ruta;
-                    $imagen->ruta       = config("constants.product_images") . "/" . $id . "/"          . $imagen->ruta;
-                }
-    
-                return $articulo;
+                self::rutaImagenes([$articulo]);
+                return($articulo);
             }
         }
     
@@ -100,14 +110,7 @@ class Articulo extends Model
         
         $items = $query->paginate(config("constants.pagination"));
 
-        foreach ($items as $item) {
-            if ($item->imagenes->isNotEmpty()) {
-                foreach ($item->imagenes as $imagen) {
-                    $imagen->miniatura  = asset(config("constants.product_images") . "/" . $item->id . "/thumbs/"   . $imagen->ruta);
-                    $imagen->ruta       = asset(config("constants.product_images") . "/" . $item->id . "/"          . $imagen->ruta);
-                }
-            }
-        }
+        self::rutaImagenes($items);
     
         return $items;
 	}
