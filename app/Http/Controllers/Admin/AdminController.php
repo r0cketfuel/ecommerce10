@@ -66,7 +66,7 @@ class AdminController extends Controller
             [
                 "title" => "Artículos activos",
                 "color" => "orange",
-                "value" => Articulo::all()->where("activo", 1)->count(),
+                "value" => Articulo::all()->where("estado", 1)->count(),
                 "link"  => ["url" => "/admin/articulos", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-box'></i>",
                 "extra" => "",

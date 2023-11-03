@@ -10,12 +10,6 @@
     <script defer src="{{ config('constants.framework_js') }}counter.js"></script>
 @endsection
 
-<style>
-.counter {
-  transition: all 1.5s ease-in-out; /* Ajusta la duración y la función de temporización según tus preferencias */
-}
-</style>
-
 @section("body")
     <div class="main-container">
 
