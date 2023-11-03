@@ -58,7 +58,7 @@
 
             if($favorito->save())
             {
-                session()->push("shop.usuario.favoritos", $favorito->all()->where("usuario_id", $usuario_id)->where("articulo_id", $articulo_id)->first());
+                session()->push("shop.usuario.favoritos", $favorito->where("usuario_id", $usuario_id)->where("articulo_id", $articulo_id)->first());
 
                 $response = array(
                     "success"       => true,
@@ -99,7 +99,8 @@
                         $response = array(
                             "success"       => true,
                             "data"          => array(
-                                "message"   => "El item se eliminó correctamente"
+                                "message"   => "El item se eliminó correctamente",
+                                "itemQty"   => $this->totalItems()
                             )
                         );
     

@@ -49,24 +49,30 @@
             initDeleteButtons();
         });
 
-        function initDeleteButtons() {
+        function initDeleteButtons()
+        {
             const buttons = document.querySelectorAll(".btn-danger");
             buttons.forEach(button => {
                 button.addEventListener("click", () => removeFavorite(button.value));
             });
         }
 
-        function removeFavorite(id) {
-            const url = "/shop/ajax/eliminaFavorito";
-            const parameters = "articulo_id=" + id;
-            const promise = ajax(url, parameters);
+        function removeFavorite(id)
+        {
+            const url           = "/shop/ajax/eliminaFavorito";
+            const parameters    = "articulo_id=" + id;
+            const promise       = ajax(url, parameters);
 
-            promise.then(() => {
+            promise.then((data) => {
+
+                const icon = document.getElementById("heart");
+                icon.innerHTML = data["data"]["itemQty"];
+                
                 // Encuentra el elemento li padre de la tarjeta
                 const card = document.querySelector(`.btn-danger[value="${id}"]`).closest("li");
 
-                if (card) {
-                    // Aplica la clase para la animación de desaparición
+                if(card)
+                {
                     card.classList.add("fade-out");
 
                     // Espera a que termine la transición de opacidad antes de eliminar la tarjeta
