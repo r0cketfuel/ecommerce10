@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Marquesina extends Model
 {
-    public $timestamps  = false;
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -24,7 +24,7 @@ class Marquesina extends Model
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function vigentes()
     {
-        return(self::all()->where("valido_desde","<=",date("Y-m-d H:i:s"))->where("valido_hasta",">=",date("Y-m-d H:i:s")));
+        return(self::where('valido_desde', '<=', now())->where('valido_hasta', '>=', now())->get());
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

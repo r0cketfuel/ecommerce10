@@ -32,14 +32,15 @@ class Banner extends Model
         // Método que retorna una colección con los banners promocionales vigentes a la fecha //
         //====================================================================================//
 
-        $banners = Banner::where("valido_desde", "<=", date("Y-m-d H:i:s"))->where("valido_hasta", ">=", date("Y-m-d H:i:s"))->where("activo", True)->get();
-    
+        $banners = Banner::where("valido_desde", "<=", now())->where("valido_hasta", ">=", now())->where("activo", True)->get();
+
         // Agregar rutas de imágenes según configuración
-        foreach ($banners as $banner) {
+        foreach ($banners as $banner)
+        {
             $banner->imagen = config("constants.banners") . '/' . $banner->imagen;
         }
     
-        return $banners;
+        return($banners);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function detalle($id)
