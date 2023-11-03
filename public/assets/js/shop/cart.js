@@ -177,7 +177,9 @@ function modalAdd(data)
 {
     let modal           = document.getElementById("modal-add");
     let itemImage       = document.getElementById("image");
-    itemImage.src       = data["info"]["miniatura_1"];
+    
+    if(data["info"]["imagenes"].length>0)
+        itemImage.src = data["info"]["imagenes"][0]["miniatura"];
 
     addToCartButton.value = data["info"]["id"];
     modal.style.display = "block";
