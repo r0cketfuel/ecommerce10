@@ -46,16 +46,11 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            initDeleteButtons();
-        });
-
-        function initDeleteButtons()
-        {
             const buttons = document.querySelectorAll(".btn-danger");
             buttons.forEach(button => {
                 button.addEventListener("click", () => removeFavorite(button.value));
             });
-        }
+        });
 
         function removeFavorite(id)
         {
