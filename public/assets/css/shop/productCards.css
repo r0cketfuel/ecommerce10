@@ -312,6 +312,11 @@ ul.favourites-list {
     width:                          150px;
 }
 
+.fade-out {
+    opacity:                        0;
+    transition:                     opacity 0.5s;
+}
+
 /*===============*/
 /* MEDIA QUERIES */
 /*===============*/

@@ -9,7 +9,6 @@
 
 @section("js")
     <script defer src="{{config('constants.shop_js')}}ajax.js"></script>
-    <script defer src="{{config('constants.shop_js')}}eliminaFavorito.js"></script>
 @endsection
 
 @section("body")
@@ -35,7 +34,7 @@
                             @endif
                         </div>
                         <div>{{ _money($item["precio"]) }}</div>
-                        <div><button class="btn-danger" value="{{ $item['articulo_id'] }}"><span><i class="fa-solid fa-trash"></i></span>{{ __('buttons.delete') }}</button></div>
+                        <div><button class="btn-danger" value="{{ $item->id }}"><span><i class="fa-solid fa-trash"></i></span>{{ __('buttons.delete') }}</button></div>
                     </li>
                 @endforeach
             </ul>
@@ -44,5 +43,41 @@
         @endif
 
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            initDeleteButtons();
+        });
+
+        function initDeleteButtons() {
+            const buttons = document.querySelectorAll(".btn-danger");
+            buttons.forEach(button => {
+                button.addEventListener("click", () => removeFavorite(button.value));
+            });
+        }
+
+        function removeFavorite(id) {
+            const url = "/shop/ajax/eliminaFavorito";
+            const parameters = "articulo_id=" + id;
+            const promise = ajax(url, parameters);
+
+            promise.then(() => {
+                // Encuentra el elemento li padre de la tarjeta
+                const card = document.querySelector(`.btn-danger[value="${id}"]`).closest("li");
+
+                if (card) {
+                    // Aplica la clase para la animación de desaparición
+                    card.classList.add("fade-out");
+
+                    // Espera a que termine la transición de opacidad antes de eliminar la tarjeta
+                    card.addEventListener("transitionend", () => {
+                        card.remove();
+                    });
+                }
+            }).catch(error => {
+                console.error("Error:", error);
+            });
+        }
+    </script>
 
 @endsection
