@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('articulo_id')->references('id')->on('articulos');
             $table->string('ruta', 100);
             $table->string('descripcion', 255)->nullable();
+            $table->comment('Tabla con las imágenes de cada artículo del sistema');
         });
     }
 
