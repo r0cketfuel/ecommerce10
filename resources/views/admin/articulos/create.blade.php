@@ -208,12 +208,40 @@
             modalAgregarSubcategoria.style.display = "block";
         }
 
+        async function listadoCategorias()
+        {
+            const url = "/api/categorias";
+
+            const response  = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            return response;
+        }
+
+        async function listadoSubcategorias()
+        {
+            const url = "/api/subcategorias";
+
+            const response  = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            return response;
+        }
+
         async function agregarCategoriaClick()
         {
             try {
-                const inputName = document.getElementById("modal_nombre_categoria");
-                const inputDescripcion = document.getElementById("modal_descripcion_categoria");
-                const buttonLabel = botonAgregarCategoria.innerHTML;
+                const inputName         = document.getElementById("modal_nombre_categoria");
+                const inputDescripcion  = document.getElementById("modal_descripcion_categoria");
+                const buttonLabel       = botonAgregarCategoria.innerHTML;
 
                 botonAgregarCategoria.disabled = true;
 
@@ -231,8 +259,11 @@
                 body: JSON.stringify(parametros),
                 });
 
-                if (response.status === 200)
+                if(response.status === 201)
                 {
+                    const nuevaCategoria = await response.json();
+                    nuevaCategoriaId = nuevaCategoria.id;
+
                     // Reset boton agregar
                     botonAgregarCategoria.disabled = false;
 
@@ -249,17 +280,18 @@
                     selectSubcategorias.innerHTML = '<option value="" selected>Subcategoría</option>';
 
                     // Recarga categorías
-                    const data = await response.json();
-                    data.forEach((categoria) => {
-                        addOption(selectCategorias, categoria.id, categoria.nombre, false, false);
+                    const responseCategorias    = await listadoCategorias();
+                    const categorias            = await responseCategorias.json();
+                    
+                    categorias.forEach((categoria) => {
+                        const isSelected = categoria.id === nuevaCategoriaId;
+                        addOption(selectCategorias, categoria.id, categoria.nombre, false, isSelected);
                     });
-
-                    // Selecciona la nueva categoría
 
                     // Habilita select categorías y cierra el modal
                     selectCategorias.disabled = false;
 
-                    console.log("Categoría creada exitosamente");
+                    modalAgregarCategoria.style.display = 'none';
                 }
             }
             catch (error)
