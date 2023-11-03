@@ -40,7 +40,7 @@
             $favorito = new Favorito;
 
             // Verificar si el item ya se encontraba agregado a favoritos
-            if(Favorito::all()->where("usuario_id", $usuario_id)->where("articulo_id", $articulo_id)->count())
+            if(Favorito::where("usuario_id", $usuario_id)->where("articulo_id", $articulo_id)->count())
             {
                 $response   = array(
                     "success"       => false,
