@@ -4,7 +4,7 @@
 
 		<div class="newsletter-suscription-bar" id="newsletter-suscription-bar">
 			<input 	form="form-suscribe" type="email" id="suscribe" name="email" placeholder="{{ __('general.email') }}">
-			<button form="form-suscribe" class="newsletter-btn">{{ __('general.suscribe') }}</button>
+			<button form="form-suscribe" class="newsletter-btn">{{ __('buttons.suscribe') }}</button>
 		</div>
         <div id="newsletter-suscription-msg" style="display: none;">
             <p></p>

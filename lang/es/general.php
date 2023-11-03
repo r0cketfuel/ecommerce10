@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'login'                 => 'Ingresar',
     'logout'                => 'Salir',
 
@@ -10,8 +9,6 @@ return [
 
     'search'                => 'Buscar',
     'showing'               => 'Mostrando',
-
-    'suscribe'              => 'Suscribirse',
 
     'about'                 => 'Acerca de',
     'contact'               => 'Contacto',
@@ -23,7 +20,6 @@ return [
 
     'votes'                 => 'votos',
 
-    'addtocart'             => 'Agregar al carrito',
     'additemtocart'         => 'Agregar producto al carrito',
     
     'sort'                  => 'Ordenar',

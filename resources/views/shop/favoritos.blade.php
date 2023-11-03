@@ -35,7 +35,7 @@
                             @endif
                         </div>
                         <div>{{ _money($item["precio"]) }}</div>
-                        <div><button class="btn-danger" value="{{ $item['articulo_id'] }}"><span><i class="fa-solid fa-trash"></i></span>Eliminar</button></div>
+                        <div><button class="btn-danger" value="{{ $item['articulo_id'] }}"><span><i class="fa-solid fa-trash"></i></span>{{ __('buttons.delete') }}</button></div>
                     </li>
                 @endforeach
             </ul>

@@ -32,7 +32,7 @@
             <div class="precio">{{ _money($item->precio) }}</div>
         </div>
         <div class="product-card-cart">
-            <button class="btn-primary btn-rounded" value="{{ $item->id }}"><span><i class="fa-solid fa-cart-plus"></i></span>{{ __('general.addtocart') }}</button>
+            <button class="btn-primary btn-rounded" value="{{ $item->id }}"><span><i class="fa-solid fa-cart-plus"></i></span>{{ __('buttons.addToCart') }}</button>
         </div>
     </li>
     @endforeach
