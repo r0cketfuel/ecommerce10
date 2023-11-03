@@ -29,7 +29,6 @@
             }
             catch (MPApiException $e)
             {
-                dd("Exception", $e);
                 return null;
             }
         }
@@ -56,7 +55,6 @@
             }
             catch (MPApiException $e)
             {
-                dd("Exception", $e);
                 return null;
             }
         }
