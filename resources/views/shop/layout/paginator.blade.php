@@ -1,6 +1,5 @@
-<!-- Paginator -->
-<div class="paginator-area">
-    @if($paginator->hasPages())
+@if($paginator->hasPages())
+    <div class="paginator-area">
         <div class="paginator-links">
             @if($paginator->onFirstPage())
                 <div class="paginator-page">{!! __('pagination.previous') !!}</div>
@@ -22,5 +21,5 @@
                 <div class="paginator-page">{!! __('pagination.next') !!}</div>
             @endif
         </div>
-    @endif
-</div>
+    </div>
+@endif
