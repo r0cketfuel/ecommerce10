@@ -20,7 +20,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => 1,
             "compra_max"    => 5,
             "stock"         => 100,
-            "foto"          => NULL
+            "imagen_id"     => NULL
         ]);
         
         AtributoArticulo::create([
@@ -30,7 +30,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => NULL,
             "compra_max"    => NULL,
             "stock"         => 50,
-            "foto"          => NULL
+            "imagen_id"     => 6
         ]);
         
         AtributoArticulo::create([
@@ -40,7 +40,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => NULL,
             "compra_max"    => NULL,
             "stock"         => 33,
-            "foto"          => NULL
+            "imagen_id"     => 7
         ]);
         
         AtributoArticulo::create([
@@ -50,7 +50,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => NULL,
             "compra_max"    => NULL,
             "stock"         => 101,
-            "foto"          => NULL
+            "imagen_id"     => NULL
         ]);
         
         AtributoArticulo::create([
@@ -60,7 +60,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => NULL,
             "compra_max"    => NULL,
             "stock"         => 66,
-            "foto"          => NULL
+            "imagen_id"     => NULL
         ]);
         
         AtributoArticulo::create([
@@ -70,7 +70,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => NULL,
             "compra_max"    => NULL,
             "stock"         => 30,
-            "foto"          => NULL
+            "imagen_id"     => NULL
         ]);
         
         AtributoArticulo::create([
@@ -80,7 +80,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => NULL,
             "compra_max"    => NULL,
             "stock"         => 44,
-            "foto"          => NULL
+            "imagen_id"     => NULL
         ]);
         
         AtributoArticulo::create([
@@ -90,7 +90,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => NULL,
             "compra_max"    => NULL,
             "stock"         => 51,
-            "foto"          => NULL
+            "imagen_id"     => NULL
         ]);
         
         AtributoArticulo::create([
@@ -100,7 +100,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => NULL,
             "compra_max"    => NULL,
             "stock"         => 23,
-            "foto"          => NULL
+            "imagen_id"     => NULL
         ]);
         
         AtributoArticulo::create([
@@ -110,7 +110,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => NULL,
             "compra_max"    => NULL,
             "stock"         => 88,
-            "foto"          => NULL
+            "imagen_id"     => NULL
         ]);
         
         AtributoArticulo::create([
@@ -120,7 +120,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => 1,
             "compra_max"    => 2,
             "stock"         => 15,
-            "foto"          => NULL
+            "imagen_id"     => NULL
         ]);
         
         AtributoArticulo::create([
@@ -130,7 +130,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => 1,
             "compra_max"    => 2,
             "stock"         => 14,
-            "foto"          => NULL
+            "imagen_id"     => NULL
         ]);
         
         AtributoArticulo::create([
@@ -140,7 +140,7 @@ class AtributoArticuloSeeder extends Seeder
             "compra_min"    => 1,
             "compra_max"    => 3,
             "stock"         => 11,
-            "foto"          => NULL
+            "imagen_id"     => NULL
         ]);
     }
 }
