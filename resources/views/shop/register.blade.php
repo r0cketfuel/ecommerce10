@@ -75,10 +75,10 @@
 
                         <label>
                             Género
-                            <select required form="form" name="genero_id" {{ ($errors->first("genero_id") ? " class=form-error" : "") }}>
+                            <select required form="form" name="genero_id" {{ $errors->first("genero_id") ? "class=form-error" : "" }}>
                                 <option value="" selected disabled>Seleccione</option>
                                 @foreach ($generos as $genero)
-                                    <option value="{{ $genero->id }}" @if (old("genero_id") == $genero->id) selected @endif> {{ $genero->genero }}</option>
+                                    <option value="{{ $genero->id }}" @selected(old('genero_id') == $genero->id)>{{ $genero->genero }}</option>
                                 @endforeach
                             </select>
                             {!! $errors->first("genero_id", "<p class='field-validation-msg'>:message</p>") !!}
@@ -87,10 +87,10 @@
 
                     <label>
                         Tipo de documento
-                        <select required form="form" name="tipo_documento_id" {{ ($errors->first("tipo_documento_id") ? " class=form-error" : "") }}>
+                        <select required form="form" name="tipo_documento_id" {{ $errors->first("tipo_documento_id") ? "class=form-error" : "" }}>
                             <option value="" selected disabled>Seleccione</option>
                             @foreach ($tiposDocumentos as $tipoDocumento)
-                                <option value="{{  $tipoDocumento->id }}" @if (old("tipo_documento_id") == $tipoDocumento->id) selected @endif> {{ $tipoDocumento->tipo }}</option>
+                                <option value="{{ $tipoDocumento->id }}" @selected(old('tipo_documento_id') == $tipoDocumento->id)>{{ $tipoDocumento->tipo }}</option>
                             @endforeach
                         </select>
                         {!! $errors->first("tipo_documento_id", "<p class='field-validation-msg'>:message</p>") !!}
