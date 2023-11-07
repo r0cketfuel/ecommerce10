@@ -73,8 +73,8 @@ class UserController extends Controller
     
             foreach($usuario as $key => $value)
                 session()->put("shop.usuario.datos.$key", $value);
-    
-            return redirect()->intended("shop");
+
+            return redirect()->back();
         }
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
