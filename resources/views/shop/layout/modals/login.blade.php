@@ -1,6 +1,8 @@
 
 <div class="modal" id="modal-login">
 
+    <span class="modalClose" onclick="this.parentElement.parentElement.parentElement.style.display='none'">X</span>
+    
     <div class="modal-login-panel">
         <div class="left-panel">
             <h1>Login</h1>
