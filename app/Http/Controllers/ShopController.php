@@ -8,8 +8,7 @@ use App\Services\ShoppingCartService;
 use App\Services\Barcode128;
 use App\Services\MercadoPago;
 
-
-
+use App\Models\Usuario;
 use App\Models\Articulo;
 use App\Models\Banner;
 use App\Models\Categoria;
@@ -240,14 +239,25 @@ class ShopController extends Controller
         
         $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
         $estado         = $mercadoPago->infoPago($id);
+
+        dd($estado);
         
         $image = null;
         
         return view("shop.infoPago", compact("estado", "image"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function account()
+    public function account(Request $request)
     {
+        if($request->isMethod("post"))
+        {
+            $user = Usuario::find(Auth::id());
+            $user->fill($request->all());
+            $user->save();
+
+            return redirect()->route('user.account')->with('success', 'Perfil actualizado correctamente');
+        }
+
         $generos            = Genero::all();
         $tiposDocumentos    = TipoDocumento::all();
 
@@ -268,5 +278,13 @@ class ShopController extends Controller
         return redirect("/shop");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function tests()
+    {
+        $articulo = Articulo::info(2);
 
+        dd($articulo->imagenes[0]);
+        
+        return view("shop.tests", compact("articulo"));
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

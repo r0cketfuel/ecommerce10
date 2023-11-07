@@ -4,6 +4,7 @@
 
 @section("css")
     <link rel="stylesheet"	href="{{  config('constants.shop_css') }}breadcrumb.css">
+    <link rel="stylesheet"	href="{{  config('constants.framework_css') }}alert.css">
     <link rel="stylesheet"	href="{{  config('constants.framework_css') }}accordion.css">
 @endsection
 
@@ -12,6 +13,29 @@
 @endsection
 
 @section("body")
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert danger">
+                <div>{{$error}}</div>
+                <div class="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
+            </div>
+        @endforeach
+    @endif
+
+    @if (session("success"))
+        <div class="alert success">
+            <div>{{session("success")}}</div>
+            <div class="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
+        </div>
+    @endif
+
+    @if (session("error"))
+        <div class="alert danger">
+            <div>{{session("error")}}</div>
+            <div class="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
+        </div>
+    @endif
 
     <!-- Contenido de la página -->
     <div class="main-container">

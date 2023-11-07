@@ -40,6 +40,8 @@ Route::prefix('shop')->controller(ShopController::class)->group(function () {
     Route::get('infopago/{id}',     	'infoPago');
     Route::get('logout',				'logout');
 
+    Route::get('tests',				    'tests');
+
     // Rutas que requieren autenticación
     Route::middleware(['extend.auth'])->group(function () {
         Route::get('favoritos',        	'favoritos');
@@ -47,7 +49,9 @@ Route::prefix('shop')->controller(ShopController::class)->group(function () {
         Route::post('checkout',        	'checkout');
         Route::get('payment',          	'payment');
         Route::get('success',          	'success');
-        Route::get('account',          	'account');
+
+        Route::get('account',          	'account')->name('user.account');
+        Route::post('account',          'account');
     });
 });
 
