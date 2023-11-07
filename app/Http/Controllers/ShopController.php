@@ -261,7 +261,7 @@ class ShopController extends Controller
             foreach($usuario as $key => $value)
                 session()->put("shop.usuario.datos.$key", $value);
 
-            return redirect()->route('user.account')->with('success', 'Perfil actualizado correctamente');
+            return redirect()->route('user.account')->with('success', trans('messages.profileUpdateSuccess'));
         }
 
         $generos            = Genero::all();
