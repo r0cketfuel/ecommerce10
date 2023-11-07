@@ -25,7 +25,7 @@
         @yield("inlineCSS")
 	</head>
 	<body id="top">
-        @include("shop.layout.modals.modalLogin")
+        @include("shop.layout.modals.login")
         @include("shop.layout.headers")
         @include("shop.layout.backToTop")
         @include("shop.layout.whatsappBubble")
