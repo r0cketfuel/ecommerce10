@@ -252,8 +252,14 @@ class ShopController extends Controller
         if($request->isMethod("post"))
         {
             $user = Usuario::find(Auth::id());
-            $user->fill($request->all());
+            $user->fill($request->except(['apellidos', 'nombres', 'tipo_documento_id', 'documento_nro', 'email']));
             $user->save();
+
+            // Carga los datos del usuario en sesión
+            $usuario = Usuario::find(Auth::id())->toArray();
+    
+            foreach($usuario as $key => $value)
+                session()->put("shop.usuario.datos.$key", $value);
 
             return redirect()->route('user.account')->with('success', 'Perfil actualizado correctamente');
         }
