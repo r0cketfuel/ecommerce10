@@ -1,10 +1,13 @@
 <div class="modal" id="modal-add">
-    <div class="modal-content" style="padding: 10px;">
-        <div class="modal-header" style="color: black;">
-            <h1>{{ __('general.additemtocart') }}</h1><span class="modalClose" onclick="this.parentElement.parentElement.parentElement.style.display='none'">X</span>
+    <div class="modal-container" style="width: 600px">
+        <div class="modal-header">
+            <div class="modal-title">
+                <h1>{{ __('general.additemtocart') }}</h1>
+            </div>
+            <span class="modal-close" onclick="this.parentElement.parentElement.parentElement.style.display='none'">X</span>
         </div>
-        <div class="modal-body">
-            <div class="flex">
+
+        <div class="modal-addItem" style="padding-top: 40px;">
                 <img id="image" src="{{ config('constants.product_images') . '/no-image.png' }}" alt="imagen" style="height: 25%; width: 25%;">
                 <div class="grid" style="flex: 1 1; grid-auto-rows: 1fr">
 
@@ -60,9 +63,9 @@
                         <div id="subtotal">-</div>
                     </div>
 
+                    <button id="button_addToCart" class="btn-primary"><span><i class="fa-solid fa-cart-plus"></i></span>{{ __('buttons.addToCart') }}</button>
                 </div>
-            </div>
-            <button id="button_addToCart" class="btn-primary"><span><i class="fa-solid fa-cart-plus"></i></span>{{ __('buttons.addToCart') }}</button>
+
         </div>
     </div>
 </div>

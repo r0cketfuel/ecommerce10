@@ -34,8 +34,13 @@
             </div>
         @endif
 
-        <h1>Editar de artículos</h1>
-        
+        <h1>Editar artículo</h1>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/admin">Home</a> > Editar artículo
+        </div>
+
         <div class="panel">
             <div class="panel-content">
                 <label>

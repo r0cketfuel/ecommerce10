@@ -5,7 +5,12 @@
 @section("body")
     <div class="main-container">
 
-        <h1>Banner detail</h1>
+        <h1>Editar categoría</h1>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/admin">Home</a> > Editar categoría
+        </div>
 
         @if ($errors->any())
             <div class="alert danger">

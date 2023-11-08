@@ -1,41 +1,47 @@
-
 <div class="modal" id="modal-login">
+    <div class="modal-container" style="width: 600px">
+        <div class="modal-header">
+            <div class="modal-title">
+            </div>
+            <span class="modal-close" onclick="this.parentElement.parentElement.parentElement.style.display='none'">X</span>
+        </div>
 
-    <span class="modalClose" onclick="this.parentElement.parentElement.parentElement.style.display='none'">X</span>
-    
-    <div class="modal-login-panel">
-        <div class="left-panel">
-            <h1>Login</h1>
-            <p>{{ __('general.register_msg') }} <a class="register-link" href="/shop/register"><span>{{ __('general.register_link') }}</span></a></p>
-            <div class="input-group">
-                <label>
-                    Usuario o email
-                    <input form="form-login" type="text" name="username" required maxlength="16">
-                </label>
-                <label>
-                    Password
-                    <input form="form-login" type="password" name="password" required maxlength="16">
-                </label>
-                <div class="radio-fix">
-                    <input form="form-login" type="checkbox" name="check_remember">
-                    <label>Recordarme</label>
+        <div class="modal-login">
+            <div class="left-panel">
+                <h1>Login</h1>
+                <p>{{ __('general.register_msg') }} <a class="register-link" href="/shop/register"><span>{{ __('general.register_link') }}</span></a></p>
+                <div class="input-group">
+                    <label>
+                        Usuario o email
+                        <input form="form-login" type="text" name="username" required maxlength="16">
+                    </label>
+                    <label>
+                        Password
+                        <input form="form-login" type="password" name="password" required maxlength="16">
+                    </label>
+                    <div class="radio-fix">
+                        <input form="form-login" type="checkbox" name="check_remember">
+                        <label>Recordarme</label>
+                    </div>
+                </div>
+                <a class="password-recovery-link" href="/shop/recovery">{{ __('general.forgot_password_msg') }} Recuperar contraseña</a>
+                <div class="input-group">
+                    <button form="form-login" type="submit" class="btn-primary">{{ __('general.login_button') }}</button>
+                    <button form="form-guest" type="submit" class="btn-secondary">{{ __('general.login_guest_button') }}</button>
                 </div>
             </div>
-            <a class="password-recovery-link" href="/shop/recovery">{{ __('general.forgot_password_msg') }} Recuperar contraseña</a>
-            <div class="input-group">
-                <button form="form-login" type="submit" class="btn-primary">{{ __('general.login_button') }}</button>
-                <button form="form-guest" type="submit" class="btn-secondary">{{ __('general.login_guest_button') }}</button>
+            <div class="right-panel">
+                <div>
+                    <h2>{{ session("infoComercio.nombre") }}</h2>
+                    <h4>{{ session("infoComercio.slogan") }}</h4>
+                </div>
             </div>
-        </div>
-        <div class="right-panel">
-            <div>
-                <h2>{{ session("infoComercio.nombre") }}</h2>
-                <h4>{{ session("infoComercio.slogan") }}</h4>
-            </div>
+
         </div>
     </div>
-
 </div>
+
+
 
 <form id="form-login" method="post" autocomplete="off" action="{{ route('login.user') }}">@csrf</form>
 <form id="form-guest" method="post" autocomplete="off" action="{{ route('login.guest') }}">@csrf</form>

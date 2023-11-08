@@ -34,9 +34,14 @@
         </div>
         @endif
 
-        <h1>Listado de Categorías</h1>
+        <h1>Listado de categorías</h1>
 
-        <a class="btn-link btn-link-primary w100px" href="banners/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/admin">Home</a> > Listado de categorías
+        </div>
+
+        <a class="btn-link btn-link-primary w100px" href="categorias/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
 
         <table>
             <thead>

@@ -36,6 +36,11 @@
 
         <h1>Listado de banners</h1>
 
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/admin">Home</a> > Listado de banners
+        </div>
+
         <a class="btn-link btn-link-primary w100px" href="banners/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
 
         <table>

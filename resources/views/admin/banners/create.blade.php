@@ -23,6 +23,11 @@
 
         <h1>Nuevo banner</h1>
 
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/admin">Home</a> > Nuevo banner
+        </div>
+        
         <div class="panel">
             <div class="panel-content">
                 <label>

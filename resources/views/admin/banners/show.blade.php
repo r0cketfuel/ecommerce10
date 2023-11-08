@@ -7,6 +7,11 @@
 
         <h1>Banner detail</h1>
 
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/admin">Home</a> > Banner detail
+        </div>
+
         @if ($errors->any())
             <div class="alert danger">
                 <ul>

@@ -7,13 +7,13 @@
 
 /* Modal background */
 .modal {
-	display: 						none;					/* Hidden by default */
-	position: 						fixed; 					/* Stay in place */
-	z-index: 						10; 					/* Sit on top */
+	display: 						none;
+	position: 						fixed;
+	z-index: 						10;
 	left: 							0;
 	top: 							0;
-	width: 							100%; 					/* Full width */
-	height: 						100%; 					/* Full height */
+	width: 							100%;
+	height: 						100%;
 	background-color: 				rgba(0,0,0,0.75);
 	-webkit-animation-name: 		fade-in;
 		animation-name: 			fade-in;
@@ -21,7 +21,7 @@
 		animation-duration: 		0.6s;
 }
 
-.modal-content {
+.modal-container {
     -webkit-box-sizing:             border-box;
             box-sizing:             border-box;
 	display: 						-webkit-box;
@@ -37,68 +37,79 @@
         -ms-transform:              translateY(-50%);
             transform:              translateY(-50%);
 	margin: 						0 auto;
-	border:							1px solid #fefefe;
-	-webkit-box-shadow: 			0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-		box-shadow: 				0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-	
-	/* DEFAULT SETTINGS */
-	width:						500px;
-    max-width:                  calc(100vw - 20px);
-	background:					white;
-	-webkit-animation-name: 			animate-top;
-	        animation-name: 			animate-top;
-	-webkit-animation-duration: 		0.6s;
-	        animation-duration: 		0.6s;
+    max-width:                  	calc(100vw - 80px);
+	-webkit-animation-name: 		animate-top;
+			animation-name: 		animate-top;
+	-webkit-animation-duration: 	0.6s;
+			animation-duration: 	0.6s;
 }
 
 .modal-header {
-	display: 					-webkit-box;
-	display: 					-ms-flexbox;
-	display: 					flex;
-	-webkit-box-orient: 					horizontal;
-	-webkit-box-direction: 					normal;
-	    -ms-flex-flow: 					row nowrap;
-	        flex-flow: 					row nowrap;
-	-webkit-box-pack: 			justify;
-	    -ms-flex-pack: 			justify;
-	        justify-content: 			space-between;
-	-webkit-box-align: 				center;
-	    -ms-flex-align: 				center;
-	        align-items: 				center;
-	font-size: 					16px;
-	color: 						white;
-	padding: 					10px;
-	text-transform:				uppercase;
+	position: 						absolute;
+	width: 							100%;
+	box-sizing: 					border-box;
+	padding: 						10px;
+	text-transform:					uppercase;
+	display: 						flex;
+	justify-content: 				space-between;
+	z-index: 						10;
 }
 
 .modal-header h1 {
-	font-size:					15px;
-    margin:                     0px;
+	font-size:						1rem;
+    margin:                     	0px;
 }
 
-.modal.modal-success .modal-header {
-	background-color: 			#28a745;
-}
-
-.modal.modal-error .modal-header {
-	background-color: 			red;
-}
-
-.modal.modal-primary .modal-header {
-	background-color: 			#007bff;
-}
-
-.modalClose {
-	font-weight: 				bold;
-    width:                      25px;
-	text-align: 				center;
+.modal-close {
+	font-size:						1rem;
+	font-weight: 					bold;
+    width:                      	25px;
+	text-align: 					center;
 }	
 
-.modalClose:hover, .modalClose:focus {
-	color: 						black;
-	text-decoration: 			none;
-	cursor: 					pointer;
+.modal-close:hover,
+.modal-close:focus {
+	text-decoration: 				none;
+	cursor: 						pointer;
 }
+
+.modal-login {
+    display:                    	flex;
+    min-height:                 	450px;
+    box-shadow:                 	0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    border-radius:              	8px;
+    overflow:                   	hidden;
+}
+
+.modal-addItem {
+	background: 					white;
+    box-shadow:                 	0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    overflow:                   	hidden;
+	display: 						-webkit-box;
+	display: 						-ms-flexbox;
+	display: 						flex;
+	-webkit-box-orient:				vertical;
+	-webkit-box-direction:			normal;
+		-ms-flex-flow:				row nowrap;
+			flex-flow:				row nowrap;
+	-webkit-box-pack: 				justify;
+		-ms-flex-pack: 				justify;
+			justify-content: 		space-between;
+    gap:                        	20px;
+	padding:						10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .modal-body {
 	display: 					-webkit-box;
@@ -114,6 +125,8 @@
     gap:                        20px;
 	padding:					10px;
 }
+
+
 
 .image-modal-content {
 	display: 					-webkit-box;
@@ -142,6 +155,24 @@
 	background-color: 			#5cb85c;
 	color: 						white;
 }
+
+
+.modal.modal-success .modal-header {
+	color: 						white;
+	background-color: 			#28a745;
+}
+
+.modal.modal-error .modal-header {
+	color: 						white;
+	background-color: 			red;
+}
+
+.modal.modal-primary .modal-header {
+	color: 						white;
+	background-color: 			#007bff;
+}
+
+
 
 @-webkit-keyframes animate-top
 {

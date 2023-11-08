@@ -41,6 +41,16 @@
     overflow:                   hidden;
 }
 
+/*
+.modal .modalClose {
+    font-size:                  1.2rem;
+    color:                      black;
+    position:                   absolute;
+    right:                      25px;
+    top:                        25px;
+}
+*/
+
 .left-panel, .right-panel {
     display:                    flex;
     flex-direction:             column;

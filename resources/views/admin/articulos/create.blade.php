@@ -29,6 +29,11 @@
 
         <h1>Nuevo artículo</h1>
 
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/admin">Home</a> > Nuevo artículo
+        </div>
+
         @include('admin.articulos.modals.categoria')
         @include('admin.articulos.modals.subcategoria')
 
