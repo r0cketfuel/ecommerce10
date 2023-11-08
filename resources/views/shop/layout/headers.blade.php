@@ -69,22 +69,15 @@
 </header>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", () => {
 
-        //return;
+        const loginLink   = document.getElementById("login-link");
+        const modalLogin  = document.getElementById("modal-login");
 
-        var loginLink   = document.getElementById("login-link");
-        var modalLogin  = document.getElementById("modal-login");
+        loginLink.addEventListener("click", function(event) {
+            event.preventDefault();
 
-        // Agrega un controlador de eventos al enlace de inicio de sesión
-        if(loginLink)
-        {
-            loginLink.addEventListener("click", function(event) {
-                event.preventDefault(); // Evita que el enlace se abra
-
-                // Muestra el modal de inicio de sesión
-                modalLogin.style.display = "block";
-            });
-        }
+            modalLogin.style.display = "block";
+        });
     });
 </script>
