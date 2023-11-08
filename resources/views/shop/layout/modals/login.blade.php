@@ -41,7 +41,5 @@
     </div>
 </div>
 
-
-
 <form id="form-login" method="post" autocomplete="off" action="{{ route('login.user') }}">@csrf</form>
 <form id="form-guest" method="post" autocomplete="off" action="{{ route('login.guest') }}">@csrf</form>

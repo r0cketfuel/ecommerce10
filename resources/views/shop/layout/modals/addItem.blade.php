@@ -7,7 +7,7 @@
             <span class="modal-close" onclick="this.parentElement.parentElement.parentElement.style.display='none'">X</span>
         </div>
 
-        <div class="modal-addItem" style="padding-top: 40px;">
+        <div class="modal-addItem" style="padding-top: 50px;">
                 <img id="image" src="{{ config('constants.product_images') . '/no-image.png' }}" alt="imagen" style="height: 25%; width: 25%;">
                 <div class="grid" style="flex: 1 1; grid-auto-rows: 1fr">
 
