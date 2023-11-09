@@ -42,7 +42,6 @@
                     <th class="text-center">ID</th>
                     <th class="text-left">Nombre</th>
                     <th class="text-center">Documento</th>
-                    <th class="text-center">Fecha de Nacimiento</th>
                     <th class="text-center">Domicilio</th>
                     <th class="text-center">Localidad</th>
                     <th class="text-center">Teléfonos</th>
@@ -58,7 +57,6 @@
                         <td class="text-center">{{ $usuario->id }}</td>
                         <td class="text-left">{{ $usuario->apellidos }}<br>{{ $usuario->nombres }}</td>
                         <td class="text-center">{{ $usuario->tipoDocumento->tipo }}<br>{{ $usuario->documento_nro }}</td>
-                        <td class="text-center">{{ _date($usuario->fecha_nacimiento) }}</td>
                         <td class="text-left">{{ $usuario->domicilio }} {{ $usuario->domicilio_nro }}<br>{{ $usuario->domicilio_piso }} {{ $usuario->domicilio_depto }}</td>
                         <td class="text-left">{{ $usuario->localidad }}<br>{{ $usuario->codigo_postal }}</td>
                         <td class="text-left">
