@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class ImagenArticulo extends Model
 {
@@ -20,4 +21,11 @@ class ImagenArticulo extends Model
         "ruta",
         "descripcion"
     ];
+    
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function articulo()
+    {
+        return($this->belongsTo(Articulo::class));
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
