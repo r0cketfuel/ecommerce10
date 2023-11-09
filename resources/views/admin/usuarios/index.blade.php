@@ -56,7 +56,7 @@
                     <tr>
                         <td class="text-center">{{ $usuario->id }}</td>
                         <td class="text-left">{{ $usuario->apellidos }}<br>{{ $usuario->nombres }}</td>
-                        <td class="text-center">{{ $usuario->tipoDocumento->tipo }}<br>{{ $usuario->documento_nro }}</td>
+                        <td class="text-left">{{ $usuario->tipoDocumento->tipo }}<br>{{ $usuario->documento_nro }}</td>
                         <td class="text-left">{{ $usuario->domicilio }} {{ $usuario->domicilio_nro }}<br>{{ $usuario->domicilio_piso }} {{ $usuario->domicilio_depto }}</td>
                         <td class="text-left">{{ $usuario->localidad }}<br>{{ $usuario->codigo_postal }}</td>
                         <td class="text-left">
