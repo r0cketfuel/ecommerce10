@@ -1,6 +1,10 @@
 @extends("admin.layout.master")
 
-@section("title","Banners")
+@php
+    $title = "Banners";
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
@@ -34,11 +38,11 @@
         </div>
         @endif
 
-        <h1>Listado de banners</h1>
+        <h1>{{ $title }}</h1>
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/admin">Home</a> > Listado de banners
+            <a href="/admin">Home</a> > {{ $title }}
         </div>
 
         <a class="btn-link btn-link-primary w100px" href="banners/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>

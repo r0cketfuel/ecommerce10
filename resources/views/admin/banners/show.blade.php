@@ -1,15 +1,19 @@
 @extends("admin.layout.master")
 
-@section("title","Detalle banner")
+@php
+    $title = "Detalle de banner";
+@endphp
+
+@section("title", $title)
 
 @section("body")
     <div class="main-container">
 
-        <h1>Banner detail</h1>
+        <h1>{{ $title }}</h1>
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/admin">Home</a> > Banner detail
+            <a href="/admin">Home</a> > <a href="/admin/banners">Banners</a> > {{ $title }}
         </div>
 
         @if ($errors->any())
