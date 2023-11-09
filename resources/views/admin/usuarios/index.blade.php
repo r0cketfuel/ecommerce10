@@ -45,12 +45,11 @@
                     <th class="text-center">Fecha de Nacimiento</th>
                     <th class="text-center">Domicilio</th>
                     <th class="text-center">Localidad</th>
-                    <th class="text-center">Teléfono Fijo</th>
-                    <th class="text-center">Teléfono Celular</th>
-                    <th class="text-center">Teléfono Alt</th>
+                    <th class="text-center">Teléfonos</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">Estado</th>
                     <th class="text-center">Creado</th>
+                    <th class="text-center">Alta</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,9 +61,11 @@
                         <td class="text-center">{{ _date($usuario->fecha_nacimiento) }}</td>
                         <td class="text-left">{{ $usuario->domicilio }} {{ $usuario->domicilio_nro }}<br>{{ $usuario->domicilio_piso }} {{ $usuario->domicilio_depto }}</td>
                         <td class="text-left">{{ $usuario->localidad }}<br>{{ $usuario->codigo_postal }}</td>
-                        <td class="text-right">{{ $usuario->telefono_fijo }}</td>
-                        <td class="text-right">{{ $usuario->telefono_celular }}</td>
-                        <td class="text-right">{{ $usuario->telefono_alt }}</td>
+                        <td class="text-left">
+                            <div class="flex justify-between"><div>Fijo:</div><div>{{ $usuario->telefono_fijo }}</div></div>
+                            <div class="flex justify-between"><div>Celular:</div><div>{{ $usuario->telefono_celular }}</div></div>
+                            <div class="flex justify-between"><div>Alt:</div><div>{{ $usuario->telefono_alt }}</div></div>
+                        </td>
                         <td class="text-left">{{ $usuario->email }}</td>
                         <td class="text-center">
                             <label class="switch">
@@ -73,6 +74,13 @@
                             </label>
                         </td>
                         <td class="text-center">{{ _dateTime($usuario->creado) }}</td>
+                        <td class="text-center">
+                            @if ($usuario->alta)
+                                {{ _dateTime($usuario->alta) }}
+                            @else
+                                -
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
