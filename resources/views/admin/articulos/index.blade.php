@@ -55,6 +55,7 @@
                     <th class="text-left">Subcategoría</th>
                     <th class="text-center">Visualizaciones</th>
                     <th class="text-center">Estado</th>
+                    <th class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -82,6 +83,9 @@
                                 <div class="slider round"></div>
                             </label>
                         </td>
+                        <td class="text-center">
+                            <button type="button" id="{{ $articulo->id }}"><i class="fa-solid fa-trash"></i></button>
+                        </td>                        
                     </tr>
                 @endforeach
             </tbody>
@@ -90,11 +94,12 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", () => {
 
             const switches = [...document.querySelectorAll("input[type='checkbox']")];
 
-            for (let i = 0; i < switches.length; ++i) {
+            for (let i = 0; i < switches.length; ++i)
+            {
                 switches[i].addEventListener("change", function () {
                     const articleId = switches[i].getAttribute('id');
                     const newState = switches[i].checked ? 1 : 0;
@@ -102,9 +107,22 @@
                     return false;
                 });
             }
+
+            const buttons = [...document.querySelectorAll("button[type='button']")];
+
+            for (let i = 0; i < buttons.length; ++i)
+            {
+                buttons[i].addEventListener("click", function () {
+                    const articleId = buttons[i].getAttribute('id');
+                    ajaxItemDelete(articleId);
+                    return false;
+                });
+            }
+
         });
 
-        async function ajaxItemDisable(articleId, newState) {
+        async function ajaxItemDisable(articleId, newState)
+        {
             try {
                 const response = await fetch(`/api/articulos/${articleId}`, {
                     method: "PUT",
@@ -115,13 +133,43 @@
                     body: JSON.stringify({ estado: newState })
                 });
 
-                if (response.ok) {
-                    // Actualización exitosa, puedes realizar acciones adicionales aquí
-                } else {
-                    // Manejar errores si es necesario
+                if (response.ok)
+                {
+                    console.log('Se cambió el estado del artículo');
+                }
+                else
+                {
                     console.error('Error al cambiar el estado del artículo');
                 }
-            } catch (error) {
+            }
+            catch (error)
+            {
+                console.error('Error en la solicitud:', error);
+            }
+        }
+
+        async function ajaxItemDelete(articleId)
+        {
+            try {
+                const response = await fetch(`/api/articulos/${articleId}`, {
+                    method: "DELETE",
+                    headers: {
+                        'Accept':       'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (response.ok)
+                {
+                    console.log('Artículo eliminado');
+                }
+                else
+                {
+                    console.error('Error al eliminar el artículo');
+                }
+            }
+            catch (error)
+            {
                 console.error('Error en la solicitud:', error);
             }
         }

@@ -107,7 +107,7 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", () => {
             const switches = [...document.querySelectorAll("input[type='checkbox']")];
 
             for (let i = 0; i < switches.length; ++i) {

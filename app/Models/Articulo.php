@@ -125,22 +125,21 @@ class Articulo extends Model
         }
         catch (ModelNotFoundException $e)
         {
-            throw new \Exception(trans('messages.articulo_not_found'));
+            throw new \Exception(trans('messages.article_not_found'));
         }
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public static function eliminaArticulo(int $id): int
+    public static function eliminaArticulo(int $id)
     {
-        $articulo = self::find($id);
-    
-        if($articulo)
+        try
         {
+            $articulo = self::findOrFail($id);
             $articulo->update(['activo' => false]);
-    
-            return(1);
         }
-    
-        return(0);
+        catch (ModelNotFoundException $e)
+        {
+            throw new \Exception(trans('messages.article_not_found'));
+        }
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
