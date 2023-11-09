@@ -144,30 +144,28 @@ class ShopController extends Controller
 
             return redirect("/shop/payment");
         }
-        else
-        {
-            // Medios de pago activos
-            $mediosPagoListado = MedioPago::activos();
-            
-            // Medios de envío activos
-            $mediosEnvioListado = MedioEnvio::activos();
 
-            // Seleccionar el primer medio de pago por defecto
-            $medioPagoSeleccionado = $mediosPagoListado[0]["id"];
+        // Medios de pago activos
+        $mediosPagoListado = MedioPago::activos();
+        
+        // Medios de envío activos
+        $mediosEnvioListado = MedioEnvio::activos();
 
-            // Seleccionar el medio de pago guardado en sesión
-            if(session()->has("shop.checkout.medio_pago"))
-                $medioPagoSeleccionado = session("shop.checkout.medio_pago.id");
-            
-            // Seleccionar el primer medio de envío por defecto
-            $medioEnvioSeleccionado = $mediosEnvioListado[0]["id"];
+        // Seleccionar el primer medio de pago por defecto
+        $medioPagoSeleccionado = $mediosPagoListado[0]["id"];
 
-            // Seleccionar el medio de envío guardado en sesión
-            if(session()->has("shop.checkout.medio_pago"))
-                $medioEnvioSeleccionado = session("shop.checkout.medio_envio.id");
+        // Seleccionar el medio de pago guardado en sesión
+        if(session()->has("shop.checkout.medio_pago"))
+            $medioPagoSeleccionado = session("shop.checkout.medio_pago.id");
+        
+        // Seleccionar el primer medio de envío por defecto
+        $medioEnvioSeleccionado = $mediosEnvioListado[0]["id"];
 
-            return view("shop.checkout", compact("checkout","mediosPagoListado","mediosEnvioListado","medioPagoSeleccionado","medioEnvioSeleccionado"));
-        }
+        // Seleccionar el medio de envío guardado en sesión
+        if(session()->has("shop.checkout.medio_pago"))
+            $medioEnvioSeleccionado = session("shop.checkout.medio_envio.id");
+
+        return view("shop.checkout", compact("checkout","mediosPagoListado","mediosEnvioListado","medioPagoSeleccionado","medioEnvioSeleccionado"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function payment()
