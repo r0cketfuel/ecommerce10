@@ -178,7 +178,6 @@ class ShopController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function favoritos()
 	{
-        // Array de items en sesión
         $favoritos  = session("shop.usuario.favoritos");
         $items      = array();
 
@@ -276,7 +275,6 @@ class ShopController extends Controller
     public function logout(UserController $user)
     {
         $user->logout();
-
         session()->flush();
     
         return redirect("/shop");
