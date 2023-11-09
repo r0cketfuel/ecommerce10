@@ -68,7 +68,7 @@ class Articulo extends Model
     {
         if($id > 0)
         {
-            $articulo = Articulo::where("id", $id)->with('imagenes')->first();
+            $articulo = self::find($id)->with('imagenes')->first();
     
             if($articulo)
             {
@@ -86,7 +86,7 @@ class Articulo extends Model
         // Método que devuelve un listado de artículos //
         //=============================================//
 
-        $query = Articulo::where("estado", 1)->where("activo", True)->with('imagenes');
+        $query = self::where("estado", 1)->where("activo", True)->with('imagenes');
 
         if(isset($search["query"]))
         {
