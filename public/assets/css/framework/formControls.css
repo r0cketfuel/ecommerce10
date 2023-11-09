@@ -343,6 +343,7 @@ button.addToCart {
 	background-color: 				brown;
 }
 
+button.deleteButton,
 button.minusButton,
 button.plusButton,
 button.updateCart,

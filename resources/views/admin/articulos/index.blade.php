@@ -84,7 +84,7 @@
                             </label>
                         </td>
                         <td class="text-center">
-                            <button type="button" id="{{ $articulo->id }}"><i class="fa-solid fa-trash"></i></button>
+                            <button type="button" class="deleteButton" id="{{ $articulo->id }}"><i class="fa-solid fa-trash"></i></button>
                         </td>                        
                     </tr>
                 @endforeach
