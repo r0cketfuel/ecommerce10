@@ -1,6 +1,10 @@
 @extends("admin.layout.master")
 
-@section("title", "Nuevo artículo")
+@php
+    $title = "Nuevo artículo";
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet"	href="{{config('constants.framework_css')}}modal.css">
@@ -27,11 +31,11 @@
             </div>
         @endif
 
-        <h1>Nuevo artículo</h1>
+        <h1>{{ $title }}</h1>
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/admin">Home</a> > Nuevo artículo
+            <a href="/admin">Home</a> > <a href="/admin/articulos">Artículos</a> > {{ $title }}
         </div>
 
         @include('admin.articulos.modals.categoria')

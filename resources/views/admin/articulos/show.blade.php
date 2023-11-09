@@ -1,6 +1,10 @@
 @extends("admin.layout.master")
 
-@section("title","Detalle artículo")
+@php
+    $title = "Detalle del artículo";
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
@@ -34,11 +38,11 @@
             </div>
         @endif
 
-        <h1>Detalle de artículo</h1>
+        <h1>{{ $title }}</h1>
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/admin">Home</a> > Detalle de artículo
+            <a href="/admin">Home</a> > <a href="/admin/articulos">Artículos</a> > {{ $title }}
         </div>
 
         <a class="btn-link btn-link-primary w100px" href="articulos/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>

@@ -1,6 +1,11 @@
 @extends("admin.layout.master")
 
-@section("title", "Editar artículo")
+@php
+    $title = "Editar artículo";
+@endphp
+
+@section("title", $title)
+
 
 @section("css")
     <link rel="stylesheet"	href="{{config('constants.framework_css')}}panel.css">
@@ -34,11 +39,11 @@
             </div>
         @endif
 
-        <h1>Editar artículo</h1>
+        <h1>{{ $title }}</h1>
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/admin">Home</a> > Editar artículo
+            <a href="/admin">Home</a> > <a href="/admin/articulos">Artículos</a> > {{ $title }}
         </div>
 
         <div class="panel">
