@@ -40,23 +40,14 @@
             <thead>
                 <tr>
                     <th class="text-center">ID</th>
-                    <th class="text-left">Username</th>
                     <th class="text-left">Nombre</th>
                     <th class="text-center">Documento</th>
-                    <th class="text-center">Cuit</th>
-                    <th class="text-center">Cuil</th>
                     <th class="text-center">Fecha de Nacimiento</th>
-                    <th class="text-center">Género</th>
                     <th class="text-center">Domicilio</th>
-                    <th class="text-center">Domicilio Nro</th>
-                    <th class="text-center">Domicilio Piso</th>
-                    <th class="text-center">Domicilio Depto</th>
-                    <th class="text-center">Domicilio Aclaraciones</th>
                     <th class="text-center">Localidad</th>
-                    <th class="text-center">Código Postal</th>
                     <th class="text-center">Teléfono Fijo</th>
                     <th class="text-center">Teléfono Celular</th>
-                    <th class="text-center">Teléfono Alternativo</th>
+                    <th class="text-center">Teléfono Alt</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">Estado</th>
                     <th class="text-center">Creado</th>
@@ -66,29 +57,11 @@
                 @foreach($usuarios as $usuario)
                     <tr>
                         <td class="text-center">{{ $usuario->id }}</td>
-                        <td class="text-left">{{ $usuario->username }}</td>
                         <td class="text-left">{{ $usuario->apellidos }},<br>{{ $usuario->nombres }}</td>
-                        <td class="text-center">
-                            @if($usuario->tipoDocumento)
-                                {{ $usuario->tipoDocumento->tipo }}
-                            @endif
-                            {{ $usuario->documento_nro }}
-                        </td>
-                        <td class="text-center">{{ $usuario->cuit }}</td>
-                        <td class="text-center">{{ $usuario->cuil }}</td>
+                        <td class="text-center">{{ $usuario->tipoDocumento->tipo }}<br>{{ $usuario->documento_nro }}</td>
                         <td class="text-center">{{ _date($usuario->fecha_nacimiento) }}</td>
-                        <td class="text-left">
-                            @if($usuario->genero)
-                                {{ $usuario->genero->genero }}
-                            @endif
-                        </td>
-                        <td class="text-left">{{ $usuario->domicilio }}</td>
-                        <td class="text-center">{{ $usuario->domicilio_nro }}</td>
-                        <td class="text-center">{{ $usuario->domicilio_piso }}</td>
-                        <td class="text-center">{{ $usuario->domicilio_depto }}</td>
-                        <td class="text-left">{{ $usuario->domicilio_aclaraciones }}</td>
-                        <td class="text-left">{{ $usuario->localidad }}</td>
-                        <td class="text-center">{{ $usuario->codigo_postal }}</td>
+                        <td class="text-left">{{ $usuario->domicilio }} {{ $usuario->domicilio_nro }}<br>{{ $usuario->domicilio_piso }} {{ $usuario->domicilio_depto }}</td>
+                        <td class="text-left">{{ $usuario->localidad }}<br>{{ $usuario->codigo_postal }}</td>
                         <td class="text-right">{{ $usuario->telefono_fijo }}</td>
                         <td class="text-right">{{ $usuario->telefono_celular }}</td>
                         <td class="text-right">{{ $usuario->telefono_alt }}</td>
