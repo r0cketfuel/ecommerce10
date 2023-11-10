@@ -25,11 +25,17 @@
         @yield("inlineCSS")
 	</head>
 	<body id="top">
-        @include("shop.layout.modals.login")
+
+        @guest
+            @include("shop.layout.modals.login")
+        @endguest
+
         @include("shop.layout.headers")
         @include("shop.layout.backToTop")
         @include("shop.layout.whatsappBubble")
         @yield("body")
         @include("shop.layout.footers")
+
+        @yield("scripts")
 	</body>
 </html>

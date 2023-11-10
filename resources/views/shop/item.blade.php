@@ -4,7 +4,7 @@
     $title = $item->nombre;
 @endphp
 
-@section("title", $title)
+@section("title",$title)
 
 @section("css")
     <link rel="stylesheet"	href="{{ config('constants.shop_css') }}carousel.css">
@@ -19,6 +19,7 @@
     <script defer src="{{ config('constants.shop_js') }}tiles.js"></script>
     <script defer src="{{ config('constants.shop_js') }}tabs.js"></script>
     <script defer src="{{ config('constants.shop_js') }}cart.js"></script>
+    <script defer src="{{ config('constants.framework_js') }}modal.js"></script>
 @endsection
 
 @section("inlineCSS")

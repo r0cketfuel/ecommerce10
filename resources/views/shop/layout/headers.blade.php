@@ -68,16 +68,20 @@
     </div>
 </header>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
+@section("scripts")
+    @guest
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
 
-        const loginLink   = document.getElementById("login-link");
-        const modalLogin  = document.getElementById("modal-login");
+                const loginLink   = document.getElementById("login-link");
+                const modalLogin  = document.getElementById("modal-login");
 
-        loginLink.addEventListener("click", function(event) {
-            event.preventDefault();
+                loginLink.addEventListener("click", function(event) {
+                    event.preventDefault();
 
-            modalLogin.style.display = "block";
-        });
-    });
-</script>
+                    modalLogin.style.display = "block";
+                });
+            });
+        </script>
+    @endguest
+@endsection

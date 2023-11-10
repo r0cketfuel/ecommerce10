@@ -1,9 +1,12 @@
-<!-- Modal -->
 <div class="modal" id="modal-add-review">
-    <div class="modal-content" style="padding: 10px;">
-        <div class="modal-header" style="color: black;">
-            <h1>Escribir una reseña sobre el producto</h1><span class="modalClose" onclick="this.parentElement.parentElement.parentElement.style.display='none'">X</span>
+    <div class="modal-container" style="width: 600px">
+        <div class="modal-header">
+            <div class="modal-title">
+                <h1>{{ __('general.addReview') }}</h1>
+            </div>
+            <span class="modal-close" onclick="closeModal(this.parentElement.parentElement.parentElement.id)">X</span>
         </div>
+
         <div class="modal-body">
             <div class="flex">
 
@@ -12,4 +15,3 @@
         </div>
     </div>
 </div>
-<!-- /Modal -->
