@@ -9,8 +9,6 @@ function openModal(modalId)
 
 function closeModal(modalId)
 {
-    console.log(modalId);
-
     const body  = document.querySelector('body#top');
     const modal = document.getElementById(modalId);
 
