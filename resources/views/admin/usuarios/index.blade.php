@@ -62,7 +62,7 @@
                         <td class="text-left">
                             <div class="flex justify-between"><div>Fijo:</div><div>{{ $usuario->telefono_fijo }}</div></div>
                             <div class="flex justify-between"><div>Celular:</div><div>{{ $usuario->telefono_celular }}</div></div>
-                            <div class="flex justify-between"><div>Alt:</div><div>{{ $usuario->telefono_alt }}</div></div>
+                            <div class="flex justify-between"><div>Alternativo:</div><div>{{ $usuario->telefono_alt }}</div></div>
                         </td>
                         <td class="text-left">{{ $usuario->email }}</td>
                         <td class="text-center">
