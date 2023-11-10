@@ -175,17 +175,14 @@ async function info(id)
 //==============================//
 function modalAdd(data)
 {
-    let modal           = document.getElementById("modal-add");
-    let itemImage       = document.getElementById("image");
+    let itemImage = document.getElementById("image");
     
     if(data["info"]["imagenes"].length>0)
         itemImage.src = data["info"]["imagenes"][0]["miniatura"];
 
     addToCartButton.value = data["info"]["id"];
-    modal.style.display = "block";
-    
-    //document.getElementById("top").style.overflow       = "hidden";
-    document.getElementById("backToTop").style.display  = "none";
+
+    openModal("modal-add");
 }
 
 //=============================================================//

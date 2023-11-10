@@ -16,7 +16,8 @@
     <script defer src="{{ config('constants.shop_js') }}cardSort.js"></script>
     <script defer src="{{ config('constants.shop_js') }}ajaxFavoritos.js"></script>
 	<script defer src="{{ config('constants.shop_js') }}ajaxSuscribe.js"></script>
-@endsection
+    <script defer src="{{ config('constants.framework_js') }}modal.js"></script>
+    @endsection
 
 @section("body")
 

@@ -9,7 +9,7 @@
 .modal {
 	display: 						none;
 	position: 						fixed;
-	z-index: 						10;
+	z-index: 						99999;
 	left: 							0;
 	top: 							0;
 	width: 							100%;
@@ -97,14 +97,31 @@
 			justify-content: 		space-between;
     gap:                        	20px;
 	padding:						20px;
+
 }
 
+.modal-addItem-leftPanel {
+    width:                          30%;
+}
 
+.modal-addItem-leftPanel img {
+    width:                          100%;
+    aspect-ratio:                   4/3;
+}
 
+.modal-additem-rightPanel {
+    display:                        grid;
+    flex:                           1 1;
+    grid-auto-rows:                 1fr;
+    gap:                            10px;
+}
 
-
-
-
+@media (max-width: 640px)
+{
+    .modal-addItem-leftPanel {
+        display: none;
+    }
+}
 
 
 
