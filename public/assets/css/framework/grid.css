@@ -2,7 +2,7 @@
 * Prefixed by https://autoprefixer.github.io
 * PostCSS: v8.4.14,
 * Autoprefixer: v10.4.7
-* Browsers: last 8 version
+* Browsers: last 100 version
 */
 
 .grid {
@@ -14,66 +14,68 @@
 .grid-align-start {
     -webkit-box-align:              start;
         -ms-flex-align:             start;
+            -webkit-align-items:    start;
+                -moz-box-align:     start;
             align-items:            start;
 }
 
 .grid-cols-1 {
-    -ms-grid-columns:          (minmax(0, 1fr))[1];
+    -ms-grid-columns:               (minmax(0, 1fr))[1];
     grid-template-columns:          repeat(1, minmax(0, 1fr));
 }
 
 .grid-cols-2 {
-    -ms-grid-columns:          (minmax(0, 1fr))[2];
+    -ms-grid-columns:               (minmax(0, 1fr))[2];
     grid-template-columns:          repeat(2, minmax(0, 1fr));
 }
 
 .grid-cols-3 {
-    -ms-grid-columns:          (minmax(0, 1fr))[3];
+    -ms-grid-columns:               (minmax(0, 1fr))[3];
     grid-template-columns:          repeat(3, minmax(0, 1fr));
 }
 
 .grid-cols-4 {
-    -ms-grid-columns:          (minmax(0, 1fr))[4];
+    -ms-grid-columns:               (minmax(0, 1fr))[4];
     grid-template-columns:          repeat(4, minmax(0, 1fr));
 }
 
 .grid-cols-5 {
-    -ms-grid-columns:          (minmax(0, 1fr))[5];
+    -ms-grid-columns:               (minmax(0, 1fr))[5];
     grid-template-columns:          repeat(5, minmax(0, 1fr));
 }
 
 .grid-cols-6 {
-    -ms-grid-columns:          (minmax(0, 1fr))[6];
+    -ms-grid-columns:               (minmax(0, 1fr))[6];
     grid-template-columns:          repeat(6, minmax(0, 1fr));
 }
 
 .grid-cols-7 {
-    -ms-grid-columns:          (minmax(0, 1fr))[7];
+    -ms-grid-columns:               (minmax(0, 1fr))[7];
     grid-template-columns:          repeat(7, minmax(0, 1fr));
 }
 
 .grid-cols-8 {
-    -ms-grid-columns:          (minmax(0, 1fr))[8];
+    -ms-grid-columns:               (minmax(0, 1fr))[8];
     grid-template-columns:          repeat(8, minmax(0, 1fr));
 }
 
 .grid-cols-9 {
-    -ms-grid-columns:          (minmax(0, 1fr))[9];
+    -ms-grid-columns:               (minmax(0, 1fr))[9];
     grid-template-columns:          repeat(9, minmax(0, 1fr));
 }
 
 .grid-cols-10 {
-    -ms-grid-columns:          (minmax(0, 1fr))[10];
+    -ms-grid-columns:               (minmax(0, 1fr))[10];
     grid-template-columns:          repeat(10, minmax(0, 1fr));
 }
 
 .grid-cols-11 {
-    -ms-grid-columns:          (minmax(0, 1fr))[11];
+    -ms-grid-columns:               (minmax(0, 1fr))[11];
     grid-template-columns:          repeat(11, minmax(0, 1fr));
 }
 
 .grid-cols-12 {
-    -ms-grid-columns:          (minmax(0, 1fr))[12];
+    -ms-grid-columns:               (minmax(0, 1fr))[12];
     grid-template-columns:          repeat(12, minmax(0, 1fr));
 }
 
