@@ -9,6 +9,22 @@
     --controls-height:              32px;
 }
 
+form {
+    padding:                        0;
+    margin:                         0;
+    border:                         none;
+    font:                           inherit;
+    text-align:                     left;
+    background-color:               transparent;
+    color:                          inherit;
+    list-style:                     none;
+    cursor:                         auto;
+}
+
+form:focus {
+    outline:                        none;
+}
+
 .input-group {
 	width: 							100%;
     display:                        -webkit-box;
