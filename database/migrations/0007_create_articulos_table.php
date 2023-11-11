@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreign('subcategoria_id')->references('id')->on('subcategorias')->onDelete('SET NULL');
             $table->unsignedTinyInteger('estado')->default(1);
             $table->unsignedMediumInteger('visualizaciones')->default(0);
-            $table->boolean('activo')->default(true);
+            $table->boolean('activo')->default(1);
             $table->comment('Tabla con la información principal de los artículos del sistema');
         });
     }

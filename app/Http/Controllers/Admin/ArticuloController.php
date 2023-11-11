@@ -31,14 +31,14 @@ class ArticuloController extends Controller
         return view("admin.articulos.create", compact('categorias', 'subcategorias', 'talles'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function store(StoreArticuloRequest $request)
+    public function store(StoreArticuloRequest $request, Articulo $articulo)
     {
-        $articulo = new Articulo;
-
         $articulo = Articulo::make($request->validated());
         $articulo->save();
     
-        return response()->json($articulo, 201);
+        $articulo = Articulo::find($articulo->id);
+
+        return view("admin.articulos.show", compact('articulo'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function show(Articulo $articulo)
