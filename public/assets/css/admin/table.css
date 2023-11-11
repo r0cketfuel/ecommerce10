@@ -13,7 +13,7 @@ table thead {
 
 table th,
 table td {
-    vertical-align: center;
+    vertical-align: middle;
 }
 
 table th {
