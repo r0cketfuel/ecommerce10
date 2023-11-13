@@ -50,8 +50,8 @@
                             <input form="form-login" type="password" name="password" required maxlength="16">
                         </label>
                         <div class="radio-fix">
-                            <input form="form-login" type="checkbox" name="check_remember">
-                            <label>Recordarme</label>
+                            <input form="form-login" type="checkbox" id="check_remember" name="check_remember">
+                            <label for="check_remember">Recordarme</label>
                         </div>
                     </div>
                     <div class="input-group">
