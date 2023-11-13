@@ -268,14 +268,17 @@ function changeQtyMinus()
 //======================================================================//
 // FUNCION QUE ACTUALIZA LA MINIATURA SEGUN LA COMBINACION SELECCIONADA //
 //======================================================================//
-function updatePhoto(combinacion) {
-    let itemImage = document.getElementById("image");
-    let imagenId = combinacion.imagen_id;
+function updatePhoto(combinacion)
+{
+    let itemImage   = document.getElementById("image");
+    let imagenId    = combinacion.imagen_id;
 
-    if (imagenId) {
+    if(imagenId)
+    {
         let imagen = data.info.imagenes.find(img => img.id === imagenId);
 
-        if (imagen) {
+        if(imagen)
+        {
             itemImage.src = imagen.miniatura;
         }
     }
