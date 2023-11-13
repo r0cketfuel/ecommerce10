@@ -35,7 +35,7 @@ body {
     -webkit-box-direction:          normal;
         -ms-flex-direction:         column;
             flex-direction:         column;
-    gap:                            20px;
+    gap:                            30px;
     max-width:                      var(--containers-max-width);
     padding:                        20px var(--containers-side-padding);
     -webkit-animation-name: 		fade-in;
