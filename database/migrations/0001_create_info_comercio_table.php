@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('info_comercio', function (Blueprint $table) {
+            $table->unsignedTinyInteger('id', true);
             $table->string('nombre', 50)->nullable();
             $table->string('slogan', 50)->nullable();
             $table->string('descripcion', 255)->nullable();

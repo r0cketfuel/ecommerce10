@@ -98,14 +98,15 @@ Route::prefix('admin')->group(function () {
         // Rutas que requieren autenticación
         Route::middleware(['auth:admin'])->group(function () {
             Route::get('dashboard', 'dashboard')->name('admin.dashboard');
+            
+            Route::match(['get', 'post'], 'comercio',  'comercio');
+
+            Route::resource('articulos',        ArticuloController::class);
+            Route::resource('banners',          BannerController::class);
+            Route::resource('categorias',       CategoriaController::class);
+            Route::resource('subcategorias',    SubcategoriaController::class);
+            Route::resource('usuarios',         UsuarioController::class);
+            Route::resource('ordenes',          OrdenController::class);
         });
-        
-        // Rutas CRUD
-        Route::resource('articulos',        ArticuloController::class);
-        Route::resource('banners',          BannerController::class);
-        Route::resource('categorias',       CategoriaController::class);
-        Route::resource('subcategorias',    SubcategoriaController::class);
-        Route::resource('usuarios',         UsuarioController::class);
-        Route::resource('ordenes',          OrdenController::class);
     });
 });

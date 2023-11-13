@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AdminLoginRequest;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Administrador;
 use App\Models\Usuario;
 use App\Models\Articulo;
+use App\Models\InfoComercio;
 
 class AdminController extends Controller
 {
@@ -140,11 +142,32 @@ class AdminController extends Controller
         return view("admin.dashboard", compact("widgets"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function comercio(Request $request)
+    {
+        if($request->isMethod("post"))
+        {
+            $request->validate([
+
+            ]);
+        
+            InfoComercio::updateOrCreate([], $request->all());
+        
+            $comercio = InfoComercio::first();
+        
+            session()->forget("infoComercio");
+
+            Session::put("infoComercio", InfoComercio::first()->toArray());
+        }
+    
+        $comercio = InfoComercio::first();
+
+        return view("admin.comercio.index", compact("comercio"));
+    }    
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function logout(Request $request)
     {
         Auth::guard("admin")->logout();
-        // $request->session()->invalidate();
-        // $request->session()->regenerateToken();
+        session()->flush();
     
         return redirect()->route('admin.login');
     }
