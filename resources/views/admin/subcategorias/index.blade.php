@@ -41,10 +41,10 @@
         <table>
             <thead>
                 <tr>
-                    <th>Categoría</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Estado</th>
+                    <th class="text-left">Categoría</th>
+                    <th class="text-left">Nombre</th>
+                    <th class="text-left">Descripción</th>
+                    <th class="text-center">Estado</th>
                 </tr>
             </thead>
             <tbody>

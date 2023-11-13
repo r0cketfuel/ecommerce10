@@ -46,9 +46,9 @@
         <table>
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Estado</th>
+                    <th class="text-left">Nombre</th>
+                    <th class="text-left">Descripción</th>
+                    <th class="text-center">Estado</th>
                 </tr>
             </thead>
             <tbody>
