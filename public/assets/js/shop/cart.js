@@ -268,19 +268,17 @@ function changeQtyMinus()
 //======================================================================//
 // FUNCION QUE ACTUALIZA LA MINIATURA SEGUN LA COMBINACION SELECCIONADA //
 //======================================================================//
-function updatePhoto(combinacion)
-{
-    let itemImage   = document.getElementById("image");
-    let resultados  = Object.values(data.info).filter(elemento => {
-        if (typeof elemento === "string")
-        {
-            return elemento.includes(combinacion.foto);
+function updatePhoto(combinacion) {
+    let itemImage = document.getElementById("image");
+    let imagenId = combinacion.imagen_id;
+
+    if (imagenId) {
+        let imagen = data.info.imagenes.find(img => img.id === imagenId);
+
+        if (imagen) {
+            itemImage.src = imagen.miniatura;
         }
-        return false;
-    });
-    
-    if(resultados.length>0)
-        itemImage.src = resultados[1];
+    }
 }
 
 //========================================================//
