@@ -1,6 +1,10 @@
 @extends("admin.layout.master")
 
-@section("title", "Usuarios")
+@php
+    $title = "Listado de usuarios";
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet" href="{{ config('constants.admin_css') }}table.css">
@@ -34,7 +38,12 @@
             </div>
         @endif
 
-        <h1>Listado de usuarios</h1>
+        <h1>{{ $title }}</h1>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > {{ $title }}
+        </div>
 
         <table>
             <thead>
