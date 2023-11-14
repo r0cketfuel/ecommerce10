@@ -8,27 +8,53 @@
         
         <title>Página de pruebas</title>
 
-        <!-- Hojas de estilo -->
-        <link rel="stylesheet"	href="{{ config('constants.shop_css') }}style.css">
-        <link rel="stylesheet"	href="{{ config('constants.shop_css') }}login.css">
-        <link rel="stylesheet"	href="{{ config('constants.framework_css') }}modal.css">
+		<style>
+			body {
+				margin: 		0;
+				padding: 		0;
 
-		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-        
-        <!-- Scripts -->
-        <script defer src="{{config('constants.framework_js')}}scroll.js"></script>
-        <script defer src="{{config('constants.framework_js')}}navbar.js"></script>
+				min-height: 	100vh;
+				box-sizing: 	border-box;
+				
+				display: 		flex;
+				flex-flow: 		column nowrap;
+			}
+
+			header {
+				height: 		100px;
+				background: 	orangered;
+			}
+
+			.contenedor {
+				min-height: 	calc(100vh - 100px);
+				background: 	grey;
+			}
+
+			footer {
+				background: 	blueviolet;
+			}
+		</style>
+
 	</head>
 	<body id="top">
-        @include("shop.layout.modals.modalLogin")
-        @include("shop.layout.headers")
-        @include("shop.layout.backToTop")
-        @include("shop.layout.whatsappBubble")
 
+		<header>
+			<p>Header</p>
+			<p>Header</p>
+			<p>Header</p>
+		</header>
+		<div class="contenedor">
+			@for ($i = 0; $i < 0; ++$i)
+				<p>{{ $i }}</p>
+			@endfor
+		</div>
+		<footer>
+			<p>Footer</p>
+			<p>Footer</p>
+			<p>Footer</p>
+			<p>Footer</p>
+			<p>Footer</p>
+		</footer>
 
-        
-
-
-        @include("shop.layout.footers")
 	</body>
 </html>

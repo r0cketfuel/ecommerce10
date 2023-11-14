@@ -10,7 +10,7 @@
 @import url("navbar.css");
 @import url("footers.css");
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
     --containers-max-width:     	1366px;
@@ -23,16 +23,21 @@
 }
 
 html {
-    background-color:               rgb(250,250,250);
+    background-color:				(240,240,240);
 }
 
 body {
-    font-size:                      0.8125rem;
-	font-family: 					'Poppins', sans-serif;
-    color:                          #2f2f2f;
+    font-size:                      13px;
+    font-family:                    'Open Sans', sans-serif;
+    color:                      	#2f2f2f;
+    min-height:                     100vh;
+    display:                        flex;
+    flex-flow:                      column nowrap;
+
 }
 
 .main-container {
+    flex:                           1;
     margin:                         0 auto;
     -webkit-box-sizing:             border-box;
             box-sizing:             border-box;
@@ -43,18 +48,14 @@ body {
     -webkit-box-direction:          normal;
         -ms-flex-direction:         column;
             flex-direction:         column;
-    gap:                            10px;
+    gap:                            30px;
+    width: 							100%;
     max-width:                      var(--containers-max-width);
-    padding:                        40px var(--containers-side-padding);
+    padding:                        20px var(--containers-side-padding);
     -webkit-animation-name: 		fade-in;
             animation-name: 		fade-in;
 	-webkit-animation-duration: 	0.5s;
             animation-duration: 	0.5s;
-    min-height:                     500px;
-}
-
-.main-container h1 {
-    font-size: 1.5rem;
 }
 
 .container {
