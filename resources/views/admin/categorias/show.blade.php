@@ -9,7 +9,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/admin"><i class="fa-solid fa-house fa-sm"></i> Home</a> > Editar categoría
+            <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Editar categoría
         </div>
 
         @if ($errors->any())

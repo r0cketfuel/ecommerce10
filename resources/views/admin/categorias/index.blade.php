@@ -38,7 +38,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/admin"><i class="fa-solid fa-house fa-sm"></i> Home</a> > Listado de categorías
+            <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Listado de categorías
         </div>
 
         <a class="btn-link btn-link-primary w100px" href="categorias/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
