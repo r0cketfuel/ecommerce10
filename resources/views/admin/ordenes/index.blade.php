@@ -38,7 +38,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/admin">Home</a> > Listado de ordenes
+            <a href="/admin"><i class="fa-solid fa-house fa-sm"></i> Home</a> > Listado de ordenes
         </div>
 
         <table>

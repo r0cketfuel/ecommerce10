@@ -13,7 +13,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/admin">Home</a> > <a href="/admin/banners">Banners</a> > {{ $title }}
+            <a href="/admin"><i class="fa-solid fa-house fa-sm"></i> Home</a> > <a href="/admin/banners">Banners</a> > {{ $title }}
         </div>
 
         @if ($errors->any())

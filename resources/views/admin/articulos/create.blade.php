@@ -35,7 +35,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/admin">Home</a> > <a href="/admin/articulos">Artículos</a> > {{ $title }}
+            <a href="/admin"><i class="fa-solid fa-house fa-sm"></i> Home</a> > <a href="/admin/articulos">Artículos</a> > {{ $title }}
         </div>
 
         @include('admin.articulos.modals.categoria')
