@@ -1,7 +1,7 @@
 @extends("admin.layout.master")
 
 @php
-    $title = "Listado de ordenes";
+    $title = "Listado de órdenes";
 @endphp
 
 @section("title", $title)
@@ -11,12 +11,10 @@
 @endsection
 
 @section("body")
-    <h1>{{ $title }}</h1>
-
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > {{ $title }}
-    </div>
+    @php
+        $breadcrumbs = [
+        ];
+    @endphp
 
     <table>
         <thead>
