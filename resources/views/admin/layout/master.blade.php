@@ -51,6 +51,7 @@
         @endif
 
         <div class="main-container">
+            @include("admin.layout.breadcrumb")
             @yield("body")
         </div>
 	</body>

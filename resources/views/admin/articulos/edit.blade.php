@@ -11,12 +11,11 @@
 @endsection
 
 @section("body")
-    <h1>{{ $title }}</h1>
-
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > <a href="/admin/articulos">Artículos</a> > {{ $title }}
-    </div>
+    @php
+        $breadcrumbs = [
+            ['link' => '/admin/articulos', 'title' => 'Artículos'],
+        ];
+    @endphp
 
     <div class="panel">
         <div class="panel-content">

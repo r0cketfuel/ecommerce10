@@ -17,15 +17,14 @@
 @endsection
 
 @section("body")
-    <h1>{{ $title }}</h1>
-
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > <a href="/admin/articulos">Artículos</a> > {{ $title }}
-    </div>
-
     @include('admin.articulos.modals.categoria')
     @include('admin.articulos.modals.subcategoria')
+    
+    @php
+        $breadcrumbs = [
+            ['link' => '/admin/articulos', 'title' => 'Artículos'],
+        ];
+    @endphp
 
     <div class="grid grid-cols-12 grid-align-start gap3">
         <div class="col-span-6 col-span-900p-12">

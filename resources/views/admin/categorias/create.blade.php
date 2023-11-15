@@ -1,19 +1,19 @@
 @extends("admin.layout.master")
 
-@section("title", "Nueva categoría")
+@php
+    $title = "Nueva categoría";
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet"	href="{{config('constants.framework_css')}}panel.css">
 @endsection
 
-@section("body")    
-    <h1>Nueva categoría</h1>
-
-    <div class="panel">
-        <div class="panel-content">
-            <button form="form" class="btn-primary">Guardar</button>
-        </div>
-    </div>
-    
-    <form id="form" method="post"  enctype="multipart/form-data" action="{{ route('banners.store') }}">@csrf</form>
+@section("body")
+    @php
+        $breadcrumbs = [
+            ['link' => '/admin/categorias', 'title' => 'Categorías'],
+        ];
+    @endphp
 @endsection

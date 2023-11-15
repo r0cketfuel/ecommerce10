@@ -6,13 +6,16 @@
 
 @section("title", $title)
 
-@section("body")
-    <h1>{{ $title }}</h1>
+@section("css")
+    <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
+@endsection
 
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > <a href="/admin/banners">Banners</a> > {{ $title }}
-    </div>
+@section("body")
+    @php
+        $breadcrumbs = [
+            ['link' => '/admin/banners', 'title' => 'Banners'],
+        ];
+    @endphp
 
     <table>
         <thead>

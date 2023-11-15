@@ -11,12 +11,11 @@
 @endsection
 
 @section("body")
-    <h1>{{ $title }}</h1>
+    @php
+        $breadcrumbs = [
+        ];
+    @endphp
 
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > {{ $title }}
-    </div>
 
     <a class="btn-link btn-link-primary w100px" href="banners/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
 

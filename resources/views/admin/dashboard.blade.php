@@ -1,6 +1,10 @@
 @extends("admin.layout.master")
 
-@section("title", "Dashboard")
+@php
+    $title = "Dashboard";
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet"	href="{{  config('constants.framework_css') }}widget.css">
@@ -11,8 +15,6 @@
 @endsection
 
 @section("body")
-    <h1>Dashboard</h1>
-
     <div class="widget-grid">
         @foreach ($widgets as $widget)
             <div class="dashboard-widget" data-type="{{ $widget['color'] }}">

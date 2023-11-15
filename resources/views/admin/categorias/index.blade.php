@@ -1,18 +1,20 @@
 @extends("admin.layout.master")
 
-@section("title", "Categorías")
+@php
+    $title = "Listado de categorías";
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
 @endsection
 
 @section("body")
-    <h1>Listado de categorías</h1>
-
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Listado de categorías
-    </div>
+    @php
+        $breadcrumbs = [
+        ];
+    @endphp
 
     <a class="btn-link btn-link-primary w100px" href="categorias/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
 
