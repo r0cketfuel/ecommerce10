@@ -10,12 +10,12 @@
     <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
 @endsection
 
-@section("body")
-    @php
-        $breadcrumbs = [
-        ];
-    @endphp
+@php
+    $breadcrumbs = [
+    ];
+@endphp
 
+@section("body")
     <table>
         <thead>
             <tr>

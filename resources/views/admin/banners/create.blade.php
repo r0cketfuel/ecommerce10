@@ -10,14 +10,13 @@
     <link rel="stylesheet"	href="{{config('constants.framework_css')}}panel.css">
 @endsection
 
-@section("body")
-    @php
-        $breadcrumbs = [
-            ['link' => '/admin/banners', 'title' => 'Banners'],
-        ];
-    @endphp
+@php
+    $breadcrumbs = [
+        ['link' => '/admin/banners', 'title' => 'Banners'],
+    ];
+@endphp
 
-    
+@section("body")
     <div class="panel">
         <div class="panel-content">
             <label>

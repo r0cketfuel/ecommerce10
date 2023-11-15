@@ -10,12 +10,12 @@
     <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
 @endsection
 
-@section("body")
-    @php
-        $breadcrumbs = [
-        ];
-    @endphp
+@php
+    $breadcrumbs = [
+    ];
+@endphp
 
+@section("body")
     <a class="btn-link btn-link-primary w100px" href="categorias/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
 
     <table>

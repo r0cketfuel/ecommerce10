@@ -10,13 +10,13 @@
 
 @section("title", $title)
 
-@section("body")
-    @php
-        $breadcrumbs = [
-            ['link' => '/admin/subcategorias', 'title' => 'Subcategorias'],
-        ];
-    @endphp
+@php
+    $breadcrumbs = [
+        ['link' => '/admin/subcategorias', 'title' => 'Subcategorias'],
+    ];
+@endphp
 
+@section("body")
     <table>
         <thead>
             <tr>

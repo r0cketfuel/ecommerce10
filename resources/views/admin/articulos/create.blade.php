@@ -16,16 +16,16 @@
     <script defer src="{{ config('constants.admin_js') }}nuevo.js"></script>
 @endsection
 
+@php
+    $breadcrumbs = [
+        ['link' => '/admin/articulos', 'title' => 'Artículos'],
+    ];
+@endphp
+
 @section("body")
     @include('admin.articulos.modals.categoria')
     @include('admin.articulos.modals.subcategoria')
     
-    @php
-        $breadcrumbs = [
-            ['link' => '/admin/articulos', 'title' => 'Artículos'],
-        ];
-    @endphp
-
     <div class="grid grid-cols-12 grid-align-start gap3">
         <div class="col-span-6 col-span-900p-12">
             <div class="panel">

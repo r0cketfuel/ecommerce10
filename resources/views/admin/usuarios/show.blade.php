@@ -10,10 +10,11 @@
 
 @section("title", $title)
 
+@php
+    $breadcrumbs = [
+        ['link' => '/admin/usuarios', 'title' => 'Usuarios'],
+    ];
+@endphp
+
 @section("body")
-    @php
-        $breadcrumbs = [
-            ['link' => '/admin/usuarios', 'title' => 'Usuarios'],
-        ];
-    @endphp
 @endsection

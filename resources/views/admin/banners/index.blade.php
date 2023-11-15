@@ -10,13 +10,12 @@
     <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
 @endsection
 
+@php
+    $breadcrumbs = [
+    ];
+@endphp
+
 @section("body")
-    @php
-        $breadcrumbs = [
-        ];
-    @endphp
-
-
     <a class="btn-link btn-link-primary w100px" href="banners/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
 
     <table>

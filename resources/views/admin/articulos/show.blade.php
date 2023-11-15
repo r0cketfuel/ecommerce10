@@ -10,13 +10,13 @@
     <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
 @endsection
 
-@section("body")
-    @php
-        $breadcrumbs = [
-            ['link' => '/admin/articulos', 'title' => 'Artículos'],
-        ];
-    @endphp
+@php
+    $breadcrumbs = [
+        ['link' => '/admin/articulos', 'title' => 'Artículos'],
+    ];
+@endphp
 
+@section("body")
     <table>
         <thead>
             <tr>

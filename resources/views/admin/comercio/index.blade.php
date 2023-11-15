@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="{{ config('constants.framework_css') }}panel.css">
 @endsection
 
+@php
+    $breadcrumbs = [
+    ];
+@endphp
+
 @section("body")
-    @php
-        $breadcrumbs = [
-        ];
-    @endphp
-    
     <div class="panel" style="padding: 10px;">
         <div class="panel-content">
             @foreach ($comercio->getAttributes() as $campo => $valor)
