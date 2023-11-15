@@ -56,12 +56,12 @@
     transition: 			        all 0.25s ease;
 }
 
-.accordion-active .arrow {
+.accordion.active .arrow {
     -webkit-transform: 				rotate(-180deg);
         -ms-transform: 				rotate(-180deg);
             transform: 				rotate(-180deg);
 }
 
-.accordion-active .accordion-panel {
+.accordion.active .accordion-panel {
     display:                        block;
 }
