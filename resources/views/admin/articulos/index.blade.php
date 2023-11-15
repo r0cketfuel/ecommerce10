@@ -20,11 +20,25 @@
     ];
 @endphp
 
+@section("inlineCSS")
+<style>
+    .input-container {
+	position: 						relative;
+    display: 						inline-block;
+	width: 							100%;
+}
+</style>
+@endsection
+
 @section("body")
     @include('admin.articulos.modals.filter')
 
     <div class="flex justify-between">
         <a class="btn-link btn-link-primary w100px" href="articulos/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
+        <div class="input-container">
+            <input form="form-search" type="text" name="busqueda" value="{{ isset($busqueda['searchbar']) ? $busqueda['searchbar'] : '' }}" placeholder="{{ __('general.search') }}...">
+            <button form="form-search" type="submit" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
         <button class="filterButton" id="boton_filtros"><i class="fa-solid fa-filter"></i></button>
     </div>
 

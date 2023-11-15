@@ -21,7 +21,17 @@ class ArticuloController extends Controller
         $query = Articulo::query();
     
         foreach($request->all() as $key => $value)
-            $query->where($key, $value);
+            if($key!="busqueda")
+                $query->where($key, $value);
+            else
+            {
+                $query->where(function ($q) use ($value)
+                {
+                    $q->where("codigo",         "like", "%" . $value . "%")
+                    ->orWhere("nombre",         "like", "%" . $value . "%")
+                    ->orWhere("descripcion",    "like", "%" . $value . "%");
+                });
+            }
     
         $articulos = $query->get();
     
