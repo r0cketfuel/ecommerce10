@@ -11,13 +11,11 @@
 @endsection
 
 @section("body")
-    <h1>{{ $title }}</h1>
-
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > {{ $title }}
-    </div>
-
+    @php
+        $breadcrumbs = [
+        ];
+    @endphp
+    
     <div class="panel" style="padding: 10px;">
         <div class="panel-content">
             @foreach ($comercio->getAttributes() as $campo => $valor)
