@@ -1,63 +1,37 @@
 @extends("admin.layout.master")
 
-@section("title","Ordenes")
+@php
+    $title = "Listado de ordenes";
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
-    <link rel="stylesheet"	href="{{config('constants.framework_css')}}alert.css">
 @endsection
 
 @section("body")
-    <div class="main-container">
+    <h1>{{ $title }}</h1>
 
-        @if ($errors->any())
-            <div class="alert danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        @if (session("success"))
-            <div class="alert success">
-                {{session("success")}}
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            </div>
-        @endif
-
-        @if (session("error"))
-            <div class="alert danger">
-                {{session("error")}}
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            </div>
-        @endif
-
-        <h1>Listado de ordenes</h1>
-
-        <!-- Breadcrumb -->
-        <div class="breadcrumb">
-            <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Listado de ordenes
-        </div>
-
-        <table>
-            <thead>
-                <tr>
-                    <th class="text-center">id</th>
-                    <th class="text-center">estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($ordenes as $orden)
-                    <tr>
-                        <td class="text-center">{{ $orden->id }}</td>
-                        <td class="text-center">{{ $orden->estado }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > {{ $title }}
     </div>
 
+    <table>
+        <thead>
+            <tr>
+                <th class="text-center">id</th>
+                <th class="text-center">estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($ordenes as $orden)
+                <tr>
+                    <td class="text-center">{{ $orden->id }}</td>
+                    <td class="text-center">{{ $orden->estado }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 @endsection

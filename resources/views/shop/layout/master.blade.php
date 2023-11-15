@@ -12,10 +12,10 @@
         <link rel="stylesheet"	href="{{ config('constants.shop_css') }}style.css">
         <link rel="stylesheet"	href="{{ config('constants.shop_css') }}login.css">
         <link rel="stylesheet"	href="{{ config('constants.framework_css') }}modal.css">
-
-		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-		
         @yield("css")
+
+        <!-- Font awesome -->
+		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         
         <!-- Scripts -->
         <script defer src="{{config('constants.framework_js')}}scroll.js"></script>
