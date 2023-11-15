@@ -359,6 +359,11 @@ button.addToCart {
 	background-color: 				brown;
 }
 
+button.filterButton {
+    width: 50px;
+}
+
+
 button.deleteButton,
 button.minusButton,
 button.plusButton,

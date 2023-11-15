@@ -8,15 +8,25 @@
 
 @section("css")
     <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}modal.css">
 @endsection
 
-@section("body")
-    @php
-        $breadcrumbs = [
-        ];
-    @endphp
+@section("js")
+    <script defer src="{{ config('constants.framework_js') }}modal.js"></script>
+@endsection
 
-    <a class="btn-link btn-link-primary w100px" href="articulos/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
+@php
+    $breadcrumbs = [
+    ];
+@endphp
+
+@section("body")
+    @include('admin.articulos.modals.filter')
+
+    <div class="flex justify-between">
+        <a class="btn-link btn-link-primary w100px" href="articulos/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
+        <button class="filterButton" id="boton_filtros"><i class="fa-solid fa-filter"></i></button>
+    </div>
 
     <table>
         <thead>
@@ -93,6 +103,9 @@
                 });
             }
 
+            const botonFiltros = document.getElementById("boton_filtros");
+
+            botonFiltros.addEventListener("click", function () {openModal("modal_filter"); return false})
         });
 
         async function ajaxItemDisable(articleId, newState)
