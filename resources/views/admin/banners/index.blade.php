@@ -21,12 +21,12 @@
     <table>
         <thead>
             <tr>
-                <th>Imagen</th>
-                <th>Descripción</th>
-                <th>Link</th>
-                <th>Valido Desde</th>
-                <th>Valido Hasta</th>
-                <th>Activo</th>
+                <th class="text-left">Imagen</th>
+                <th class="text-left">Descripción</th>
+                <th class="text-left">Link</th>
+                <th class="text-left">Valido Desde</th>
+                <th class="text-left">Valido Hasta</th>
+                <th class="text-center">Activo</th>
             </tr>
         </thead>
         <tbody>
@@ -47,4 +47,76 @@
             @endforeach
         </tbody>
     </table>
+@endsection
+
+@section("scripts")
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const switches = [...document.querySelectorAll("input[type='checkbox']")];
+
+            for (let i = 0; i < switches.length; ++i)
+            {
+                switches[i].addEventListener("change", function () {
+                    const bannerId = switches[i].getAttribute('id');
+                    const newState = switches[i].checked ? 1 : 0;
+                    ajaxItemDisable(bannerId, newState);
+                    return false;
+                });
+            }
+        });
+
+        async function ajaxItemDisable(bannerId, newState)
+        {
+            try {
+                const response = await fetch(`/api/banners/${bannerId}`, {
+                    method: "PUT",
+                    headers: {
+                        'Accept':       'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ estado: newState })
+                });
+
+                if (response.ok)
+                {
+                    console.log('Se cambió el estado del item');
+                }
+                else
+                {
+                    console.error('Error al cambiar el estado del item');
+                }
+            }
+            catch (error)
+            {
+                console.error('Error en la solicitud:', error);
+            }
+        }
+
+        async function ajaxItemDelete(bannerId)
+        {
+            try {
+                const response = await fetch(`/api/banners/${bannerId}`, {
+                    method: "DELETE",
+                    headers: {
+                        'Accept':       'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (response.ok)
+                {
+                    console.log('Item eliminado');
+                }
+                else
+                {
+                    console.error('Error al eliminar el item');
+                }
+            }
+            catch (error)
+            {
+                console.error('Error en la solicitud:', error);
+            }
+        }
+    </script>
 @endsection

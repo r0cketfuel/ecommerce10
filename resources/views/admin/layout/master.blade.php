@@ -53,6 +53,7 @@
         <div class="main-container">
             @include("admin.layout.breadcrumb")
             @yield("body")
+            @yield("scripts")
         </div>
 	</body>
 </html>

@@ -8,14 +8,32 @@ use App\Http\Requests\Usuario\StoreUsuarioRequest;
 use App\Http\Requests\Usuario\UpdateUsuarioRequest;
 
 use App\Models\Usuario;
+use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function index()
+    public function index(Request $request)
     {
-        $usuarios = Usuario::all();
-
+        $query = Usuario::query();
+    
+        foreach($request->all() as $key => $value)
+            if($key!="busqueda")
+                $query->where($key, $value);
+            else
+            {
+                $query->where(function ($q) use ($value)
+                {
+                    $q->where("apellidos",      "like", "%" . $value . "%")
+                    ->orWhere("nombres",        "like", "%" . $value . "%")
+                    ->orWhere("documento_nro",  "like", "%" . $value . "%")
+                    ->orWhere("cuil",           "like", "%" . $value . "%")
+                    ->orWhere("cuit",           "like", "%" . $value . "%");
+                });
+            }
+    
+        $usuarios = $query->get();
+    
         return view("admin.usuarios.index", compact('usuarios'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
