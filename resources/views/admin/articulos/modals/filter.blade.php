@@ -7,7 +7,21 @@
             <span class="modal-close" onclick="this.parentElement.parentElement.parentElement.style.display='none'">X</span>
         </div>
         
-        <div class="modal-body" style="padding-top: 40px; background: white">
+        <div class="modal-body" style="padding-top: 60px; background: white">
+
+            <label>
+                Estado
+                <select>
+                    <option value="" selected disabled>Seleccione</option>
+                </select>
+
+                Eliminados
+                <select>
+                    <option value="" selected disabled>Seleccione</option>
+                </select>
+            </label>
+
+            <button id="" class="btn-primary">Filtrar</button>
 
         </div>
     </div>
