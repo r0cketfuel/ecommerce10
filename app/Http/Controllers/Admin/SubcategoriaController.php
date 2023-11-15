@@ -21,7 +21,7 @@ class SubcategoriaController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function create()
     {
-        //
+        return view("admin.subcategorias.create");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function store(StoreSubcategoriaRequest $request)
@@ -31,7 +31,9 @@ class SubcategoriaController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function show(Subcategoria $subcategoria)
     {
-        //
+        $subcategoria = Subcategoria::find($subcategoria->id);
+
+        return view("admin.subcategorias.show", compact('subcategoria'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function edit(Subcategoria $subcategoria)

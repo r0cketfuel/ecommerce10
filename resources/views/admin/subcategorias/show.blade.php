@@ -1,38 +1,42 @@
 @extends("admin.layout.master")
 
 @php
-    $title = "Detalle banner";
+    $title = "Detalle subcategoría";
 @endphp
+
+@section("css")
+    <link rel="stylesheet"	href="{{config('constants.admin_css')}}table.css">
+@endsection
 
 @section("title", $title)
 
 @section("body")
-    <h1>{{ $title }}</h1>
-
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <a href="/admin"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Banners > {{ $title }}
-    </div>
+    @php
+        $breadcrumbs = [
+            ['link' => '/admin/subcategorias', 'title' => 'Subcategorias'],
+        ];
+    @endphp
 
     <table>
         <thead>
             <tr>
-                <th>Imagen</th>
-                <th>Descripción</th>
-                <th>Link</th>
-                <th>Valido Desde</th>
-                <th>Valido Hasta</th>
-                <th>Activo</th>
+                <th class="text-left">Categoría</th>
+                <th class="text-left">Nombre</th>
+                <th class="text-left">Descripción</th>
+                <th class="text-center">Estado</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><img src="{{ $banner->imagen }}" alt="{{ $banner->descripcion }}" width="100"></td>
-                <td>{{ $banner->descripcion }}</td>
-                <td><a href="/{{ $banner->link }}">/{{ $banner->link }}</a></td>
-                <td>{{ $banner->valido_desde }}</td>
-                <td>{{ $banner->valido_hasta }}</td>
-                <td>{{ $banner->activo }}</td>
+                <td>{{ $subcategoria->categoria->nombre }}</td>
+                <td>{{ $subcategoria->nombre }}</td>
+                <td>{{ $subcategoria->descripcion }}</td>
+                <td class="text-center">
+                    <label class="switch">
+                        <input type="checkbox" id="{{ $subcategoria->id }}" @if($subcategoria->activo) checked @endif>
+                        <div class="slider round"></div>
+                    </label>
+                </td>
             </tr>
         </tbody>
     </table>
