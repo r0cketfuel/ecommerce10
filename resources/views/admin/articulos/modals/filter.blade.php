@@ -11,17 +11,14 @@
 
             <label>
                 Estado
-                <select>
-                    <option value="" selected disabled>Seleccione</option>
-                </select>
-
-                Eliminados
-                <select>
-                    <option value="" selected disabled>Seleccione</option>
+                <select id="modal_select_estado">
+                    <option value="" disabled selected>Seleccione</option>
+                    <option value="1">Activos</option>
+                    <option value="0">Pausados</option>
                 </select>
             </label>
 
-            <button id="" class="btn-primary">Aplicar</button>
+            <button id="boton_aplicar_filtros_modal" class="btn-primary">Aplicar</button>
 
         </div>
     </div>

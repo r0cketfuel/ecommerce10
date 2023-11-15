@@ -103,10 +103,25 @@
                 });
             }
 
-            const botonFiltros = document.getElementById("boton_filtros");
+            const botonFiltros          = document.getElementById("boton_filtros");
+            const botonAplicarFiltros   = document.getElementById("boton_aplicar_filtros_modal");
 
-            botonFiltros.addEventListener("click", function () {openModal("modal_filter"); return false})
+            botonFiltros.addEventListener("click", function () { openModal("modal_filter"); return false })
+            botonAplicarFiltros.addEventListener("click", function () { filter(); return false })
         });
+
+        async function filter()
+        {
+            try {
+                const selectEstado      = document.getElementById("modal_select_estado");
+                
+                window.location.href    = "/admin/articulos?estado=" + selectEstado.value;
+            }
+            catch (error)
+            {
+                console.error("Error:", error);
+            }
+        }
 
         async function ajaxItemDisable(articleId, newState)
         {

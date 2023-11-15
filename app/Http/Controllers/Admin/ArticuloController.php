@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\Articulo\StoreArticuloRequest;
 use App\Http\Requests\Articulo\UpdateArticuloRequest;
 
@@ -15,10 +16,15 @@ use App\Models\Talle;
 class ArticuloController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function index()
+    public function index(Request $request)
     {
-        $articulos = Articulo::where("activo", True)->get();
-
+        $query = Articulo::query();
+    
+        foreach($request->all() as $key => $value)
+            $query->where($key, $value);
+    
+        $articulos = $query->get();
+    
         return view("admin.articulos.index", compact('articulos'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
