@@ -4,7 +4,7 @@
             <div class="modal-title">
                 <h1>Filtros</h1>
             </div>
-            <span class="modal-close" onclick="this.parentElement.parentElement.parentElement.style.display='none'">X</span>
+            <span class="modal-close" onclick="closeModal(this.parentElement.parentElement.parentElement.id)">X</span>
         </div>
         
         <div class="modal-body" style="padding-top: 60px; background: white">
@@ -21,7 +21,7 @@
                 </select>
             </label>
 
-            <button id="" class="btn-primary">Filtrar</button>
+            <button id="" class="btn-primary">Aplicar</button>
 
         </div>
     </div>
