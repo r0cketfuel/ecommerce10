@@ -7,45 +7,59 @@
             </div>
             <div class="footer-section">
                 <h3 class="top-footer-title">{{ __('general.contact') }}</h3>
-                <ul class="footer-links">
-                    @if(session('infoComercio.telefono_1'))
-                        <li>
-                            <a href="tel:{{ session('infoComercio.telefono_1') }}">
-                                <span>
-                                    <i class="fa-solid fa-phone"></i>
-                                </span>{{ session("infoComercio.telefono_1") }}
-                            </a>
-                        </li>
+                @php $sucursales = session('infoComercio.sucursales'); @endphp
+                @foreach($sucursales as $sucursal)
+                    @if($sucursal['activo'])
+                        <ul class="footer-links">
+                            <li>
+                                @if($sucursal['nombre'])
+                                    <p>
+                                        <strong>{{ $sucursal['nombre'] }}</strong>
+                                        @if(count($sucursales) > 1 && $sucursal['principal'])
+                                            (principal)
+                                        @endif
+                                    </p>
+                                @endif
+                            </li>
+                            <li>
+                                @if($sucursal['telefono_1'])
+                                    <a href="tel:{{ $sucursal['telefono_1'] }}">
+                                        <span>
+                                            <i class="fa-solid fa-phone"></i>
+                                        </span>{{ $sucursal['telefono_1'] }}
+                                    </a>
+                                @endif
+                            </li>
+                            <li>
+                                @if($sucursal['email'])
+                                    <a href="mailto:{{ $sucursal['email'] }}">
+                                        <span>
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </span>{{ $sucursal['email'] }}
+                                    </a>
+                                @endif
+                            </li>
+                            <li>
+                                @if($sucursal['geolocalizacion'])
+                                    <a href="http://www.google.com/maps/place/{{ $sucursal['geolocalizacion'] }}">
+                                        <span>
+                                            <i class="fa-solid fa-location-dot"></i>
+                                        </span>{{ $sucursal['direccion'] }}
+                                    </a>
+                                @endif
+                            </li>
+                            <li>
+                                @if($sucursal['localidad'])
+                                    <a href="">
+                                        <span>
+                                            <i class="fa-solid fa-map"></i>
+                                        </span>{{ $sucursal['localidad'] }}, {{ $sucursal['provincia'] }}
+                                    </a>
+                                @endif
+                            </li>
+                        </ul>
                     @endif
-                    @if(session('infoComercio.email'))
-                        <li>
-                            <a href="mailto:{{ session('infoComercio.email') }}">
-                                <span>
-                                    <i class="fa-solid fa-envelope"></i>
-                                </span>{{ session("infoComercio.email") }}
-                            </a>
-                        </li>
-                    @endif
-                    @if(session('infoComercio.geolocalizacion'))
-                        <li>
-                            <a href="http://www.google.com/maps/place/{{ session('infoComercio.geolocalizacion') }}">
-                                <span>
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </span>
-                                {{ session("infoComercio.direccion") }}
-                            </a>
-                        </li>
-                    @endif
-                    @if(session('infoComercio.localidad'))
-                        <li>
-                            <a href="">
-                                <span>
-                                    <i class="fa-solid fa-map"></i>
-                                </span>{{ session("infoComercio.localidad") }}, {{ session("infoComercio.provincia") }}
-                            </a>
-                        </li>
-                    @endif
-                </ul>
+                @endforeach
             </div>
         </div>
     </div>
@@ -53,11 +67,11 @@
     <div class="bottom-footer">
         <div class="bottom-footer-container">
             <div class="footer-payments">
-                <img src="{{ config('constants.images') }}/medios_pago/visa.png"          alt="visa">
-                <img src="{{ config('constants.images') }}/medios_pago/mastercard.png"    alt="mastercard">
-                <img src="{{ config('constants.images') }}/medios_pago/mercadopago.png"   alt="mercadopago">
-                <img src="{{ config('constants.images') }}/medios_pago/pagofacil.png"     alt="pagofacil">
-                <img src="{{ config('constants.images') }}/medios_pago/rapipago.png"      alt="rapipago">
+                <img src="{{ config('constants.images') }}/medios_pago/visa.png" alt="visa">
+                <img src="{{ config('constants.images') }}/medios_pago/mastercard.png" alt="mastercard">
+                <img src="{{ config('constants.images') }}/medios_pago/mercadopago.png" alt="mercadopago">
+                <img src="{{ config('constants.images') }}/medios_pago/pagofacil.png" alt="pagofacil">
+                <img src="{{ config('constants.images') }}/medios_pago/rapipago.png" alt="rapipago">
             </div>
             <div>
                 <a href="#">

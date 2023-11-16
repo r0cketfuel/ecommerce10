@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Session;
 use App\Models\InfoComercio;
+use App\Models\Sucursal;
 
 class LoadInfoComercio
 {
@@ -19,7 +20,8 @@ class LoadInfoComercio
     {
         if (!Session::has("infoComercio"))
         {
-            Session::put("infoComercio", InfoComercio::first()->toArray());
+            Session::put("infoComercio",            InfoComercio::first()->toArray());
+            Session::put("infoComercio.sucursales", Sucursal::all()->toArray());
         }
 
         return $next($request);
