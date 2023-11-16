@@ -200,7 +200,7 @@ class ShopController extends Controller
     {
         // Usuario autenticado, redirigir a la página de inicio
         if(Auth::check())
-            return view("shop");
+            return redirect("/shop");
 
         $generos            = Genero::all();
         $tiposDocumentos    = TipoDocumento::all();

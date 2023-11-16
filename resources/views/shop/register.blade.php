@@ -15,6 +15,7 @@
 
 @section("js")
     <script defer src="{{  config('constants.framework_js') }}formError.js"></script>
+    <script defer src="{{  config('constants.framework_js') }}alert.js"></script>
 @endsection
 
 @section("body")
@@ -28,7 +29,10 @@
         </div>
 
         @if ($errors->any())
-            <div class="alert danger">Se encontraron errores. Por favor revise la información ingresada</div>
+            <div class="alert danger">
+                Se encontraron errores. Por favor revise la información ingresada
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
         @endif
 
         <div class="panel mw50">

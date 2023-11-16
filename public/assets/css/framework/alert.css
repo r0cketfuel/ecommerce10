@@ -16,18 +16,21 @@
         -ms-flex-align:             center;
             align-items:            center;
     border-radius:                  4px;
-    padding:                        10px;
-    color:                          white;
+    padding:                        10px 20px;
 	-webkit-animation-name: 		fade-in;
             animation-name: 		fade-in;
 	-webkit-animation-duration: 	0.25s;
             animation-duration: 	0.25s;
+    
+    position:                       fixed;
+    top:                            40px;
+    right:                          40px;
 }
 
 .alert.success {
 	border: 						1px solid #28a745;
 	background-color: 				#28a745cc;
-    color:                          #196b2c;
+    color:                          #19600c;
 }
 
 .alert.danger {
