@@ -45,6 +45,9 @@
                                         <span>
                                             <i class="fa-solid fa-location-dot"></i>
                                         </span>{{ $sucursal['direccion'] }}
+                                        @if ($sucursal['entre_calles_1'] && $sucursal['entre_calles_2'])
+                                            ( entre calles {{ $sucursal['entre_calles_1'] }}, {{ $sucursal['entre_calles_2'] }} )
+                                        @endif
                                     </a>
                                 @endif
                             </li>

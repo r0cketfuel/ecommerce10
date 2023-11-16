@@ -35,8 +35,8 @@ class SucursalSeeder extends Seeder
         Sucursal::create([
             "nombre"            => "Sucursal 2",
             "direccion"         => "Dirección 4321",
-            "entre_calles_1"    => "Calle 1a",
-            "entre_calles_2"    => "Calle 2b",
+            "entre_calles_1"    => "",
+            "entre_calles_2"    => "",
             "codigo_postal"     => "8000",
             "local"             => "",
             "barrio"            => "",
