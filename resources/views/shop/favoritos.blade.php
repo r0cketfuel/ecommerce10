@@ -22,7 +22,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/shop">Home</a> > Favoritos
+            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Favoritos
         </div>
 
         @if($favoritosItemQty)

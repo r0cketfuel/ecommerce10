@@ -41,7 +41,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/shop">Home</a> > Detalle item
+            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Detalle item
         </div>
 
         <!-- Grid -->

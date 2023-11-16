@@ -49,7 +49,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/shop">Home</a> > Checkout
+            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Checkout
         </div>
 
         @if(count($checkout["items"])>0)

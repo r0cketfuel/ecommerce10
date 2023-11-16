@@ -76,7 +76,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/shop">Home</a> > <a href="/shop/checkout">Checkout</a> > Facturación
+            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > <a href="/shop/checkout">Checkout</a> > Facturación
         </div>
 
         <!-- Grid -->

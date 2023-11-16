@@ -46,7 +46,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/shop">Home</a> > Mi cuenta
+            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Mi cuenta
         </div>
 
         <div class="flex-col gap1" style="max-width: 700px">

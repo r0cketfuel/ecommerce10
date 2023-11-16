@@ -24,7 +24,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/shop">Home</a> > Alta de usuarios
+            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Alta de usuarios
         </div>
 
         @if ($errors->any())
