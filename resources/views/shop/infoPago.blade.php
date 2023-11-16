@@ -1,15 +1,10 @@
 @extends("shop.layout.master")
 
-@section("title","Información sobre un pago")
+@php
+    $title = "Información sobre un pago";
+@endphp
 
-@section("css")
-@endsection
-
-@section("inlineCSS")
-@endsection
-
-@section("js")
-@endsection
+@section("title", $title)
 
 @section("body")
 

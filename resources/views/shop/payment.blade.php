@@ -1,6 +1,10 @@
 @extends("shop.layout.master")
 
-@section("title","Pago")
+@php
+    $title = "Pago";
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}panel.css">

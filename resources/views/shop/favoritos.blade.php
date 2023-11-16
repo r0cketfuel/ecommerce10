@@ -1,6 +1,10 @@
 @extends("shop.layout.master")
 
-@section("title","Favoritos")
+@php
+    $title = "Favoritos";
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet"	href="{{ config('constants.shop_css') }}productCards.css">

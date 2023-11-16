@@ -1,6 +1,10 @@
 @extends("shop.layout.master")
 
-@section("title","Alta de usuarios")
+@php
+    $title = "Alta de usuarios";
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}alert.css">

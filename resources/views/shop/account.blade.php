@@ -1,6 +1,10 @@
 @extends("shop.layout.master")
 
-@section("title","Mi cuenta")
+@php
+    $title = "Mi cuenta";
+@endphp
+
+@section("title", $title)
 
 @section("css")
     <link rel="stylesheet"	href="{{  config('constants.shop_css') }}breadcrumb.css">
