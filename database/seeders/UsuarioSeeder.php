@@ -37,6 +37,7 @@ class UsuarioSeeder extends Seeder
             "email"                     => "usuariodeprueba@hotmail.com",
             "estado"                    => 1,
             "creado"                    => "2022-11-25",
+            "alta"                      => "2023-11-25",
         ]);
 
         for($i=0;$i<5;$i++)

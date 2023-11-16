@@ -27,7 +27,7 @@
                 <th class="text-left">Telefonos</th>
                 <th class="text-left">Email</th>
                 <th class="text-center">Principal</th>
-                <th class="text-center">Activo</th>
+                <th class="text-center">Activa</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +37,7 @@
                 <td class="text-left">{{ $sucursal->direccion }}<br>{{ $sucursal->entre_calles_1 }} {{ $sucursal->entre_calles_2 }}</td>
                 <td class="text-left">
                     <div class="flex justify-between"><div>Localidad:</div><div>{{ $sucursal->localidad }}</div></div>
+                    <div class="flex justify-between"><div>CP:</div><div>{{ $sucursal->codigo_postal }}</div></div>
                     <div class="flex justify-between"><div>Provincia:</div><div>{{ $sucursal->provincia }}</div></div>
                     <div class="flex justify-between"><div>País:</div><div>{{ $sucursal->pais }}</div></div>
                 </td>

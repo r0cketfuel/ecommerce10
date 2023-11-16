@@ -51,10 +51,10 @@
                             <div class="slider round"></div>
                         </label>
                     </td>
-                    <td class="text-center">{{ _dateTime($usuario->creado) }}</td>
+                    <td class="text-center">{!! str_replace(" ","<br>",_dateTime($usuario->creado)) !!}</td>
                     <td class="text-center">
                         @if ($usuario->alta)
-                            {{ _dateTime($usuario->alta) }}
+                        {!! str_replace(" ","<br>",_dateTime($usuario->alta)) !!}
                         @else
                             -
                         @endif
