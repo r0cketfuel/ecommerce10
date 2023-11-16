@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\SubcategoriaController;
 use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\Admin\OrdenController;
+use App\Http\Controllers\Admin\SucursalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,6 +108,7 @@ Route::prefix('admin')->group(function () {
             Route::resource('subcategorias',    SubcategoriaController::class);
             Route::resource('usuarios',         UsuarioController::class);
             Route::resource('ordenes',          OrdenController::class);
+            Route::resource('sucursales',       SucursalController::class);
         });
     });
 });
