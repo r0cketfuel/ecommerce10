@@ -60,7 +60,7 @@ class AdminController extends Controller
             [
                 "title" => "Usuarios pendientes activación",
                 "color" => "yellow",
-                "value" => Usuario::where("estado",0)->count(),
+                "value" => Usuario::where("alta", NULL)->count(),
                 "link"  => ["url" => "/admin/usuarios", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-user-plus'></i>",
                 "extra" => "",
