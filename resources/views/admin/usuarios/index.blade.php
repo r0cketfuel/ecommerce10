@@ -8,14 +8,21 @@
 
 @section("css")
     <link rel="stylesheet" href="{{ config('constants.admin_css') }}table.css">
+    <link rel="stylesheet"	href="{{config('constants.framework_css')}}modal.css">
 @endsection
 
-@section("body")
-    @php
-        $breadcrumbs = [
-        ];
-    @endphp
+@section("js")
+    <script defer src="{{ config('constants.framework_js') }}modal.js"></script>
+@endsection
 
+@php
+    $breadcrumbs = [
+    ];
+@endphp
+
+@section("body")
+    @include('admin.usuarios.modals.edit')
+    
     <table>
         <thead>
             <tr>
@@ -33,9 +40,9 @@
         </thead>
         <tbody>
             @foreach($usuarios as $usuario)
-                <tr>
+                <tr data-id="{{ $usuario->id }}">
                     <td class="text-center">{{ $usuario->id }}</td>
-                    <td class="text-left">{{ $usuario->apellidos }}<br>{{ $usuario->nombres }}</td>
+                    <td class="text-left">{{ $usuario->apellidos }}, {{ $usuario->nombres }}</td>
                     <td class="text-left">{{ $usuario->tipoDocumento->tipo }}<br>{{ $usuario->documento_nro }}</td>
                     <td class="text-left">{{ $usuario->domicilio }} {{ $usuario->domicilio_nro }}<br>{{ $usuario->domicilio_piso }} {{ $usuario->domicilio_depto }}</td>
                     <td class="text-left">{{ $usuario->localidad }}<br>{{ $usuario->codigo_postal }}</td>
@@ -51,10 +58,10 @@
                             <div class="slider round"></div>
                         </label>
                     </td>
-                    <td class="text-center">{!! str_replace(" ","<br>",_dateTime($usuario->creado)) !!}</td>
-                    <td class="text-center">
+                    <td class="text-right">{!! str_replace(" ","<br>",_dateTime($usuario->creado)) !!}</td>
+                    <td class="text-right">
                         @if ($usuario->alta)
-                        {!! str_replace(" ","<br>",_dateTime($usuario->alta)) !!}
+                            {!! str_replace(" ","<br>",_dateTime($usuario->alta)) !!}
                         @else
                             -
                         @endif
@@ -76,6 +83,13 @@
                     return false;
                 });
             }
+
+            const rows = [...document.getElementsByTagName("tr")];
+
+            for (let i = 0; i < rows.length; ++i) {
+                rows[i].addEventListener("click", function () {
+                    openModal("modal_usuario_edit");
+            })};
         });
 
         async function ajaxUserDisable(userId, newState) {
