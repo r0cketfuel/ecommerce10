@@ -27,7 +27,7 @@
 	<body id="top">
 
         @guest
-            @include("shop.layout.modals.login")
+            @include("shop.modals.login")
         @endguest
 
         @include("shop.layout.headers")

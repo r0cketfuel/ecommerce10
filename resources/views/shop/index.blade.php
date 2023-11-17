@@ -25,7 +25,7 @@
 
 @section("body")
 
-    @include("shop.layout.modals.addItem")
+    @include("shop.modals.addItem")
 
     <!-- Contenido de la página -->
     <div class="main-container">

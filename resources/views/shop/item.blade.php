@@ -33,7 +33,7 @@
 @section("body")
 
     @auth
-        @include("shop.layout.modals.addReview")
+        @include("shop.modals.addReview")
     @endauth
 
     <!-- Contenido de la página -->

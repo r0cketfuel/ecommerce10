@@ -45,7 +45,7 @@
     <!-- Contenido de la página -->
     <div class="main-container">
 
-        @include("shop.layout.modals.addItem")
+        @include("shop.modals.addItem")
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">

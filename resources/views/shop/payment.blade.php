@@ -73,7 +73,7 @@
 @endsection
 
 @section("body")
-    @include("shop.layout.modals.payment")
+    @include("shop.modals.payment")
 
     <!-- Contenido de la página -->
     <div class="main-container">
