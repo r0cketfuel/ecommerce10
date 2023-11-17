@@ -9,6 +9,8 @@
 @section("css")
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}panel.css">
     <link rel="stylesheet"	href="{{ config('constants.shop_css') }}breadcrumb.css">
+    <link rel="stylesheet"	href="{{ config('constants.framework_css') }}modal.css">
+    <link rel="stylesheet"	href="{{ config('constants.framework_css') }}spinner.css">
 @endsection
 
 @section("inlineCSS")
@@ -67,9 +69,11 @@
 @endsection
 
 @section("js")
+    <script defer src="{{ config('constants.framework_js') }}modal.js"></script>
 @endsection
 
 @section("body")
+    @include("shop.layout.modals.payment")
 
     <!-- Contenido de la página -->
     <div class="main-container">
@@ -206,7 +210,7 @@
                         <label>Banco emisor<select id="form-checkout__issuer"></select></label>
                         <label>Cuotas<select id="form-checkout__installments"></select></label>
                         <progress value="0" class="progress-bar">Cargando...</progress>
-                        <button form="form-checkout" class="btn-primary" type="submit" id="form-checkout__submit">Confirmar compra</button>
+                        <button id="prueba" form="form-checkout" class="btn-primary" type="submit" id="form-checkout__submit">Confirmar compra</button>
                     @endif
 
                     <!-- Pagofácil o Rapipago mercadopago -->
@@ -251,4 +255,22 @@
 
     </div>
 
+@endsection
+
+@section("scripts")
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            let button = document.getElementById("prueba");
+            console.log(button);
+
+            button.addEventListener("click", () => funcion());
+
+        });
+
+        function funcion(id)
+        {
+            openModal("modal-payment");
+        }
+    </script>
 @endsection
