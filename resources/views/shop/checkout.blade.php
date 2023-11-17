@@ -10,7 +10,6 @@
     <link rel="stylesheet"	href="{{ config('constants.shop_css') }}productCards.css">
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}panel.css">
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}modal.css">
-    <link rel="stylesheet"	href="{{ config('constants.shop_css') }}breadcrumb.css">
 @endsection
 
 @section("js")

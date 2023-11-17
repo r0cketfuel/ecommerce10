@@ -8,7 +8,6 @@
 
 @section("css")
     <link rel="stylesheet"	href="{{ config('constants.shop_css') }}productCards.css">
-    <link rel="stylesheet"	href="{{ config('constants.shop_css') }}breadcrumb.css">
 @endsection
 
 @section("js")

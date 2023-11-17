@@ -12,7 +12,6 @@
     <link rel="stylesheet"	href="{{ config('constants.shop_css') }}productRating.css">
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}tabs.css">
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}modal.css">
-    <link rel="stylesheet"	href="{{ config('constants.shop_css') }}breadcrumb.css">
 @endsection
 
 @section("js")

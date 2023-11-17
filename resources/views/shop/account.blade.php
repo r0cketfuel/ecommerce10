@@ -7,7 +7,6 @@
 @section("title", $title)
 
 @section("css")
-    <link rel="stylesheet"	href="{{  config('constants.shop_css') }}breadcrumb.css">
     <link rel="stylesheet"	href="{{  config('constants.framework_css') }}alert.css">
     <link rel="stylesheet"	href="{{  config('constants.framework_css') }}accordion.css">
 @endsection
