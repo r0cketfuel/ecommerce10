@@ -86,13 +86,16 @@ class ShopController extends Controller
             
             if($item)
             {
-                Articulo::incrementaVisualizacion($id);
+                if($item->estado == 1)
+                {
+                    Articulo::incrementaVisualizacion($id);
 
-                $rating     = Rating::getRatingArticulo($id);
-                $detalle    = DetalleArticulo::detalle($id);
-                $reviews    = Review::reviews($id);
+                    $rating     = Rating::getRatingArticulo($id);
+                    $detalle    = DetalleArticulo::detalle($id);
+                    $reviews    = Review::reviews($id);
                 
-                return view("shop.item", compact("item","rating","detalle","reviews"));
+                    return view("shop.item", compact("item","rating","detalle","reviews"));
+                }
             }
         }
 
