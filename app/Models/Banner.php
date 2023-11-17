@@ -22,7 +22,7 @@ class Banner extends Model
         "link",
         "valido_desde",
         "valido_hasta",
-        "activo"
+        "eliminado",
     ];
     
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -32,7 +32,7 @@ class Banner extends Model
         // Método que retorna una colección con los banners promocionales vigentes a la fecha //
         //====================================================================================//
 
-        $banners = Banner::where("valido_desde", "<=", now())->where("valido_hasta", ">=", now())->where("activo", True)->get();
+        $banners = Banner::where("valido_desde", "<=", now())->where("valido_hasta", ">=", now())->where("eliminado", False)->get();
 
         // Agregar rutas de imágenes según configuración
         foreach ($banners as $banner)

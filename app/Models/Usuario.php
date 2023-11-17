@@ -46,7 +46,8 @@ class Usuario extends Authenticatable
         "telefono_alt",
         "email",
         "estado",
-        "creado"
+        "creado",
+        "eliminado",
     ];
 
     /**
@@ -141,6 +142,13 @@ class Usuario extends Authenticatable
         }
         
         return(false);
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public static function activos()
+    {
+        $usuarios = Usuario::where("estado", 1)->where("alta", "<>", NULL)->where("eliminado", False)->get();
+
+        return($usuarios);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

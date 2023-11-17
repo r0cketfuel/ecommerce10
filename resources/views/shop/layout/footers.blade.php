@@ -9,7 +9,7 @@
                 <h3 class="top-footer-title">{{ __('general.contact') }}</h3>
                 @php $sucursales = session('infoComercio.sucursales'); @endphp
                 @foreach($sucursales as $sucursal)
-                    @if($sucursal['activo'])
+                    @if(!$sucursal['eliminado'])
                         <ul class="footer-links">
                             <li>
                                 @if($sucursal['nombre'])

@@ -35,12 +35,15 @@ class ArticuloController extends Controller
     {        
         $articulo->update($request->all());
     
-        return response()->json(['message' => 'Artículo actualizado con éxito']);
+        return response()->json(['message' => 'Artículo actualizado'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function destroy(Articulo $articulo)
     {
-        Articulo::eliminaArticulo($articulo->id);
+        if(Articulo::eliminaArticulo($articulo->id))
+            return response()->json(['message' => 'Artículo eliminado'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+        return response()->json(['message' => 'Error al eliminar el artículo'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

@@ -19,7 +19,7 @@ class Subcategoria extends Model
         "categoria_id",
         "nombre",
         "descripcion",
-        "activo"
+        "eliminado",
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -39,7 +39,7 @@ class Subcategoria extends Model
     
         if($subcategoria)
         {
-            $subcategoria->update(['activo' => false]);
+            $subcategoria->update(['eliminado' => false]);
     
             return(1);
         }

@@ -39,6 +39,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('estado')->default(0);
             $table->dateTime('creado');
             $table->dateTime('alta')->nullable();
+            $table->boolean('eliminado')->default(False);
             $table->rememberToken();
             $table->comment('Tabla con los usuarios del sistema');
         });

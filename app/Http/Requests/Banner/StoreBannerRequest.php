@@ -27,7 +27,7 @@ class StoreBannerRequest extends FormRequest
             'link'          => array('required', 'string'),
             'valido_desde'  => array('required', 'date'),
             'valido_hasta'  => array('required', 'date'),
-            'activo'        => array('nullable', 'integer')
+            'eliminado'     => array('nullable', 'integer')
         ];
     }
 

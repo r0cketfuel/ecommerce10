@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('email', 50)->nullable();
             $table->string('geolocalizacion', 40)->nullable();
             $table->boolean('principal')->nullable();
-            $table->boolean('activo')->default(true);
+            $table->boolean('eliminado')->default(true);
         });
     }
 

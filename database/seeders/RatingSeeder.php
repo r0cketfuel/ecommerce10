@@ -17,7 +17,7 @@ class RatingSeeder extends Seeder
             "articulo_id"   => 1,
             "puntuaciones"  => 0,
             "sumatoria"     => 0,
-            "stars"        => 0
+            "stars"         => 0
         ]);
         
         Rating::create([

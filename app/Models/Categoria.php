@@ -18,7 +18,7 @@ class Categoria extends Model
     protected $fillable = [
         "nombre",
         "descripcion",
-        "activo"
+        "eliminado",
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -33,7 +33,7 @@ class Categoria extends Model
     
         if($categoria)
         {
-            $categoria->update(['activo' => false]);
+            $categoria->update(['eliminado' => false]);
     
             return(1);
         }

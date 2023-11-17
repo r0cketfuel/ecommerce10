@@ -26,8 +26,8 @@ class UpdateBannerRequest extends FormRequest
             'descripcion'   => array('required','string','max:255'),
             'link'          => array('required','string'),
             'valido_desde'  => array('required'),
-            'valido_hsta'   => array('required'),
-            'activo'        => array('required')
+            'valido_hasta'  => array('required'),
+            'eliminado'     => array('nullable', 'integer')
         ];
     }
 

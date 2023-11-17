@@ -40,7 +40,10 @@ class CategoriaController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function destroy(Categoria $categoria)
     {
-        Categoria::eliminaCategoria($categoria->id);
+        if(Categoria::eliminaArticulo($categoria->id))
+            return response()->json(['message' => 'Categoría eliminada'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+        return response()->json(['message' => 'Error al eliminar la categoría'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

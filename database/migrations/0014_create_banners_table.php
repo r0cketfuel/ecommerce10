@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('link', 50);
             $table->dateTime('valido_desde');
             $table->dateTime('valido_hasta');
-            $table->boolean('activo')->default(true);
+            $table->boolean('eliminado')->default(false);
             $table->comment('Tabla con los banners promocionales del sistema');
         });
     }

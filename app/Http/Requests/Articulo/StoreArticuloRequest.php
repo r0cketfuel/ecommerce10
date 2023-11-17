@@ -31,7 +31,7 @@ class StoreArticuloRequest extends FormRequest
             'subcategoria_id'   => array('nullable','integer'),
             'estado'            => array('nullable','integer'),
             'visualizaciones'   => array('nullable','integer'),
-            'activo'            => array('nullable'),
+            'eliminado'         => array('nullable','integer'),
         ];
     }
 }

@@ -25,7 +25,7 @@ class Articulo extends Model
         "subcategoria_id",
         "estado",
         "visualizaciones",
-        "activo"
+        "eliminado",
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -86,7 +86,7 @@ class Articulo extends Model
         // Método que devuelve un listado de artículos //
         //=============================================//
 
-        $query = self::where("estado", 1)->where("activo", True)->with('imagenes');
+        $query = self::where("estado", 1)->where("eliminado", False)->with('imagenes');
 
         if(isset($search["query"]))
         {
@@ -134,7 +134,9 @@ class Articulo extends Model
         try
         {
             $articulo = self::findOrFail($id);
-            $articulo->update(['activo' => false]);
+            $articulo->update(['eliminado' => True]);
+
+            return(1);
         }
         catch (ModelNotFoundException $e)
         {

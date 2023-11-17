@@ -32,6 +32,6 @@ class Sucursal extends Model
         'email',
         'geolocalizacion',
         'principal',
-        'activo'
+        "eliminado",
     ];
 }

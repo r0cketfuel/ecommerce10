@@ -40,7 +40,10 @@ class SubcategoriaController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function destroy(Subcategoria $subcategoria)
     {
-        Subcategoria::eliminaSubcategoria($subcategoria->id);
+        if(Subcategoria::eliminaSubcategoria($subcategoria->id))
+            return response()->json(['message' => 'Subcategoría eliminada'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+        return response()->json(['message' => 'Error al eliminar la Subcategoría'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

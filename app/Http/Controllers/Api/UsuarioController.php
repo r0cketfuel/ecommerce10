@@ -40,7 +40,10 @@ class UsuarioController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function destroy(Usuario $usuario)
     {
-        Usuario::eliminaUsuario($usuario->id);
+        if(Usuario::eliminaUsuario($usuario->id))
+            return response()->json(['message' => 'Usuario eliminado'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+        return response()->json(['message' => 'Error al eliminar el usuario'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

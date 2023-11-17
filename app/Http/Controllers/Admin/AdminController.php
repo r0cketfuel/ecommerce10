@@ -52,7 +52,7 @@ class AdminController extends Controller
             [
                 "title" => "Usuarios activos",
                 "color" => "green",
-                "value" => Usuario::all()->count(),
+                "value" => Usuario::activos()->count(),
                 "link"  => ["url" => "/admin/usuarios?estado=1", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-user-group'></i>",
                 "extra" => "",
@@ -60,7 +60,7 @@ class AdminController extends Controller
             [
                 "title" => "Usuarios pendientes activación",
                 "color" => "yellow",
-                "value" => Usuario::where("alta", NULL)->count(),
+                "value" => Usuario::where("alta", NULL)->where("eliminado", False)->count(),
                 "link"  => ["url" => "/admin/usuarios", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-user-plus'></i>",
                 "extra" => "",
@@ -68,7 +68,7 @@ class AdminController extends Controller
             [
                 "title" => "Artículos activos",
                 "color" => "orange",
-                "value" => Articulo::where("estado", 1)->count(),
+                "value" => Articulo::where("estado", 1)->where("eliminado", False)->count(),
                 "link"  => ["url" => "/admin/articulos?estado=1", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-box'></i>",
                 "extra" => "",
@@ -76,7 +76,7 @@ class AdminController extends Controller
             [
                 "title" => "Artículos pausados",
                 "color" => "orange",
-                "value" => Articulo::where("estado", 0)->count(),
+                "value" => Articulo::where("estado", 0)->where("eliminado", False)->count(),
                 "link"  => ["url" => "/admin/articulos?estado=0", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-box'></i>",
                 "extra" => "",

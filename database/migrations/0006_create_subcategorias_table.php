@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
             $table->string('nombre',100)->unique();
             $table->string('descripcion',255);
-            $table->boolean('activo')->default(true);
+            $table->boolean('eliminado')->default(false);
             $table->comment('Tabla con las subcategorías de los artículos del sistema');
         });
     }
