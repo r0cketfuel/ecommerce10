@@ -32,19 +32,6 @@ table tr:nth-child(2n+1) td {
     background-color:   rgba(180, 180, 180, 0.1);
 }
 
-table th.action-column {
-    text-align:         center;
-}
-
-table td.action-column div {
-    justify-content:    center;
-}
-
-table td.number,
-table td.currency {
-    text-align:         right;
-}
-
 @media (max-width: 1024px) {
 
     /* Force table to not be like tables anymore */
