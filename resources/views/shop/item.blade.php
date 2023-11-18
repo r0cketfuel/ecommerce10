@@ -109,51 +109,65 @@
 
                     @include("shop.layout.rating")
 
-                        <!-- Precio -->
+                    @if ($item->categoria)
                         <div class="flex justify-between align-center">
-                            <div>Precio:</div>
-                            <div id="precio">-</div>
+                            <div>Categoría:</div>
+                            <div>{{ $item->categoria["nombre"] }}</div>
                         </div>
-                        <!-- /Precio -->
+                    @endif
 
-                        <!-- Atributo Tamaño -->
-                        <div style="display: flex; justify-content: space-between; align-items: center; height: 38px;">
-                            <p>Tamaño:</p>
-                            <div style="display: flex;">
-                                <select id="sizes" class="attribute"></select>
-                            </div>
+                    @if ($item->subcategoria)
+                        <div class="flex justify-between align-center">
+                            <div>Subcategoría:</div>
+                            <div>{{ $item->subcategoria["nombre"] }}</div>
                         </div>
+                    @endif
+
+                    <!-- Precio -->
+                    <div class="flex justify-between align-center">
+                        <div>Precio:</div>
+                        <div id="precio">-</div>
+                    </div>
+                    <!-- /Precio -->
+
+                    <!-- Atributo Tamaño -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; height: 38px;">
+                        <p>Tamaño:</p>
+                        <div style="display: flex;">
+                            <select id="sizes" class="attribute"></select>
+                        </div>
+                    </div>
+                    
+                    <!-- Atributo Color -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; height: 38px;">
+                        <p>Color:</p>
+                        <div style="display: flex;">
+                            <select id="colors" class="attribute"></select>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; height: 38px;">
+                        <p>Stock disponible:</p>
+                        <p id="stock">-</p>
+                    </div>
                         
-                        <!-- Atributo Color -->
-                        <div style="display: flex; justify-content: space-between; align-items: center; height: 38px;">
-                            <p>Color:</p>
-                            <div style="display: flex;">
-                                <select id="colors" class="attribute"></select>
-                            </div>
+                    <!-- Cantidad -->
+                    <div id="qtyControl" class="flex justify-between align-center">
+                        <div>Cantidad:</div>
+                        <div style="display: flex; max-width: 120px;">
+                            <button id="minusButton"><i class="fa-solid fa-minus"></i></button>
+                            <input 	id="addToCartQty" type="number" disabled>
+                            <button id="plusButton"><i class="fa-solid fa-plus"></i></button>
                         </div>
+                    </div>
 
-                        <div style="display: flex; justify-content: space-between; align-items: center; height: 38px;">
-                            <p>Stock disponible:</p>
-                            <p id="stock">-</p>
-                        </div>
-                        
-                        <!-- Cantidad -->
-                        <div id="qtyControl" class="flex justify-between align-center">
-                            <div>Cantidad:</div>
-                            <div style="display: flex; max-width: 120px;">
-                                <button id="minusButton"><i class="fa-solid fa-minus"></i></button>
-                                <input 	id="addToCartQty" type="number" disabled>
-                                <button id="plusButton"><i class="fa-solid fa-plus"></i></button>
-                            </div>
-                        </div>
+                    <!-- Subtotal -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; height: 38px;">
+                        <p>Subtotal:</p>
+                        <p id="subtotal">-</p>
+                    </div>
 
-                        <!-- Subtotal -->
-                        <div style="display: flex; justify-content: space-between; align-items: center; height: 38px;">
-                            <p>Subtotal:</p>
-                            <p id="subtotal">-</p>
-                        </div>
-
-                        <div style="flex-grow: 1"></div>
+                    <div style="flex-grow: 1"></div>
                     <button id="button_addToCart" value="{{ $item->id }}" class="btn-primary"><span><i class="fa-solid fa-cart-plus"></i></span>{{ __('buttons.addToCart') }}</button>
                 </div>
             </div>

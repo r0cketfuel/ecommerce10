@@ -68,7 +68,7 @@ class Articulo extends Model
     {
         if($id > 0)
         {
-            $articulo = self::find($id)->with('imagenes')->first();
+            $articulo = self::where("id", $id)->with('imagenes')->with("categoria")->with("subcategoria")->first();
     
             if($articulo)
             {

@@ -74,7 +74,7 @@ class ShopController extends Controller
         // Listado de artículos
         $items = Articulo::search($busqueda["params"])->appends(request()->query());
 
-        return view("shop.index",compact("busqueda","banners","items"));
+        return view("shop.index",compact("busqueda", "banners", "items"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function item($id)
@@ -94,7 +94,7 @@ class ShopController extends Controller
                     $detalle    = DetalleArticulo::detalle($id);
                     $reviews    = Review::reviews($id);
                 
-                    return view("shop.item", compact("item","rating","detalle","reviews"));
+                    return view("shop.item", compact("item", "rating", "detalle", "reviews"));
                 }
             }
         }
@@ -168,7 +168,7 @@ class ShopController extends Controller
         if(session()->has("shop.checkout.medio_pago"))
             $medioEnvioSeleccionado = session("shop.checkout.medio_envio.id");
 
-        return view("shop.checkout", compact("checkout","mediosPagoListado","mediosEnvioListado","medioPagoSeleccionado","medioEnvioSeleccionado"));
+        return view("shop.checkout", compact("checkout", "mediosPagoListado", "mediosEnvioListado", "medioPagoSeleccionado", "medioEnvioSeleccionado"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function payment()
@@ -176,7 +176,7 @@ class ShopController extends Controller
         $tiposDocumentos    = TipoDocumento::All();
         $cuentaBancaria     = CuentaBancaria::first();
 
-        return view("shop.payment", compact("tiposDocumentos","cuentaBancaria"));
+        return view("shop.payment", compact("tiposDocumentos", "cuentaBancaria"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function favoritos()
