@@ -3,11 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Articulo extends Model
 {
-    public $timestamps = false;
+    use SoftDeletes;
+
+    const CREATED_AT = 'creado';
+    const UPDATED_AT = 'actualizado';
+    const DELETED_AT = 'eliminado';
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +31,6 @@ class Articulo extends Model
         "subcategoria_id",
         "estado",
         "visualizaciones",
-        "eliminado",
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -134,7 +139,7 @@ class Articulo extends Model
         try
         {
             $articulo = self::findOrFail($id);
-            $articulo->update(['eliminado' => True]);
+            $articulo->delete();
 
             return(1);
         }

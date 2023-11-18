@@ -15,20 +15,20 @@
     <script defer src="{{ config('constants.framework_js') }}modal.js"></script>
 @endsection
 
+@section("inlineCSS")
+    <style>
+        .input-container {
+            position:   relative;
+            display: 	inline-block;
+            width: 		100%;
+        }
+    </style>
+@endsection
+
 @php
     $breadcrumbs = [
     ];
 @endphp
-
-@section("inlineCSS")
-<style>
-    .input-container {
-	position: 						relative;
-    display: 						inline-block;
-	width: 							100%;
-}
-</style>
-@endsection
 
 @section("body")
     @include('admin.articulos.modals.filter')

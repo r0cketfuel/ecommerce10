@@ -68,7 +68,7 @@ class AdminController extends Controller
             [
                 "title" => "Artículos activos",
                 "color" => "orange",
-                "value" => Articulo::where("estado", 1)->where("eliminado", False)->count(),
+                "value" => Articulo::where("estado", 1)->count(),
                 "link"  => ["url" => "/admin/articulos?estado=1", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-box'></i>",
                 "extra" => "",
@@ -76,7 +76,15 @@ class AdminController extends Controller
             [
                 "title" => "Artículos pausados",
                 "color" => "orange",
-                "value" => Articulo::where("estado", 0)->where("eliminado", False)->count(),
+                "value" => Articulo::where("estado", 0)->count(),
+                "link"  => ["url" => "/admin/articulos?estado=0", "title" => "Listado"],
+                "icon"  => "<i class='fa-solid fa-box'></i>",
+                "extra" => "",
+            ],
+            [
+                "title" => "Artículos eliminados",
+                "color" => "red",
+                "value" => Articulo::onlyTrashed()->count(),
                 "link"  => ["url" => "/admin/articulos?estado=0", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-box'></i>",
                 "extra" => "",
