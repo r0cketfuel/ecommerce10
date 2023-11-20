@@ -85,7 +85,7 @@ class AdminController extends Controller
                 "title" => "Artículos eliminados",
                 "color" => "red",
                 "value" => Articulo::onlyTrashed()->count(),
-                "link"  => ["url" => "/admin/articulos?estado=0", "title" => "Listado"],
+                "link"  => ["url" => "/admin/articulos?eliminados=1", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-box'></i>",
                 "extra" => "",
             ],
