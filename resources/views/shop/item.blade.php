@@ -110,28 +110,28 @@
                     @include("shop.layout.rating")
 
                     @if ($item->categoria)
-                        <div class="flex justify-between align-center">
+                        <div class="tile-info-row">
                             <div>Categoría:</div>
                             <div>{{ $item->categoria["nombre"] }}</div>
                         </div>
                     @endif
 
                     @if ($item->subcategoria)
-                        <div class="flex justify-between align-center">
+                        <div class="tile-info-row">
                             <div>Subcategoría:</div>
                             <div>{{ $item->subcategoria["nombre"] }}</div>
                         </div>
                     @endif
 
                     <!-- Precio -->
-                    <div class="flex justify-between align-center">
+                    <div class="tile-info-row">
                         <div>Precio:</div>
                         <div id="precio">-</div>
                     </div>
                     <!-- /Precio -->
 
                     <!-- Atributo Tamaño -->
-                    <div style="display: flex; justify-content: space-between; align-items: center; height: 38px;">
+                    <div class="tile-info-row">
                         <p>Tamaño:</p>
                         <div style="display: flex;">
                             <select id="sizes" class="attribute"></select>
@@ -139,20 +139,20 @@
                     </div>
                     
                     <!-- Atributo Color -->
-                    <div style="display: flex; justify-content: space-between; align-items: center; height: 38px;">
+                    <div class="tile-info-row">
                         <p>Color:</p>
                         <div style="display: flex;">
                             <select id="colors" class="attribute"></select>
                         </div>
                     </div>
 
-                    <div style="display: flex; justify-content: space-between; align-items: center; height: 38px;">
+                    <div class="tile-info-row">
                         <p>Stock disponible:</p>
                         <p id="stock">-</p>
                     </div>
                         
                     <!-- Cantidad -->
-                    <div id="qtyControl" class="flex justify-between align-center">
+                    <div id="qtyControl" class="tile-info-row">
                         <div>Cantidad:</div>
                         <div style="display: flex; max-width: 120px;">
                             <button id="minusButton"><i class="fa-solid fa-minus"></i></button>
@@ -162,9 +162,9 @@
                     </div>
 
                     <!-- Subtotal -->
-                    <div style="display: flex; justify-content: space-between; align-items: center; height: 38px;">
-                        <p>Subtotal:</p>
-                        <p id="subtotal">-</p>
+                    <div class="tile-info-row">
+                        <div>Subtotal:</div>
+                        <div id="subtotal">-</div>
                     </div>
 
                     <div style="flex-grow: 1"></div>

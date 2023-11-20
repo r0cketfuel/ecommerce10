@@ -80,13 +80,16 @@ ul.product-list {
 }
 
 .tile-info {
-	display:						flex;
-	flex-flow:						column nowrap;
-	gap:							10px;
-	border-radius:					5px;
-	padding: 						10px;
-	/*border: 						1px solid rgb(230,230,230);*/
-	/*background:					white;*/
+	display:						grid;
+    grid-auto-rows:                 50px 50px 32px 32px 32px 32px 32px 32px 32px;
+	gap:							5px;
+}
+
+.tile-info .tile-info-row {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .tile-info h1, .tile-info h2 {

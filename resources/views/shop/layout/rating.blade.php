@@ -4,7 +4,7 @@
             <span><i class='fa-solid fa-star'></i></span>
         @endfor
         @for($i=$rating->stars+1;$i<=5;$i++)
-            <span style='color: grey;'><i class='fa-solid fa-star'></i></span>
+            <span><i class='fa-regular fa-star'></i></span>
         @endfor
         <div class="product-average">{{ $rating->promedio }}/5,00</div>
     </div>
