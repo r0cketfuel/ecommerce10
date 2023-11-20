@@ -91,7 +91,7 @@ class Articulo extends Model
         // Método que devuelve un listado de artículos //
         //=============================================//
 
-        $query = self::where("estado", 1)->where("eliminado", False)->with('imagenes');
+        $query = self::where("estado", 1)->with('imagenes');
 
         if(isset($search["query"]))
         {
