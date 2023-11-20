@@ -40,6 +40,8 @@ class Newsletter extends Model
         // Verificar si el correo se encuentra en la base de datos y está activo
         if(Newsletter::find($email, 1)->count())
         {
+            session()->put("shop.newsletter.email", $email);
+
             $response   = array(
                 "success"       => false,
                 "data"          => array(
@@ -56,6 +58,8 @@ class Newsletter extends Model
 
         if($newsletter->save())
         {
+            session()->put("shop.newsletter.email", $email);
+            
             $response   = array(
                 "success"       => true,
                 "data"          => array(

@@ -22,6 +22,8 @@ class LoadInfoComercio
         {
             Session::put("infoComercio",            InfoComercio::first()->toArray());
             Session::put("infoComercio.sucursales", Sucursal::all()->toArray());
+            
+            Session::put("shop.newsletter", array());
         }
 
         return $next($request);
