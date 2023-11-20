@@ -5,7 +5,7 @@ return [
     'logout'                => 'Salir',
 
     'favorites'             => 'Favoritos',
-    'cart'                  => 'Carritos',
+    'cart'                  => 'Carrito',
 
     'search'                => 'Buscar',
     'showing'               => 'Mostrando',
