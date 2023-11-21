@@ -29,8 +29,7 @@ class Articulo extends Model
         "moneda",
         "categoria_id",
         "subcategoria_id",
-        "estado",
-        "visualizaciones",
+        "estado"
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -47,6 +46,11 @@ class Articulo extends Model
     public function subcategoria()
     {
         return($this->belongsTo(Subcategoria::class));
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function ratings()
+    {
+        return($this->hasOne(Rating::class));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function imagenes()
@@ -119,20 +123,6 @@ class Articulo extends Model
     
         return $items;
 	}
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public static function incrementaVisualizacion(int $id): int
-    {
-        try
-        {
-            $articulo = self::findOrFail($id);
-            $articulo->increment('visualizaciones');
-            return $articulo->visualizaciones;
-        }
-        catch (ModelNotFoundException $e)
-        {
-            throw new \Exception(trans('messages.article_not_found'));
-        }
-    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function eliminaArticulo(int $id)
     {

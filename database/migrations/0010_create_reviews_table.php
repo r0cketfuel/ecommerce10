@@ -15,8 +15,8 @@ return new class extends Migration
             $table->unsignedTinyInteger('id', true);
             $table->unsignedMediumInteger('usuario_id',);
             $table->unsignedMediumInteger('articulo_id',);
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
-            $table->foreign('articulo_id')->references('id')->on('articulos');
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('restrict');
+            $table->foreign('articulo_id')->references('id')->on('articulos')->onDelete('restrict');
             $table->dateTime('fecha');
             $table->string('titulo',50);
             $table->string('texto',255);

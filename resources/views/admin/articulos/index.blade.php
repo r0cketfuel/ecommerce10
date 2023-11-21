@@ -75,7 +75,7 @@
                             {{ $articulo->subcategoria->nombre }}
                         @endif
                     </td>
-                    <td class="text-right">{{ $articulo->visualizaciones }}</td>
+                    <td class="text-right">{{ $articulo->ratings->visualizaciones }}</td>
                     <td class="text-center">
                         <label class="switch">
                             <input type="checkbox" id="{{ $articulo->id }}" @if($articulo->estado) checked @endif>

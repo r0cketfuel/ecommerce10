@@ -22,8 +22,7 @@ class ArticuloSeeder extends Seeder
                 "moneda"            => 1,
                 "categoria_id"      => ($i % 3) + 1,
                 "subcategoria_id"   => $i % 2 == 0 ? $i % 3 + 1 : NULL,
-                "estado"            => 1,
-                "visualizaciones"   => 0
+                "estado"            => 1
             ]);
         }
     }

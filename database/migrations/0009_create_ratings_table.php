@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->unsignedMediumInteger('id',true);
             $table->unsignedMediumInteger('articulo_id');
-            $table->foreign('articulo_id')->references('id')->on('articulos');
-            $table->unsignedMediumInteger('puntuaciones')->default('0');
-            $table->unsignedMediumInteger('sumatoria')->default('0');
-            $table->tinyInteger('stars')->default('0');
+            $table->foreign('articulo_id')->references('id')->on('articulos')->onDelete('restrict');
+            $table->unsignedMediumInteger('puntuaciones')->default(0);
+            $table->unsignedMediumInteger('sumatoria')->default(0);
+            $table->tinyInteger('stars')->default(0);
+            $table->unsignedMediumInteger('visualizaciones')->default(0);
             $table->comment('Tabla con las puntuaciones de cada artículo');
         });
     }

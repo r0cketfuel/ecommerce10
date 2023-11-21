@@ -13,46 +13,13 @@ class RatingSeeder extends Seeder
      */
     public function run(): void
     {
-        Rating::create([
-            "articulo_id"   => 1,
-            "puntuaciones"  => 0,
-            "sumatoria"     => 0,
-            "stars"         => 0
-        ]);
-        
-        Rating::create([
-            "articulo_id"   => 2,
-            "puntuaciones"  => 0,
-            "sumatoria"     => 0,
-            "stars"         => 0
-        ]);
-
-        Rating::create([
-            "articulo_id"   => 3,
-            "puntuaciones"  => 0,
-            "sumatoria"     => 0,
-            "stars"         => 0
-        ]);
-
-        Rating::create([
-            "articulo_id"   => 4,
-            "puntuaciones"  => 0,
-            "sumatoria"     => 0,
-            "stars"         => 0
-        ]);
-
-        Rating::create([
-            "articulo_id"   => 5,
-            "puntuaciones"  => 0,
-            "sumatoria"     => 0,
-            "stars"         => 0
-        ]);
-
-        Rating::create([
-            "articulo_id"   => 6,
-            "puntuaciones"  => 0,
-            "sumatoria"     => 0,
-            "stars"         => 0
-        ]);
+        for ($i = 1; $i <= 30; $i++) {
+            Rating::create([
+                "articulo_id"   => $i,
+                "puntuaciones"  => 0,
+                "sumatoria"     => 0,
+                "stars"         => 0
+            ]);
+        }
     }
 }

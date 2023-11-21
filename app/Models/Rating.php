@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use \Illuminate\Database\Eloquent\ModelNotFoundException;
 class Rating extends Model
 {
     public $timestamps  = false;
@@ -19,9 +20,29 @@ class Rating extends Model
         "articulo_id",
         "puntuaciones",
         "sumatoria",
-        "stars"
+        "stars",
+        "visualizaciones",
     ];
     
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function articulo()
+    {
+        return($this->belongsTo(Articulo::class));
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public static function incrementaVisualizacion(int $id): int
+    {
+        try
+        {
+            $articulo = self::findOrFail($id);
+            $articulo->increment('visualizaciones');
+            return $articulo->visualizaciones;
+        }
+        catch (ModelNotFoundException $e)
+        {
+            throw new \Exception(trans('messages.article_not_found'));
+        }
+    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function getRatingArticulo(int $id)
     {

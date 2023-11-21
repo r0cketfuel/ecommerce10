@@ -23,7 +23,6 @@ return new class extends Migration
             $table->unsignedTinyInteger('subcategoria_id')->nullable();
             $table->foreign('subcategoria_id')->references('id')->on('subcategorias')->onDelete('SET NULL');
             $table->unsignedTinyInteger('estado')->default(1);
-            $table->unsignedMediumInteger('visualizaciones')->default(0);
             $table->datetime('creado');
             $table->datetime('actualizado')->nullable();
             $table->datetime('eliminado')->nullable();
