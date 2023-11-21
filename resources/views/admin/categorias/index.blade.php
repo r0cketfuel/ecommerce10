@@ -23,7 +23,6 @@
             <tr>
                 <th class="text-left">Nombre</th>
                 <th class="text-left">Descripción</th>
-                <th class="text-center">Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -31,12 +30,6 @@
             <tr>
                 <td>{{ $categoria->nombre }}</td>
                 <td>{{ $categoria->descripcion }}</td>
-                <td class="text-center">
-                    <label class="switch">
-                        <input type="checkbox" id="{{ $categoria->id }}" @if($categoria->activo) checked @endif>
-                        <div class="slider round"></div>
-                    </label>
-                </td>
             </tr>
             @endforeach
         </tbody>
