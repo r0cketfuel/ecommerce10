@@ -404,6 +404,7 @@ function addToCart(id)
                 addToCartButton.classList.add('btn-success');
                 addToCartButton.innerHTML = "Agregado al carrito";
                 addToCartButton.disabled = false;
+                closeModal("modal-add");
 
                 setTimeout(function()
                 {
