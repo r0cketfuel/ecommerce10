@@ -18,9 +18,7 @@ class AdministradorSeeder extends Seeder
             "password"  => "12345678",
             "apellidos" => "apellido",
             "nombres"   => "nombre",
-            "rol_id"    => 1,
-            "estado"    => "1",
-            "alta"      => date("Y-m-d H:i:s"),
+            "rol_id"    => 1
         ]);
 
         Administrador::create([
@@ -28,9 +26,7 @@ class AdministradorSeeder extends Seeder
             "password"  => "12345678",
             "apellidos" => "apellido",
             "nombres"   => "nombre",
-            "rol_id"    => 2,
-            "estado"    => "1",
-            "alta"      => date("Y-m-d H:i:s"),
+            "rol_id"    => 2
         ]);
     }
 }

@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Administrador extends Authenticatable
 {
-    use HasFactory;
+    use SoftDeletes;
+
+    const CREATED_AT    = 'creado';
+    const UPDATED_AT    = 'actualizado';
+    const DELETED_AT    = 'eliminado';
 
     protected $table    = "administradores";
-    public $timestamps  = false;
 
     /**
      * The attributes that are mass assignable.
@@ -23,9 +26,7 @@ class Administrador extends Authenticatable
         "password",
         "apellidos",
         "nombres",
-        "rol_id",
-        "estado",
-        "alta",
+        "rol_id"
     ];
 
     /**

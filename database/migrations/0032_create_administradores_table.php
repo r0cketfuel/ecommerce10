@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('nombres', 50);
             $table->unsignedTinyInteger('rol_id')->nullable();
             $table->foreign('rol_id')->references('id')->on('roles')->onDelete('set null');
-            $table->unsignedTinyInteger('estado')->default(0);
-            $table->dateTime('alta')->nullable();
             $table->rememberToken();
+            $table->datetime('creado');
+            $table->datetime('actualizado')->nullable();
+            $table->datetime('eliminado')->nullable();
             $table->comment('Tabla con los administradores del sistema');
         });
     }
