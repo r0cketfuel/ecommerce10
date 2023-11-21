@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
             $table->string('nombre',100)->unique();
             $table->string('descripcion',255);
-            $table->dateTime('creado');
-            $table->dateTime('alta')->nullable();
-            $table->boolean('eliminado')->default(False);
+            $table->datetime('creado');
+            $table->datetime('actualizado')->nullable();
+            $table->datetime('eliminado')->nullable();
             $table->comment('Tabla con las subcategorías de los artículos del sistema');
         });
     }

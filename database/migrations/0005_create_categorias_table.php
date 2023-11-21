@@ -15,9 +15,9 @@ return new class extends Migration
             $table->unsignedMediumInteger('id', true);
             $table->string('nombre',40)->unique();
             $table->string('descripcion',255);
-            $table->dateTime('creado');
-            $table->dateTime('alta')->nullable();
-            $table->boolean('eliminado')->default(False);
+            $table->datetime('creado');
+            $table->datetime('actualizado')->nullable();
+            $table->datetime('eliminado')->nullable();
             $table->comment('Tabla con las categorías de los artículos del sistema');
         });
     }
