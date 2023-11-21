@@ -29,7 +29,9 @@ return new class extends Migration
             $table->string('email', 50)->nullable();
             $table->string('geolocalizacion', 40)->nullable();
             $table->boolean('principal')->nullable();
-            $table->boolean('eliminado')->default(true);
+            $table->datetime('creado');
+            $table->datetime('actualizado')->nullable();
+            $table->datetime('eliminado')->nullable();
         });
     }
 

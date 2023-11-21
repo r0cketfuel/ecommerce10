@@ -1,3 +1,8 @@
+@php 
+    $sucursales = session('infoComercio.sucursales');
+    $copyright  = date("Y");
+@endphp
+
 <footer>
     <div class="top-footer">
         <div class="top-footer-container">
@@ -7,61 +12,58 @@
             </div>
             <div class="footer-section">
                 <h3 class="top-footer-title">{{ __('general.contact') }}</h3>
-                @php $sucursales = session('infoComercio.sucursales'); @endphp
                 @foreach($sucursales as $sucursal)
-                    @if(!$sucursal['eliminado'])
-                        <ul class="footer-links">
-                            <li>
-                                @if($sucursal['nombre'])
-                                    <p>
-                                        <strong>{{ $sucursal['nombre'] }}</strong>
-                                        @if(count($sucursales) > 1 && $sucursal['principal'])
-                                            (principal)
-                                        @endif
-                                    </p>
-                                @endif
-                            </li>
-                            <li>
-                                @if($sucursal['telefono_1'])
-                                    <a href="tel:{{ $sucursal['telefono_1'] }}">
-                                        <span>
-                                            <i class="fa-solid fa-phone"></i>
-                                        </span>{{ $sucursal['telefono_1'] }}
-                                    </a>
-                                @endif
-                            </li>
-                            <li>
-                                @if($sucursal['email'])
-                                    <a href="mailto:{{ $sucursal['email'] }}">
-                                        <span>
-                                            <i class="fa-solid fa-envelope"></i>
-                                        </span>{{ $sucursal['email'] }}
-                                    </a>
-                                @endif
-                            </li>
-                            <li>
-                                @if($sucursal['geolocalizacion'])
-                                    <a href="http://www.google.com/maps/place/{{ $sucursal['geolocalizacion'] }}">
-                                        <span>
-                                            <i class="fa-solid fa-location-dot"></i>
-                                        </span>{{ $sucursal['direccion'] }}
-                                        @if ($sucursal['entre_calles_1'] && $sucursal['entre_calles_2'])
-                                            ( entre calles {{ $sucursal['entre_calles_1'] }}, {{ $sucursal['entre_calles_2'] }} )
-                                        @endif
-                                    </a>
-                                @endif
-                            </li>
-                            <li>
-                                @if($sucursal['localidad'])
-                                    <a href="">
-                                        <span>
-                                            <i class="fa-solid fa-map"></i>
-                                        </span>{{ $sucursal['localidad'] }}, {{ $sucursal['provincia'] }}
-                                    </a>
-                                @endif
-                            </li>
-                        </ul>
-                    @endif
+                    <ul class="footer-links">
+                        <li>
+                            @if($sucursal['nombre'])
+                                <p>
+                                    <strong>{{ $sucursal['nombre'] }}</strong>
+                                    @if(count($sucursales) > 1 && $sucursal['principal'])
+                                        (principal)
+                                    @endif
+                                </p>
+                            @endif
+                        </li>
+                        <li>
+                            @if($sucursal['telefono_1'])
+                                <a href="tel:{{ $sucursal['telefono_1'] }}">
+                                    <span>
+                                        <i class="fa-solid fa-phone"></i>
+                                    </span>{{ $sucursal['telefono_1'] }}
+                                </a>
+                            @endif
+                        </li>
+                        <li>
+                            @if($sucursal['email'])
+                                <a href="mailto:{{ $sucursal['email'] }}">
+                                    <span>
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </span>{{ $sucursal['email'] }}
+                                </a>
+                            @endif
+                        </li>
+                        <li>
+                            @if($sucursal['geolocalizacion'])
+                                <a href="http://www.google.com/maps/place/{{ $sucursal['geolocalizacion'] }}">
+                                    <span>
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </span>{{ $sucursal['direccion'] }}
+                                    @if ($sucursal['entre_calles_1'] && $sucursal['entre_calles_2'])
+                                        ( entre calles {{ $sucursal['entre_calles_1'] }}, {{ $sucursal['entre_calles_2'] }} )
+                                    @endif
+                                </a>
+                            @endif
+                        </li>
+                        <li>
+                            @if($sucursal['localidad'])
+                                <a href="">
+                                    <span>
+                                        <i class="fa-solid fa-map"></i>
+                                    </span>{{ $sucursal['localidad'] }}, {{ $sucursal['provincia'] }}
+                                </a>
+                            @endif
+                        </li>
+                    </ul>
                 @endforeach
             </div>
         </div>
@@ -81,7 +83,7 @@
                     <img class="afip" src="{{ config('constants.images') }}/afip.jpg" alt="afipQR">
                 </a>
             </div>
-            <div class="copyright"><?=date("Y");?> - FG Design</div>
+            <div class="copyright">{{ $copyright }} - FG Design</div>
         </div>
     </div>
 </footer>

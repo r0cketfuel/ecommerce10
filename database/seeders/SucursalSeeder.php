@@ -28,8 +28,7 @@ class SucursalSeeder extends Seeder
             "fax"               => "4797964987",
             "email"             => "sucursal_1@hotmail.com",
             "geolocalizacion"   => "-38.66813382230747, -62.26134132375696",
-            "principal"         => True,
-            "eliminado"         => False
+            "principal"         => True
         ]);
 
         Sucursal::create([
@@ -48,8 +47,7 @@ class SucursalSeeder extends Seeder
             "fax"               => "",
             "email"             => "sucursal_2@hotmail.com",
             "geolocalizacion"   => "-38.66813382230000, -62.26134132375000",
-            "principal"         => False,
-            "eliminado"         => False
+            "principal"         => False
         ]);
     }
 }
