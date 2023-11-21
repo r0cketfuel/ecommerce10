@@ -114,11 +114,11 @@
                                 @foreach($mediosPagoListado as $medio)
                                     <div class="radio-fix">
                                         @if($medioPagoSeleccionado == $medio["id"])
-                                            <input form="form" type="radio" required name="radio_medioPago" value="{{ $medio['id'] }}" checked>
+                                            <input form="form" type="radio" required name="radio_medioPago" id="radio_medioPago_{{ $medio['id'] }}" value="{{ $medio['id'] }}" checked>
                                         @else
-                                            <input form="form" type="radio" required name="radio_medioPago" value="{{ $medio['id'] }}">
+                                            <input form="form" type="radio" required name="radio_medioPago" id="radio_medioPago_{{ $medio['id'] }}" value="{{ $medio['id'] }}">
                                         @endif
-                                        <label>{{ $medio["medio"] }}</label>
+                                        <label for="radio_medioPago_{{ $medio['id'] }}">{{ $medio["medio"] }}</label>
                                     </div>
                                 @endforeach
                             </div>
@@ -134,11 +134,11 @@
                                 @foreach($mediosEnvioListado as $envio)
                                     <div class="radio-fix">
                                         @if($medioEnvioSeleccionado == $envio["id"])
-                                            <input form="form" type="radio" required name="radio_medioEnvio" value="{{ $envio['id'] }}" checked>
+                                            <input form="form" type="radio" required name="radio_medioEnvio" id="radio_medioEnvio_{{ $envio['id'] }}" value="{{ $envio['id'] }}" checked>
                                         @else
-                                            <input form="form" type="radio" required name="radio_medioEnvio" value="{{ $envio['id'] }}">
+                                            <input form="form" type="radio" required name="radio_medioEnvio" id="radio_medioEnvio_{{ $envio['id'] }}" value="{{ $envio['id'] }}">
                                         @endif
-                                        <label>{{ $envio["medio"] }} @if(isset($envio["costo"])) ({{ _money($envio["costo"]) }}) @endif</label>
+                                        <label for="radio_medioEnvio_{{ $envio['id'] }}">{{ $envio["medio"] }} @if(isset($envio["costo"])) ({{ _money($envio["costo"]) }}) @endif</label>
                                     </div>
                                 @endforeach
                             </div>
