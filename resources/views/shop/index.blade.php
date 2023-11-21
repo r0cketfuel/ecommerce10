@@ -49,7 +49,7 @@
         <!-- /Barra superior de búsqueda -->
         
         <!-- Items -->
-        @include("shop.layout.product-list")
+        @include("shop.products.product-list")
 
         <!-- Paginador -->
         {{ $items->links("shop.layout.paginator") }}
