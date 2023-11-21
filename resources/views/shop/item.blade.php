@@ -15,7 +15,6 @@
 @endsection
 
 @section("js")
-    <script defer src="{{ config('constants.shop_js') }}tiles.js"></script>
     <script defer src="{{ config('constants.shop_js') }}tabs.js"></script>
     <script defer src="{{ config('constants.shop_js') }}cart.js"></script>
     <script defer src="{{ config('constants.framework_js') }}modal.js"></script>
@@ -35,7 +34,6 @@
         @include("shop.modals.addReview")
     @endauth
 
-    <!-- Contenido de la página -->
     <div class="main-container">
 
         <!-- Breadcrumb -->
@@ -75,7 +73,9 @@
                                 <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
                             </div>
                             <div class="tile main">
-                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
+                                <a href="#">
+                                    <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
+                                </a>
                                 <button class="btn btn-next">&gt;</button>
                                 <button class="btn btn-prev">&lt;</button>
                             </div>
@@ -96,8 +96,6 @@
                 </div>
             </div>
             <!-- /Mosaicos -->
-
-
 
             <!-- Panel info -->
             <div class="col-span-5 col-span-900p-12">
@@ -178,5 +176,42 @@
         @include("shop.layout.tabs")
 
     </div>
-    <!-- /Contenido de la página -->
+
+    @section("scripts")
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+
+            const tiles = document.querySelectorAll("div.tile:not(.main)");
+            tiles.forEach(tile => tile.addEventListener("click", () => { imageGrid(tile); return false; }));
+
+            const maxSlide = tiles.length - 1;
+            let curSlide = 0;
+
+            const nextSlide = document.querySelector(".btn-next");
+            nextSlide.addEventListener("click", () => { curSlide = curSlide === maxSlide ? 0 : curSlide + 1; imageGrid(tiles[curSlide]); });
+
+            const prevSlide = document.querySelector(".btn-prev");
+            prevSlide.addEventListener("click", () => { curSlide = curSlide === 0 ? maxSlide : curSlide - 1; imageGrid(tiles[curSlide]); });
+
+            //==================================//
+            // CARGA LAS MINIATURAS EN EL VISOR //
+            //==================================//
+            function imageGrid(tile) {
+                curSlide = Array.from(tiles).indexOf(tile);
+
+                const tileMainPicture = document.querySelector(".tile.main");
+                const tileActive = document.querySelector(".tile.active");
+                const tileClicked = tile.children[0];
+
+                tileActive.classList.remove("active");
+                tile.classList.add("active");
+
+                const tileClickedHref = tileClicked.currentSrc.replace("thumbs/", "");
+
+                tileMainPicture.children[0].children[0].src = tileClicked.currentSrc;
+                tileMainPicture.children[0].href = tileClickedHref;
+            }
+            });
+        </script>
+    @endsection
 @endsection
