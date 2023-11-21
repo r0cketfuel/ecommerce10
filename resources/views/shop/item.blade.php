@@ -58,8 +58,8 @@
                                         <a href="{{ $item->imagenes[0]->ruta }}">
                                             <img id="image" src="{{ $item->imagenes[0]->miniatura }}" alt="vista_previa">
                                         </a>
-                                        <button class="btn btn-next">&gt;</button>
-                                        <button class="btn btn-prev">&lt;</button>
+                                        <button class="btn btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+                                        <button class="btn btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
                                     </div>
                                 @else
                                     <div class="tile">
@@ -76,8 +76,8 @@
                                 <a href="#">
                                     <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
                                 </a>
-                                <button class="btn btn-next">&gt;</button>
-                                <button class="btn btn-prev">&lt;</button>
+                                <button class="btn btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+                                <button class="btn btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
                             </div>
                             <div class="tile">
                                 <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
