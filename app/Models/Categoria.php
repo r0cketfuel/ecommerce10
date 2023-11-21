@@ -4,10 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Categoria extends Model
 {
-    public $timestamps = false;
+    use SoftDeletes;
+
+    const CREATED_AT = 'creado';
+    const UPDATED_AT = 'actualizado';
+    const DELETED_AT = 'eliminado';
 
     /**
      * The attributes that are mass assignable.
@@ -17,8 +22,7 @@ class Categoria extends Model
      */
     protected $fillable = [
         "nombre",
-        "descripcion",
-        "eliminado",
+        "descripcion"
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
