@@ -129,13 +129,13 @@ header li {
 	display: 						flex;
 	justify-content:				center;
 	align-items:					center;
-	top:							-5px;
+	top:							-6px;
 	right: 							1px;
 	background-color: 				orangered;
-	height:							16px;
-	width:							16px;
+	height:							17px;
+	width:							17px;
 	border-radius: 					50%;
-	font-size: 						clamp(10px,2.0vw,12px);
+	font-size: 						10px;
 }
 
 /*=================*/
