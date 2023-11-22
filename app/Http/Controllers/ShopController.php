@@ -111,10 +111,16 @@ class ShopController extends Controller
 	{
         $checkout = $shoppingCart->checkOut();
 
+        foreach ($checkout["items"] as &$item)
+        {
+            $articulo = Articulo::info($item["id"]);
+        
+            $item["descripcion"]    = $articulo->descripcion ?? NULL;
+            $item["imagen"]         = count($articulo->imagenes) ? $articulo->imagenes[0]["miniatura"] : NULL;
+        }
+
         if($request->isMethod("post"))
         {
-            // Falta seguir mirando esto...
-            
             session()->put("shop.checkout.total", $checkout["total"]);
 
             if($request->has("radio_medioPago") && is_numeric($request->input("radio_medioPago")) && (int)$request->input("radio_medioPago")>0)

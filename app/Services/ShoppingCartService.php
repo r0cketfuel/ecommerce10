@@ -119,15 +119,6 @@
 			// Método que devuelve un array con los items del carrito, información, total y subtotales //
 			//=========================================================================================//
 
-            // Agrego información faltante
-			for($i=0;$i<count(session("shop.usuario.carrito"));++$i)
-			{
-                $articulo = Articulo::info(session("shop.usuario.carrito.$i.id"));
-
-                session()->put("shop.usuario.carrito.$i.descripcion",   $articulo->descripcion      ? $articulo->descripcion                : NULL);
-                session()->put("shop.usuario.carrito.$i.imagen",        count($articulo->imagenes)  ? $articulo->imagenes[0]["miniatura"]   : NULL);
-            }
-
 			$chekOutArray = array(
 				"items"	=> session("shop.usuario.carrito"),
 				"total"	=> $this->total()
