@@ -260,16 +260,14 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
-            let button = document.getElementById("prueba");
-            console.log(button);
+            const button = document.getElementById("prueba");
+            if(button)
+                button.addEventListener("click", () => funcion());
+            });
 
-            button.addEventListener("click", () => funcion());
-
-        });
-
-        function funcion(id)
-        {
-            openModal("modal-payment");
-        }
+            function funcion(id)
+            {
+                openModal("modal-payment");
+            }
     </script>
 @endsection
