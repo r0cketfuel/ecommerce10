@@ -69,7 +69,7 @@
                                     $id             = $checkout["items"][$i]["id"];
                                     $descripcion    = $checkout["items"][$i]["descripcion"];
                                     $precio         = $checkout["items"][$i]["precio"];
-                                    $foto           = $checkout["items"][$i]["foto"];
+                                    $imagen         = $checkout["items"][$i]["imagen"] ? $checkout["items"][$i]["imagen"] : asset('images/content/no-image.png');
                                     $cantidad 	    = $checkout["items"][$i]["cantidad"];
                                     $subtotal       = $checkout["items"][$i]["subtotal"];
                                     $total          = $checkout["total"];
@@ -85,15 +85,17 @@
             
                                 <ul class="product-checkout-card" data-id="{{ $id }}">
                                     <li>{{ $cantidad }} x <span>{{ $descripcion }}</span></li>
-                                    <li><img src="{{ $foto }}" alt="imagen"></li>
+                                    <li>
+                                        <img src="{{ $imagen }}" alt="imagen">
+                                    </li>
                                     <li>Talle</li>
                                     <li>{{ $talle_id }}</li>
                                     <li>Color</li>
                                     <li>{{ $color }}</li>
                                     <li>Precio</li>
-                                    <li class="precio">{{ $precio }}</li>
+                                    <li>{{ $precio }}</li>
                                     <li>Subtotal</li>
-                                    <li class="subtotal">{{ $subtotal }}</li>
+                                    <li>{{ $subtotal }}</li>
                                     <div class="product-checkout-card-extra">
                                         <ul>
                                             <li><button class="btn-link" data-id="{{ $id }}" data-talle_id="{{ $talle_id }}" data-color="{{ $color }}" onclick="modalUpdateItem(this.dataset)"><i class="fa-solid fa-pen"></i></button></li>
@@ -202,7 +204,7 @@
                                 </div>
                                 <div class="flex justify-between">
                                     <div class="text-bold">Envío:</div>
-                                    <div id="envio">$0,00</div>
+                                    <div id="envio">{{ _money(0) }}</div>
                                 </div>
                                 <div class="flex justify-between">
                                     <div class="text-bold">Descuentos:</div>

@@ -122,10 +122,10 @@
             // Agrego información faltante
 			for($i=0;$i<count(session("shop.usuario.carrito"));++$i)
 			{
-                $info = Articulo::info(session("shop.usuario.carrito.$i.id"));
+                $articulo = Articulo::info(session("shop.usuario.carrito.$i.id"));
 
-                session()->put("shop.usuario.carrito.$i.descripcion",  $info["descripcion"]);
-                session()->put("shop.usuario.carrito.$i.foto",         $info["miniatura_1"]);
+                session()->put("shop.usuario.carrito.$i.descripcion",   $articulo->descripcion      ? $articulo->descripcion                : NULL);
+                session()->put("shop.usuario.carrito.$i.imagen",        count($articulo->imagenes)  ? $articulo->imagenes[0]["miniatura"]   : NULL);
             }
 
 			$chekOutArray = array(
