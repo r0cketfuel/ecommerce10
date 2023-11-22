@@ -10,23 +10,10 @@
     <link rel="stylesheet" href="{{config('constants.framework_css')}}panel.css">
 @endsection
 
-@section("inlineCSS")
-    <style>
-        h1, h2 {
-            margin: 0;
-        }
-    </style>
-@endsection
-
-@section("js")
-@endsection
-
 @section("body")
-
-    <!-- Contenido de la página -->
     <div class="main-container">
         <div class="flex">
-            <div class="panel" style="margin: auto; flex: 0 1 500px; padding: 40px;">
+            <div class="panel" style="margin: auto; padding: 40px;">
                 <div class="grid text-center">
                     <h2><span style="color: rgb(100,220,100);"><i class="fa-regular fa-circle-check fa-6x"></i></span><br><br>Muchas gracias por su compra!</h2>
                     <h4>Su pedido se registró bajo el número: {{ $order }}</h4>
@@ -37,5 +24,4 @@
             </div>
         </div>
     </div>
-
 @endsection

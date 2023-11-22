@@ -276,8 +276,10 @@ class ShopController extends Controller
         return view("shop.account", compact("generos", "tiposDocumentos"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function success($order = null)
+    public function success(ShoppingCartService $shoppingCart, $order = null)
     {
+        $shoppingCart->clear();
+
         return view("shop.success", compact("order"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

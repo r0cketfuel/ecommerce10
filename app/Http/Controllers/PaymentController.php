@@ -16,65 +16,69 @@
     {
         private $medioPagoId;
         private $checkout;
+        
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        private function getDataFromRequest(Request $request)
+        {
+            $data = $request->hasHeader("Content-Type") && $request->header("Content-Type") === "application/json"
+                ? json_decode(file_get_contents("php://input"), true)
+                : $request->all();
+        
+            return $data;
+        }
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        private function prepareItems()
+        {
+            $items = [];
 
+            foreach ($this->checkout["items"] as $item) 
+                $items[] = Articulo::info($item["id"]);
+
+            return $items;
+        }
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        private function prepareItemsMp()
+        {
+            $itemsMp = [];
+        
+            foreach ($this->checkout["items"] as $item)
+            {
+                $info = Articulo::info($item["id"]);
+        
+                $itemsMp[] = [
+                    "id"            => $info["id"],
+                    "title"         => $info["descripcion"],
+                    "description"   => "",
+                    "picture_url"   => count($info["imagenes"]) ? $info["imagenes"][0]["miniatura"] : null,
+                    "category_id"   => "",
+                    "quantity"      => $item["cantidad"],
+                    "unit_price"    => $info["precio"],
+                ];
+            }
+        
+            return $itemsMp;
+        }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function process_payment(Request $request, ShoppingCartService $shoppingCart)
         {
-            if($request->hasHeader("Content-Type"))
-            {
-                $headers = $request->header("Content-Type");
-                if($headers === "application/json")
-                {
-                    $data = json_decode(file_get_contents("php://input"), true);
-                }
-                else
-                {
-                    $data = $request->all();
-                }
-            }
+            $data = $this->getDataFromRequest($request);
 
             $this->medioPagoId  = session("shop.checkout.medio_pago.id");
             $this->checkout     = $shoppingCart->checkOut();
 
-            $items = array();
-            for($i=0;$i<count($this->checkout["items"]);++$i)
-            {
-                $info = Articulo::info($this->checkout["items"][$i]["id"]);
-
-                $id             = $info["id"];
-                $codigo         = $info["codigo"];
-                $nombre         = $info["nombre"];
-                $descripcion    = $info["descripcion"];
-                $precio         = $info["precio"];
-
-                $cantidad 	    = $this->checkout["items"][$i]["cantidad"];
-                $image          = $this->checkout["items"][$i]["foto"];
-
-                $items[] = array(
-                    "id"            => $id,
-                    "codigo"        => $codigo,
-                    "nombre"        => $nombre,
-                    "descripcion"   => $descripcion,
-                    "opciones"      => "",
-                    "cantidad"      => $cantidad,
-                    "precio"        => $precio,
-                    "moneda"        => 1,
-                );
-
-                $itemsMp[] = array(
-                    "id"            => $id,
-                    "title"         => $descripcion,
-                    "description"   => "",
-                    "picture_url"   => $image,
-                    "category_id"   => "",
-                    "quantity"      => $cantidad,
-                    "unit_price"    => $precio
-                );
-
-                //DESCONTAR STOCK
-                //$articulo_id = Articulo::where("talle_id", $talle_id)->where("color", $color)["id"];
-                //Articulo::modificaStock($articulo_id, $stock - $cantidad);
+            foreach ($this->checkout["items"] as &$item) {
+                $articulo = Articulo::info($item["id"]);
+        
+                $item["descripcion"] = $articulo->descripcion ?? null;
+                $item["imagen"] = count($articulo->imagenes) ? $articulo->imagenes[0]["miniatura"] : null;
             }
+        
+            $items      = $this->prepareItems();
+            $itemsMp    = $this->prepareItemsMp();
+
+            //DESCONTAR STOCK
+            //$articulo_id = Articulo::where("talle_id", $talle_id)->where("color", $color)["id"];
+            //Articulo::modificaStock($articulo_id, $stock - $cantidad);
 
             switch($this->medioPagoId)
             {            
@@ -254,7 +258,7 @@
 
             // Creación de la factura
             $factura = Factura::generarFactura([
-                "fecha"             => date("Y-m-d H:i:s"),
+                "fecha"             => now(),
                 "numero"            => rand(100,999),
                 "tipo_factura_id"   => 1,
                 "apellidos"         => $fields["apellidos"],

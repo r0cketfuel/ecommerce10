@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('codigo',12);
             $table->string('nombre',100);
             $table->string('descripcion',255);
-            $table->string('opciones',50);
+            $table->string('opciones',50)->nullable();
             $table->decimal('precio');
             $table->unsignedTinyInteger('moneda');
             $table->unsignedMediumInteger('cantidad');
