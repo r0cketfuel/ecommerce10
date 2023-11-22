@@ -55,13 +55,13 @@ class Factura extends Model
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public static function generarFactura(array $parametros): array
+    public static function generarFactura(array $parametros): Factura
     {
         //=====================================//
         // Método que genera una nueva factura //
         //=====================================//
 
-        return(self::create([
+        $factura = self::create([
             "numero"            => self::max("numero") + 1,
             "fecha"             => now(),
             "tipo_factura_id"   => $parametros["tipo_factura_id"],
@@ -84,7 +84,9 @@ class Factura extends Model
             "cae"               => $parametros["cae"],
             "cae_vto"           => $parametros["cae_vto"],
             "estado_id"         => $parametros["estado_id"],
-        ])->toArray());
+        ]);
+
+        return $factura;
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

@@ -61,16 +61,15 @@
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function process_payment(Request $request, ShoppingCartService $shoppingCart)
         {
-            $data = $this->getDataFromRequest($request);
-
             $this->medioPagoId  = session("shop.checkout.medio_pago.id");
             $this->checkout     = $shoppingCart->checkOut();
 
-            foreach ($this->checkout["items"] as &$item) {
+            foreach ($this->checkout["items"] as &$item)
+            {
                 $articulo = Articulo::info($item["id"]);
         
-                $item["descripcion"] = $articulo->descripcion ?? null;
-                $item["imagen"] = count($articulo->imagenes) ? $articulo->imagenes[0]["miniatura"] : null;
+                $item["descripcion"]    = $articulo->descripcion ?? NULL;
+                $item["imagen"]         = count($articulo->imagenes) ? $articulo->imagenes[0]["miniatura"] : NULL;
             }
         
             $items      = $this->prepareItems();
@@ -79,6 +78,8 @@
             //DESCONTAR STOCK
             //$articulo_id = Articulo::where("talle_id", $talle_id)->where("color", $color)["id"];
             //Articulo::modificaStock($articulo_id, $stock - $cantidad);
+
+            $data = $this->getDataFromRequest($request);
 
             switch($this->medioPagoId)
             {            
@@ -278,11 +279,13 @@
                 "estado_id"         => 1,
             ]);
 
+            dd($items);
+
             // Creación del detalle de la factura
             for($i=0;$i<count($items);$i++)
             {
                 FacturaDetalle::generarDetalle([
-                    "factura_id"        => $factura["id"],
+                    "factura_id"        => $factura->id,
                     "articulo_id"       => $items[$i]["id"],
                     "codigo"            => $items[$i]["codigo"],
                     "nombre"            => $items[$i]["nombre"],
