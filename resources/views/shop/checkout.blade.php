@@ -274,25 +274,25 @@
             <p>Todavía no agregaste ningún item al carrito de compras</p>
         @endif
     </div>
+    
+@endsection
 
-    @section("scripts")
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
+@section("scripts")
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
 
-                const medioPagoRadios   = document.querySelectorAll('input[name="radio_medioPago"]');
-                const panel             = document.getElementById('shipmentPanel');
-                
-                medioPagoRadios.forEach(function (radio)
-                {
-                    radio.addEventListener("change", function () { if(this.value !== '1') panel.style.display = 'block'; else panel.style.display = 'none'; });
-                });
-
-                var medioPagoSeleccionado = document.querySelector('input[name="radio_medioPago"]:checked');
-                
-                if(medioPagoSeleccionado && medioPagoSeleccionado.value !== '1')
-                    document.getElementById('shipmentPanel').style.display = 'block';
+            const medioPagoRadios   = document.querySelectorAll('input[name="radio_medioPago"]');
+            const panel             = document.getElementById('shipmentPanel');
+            
+            medioPagoRadios.forEach(function (radio)
+            {
+                radio.addEventListener("change", function () { if(this.value !== '1') panel.style.display = 'block'; else panel.style.display = 'none'; });
             });
-        </script>
-    @endsection
 
+            var medioPagoSeleccionado = document.querySelector('input[name="radio_medioPago"]:checked');
+            
+            if(medioPagoSeleccionado && medioPagoSeleccionado.value !== '1')
+                document.getElementById('shipmentPanel').style.display = 'block';
+        });
+    </script>
 @endsection
