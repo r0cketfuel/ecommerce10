@@ -12,6 +12,7 @@
     <link rel="stylesheet"	href="{{ config('constants.shop_css') }}newsletter.css">
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}modal.css">
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}paginator.css">
+    <link rel="stylesheet"	href="{{ config('constants.framework_css') }}alert.css">
 @endsection
 
 @section("js")
@@ -24,6 +25,10 @@
 @endsection
 
 @section("body")
+
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    </div>
 
     @include("shop.modals.addItem")
 
@@ -59,4 +64,47 @@
     <!-- Newsletter -->
     @include("shop.layout.newsletter")
 
+@endsection
+
+@section("scripts")
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const items = [...document.querySelectorAll("[data-value]")];
+
+            if (items.length > 0)
+                items.forEach(x => x.addEventListener("click", () => { addItem(x.dataset["value"]); return false }));
+        });
+
+        function addItem(id)
+        {
+            const icon          = document.getElementById("heart");
+            const itemsQty      = parseInt(icon.innerHTML);
+
+            const url           = "/shop/ajax/agregaFavorito";
+            const parameters    = "articulo_id=" + id;
+            const promise       = ajax(url, parameters);
+
+            promise.then((data) => {
+
+                const alertContainer = document.querySelector(".alert");
+
+                if(data["success"])
+                {
+                    if(itemsQty < parseInt(data["data"]["itemQty"]))
+                    {
+                        icon.innerHTML              = data["data"]["itemQty"];
+                        alertContainer.className    = "alert success";
+                        alertContainer.innerHTML    = data["data"]["message"] + '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>';
+                    }
+                }
+                else
+                {
+                    alertContainer.className = "alert danger";
+                    alertContainer.innerHTML = data["data"]["message"] + '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>';
+                }
+
+                alertContainer.style.display = 'block';
+            });
+        }
+    </script>
 @endsection

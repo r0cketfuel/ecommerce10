@@ -67,7 +67,7 @@ class AjaxController extends Controller
         echo json_encode($response);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function agregaFavorito(Request $request)
+    public function agregaFavorito(Request $request, FavoritosService $favoritoService)
     {
         //===================================================//
         // Método que agrega un item al listado de favoritos //
@@ -80,10 +80,8 @@ class AjaxController extends Controller
             ),
         );
 
-        $articulo_id        = $request->input("articulo_id");
-        $favoritoService    = new FavoritosService;
-
-        $response = $favoritoService->addItem(Auth::id(), $articulo_id);
+        $articuloId = $request->input("articulo_id");
+        $response   = $favoritoService->addItem(Auth::id(), $articuloId);
 
         echo json_encode($response);
     }
