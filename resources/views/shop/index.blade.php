@@ -26,7 +26,7 @@
 
 @section("body")
 
-    <div class="alert">
+    <div class="alert" style="display: none;">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
     </div>
 
@@ -103,7 +103,7 @@
                     alertContainer.innerHTML = data["data"]["message"] + '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>';
                 }
 
-                alertContainer.style.display = 'block';
+                alertContainer.style.display = 'flex';
             });
         }
     </script>
