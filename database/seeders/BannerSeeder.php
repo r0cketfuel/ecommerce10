@@ -25,8 +25,7 @@ class BannerSeeder extends Seeder
             "descripcion"   => "Banner 1",
             "link"          => "semana_electrohogar",
             "valido_desde"  => $desde,
-            "valido_hasta"  => $hasta,
-            "eliminado"     => False
+            "valido_hasta"  => $hasta
         ]);
 
         Banner::create([
@@ -34,8 +33,7 @@ class BannerSeeder extends Seeder
             "descripcion"   => "Banner 2",
             "link"          => "electro",
             "valido_desde"  => $desde,
-            "valido_hasta"  => $hasta,
-            "eliminado"     => False
+            "valido_hasta"  => $hasta
         ]);
 
         Banner::create([
@@ -43,8 +41,7 @@ class BannerSeeder extends Seeder
             "descripcion"   => "Banner 3",
             "link"          => "amigos_beneficios",
             "valido_desde"  => $desde,
-            "valido_hasta"  => $hasta,
-            "eliminado"     => False
+            "valido_hasta"  => $hasta
         ]);
 
         Banner::create([
@@ -52,8 +49,7 @@ class BannerSeeder extends Seeder
             "descripcion"   => "Banner 4",
             "link"          => "megaofertas",
             "valido_desde"  => $desde,
-            "valido_hasta"  => $hasta,
-            "eliminado"     => False
+            "valido_hasta"  => $hasta
         ]);
 
         Banner::create([
@@ -61,8 +57,7 @@ class BannerSeeder extends Seeder
             "descripcion"   => "Banner 5",
             "link"          => "especial_juguetes",
             "valido_desde"  => $desde,
-            "valido_hasta"  => $hasta,
-            "eliminado"     => False
+            "valido_hasta"  => $hasta
         ]);
     }
 }

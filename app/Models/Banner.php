@@ -3,11 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Banner extends Model
 {
-    protected $table    = "banners";
-    public $timestamps  = false;
+    use SoftDeletes;
+
+    const CREATED_AT = 'creado';
+    const UPDATED_AT = 'actualizado';
+    const DELETED_AT = 'eliminado';
 
     /**
      * The attributes that are mass assignable.
@@ -20,8 +24,7 @@ class Banner extends Model
         "descripcion",
         "link",
         "valido_desde",
-        "valido_hasta",
-        "eliminado"
+        "valido_hasta"
     ];
     
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -31,7 +34,7 @@ class Banner extends Model
         // Método que retorna una colección con los banners promocionales vigentes a la fecha //
         //====================================================================================//
 
-        $banners = Banner::where("valido_desde", "<=", now())->where("valido_hasta", ">=", now())->where("eliminado", False)->get();
+        $banners = Banner::where("valido_desde", "<=", now())->where("valido_hasta", ">=", now())->get();
 
         // Agregar rutas de imágenes según configuración
         foreach ($banners as $banner)
