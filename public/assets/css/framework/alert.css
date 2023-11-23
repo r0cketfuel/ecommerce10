@@ -6,6 +6,7 @@
 */
 
 .alert {
+    user-select:                    none;
     display:                        -webkit-box;
     display:                        -ms-flexbox;
     display:                        flex;
@@ -16,39 +17,37 @@
         -ms-flex-align:             center;
             align-items:            center;
     border-radius:                  4px;
-    padding:                        10px 20px;
+    gap:                            20px;
+    padding:                        15px 30px;
 	-webkit-animation-name: 		fade-in;
             animation-name: 		fade-in;
 	-webkit-animation-duration: 	0.25s;
             animation-duration: 	0.25s;
-    
     position:                       fixed;
     top:                            40px;
     right:                          40px;
+    z-index:                        99999;
+    color:                          white;
 }
 
 .alert.success {
 	border: 						1px solid #28a745;
-	background-color: 				#28a745cc;
-    color:                          #19600c;
+	background-color: 				#28a746;
 }
 
 .alert.danger {
     border: 						1px solid #dc3545;
-	background-color: 				#dc354699;
-    color:                          #91222d;
+	background-color: 				#dc3535;
 }
 
 .alert.info {
 	border: 						1px solid #007bff;
-	background-color: 				#007bffcc;
-	color: 				            #0050a5;
+	background-color: 				#007bff;
 }
 
 .alert.warning {
 	border: 						1px solid #fff674;
-	background-color: 				#fff674cc;
-	color: 				            #9c9746;
+	background-color: 				#fff674;
 }
 
 .alert .closebtn {
