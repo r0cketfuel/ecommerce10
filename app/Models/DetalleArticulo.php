@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 class DetalleArticulo extends Model
 {
+    const CREATED_AT    = 'creado';
+    const UPDATED_AT    = 'actualizado';
+
     protected $table    = "detalles_articulos";
-    public $timestamps  = false;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +21,11 @@ class DetalleArticulo extends Model
         "detalle",
     ];
 
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function articulo()
+    {
+        return($this->belongsTo(Articulo::class));
+    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function detalle(int $id)
     {

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedMediumInteger('articulo_id')->unique();
             $table->foreign('articulo_id')->references('id')->on('articulos');
             $table->string('detalle',10240);
+            $table->datetime('creado');
+            $table->datetime('actualizado')->nullable();
             $table->comment('Tabla con la información detallada de cada artículo del sistema');
         });
     }
