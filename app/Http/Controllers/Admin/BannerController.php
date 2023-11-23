@@ -24,9 +24,8 @@ class BannerController extends Controller
         return view("admin.banners.create");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function store(StoreBannerRequest $request)
+    public function store(StoreBannerRequest $request, Banner $banner)
     {
-        $banner = new Banner;
         $banner = Banner::make($request->validated());
         $banner->save();
 
@@ -35,14 +34,14 @@ class BannerController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function show($id)
     {
-        if(is_numeric($id))
+        if(is_numeric($id) && $id > 0)
         {
-            $banner = Banner::detalle($id);
+            $banner = Banner::findOrFail($id);
 
             return view("admin.banners.show", compact('banner'));
         }
 
-        return redirect()->route('admin.dashboard')->with('danger', 'Error');
+        return redirect()->route('admin.dashboard')->with('error', 'No se encontró el banner solicitado');
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function edit(Banner $banner)

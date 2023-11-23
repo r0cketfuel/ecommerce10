@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Banner extends Model
@@ -22,7 +21,7 @@ class Banner extends Model
         "link",
         "valido_desde",
         "valido_hasta",
-        "eliminado",
+        "eliminado"
     ];
     
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -40,16 +39,7 @@ class Banner extends Model
             $banner->imagen = config("constants.banners") . '/' . $banner->imagen;
         }
     
-        return($banners);
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public static function detalle($id)
-    {
-        //=====================================================//
-        // Método que retorna el detalle completo de un banner //
-        //=====================================================//
-
-        return(Banner::where('id', $id)->first());
+        return $banners;
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

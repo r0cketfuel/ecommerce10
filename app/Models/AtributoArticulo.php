@@ -29,12 +29,12 @@ class AtributoArticulo extends Model
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function articulo()
     {
-        return($this->belongsTo(Articulo::class));
+        return $this->belongsTo(Articulo::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function talle()
     {
-        return($this->belongsTo(Talle::class));
+        return $this->belongsTo(Talle::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function search(int $articulo_id, array $opciones = array())
@@ -52,7 +52,7 @@ class AtributoArticulo extends Model
             if($value!=NULL)
                 $query->where($column, $value);
         
-        return($query->get());
+        return $query->get();
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function maximoCompra(int $articulo_id, array $opciones = array())
@@ -67,7 +67,7 @@ class AtributoArticulo extends Model
             if($item["compra_max"]<$item["stock"]) 
                 return($item["compra_max"]); 
         
-        return($item["stock"]);
+        return $item["stock"];
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function modificaStock(int $id, int $stock): array
