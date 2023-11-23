@@ -86,7 +86,7 @@ class ShopController extends Controller
             
             if($item)
             {
-                if($item->estado == 1 && $item->eliminado == False)
+                if($item->estado == 1)
                 {
                     Rating::incrementaVisualizacion($id);
 
