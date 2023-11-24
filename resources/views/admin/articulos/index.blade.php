@@ -33,6 +33,8 @@
 @section("body")
     @include('admin.articulos.modals.filter')
 
+    <div class="alert"></div>
+
     <div class="flex justify-between">
         <a class="btn-link btn-link-primary w100px" href="articulos/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
         <div class="input-container">
@@ -142,7 +144,7 @@
         async function ajaxItemDisable(articleId, newState)
         {
             try {
-                const response = await fetch(`/api/articulos/${articleId}`, {
+                const response = await fetch(`/api/articulosss/${articleId}`, {
                     method: "PUT",
                     headers: {
                         'Accept':       'application/json',
@@ -151,8 +153,17 @@
                     body: JSON.stringify({ estado: newState })
                 });
 
+                const alertContainer = document.querySelector(".alert");
+
                 const responseBody = await response.json();
-                console.log(responseBody);
+
+                if (response.status == 200)
+                    alertContainer.className    = "alert success";
+                else
+                    alertContainer.className    = "alert danger";
+
+                alertContainer.innerHTML    = responseBody["message"] + '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>';
+                alertContainer.style.display = 'flex';
             }
             catch (error)
             {

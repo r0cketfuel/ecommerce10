@@ -5,6 +5,7 @@ return [
     'article_not_found'     => 'Artículo no encontrado',
     'profileUpdateSuccess'  => 'Perfil actualizado correctamente',
     'error' => [
+        'route_not_found'   => 'No se encontró la ruta',
         'model_not_found'   => ':model no encontrado',
     ],
     'success' => [
