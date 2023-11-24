@@ -10,6 +10,14 @@ use App\Models\Usuario;
 
 class UsuarioController extends Controller
 {
+    protected $modelName;
+    
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function __construct()
+    {
+        // Nombre del modelo para las traducciones
+        $this->modelName = __('models.usuario');
+    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
@@ -35,15 +43,14 @@ class UsuarioController extends Controller
     {
         $usuario->update($request->all());
     
-        return response()->json(['message' => 'Usuario actualizado con éxito']);
+        return response()->json(['message' => __('messages.success.model_update', ['model' => $this->modelName])], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function destroy(Usuario $usuario)
     {
-        if(Usuario::eliminaUsuario($usuario->id))
-            return response()->json(['message' => 'Usuario eliminado'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
-
-        return response()->json(['message' => 'Error al eliminar el usuario'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        $usuario->delete();
+        
+        return response()->json(['message' => __('messages.success.model_delete', ['model' => $this->modelName])], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

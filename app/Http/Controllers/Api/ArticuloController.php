@@ -10,6 +10,14 @@ use App\Models\Articulo;
 
 class ArticuloController extends Controller
 {
+    protected $modelName;
+    
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function __construct()
+    {
+        // Nombre del modelo para las traducciones
+        $this->modelName = __('models.articulo');
+    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
@@ -35,15 +43,14 @@ class ArticuloController extends Controller
     {        
         $articulo->update($request->all());
     
-        return response()->json(['message' => 'Artículo actualizado'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        return response()->json(['message' => __('messages.success.model_update', ['model' => $this->modelName])], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function destroy(Articulo $articulo)
     {
-        if(Articulo::eliminaArticulo($articulo->id))
-            return response()->json(['message' => 'Artículo eliminado'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        $articulo->delete();
 
-        return response()->json(['message' => 'Error al eliminar el artículo'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        return response()->json(['message' => __('messages.success.model_delete', ['model' => $this->modelName])], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

@@ -129,19 +129,4 @@ class Articulo extends Model
         return $items;
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public static function eliminaArticulo(int $id)
-    {
-        try
-        {
-            $articulo = self::findOrFail($id);
-            $articulo->delete();
-
-            return(1);
-        }
-        catch (ModelNotFoundException $e)
-        {
-            throw new \Exception(trans('messages.article_not_found'));
-        }
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

@@ -10,6 +10,14 @@ use App\Models\Categoria;
 
 class CategoriaController extends Controller
 {
+    protected $modelName;
+    
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function __construct()
+    {
+        // Nombre del modelo para las traducciones
+        $this->modelName = __('models.categoria');
+    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
@@ -35,15 +43,14 @@ class CategoriaController extends Controller
     {
         $categoria->update($request->all());
     
-        return response()->json(['message' => 'Categoría actualizada con éxito']);
+        return response()->json(['message' => __('messages.success.model_update', ['model' => $this->modelName])], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function destroy(Categoria $categoria)
     {
-        if(Categoria::eliminaArticulo($categoria->id))
-            return response()->json(['message' => 'Categoría eliminada'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        $categoria->delete();
 
-        return response()->json(['message' => 'Error al eliminar la categoría'], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        return response()->json(['message' => __('messages.success.model_delete', ['model' => $this->modelName])], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

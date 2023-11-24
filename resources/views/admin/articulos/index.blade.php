@@ -84,7 +84,7 @@
                     </td>
                     <td class="text-center">
                         <a href="/admin/articulos/{{ $articulo->id }}"><i class="fa-solid fa-eye"></i></a>
-                        <button type="button" class="deleteButton" id="{{ ($articulo->id)+50 }}"><i class="fa-solid fa-trash"></i></button>
+                        <button type="button" class="deleteButton" id="{{ $articulo->id }}"><i class="fa-solid fa-trash"></i></button>
                     </td>                        
                 </tr>
             @endforeach
@@ -151,14 +151,8 @@
                     body: JSON.stringify({ estado: newState })
                 });
 
-                if (response.ok)
-                {
-                    console.log('Se cambió el estado del artículo');
-                }
-                else
-                {
-                    console.error('Error al cambiar el estado del artículo');
-                }
+                const responseBody = await response.json();
+                console.log(responseBody);
             }
             catch (error)
             {
@@ -177,14 +171,8 @@
                     },
                 });
 
-                if (response.ok)
-                {
-                    console.log('Artículo eliminado');
-                }
-                else
-                {
-                    console.error('Error al eliminar el artículo');
-                }
+                const responseBody = await response.json();
+                console.log(responseBody);
             }
             catch (error)
             {
