@@ -144,7 +144,7 @@
         async function ajaxItemDisable(articleId, newState)
         {
             try {
-                const response = await fetch(`/api/articulosss/${articleId}`, {
+                const response = await fetch(`/api/articulos/${articleId}`, {
                     method: "PUT",
                     headers: {
                         'Accept':       'application/json',
