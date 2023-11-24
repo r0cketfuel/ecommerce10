@@ -84,13 +84,15 @@
                     </td>
                     <td class="text-center">
                         <a href="/admin/articulos/{{ $articulo->id }}"><i class="fa-solid fa-eye"></i></a>
-                        <button type="button" class="deleteButton" id="{{ $articulo->id }}"><i class="fa-solid fa-trash"></i></button>
+                        <button type="button" class="deleteButton" id="{{ ($articulo->id)+50 }}"><i class="fa-solid fa-trash"></i></button>
                     </td>                        
                 </tr>
             @endforeach
         </tbody>
     </table>
+@endsection
 
+@section("scripts")
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
@@ -190,5 +192,4 @@
             }
         }
     </script>
-
 @endsection

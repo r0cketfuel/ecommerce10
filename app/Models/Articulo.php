@@ -22,14 +22,14 @@ class Articulo extends Model
      * 
      */
     protected $fillable = [
-        "codigo",
-        "nombre",
-        "descripcion",
-        "precio",
-        "moneda",
-        "categoria_id",
-        "subcategoria_id",
-        "estado"
+        'codigo',
+        'nombre',
+        'descripcion',
+        'precio',
+        'moneda',
+        'categoria_id',
+        'subcategoria_id',
+        'estado'
     ];
     
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -71,8 +71,8 @@ class Articulo extends Model
             {
                 foreach ($item->imagenes as $imagen)
                 {
-                    $imagen->miniatura  = asset(config("constants.product_images") . "/" . $item->id . "/thumbs/"   . $imagen->ruta);
-                    $imagen->ruta       = asset(config("constants.product_images") . "/" . $item->id . "/"          . $imagen->ruta);
+                    $imagen->miniatura  = asset(config('constants.product_images') . '/' . $item->id . '/thumbs/'   . $imagen->ruta);
+                    $imagen->ruta       = asset(config('constants.product_images') . '/' . $item->id . '/'          . $imagen->ruta);
                 }
             }
         }
@@ -82,7 +82,7 @@ class Articulo extends Model
     {
         if($id > 0)
         {
-            $articulo = self::where("id", $id)->with('imagenes')->with("categoria")->with("subcategoria")->first();
+            $articulo = self::where('id', $id)->with('imagenes')->with('categoria')->with('subcategoria')->first();
     
             if($articulo)
             {
@@ -100,29 +100,29 @@ class Articulo extends Model
         // Método que devuelve un listado de artículos //
         //=============================================//
 
-        $query = self::where("estado", 1)->with('imagenes');
+        $query = self::where('estado', 1)->with('imagenes');
 
-        if(isset($search["query"]))
+        if(isset($search['query']))
         {
             $query->where(function ($q) use ($search)
             {
-                $q->where("codigo",         "like", "%" . $search["query"] . "%")
-                ->orWhere("nombre",         "like", "%" . $search["query"] . "%")
-                ->orWhere("descripcion",    "like", "%" . $search["query"] . "%");
+                $q->where('codigo',         'like', '%' . $search['query'] . '%')
+                ->orWhere('nombre',         'like', '%' . $search['query'] . '%')
+                ->orWhere('descripcion',    'like', '%' . $search['query'] . '%');
             });
         }
     
-        if(isset($search["categoria"]))
-            $query->where("categoria_id", $search["categoria"]);
+        if(isset($search['categoria']))
+            $query->where('categoria_id', $search['categoria']);
     
-        if(isset($search["subcategoria"]))
-            $query->where("subcategoria_id", $search["subcategoria"]);
+        if(isset($search['subcategoria']))
+            $query->where('subcategoria_id', $search['subcategoria']);
 
-        if(isset($search["sort"]))
-            if(isset($search["order"]))
-                $query->orderBy($search["sort"], $search["order"]);
+        if(isset($search['sort']))
+            if(isset($search['order']))
+                $query->orderBy($search['sort'], $search['order']);
         
-        $items = $query->paginate(config("constants.pagination"));
+        $items = $query->paginate(config('constants.pagination'));
 
         self::rutaImagenes($items);
     
