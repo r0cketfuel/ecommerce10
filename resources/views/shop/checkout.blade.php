@@ -280,6 +280,11 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
+            const subtotal          = document.getElementById("sub-total");
+            const envio             = document.getElementById("envio");
+            const descuentos        = document.getElementById("descuentos");
+            const total             = document.getElementById("total");
+
             const radiosMedioPago   = document.querySelectorAll('input[name="radio_medioPago"]');
             const radiosMedioEnvio  = document.querySelectorAll("input[type='radio'][name='radio_medioEnvio']");
             
@@ -328,7 +333,6 @@
 
             function ocultarPanelEnvio() {
                 panelEnvios.style.display = 'none';
-                restablecerMedioEnvio();
             }
 
             function mostrarCamposEnvio() {
@@ -364,6 +368,7 @@
                 const response = ajax(url,parameters);
 
                 response.then((data) => {
+
                     if(data)
                         envio.innerHTML = formatCurrency(parseFloat(data));
                     else
