@@ -29,10 +29,12 @@
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         private function prepareItems()
         {
-            $items = [];
+            //dd($this->checkout["items"]);
 
-            foreach ($this->checkout["items"] as $item) 
-                $items[] = Articulo::info($item["id"]);
+            $items = $this->checkout["items"];
+
+            // foreach ($this->checkout["items"] as $item) 
+            //     $items[] = Articulo::info($item["id"]);
 
             return $items;
         }
@@ -279,22 +281,22 @@
                 "estado_id"         => 1,
             ]);
 
-            dd($items);
-
             // Creación del detalle de la factura
             for($i=0;$i<count($items);$i++)
             {
+                $articulo = Articulo::info($items[$i]["id"]);
+
                 FacturaDetalle::generarDetalle([
                     "factura_id"        => $factura->id,
-                    "articulo_id"       => $items[$i]["id"],
-                    "codigo"            => $items[$i]["codigo"],
-                    "nombre"            => $items[$i]["nombre"],
-                    "descripcion"       => $items[$i]["descripcion"],
-                    "opciones"          => $items[$i]["opciones"],
-                    "precio"            => $items[$i]["precio"],
-                    "moneda"            => $items[$i]["moneda"],
+                    "articulo_id"       => $articulo->id,
+                    "codigo"            => $articulo->codigo,
+                    "nombre"            => $articulo->nombre,
+                    "descripcion"       => $articulo->descripcion,
+                    "opciones"          => $articulo->opciones,
+                    "precio"            => $articulo->precio,
+                    "moneda"            => $articulo->moneda,
                     "cantidad"          => $items[$i]["cantidad"],
-                    "subtotal"          => (float)69,
+                    "subtotal"          => (float)$articulo->precio * $items[$i]["cantidad"],
                     "medio_envio_id"    => session("shop.checkout.medio_envio.id")
                 ]);
             }
