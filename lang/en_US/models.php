@@ -5,5 +5,6 @@ return [
     'articulo'      => 'Article',
     'categoria'     => 'Category',
     'subcategoria'  => 'Subcategory',
-    'usuario'       => 'User'
+    'usuario'       => 'User',
+    'favorito'      => 'Favourite'
 ];

@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ArticuloController;
 use App\Http\Controllers\Api\CategoriaController;
 use App\Http\Controllers\Api\SubcategoriaController;
 use App\Http\Controllers\Api\UsuarioController;
+use App\Http\Controllers\Api\FavoritoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,4 @@ Route::apiResource('articulos',     ArticuloController::class);
 Route::apiResource('categorias',    CategoriaController::class);
 Route::apiResource('subcategorias', SubcategoriaController::class);
 Route::apiResource('usuarios',      UsuarioController::class);
+Route::apiResource('favoritos',     FavoritoController::class);
