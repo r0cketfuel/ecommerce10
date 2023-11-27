@@ -24,10 +24,8 @@ class CategoriaController extends Controller
         return response()->json(Categoria::all(), 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function store(StoreCategoriaRequest $request)
+    public function store(StoreCategoriaRequest $request, Categoria $categoria)
     {
-        $categoria = new Categoria;
-
         $categoria = Categoria::make($request->validated());
         $categoria->save();
     

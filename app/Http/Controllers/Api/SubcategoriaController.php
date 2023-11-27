@@ -24,10 +24,8 @@ class SubcategoriaController extends Controller
         return response()->json(Subcategoria::all(), 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function store(StoreSubcategoriaRequest $request)
+    public function store(StoreSubcategoriaRequest $request, Subcategoria $subcategoria)
     {
-        $subcategoria = new Subcategoria;
-
         $subcategoria = Subcategoria::make($request->validated());
         $subcategoria->save();
     

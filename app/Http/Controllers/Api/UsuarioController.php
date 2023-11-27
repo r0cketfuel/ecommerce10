@@ -24,10 +24,8 @@ class UsuarioController extends Controller
         return response()->json(Usuario::all(), 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function store(StoreUsuarioRequest $request)
+    public function store(StoreUsuarioRequest $request, Usuario $usuario)
     {
-        $usuario = new Usuario;
-
         $usuario = Usuario::make($request->validated());
         $usuario->save();
     
