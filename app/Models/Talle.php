@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Talle extends Model
 {
-    protected $table    = "talles";
+    protected $table    = 'talles';
     public $timestamps  = false;
 
     /**
@@ -17,7 +16,7 @@ class Talle extends Model
      * 
      */
     protected $fillable = [
-        "talle"
+        'talle'
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

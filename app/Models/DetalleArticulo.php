@@ -8,7 +8,7 @@ class DetalleArticulo extends Model
     const CREATED_AT    = 'creado';
     const UPDATED_AT    = 'actualizado';
 
-    protected $table    = "detalles_articulos";
+    protected $table    = 'detalles_articulos';
 
     /**
      * The attributes that are mass assignable.
@@ -17,8 +17,8 @@ class DetalleArticulo extends Model
      * 
      */
     protected $fillable = [
-        "articulo_id",
-        "detalle",
+        'articulo_id',
+        'detalle'
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -32,7 +32,7 @@ class DetalleArticulo extends Model
         //==========================================//
         // Método que carga el detalle del artículo //
         //==========================================//
-        return(self::where("articulo_id", $id)->first());
+        return(self::where('articulo_id', $id)->first());
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 

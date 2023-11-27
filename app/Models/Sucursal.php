@@ -12,7 +12,7 @@ class Sucursal extends Model
     const UPDATED_AT = 'actualizado';
     const DELETED_AT = 'eliminado';
 
-    protected $table    = "sucursales";
+    protected $table    = 'sucursales';
 
     /**
      * The attributes that are mass assignable.

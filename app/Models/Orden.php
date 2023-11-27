@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Orden extends Model
 {
-    protected $table    = "ordenes";
+    protected $table    = 'ordenes';
     public $timestamps  = false;
 
     /**
@@ -17,22 +16,7 @@ class Orden extends Model
      * 
      */
     protected $fillable = [
-        "estado"
+        'estado'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-    ];
 }

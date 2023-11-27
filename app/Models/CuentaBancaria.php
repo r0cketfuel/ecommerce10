@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CuentaBancaria extends Model
 {
-    protected $table    = "cuentas_bancarias";
+    protected $table    = 'cuentas_bancarias';
     public $timestamps  = false;
 
     /**
@@ -17,12 +16,12 @@ class CuentaBancaria extends Model
      * 
      */
     protected $fillable = [
-        "banco",
-        "cuit",
-        "titular",
-        "cuenta",
-        "cbu",
-        "alias"
+        'banco',
+        'cuit',
+        'titular',
+        'cuenta',
+        'cbu',
+        'alias'
     ];
 
 }

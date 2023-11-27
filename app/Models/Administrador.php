@@ -13,7 +13,7 @@ class Administrador extends Authenticatable
     const UPDATED_AT    = 'actualizado';
     const DELETED_AT    = 'eliminado';
 
-    protected $table    = "administradores";
+    protected $table    = 'administradores';
 
     /**
      * The attributes that are mass assignable.
@@ -22,11 +22,11 @@ class Administrador extends Authenticatable
      * 
      */
     protected $fillable = [
-        "username",
-        "password",
-        "apellidos",
-        "nombres",
-        "rol_id"
+        'username',
+        'password',
+        'apellidos',
+        'nombres',
+        'rol_id'
     ];
 
     /**
@@ -35,9 +35,9 @@ class Administrador extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        "password",
-        "password_repeat",
-        "remember_token",
+        'password',
+        'password_repeat',
+        'remember_token'
     ];
 
     /**
@@ -51,7 +51,7 @@ class Administrador extends Authenticatable
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function setPasswordAttribute($password)
     {
-        $this->attributes["password"] = bcrypt($password);
+        $this->attributes['password'] = bcrypt($password);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }    

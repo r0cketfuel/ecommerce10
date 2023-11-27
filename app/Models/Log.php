@@ -16,11 +16,11 @@ class Log extends Model
      * 
      */
     protected $fillable = [
-        "usuario",
-        "fecha",
-        "hora",
-        "tipo",
-        "evento"
+        'usuario',
+        'fecha',
+        'hora',
+        'tipo',
+        'evento'
     ];
 
     /**

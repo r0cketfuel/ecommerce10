@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class AtributoArticulo extends Model
 {
-    protected $table    = "atributos_articulos";
+    protected $table    = 'atributos_articulos';
     public $timestamps  = false;
 
     /**
@@ -17,13 +16,13 @@ class AtributoArticulo extends Model
      * 
      */
     protected $fillable = [
-        "articulo_id",
-        "talle_id",
-        "color",
-        "compra_min",
-        "compra_max",
-        "stock",
-        "imagen_id"
+        'articulo_id',
+        'talle_id',
+        'color',
+        'compra_min',
+        'compra_max',
+        'stock',
+        'imagen_id'
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -43,10 +42,10 @@ class AtributoArticulo extends Model
         // Método que devuelve registros segun los parámetros solicitados //
         //================================================================//
         
-        $query = AtributoArticulo::query()->where("articulo_id",$articulo_id);
+        $query = AtributoArticulo::query()->where('articulo_id',$articulo_id);
         
         //Relaciones
-        $query->with("talle");
+        $query->with('talle');
 
         foreach($opciones as $column => $value)
             if($value!=NULL)
@@ -63,20 +62,20 @@ class AtributoArticulo extends Model
         
         $item = $this->search($articulo_id, $opciones)->first();
 
-        if($item["compra_max"]!=NULL)
-            if($item["compra_max"]<$item["stock"]) 
-                return($item["compra_max"]); 
+        if($item['compra_max']!=NULL)
+            if($item['compra_max']<$item['stock']) 
+                return($item['compra_max']); 
         
-        return $item["stock"];
+        return $item['stock'];
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function modificaStock(int $id, int $stock): array
     {
-        if(self::where("id", $id)->update(["stock" => $stock]))
+        if(self::where('id', $id)->update(['stock' => $stock]))
         {
             return(array(
-                "success"   => true,
-                "data"      => array(),
+                'success'   => true,
+                'data'      => array(),
             ));
         }
     }

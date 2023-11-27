@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Cupon extends Model
 {
-    protected $table    = "cupones";
+    protected $table    = 'cupones';
     public $timestamps  = false;
 
     /**
@@ -17,13 +16,13 @@ class Cupon extends Model
      * 
      */
     protected $fillable = [
-        "codigo",
-        "usuario_id",
-        "valido_desde",
-        "valido_hasta",
-        "estado",
-        "tipo_descuento",
-        "descuento"
+        'codigo',
+        'usuario_id',
+        'valido_desde',
+        'valido_hasta',
+        'estado',
+        'tipo_descuento',
+        'descuento'
     ];
 
 }

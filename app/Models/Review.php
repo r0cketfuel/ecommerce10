@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
-    protected $table    = "reviews";
+    protected $table    = 'reviews';
     public $timestamps  = false;
 
     /**
@@ -17,12 +16,12 @@ class Review extends Model
      * 
      */
     protected $fillable = [
-        "usuario_id",
-        "articulo_id",
-        "fecha",
-        "hora",
-        "titulo",
-        "texto",
+        'usuario_id',
+        'articulo_id',
+        'fecha',
+        'hora',
+        'titulo',
+        'texto'
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -33,7 +32,7 @@ class Review extends Model
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function reviews(int $id)
     {
-        return(self::with("usuario")->where("articulo_id", $id)->get());
+        return(self::with('usuario')->where('articulo_id', $id)->get());
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     

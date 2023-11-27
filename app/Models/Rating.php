@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -17,11 +16,11 @@ class Rating extends Model
      * 
      */
     protected $fillable = [
-        "articulo_id",
-        "puntuaciones",
-        "sumatoria",
-        "stars",
-        "visualizaciones",
+        'articulo_id',
+        'puntuaciones',
+        'sumatoria',
+        'stars',
+        'visualizaciones'
     ];
     
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -69,7 +68,7 @@ class Rating extends Model
         if($puntuaciones>0)
             $promedio = $sumatoria / $puntuaciones;
         
-        return(number_format($promedio, 2, ",", "."));
+        return(number_format($promedio, 2, ',', '.'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 

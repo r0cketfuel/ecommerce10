@@ -24,30 +24,30 @@ class Usuario extends Authenticatable
      * 
      */
     protected $fillable = [
-        "username",
-        "password",
-        "apellidos",
-        "nombres",
-        "tipo_documento_id",
-        "documento_nro",
-        "cuit",
-        "cuil",
-        "fecha_nacimiento",
-        "genero_id",
-        "domicilio",
-        "domicilio_nro",
-        "domicilio_piso",
-        "domicilio_depto",
-        "domicilio_aclaraciones",
-        "localidad",
-        "codigo_postal",
-        "telefono_fijo",
-        "telefono_celular",
-        "telefono_alt",
-        "email",
-        "estado",
-        "creado",
-        "eliminado",
+        'username',
+        'password',
+        'apellidos',
+        'nombres',
+        'tipo_documento_id',
+        'documento_nro',
+        'cuit',
+        'cuil',
+        'fecha_nacimiento',
+        'genero_id',
+        'domicilio',
+        'domicilio_nro',
+        'domicilio_piso',
+        'domicilio_depto',
+        'domicilio_aclaraciones',
+        'localidad',
+        'codigo_postal',
+        'telefono_fijo',
+        'telefono_celular',
+        'telefono_alt',
+        'email',
+        'estado',
+        'creado',
+        'eliminado'
     ];
 
     /**
@@ -56,9 +56,9 @@ class Usuario extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        "password",
-        "password_repeat",
-        "remember_token",
+        'password',
+        'password_repeat',
+        'remember_token'
     ];
 
     /**
@@ -72,7 +72,7 @@ class Usuario extends Authenticatable
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function setPasswordAttribute($password)
     {
-        $this->attributes["password"] = bcrypt($password);
+        $this->attributes['password'] = bcrypt($password);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function tipoDocumento()
@@ -122,7 +122,7 @@ class Usuario extends Authenticatable
             $rv = false;
             $resultado = 0;
             
-            $codes = "6789456789";
+            $codes = '6789456789';
             $verificador = intVal($cuit[strlen($cuit)-1]);
             
             $x = 0;
@@ -146,7 +146,7 @@ class Usuario extends Authenticatable
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function activos()
     {
-        $usuarios = Usuario::where("estado", 1)->where("alta", "<>", NULL)->where("eliminado", False)->get();
+        $usuarios = Usuario::where('estado', 1)->where('alta', '<>', NULL)->where('eliminado', False)->get();
 
         return($usuarios);
     }

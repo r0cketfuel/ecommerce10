@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class TipoDocumento extends Model
 {
-    protected $table    = "tipos_documentos";
+    protected $table    = 'tipos_documentos';
     public $timestamps  = false;
 
     /**
@@ -17,30 +16,14 @@ class TipoDocumento extends Model
      * 
      */
     protected $fillable = [
-        "tipo",
-        "descripcion"
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
+        'tipo',
+        'descripcion'
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function search(string $search)
     {
-        return(self::Where("tipo", "LIKE", "%" . $search . "%")->first()->toArray());
+        return(self::Where('tipo', 'LIKE', '%' . $search . '%')->first()->toArray());
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

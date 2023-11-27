@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PagoMercadoPago extends Model
 {
-    protected $table    = "pagos_mercadopago";
+    protected $table    = 'pagos_mercadopago';
     public $timestamps  = false;
 
     /**
@@ -17,23 +16,8 @@ class PagoMercadoPago extends Model
      * 
      */
     protected $fillable = [
-        "mercadopago_id",
-        "factura_id"
+        'mercadopago_id',
+        'factura_id'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-    ];
 }

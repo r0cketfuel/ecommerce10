@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Marquesina extends Model
@@ -16,9 +15,9 @@ class Marquesina extends Model
      * 
      */
     protected $fillable = [
-        "mensaje",
-        "valido_desde",
-        "valido_hasta"
+        'mensaje',
+        'valido_desde',
+        'valido_hasta'
     ];
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

@@ -20,11 +20,11 @@ class Banner extends Model
      * 
      */
     protected $fillable = [
-        "imagen",
-        "descripcion",
-        "link",
-        "valido_desde",
-        "valido_hasta"
+        'imagen',
+        'descripcion',
+        'link',
+        'valido_desde',
+        'valido_hasta'
     ];
     
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -34,12 +34,12 @@ class Banner extends Model
         // Método que retorna una colección con los banners promocionales vigentes a la fecha //
         //====================================================================================//
 
-        $banners = Banner::where("valido_desde", "<=", now())->where("valido_hasta", ">=", now())->get();
+        $banners = Banner::where('valido_desde', '<=', now())->where('valido_hasta', '>=', now())->get();
 
         // Agregar rutas de imágenes según configuración
         foreach ($banners as $banner)
         {
-            $banner->imagen = config("constants.banners") . '/' . $banner->imagen;
+            $banner->imagen = config('constants.banners') . '/' . $banner->imagen;
         }
     
         return $banners;
