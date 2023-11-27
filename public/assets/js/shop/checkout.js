@@ -1,13 +1,11 @@
-document.addEventListener("DOMContentLoaded", load, false);
+document.addEventListener("DOMContentLoaded", () => {
 
+    const subtotal          = document.getElementById("sub-total");
+    const envio             = document.getElementById("envio");
+    const descuentos        = document.getElementById("descuentos");
+    const total             = document.getElementById("total");
+    const couponApplyButton = document.getElementById("btn_coupon_submit");
 
-const envio             = document.getElementById("envio");
-const descuentos        = document.getElementById("descuentos");
-const total             = document.getElementById("total");
-const couponApplyButton = document.getElementById("btn_coupon_submit");
-
-function load ()
-{
     if(couponApplyButton)
         couponApplyButton.addEventListener("click", function() { couponSubmit(); return false });
 
@@ -16,7 +14,6 @@ function load ()
 
     for(let i=0;i<shipmentOptions.length;++i)
         shipmentOptions[i].addEventListener('click', function() { shipment(shipmentOptions[i].value); return false });
-}
 
 function formatCurrency(number)
 {
@@ -49,11 +46,11 @@ function shipment(value)
 {
     if(value==1)
     {
-        shipmentData.style.display = "none";
+        dataFields.style.display = "none";
     }
     else
     {
-        shipmentData.style.display = "block";
+        dataFields.style.display = "block";
     }
 
     const url           = "/shop/ajax/costoEnvio";
@@ -98,3 +95,5 @@ function couponSubmit()
 
     });
 }
+
+});
