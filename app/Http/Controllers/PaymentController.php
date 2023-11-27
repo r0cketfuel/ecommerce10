@@ -162,10 +162,10 @@
                     "description"               => "Descripción",
                     "external_reference"        => "Referencia externa",
                     "payer"                     => array(
-                        "email"             => $data["email"],
-                        "identification"    => array(
-                            "type"          => $data["tipo_documento_id"],
-                            "number"        => $data["documento_nro"]
+                        "email"                 => $data["email"],
+                        "identification"        => array(
+                            "type"              => $data["tipo_documento_id"],
+                            "number"            => $data["documento_nro"]
                         )
                     ),
                     "payment_method_id"         => $payment_method_id,
