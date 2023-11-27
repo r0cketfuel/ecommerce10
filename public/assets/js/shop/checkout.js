@@ -44,15 +44,6 @@ function calculaTotal()
 
 function shipment(value)
 {
-    if(value==1)
-    {
-        dataFields.style.display = "none";
-    }
-    else
-    {
-        dataFields.style.display = "block";
-    }
-
     const url           = "/shop/ajax/costoEnvio";
     const parameters    = "medio_id=" + value;
 
@@ -66,8 +57,6 @@ function shipment(value)
 
             calculaTotal();
     });
-        
-        //requireds!!!
 }
 
 function couponSubmit()

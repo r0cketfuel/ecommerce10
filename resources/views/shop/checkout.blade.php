@@ -15,7 +15,6 @@
 @section("js")
     <script defer src="{{ config('constants.shop_js') }}ajax.js"></script>
     <script defer src="{{ config('constants.shop_js') }}cart.js"></script>
-    <script defer src="{{ config('constants.shop_js') }}checkout.js"></script>
 @endsection
 
 @section("inlineCSS")
@@ -281,18 +280,121 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
-            const medioPagoRadios   = document.querySelectorAll('input[name="radio_medioPago"]');
-            const panel             = document.getElementById('shipmentPanel');
+            const radiosMedioPago   = document.querySelectorAll('input[name="radio_medioPago"]');
+            const radiosMedioEnvio  = document.querySelectorAll("input[type='radio'][name='radio_medioEnvio']");
             
-            medioPagoRadios.forEach(function (radio)
-            {
-                radio.addEventListener("change", function () { if(this.value !== '1') panel.style.display = 'block'; else panel.style.display = 'none'; });
+            const panelEnvios       = document.getElementById('shipmentPanel');
+            const dataFields        = document.getElementById("shipmentData");
+
+            radiosMedioPago.forEach(function (radio) {
+                radio.addEventListener("change", function () { handleMediosPago(this); return false });
             });
 
-            var medioPagoSeleccionado = document.querySelector('input[name="radio_medioPago"]:checked');
-            
-            if(medioPagoSeleccionado && medioPagoSeleccionado.value !== '1')
-                document.getElementById('shipmentPanel').style.display = 'block';
+            radiosMedioEnvio.forEach(function (radio) {
+                radio.addEventListener("change", function () { handleMediosEnvio(this); return false });
+            });
+
+            medioPagoSeleccionado();
+
+            function handleMediosPago(radio)
+            {
+                if(radio.value !== '1')
+                {
+                    mostrarPanelEnvio();
+                }
+                else
+                {
+                    restablecerMedioEnvio();
+                    ocultarPanelEnvio();
+                }
+            }
+
+            function handleMediosEnvio(radio)
+            {
+                if(radio.value === '1')
+                {
+                    ocultarCamposEnvio();
+                }
+                else
+                {
+                    mostrarCamposEnvio();
+                }
+                costoEnvio(radio.value);
+            }
+
+            function mostrarPanelEnvio() {
+                panelEnvios.style.display = 'block'
+            }
+
+            function ocultarPanelEnvio() {
+                panelEnvios.style.display = 'none';
+                restablecerMedioEnvio();
+            }
+
+            function mostrarCamposEnvio() {
+                dataFields.style.display = "block";
+            }
+
+            function ocultarCamposEnvio() {
+                dataFields.style.display = "none";
+            }
+
+            function medioPagoSeleccionado()
+            {
+                const medio = document.querySelector('input[name="radio_medioPago"]:checked');
+                handleMediosPago(medio);
+            }
+
+            function restablecerMedioEnvio()
+            {
+                const primerMedioEnvio = document.querySelector("input[type='radio'][name='radio_medioEnvio']:first-child");
+                if (primerMedioEnvio)
+                {
+                    primerMedioEnvio.checked = true;
+                    costoEnvio(primerMedioEnvio.value);
+                    ocultarCamposEnvio();
+                }
+            }
+
+            function costoEnvio(medioPagoSeleccionado)
+            {
+                const url           = "/shop/ajax/costoEnvio";
+                const parameters    = "medio_id=" + medioPagoSeleccionado;
+
+                const response = ajax(url,parameters);
+
+                response.then((data) => {
+                    if(data)
+                        envio.innerHTML = formatCurrency(parseFloat(data));
+                    else
+                        envio.innerHTML = formatCurrency(parseFloat(0));
+
+                        calculaTotal();
+                });
+            }
+
+            function calculaTotal()
+            {
+                let subtotalTemp, envioTemp, descuentosTemp;
+
+                subtotalTemp = subtotal.innerHTML;
+                subtotalTemp = subtotalTemp.replace('$','');
+                subtotalTemp = subtotalTemp.replace(/\./g,'');
+                subtotalTemp = subtotalTemp.replace(",",'.');
+
+                envioTemp = envio.innerHTML;
+                envioTemp = envioTemp.replace('$','');
+                envioTemp = envioTemp.replace(/\./g,'');
+                envioTemp = envioTemp.replace(",",'.');
+
+                descuentosTemp = descuentos.innerHTML;
+                descuentosTemp = descuentosTemp.replace('$','');
+                descuentosTemp = descuentosTemp.replace(/\./g,'');
+                descuentosTemp = descuentosTemp.replace(",",'.');
+
+                total.innerHTML = formatCurrency(parseFloat(parseFloat(subtotalTemp) + parseFloat(envioTemp) - parseFloat(descuentosTemp)));
+            }
+
         });
     </script>
 @endsection
