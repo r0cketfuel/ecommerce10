@@ -67,6 +67,6 @@
             </div>
         </div>
 
-        <form id="form-login" method="post" autocomplete="off">@csrf</form>
+        <form id="form-login" method="post">@csrf</form>
     </body>
 </html>

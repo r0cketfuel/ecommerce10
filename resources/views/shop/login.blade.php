@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <form id="form-login" method="post" autocomplete="off">@csrf</form>
-        <form id="form-guest" method="post" autocomplete="off" action="{{ route('login.guest') }}">@csrf</form>
+        <form id="form-login" method="post">@csrf</form>
+        <form id="form-guest" method="post" action="{{ route('login.guest') }}">@csrf</form>
     </body>
 </html>
