@@ -45,7 +45,7 @@
                 $response   = array(
                     "success"       => false,
                     "data"          => array(
-                        "message"   => "El item ya se encontraba agregado a favoritos"
+                        "message"   => "El item ya se encontraba en tus favoritos"
                     ),
                 );
                 
@@ -63,7 +63,7 @@
                 $response = array(
                     "success"       => true,
                     "data"          => array(
-                        "message"   => "El item se agregó correctamente",
+                        "message"   => "El item se agregó a favoritos",
                         "itemQty"   => $this->totalItems()
                     )
                 );
