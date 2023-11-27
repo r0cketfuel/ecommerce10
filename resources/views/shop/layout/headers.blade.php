@@ -67,21 +67,3 @@
         </div>
     </div>
 </header>
-
-@section("scripts")
-    @guest
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-
-                const loginLink   = document.getElementById("login-link");
-                const modalLogin  = document.getElementById("modal-login");
-
-                loginLink.addEventListener("click", function(event) {
-                    event.preventDefault();
-
-                    modalLogin.style.display = "block";
-                });
-            });
-        </script>
-    @endguest
-@endsection
