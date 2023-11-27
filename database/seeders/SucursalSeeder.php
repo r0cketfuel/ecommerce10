@@ -27,7 +27,7 @@ class SucursalSeeder extends Seeder
             "telefono_2"        => "9874568753",
             "fax"               => "4797964987",
             "email"             => "sucursal_1@hotmail.com",
-            "geolocalizacion"   => "-38.66813382230747, -62.26134132375696",
+            "geolocalizacion"   => "-38.66813382230747,-62.26134132375696",
             "principal"         => True
         ]);
 
@@ -46,7 +46,7 @@ class SucursalSeeder extends Seeder
             "telefono_2"        => "",
             "fax"               => "",
             "email"             => "sucursal_2@hotmail.com",
-            "geolocalizacion"   => "-38.66813382230000, -62.26134132375000",
+            "geolocalizacion"   => "-38.66813382230000,-62.26134132375000",
             "principal"         => False
         ]);
     }

@@ -44,7 +44,7 @@
                         </li>
                         <li>
                             @if($sucursal['geolocalizacion'])
-                                <a href="http://www.google.com/maps/place/{{ $sucursal['geolocalizacion'] }}">
+                                <a href="https://www.google.com/maps/search/?api=1&query={{ $sucursal['geolocalizacion'] }}">
                                     <span>
                                         <i class="fa-solid fa-location-dot"></i>
                                     </span>{{ $sucursal['direccion'] }}
