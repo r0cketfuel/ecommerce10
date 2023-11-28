@@ -65,14 +65,6 @@
         {
             $this->medioPagoId  = session("shop.checkout.medio_pago.id");
             $this->checkout     = $shoppingCart->checkOut();
-
-            foreach ($this->checkout["items"] as &$item)
-            {
-                $articulo = Articulo::info($item["id"]);
-        
-                $item["descripcion"]    = $articulo->descripcion ?? NULL;
-                $item["imagen"]         = count($articulo->imagenes) ? $articulo->imagenes[0]["miniatura"] : NULL;
-            }
         
             $items      = $this->prepareItems();
             $itemsMp    = $this->prepareItemsMp();
