@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Session;
 use App\Models\InfoComercio;
 use App\Models\Sucursal;
+use App\Models\Visita;
 
 class LoadInfoComercio
 {
@@ -18,14 +19,27 @@ class LoadInfoComercio
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Session::has("infoComercio"))
-        {
-            Session::put("infoComercio",            InfoComercio::first()->toArray());
+        if (!Session::has("infoComercio")) {
+            Session::put("infoComercio", InfoComercio::first()->toArray());
             Session::put("infoComercio.sucursales", Sucursal::all()->toArray());
-            
+
             Session::put("shop.newsletter", array());
+
+            $this->registrarVisita($request);
         }
 
         return $next($request);
+    }
+
+    /**
+     * Registra la visita en la tabla de visitas.
+     */
+    private function registrarVisita(Request $request)
+    {
+        $ip = $request->ip();
+        $visita = new Visita();
+        $visita->ip = $ip;
+        $visita->fecha = now();
+        $visita->save();
     }
 }
