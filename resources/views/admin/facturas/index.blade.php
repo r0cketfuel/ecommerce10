@@ -68,7 +68,7 @@
                 <tr>
                     <td class="text-center">{{ $factura->numero }}</td>
                     <td class="text-center">{{ _datetime($factura->fecha) }}</td>
-                    <td class="text-center">{{ $factura->tipos->tipo }}</td>
+                    <td class="text-center">{{ $factura->tipo->tipo }}</td>
                     <td class="text-left">{{ $factura->apellidos }}</td>
                     <td class="text-left">{{ $factura->nombres }}</td>
                     <td class="text-center">{{ $factura->documento_nro }}</td>
@@ -80,7 +80,7 @@
                     <td class="text-right">{{ $factura->medio_envio_id }}</td>
                     <td class="text-right">{{ $factura->cae }}</td>
                     <td class="text-right">{{ _date($factura->cae_vto) }}</td>
-                    <td class="text-right">{{ $factura->estado_id }}</td>
+                    <td class="text-right">{{ $factura->estado->estado }}</td>
                 </tr>
             @endforeach
         </tbody>

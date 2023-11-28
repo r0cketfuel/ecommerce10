@@ -39,12 +39,12 @@ class Factura extends Model
     ];
     
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function tipos()
+    public function tipo()
     {
-        return $this->belongsTo(TipoFactura::class);
+        return $this->belongsTo(TipoFactura::class, 'tipo_factura_id');
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function estados()
+    public function estado()
     {
         return $this->belongsTo(FacturaEstado::class);
     }

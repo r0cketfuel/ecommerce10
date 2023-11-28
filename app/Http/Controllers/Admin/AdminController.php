@@ -175,7 +175,9 @@ class AdminController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function facturas(Factura $facturas)
     {
-        $facturas = Factura::with("tipos")->with("estados")->get();
+        $facturas = Factura::with("tipo")->with("estado")->get();
+
+        //dd($facturas);
 
         return view("admin.facturas.index", compact("facturas"));
     }
