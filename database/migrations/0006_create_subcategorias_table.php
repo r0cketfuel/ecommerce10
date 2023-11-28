@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('subcategorias', function (Blueprint $table) {
             $table->unsignedTinyInteger('id', true);
             $table->unsignedMediumInteger('categoria_id');
-            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('CASCADE');
             $table->string('nombre',100)->unique();
             $table->string('descripcion',255);
             $table->datetime('creado');

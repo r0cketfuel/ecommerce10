@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('id', true);
             $table->string('codigo', 10);
             $table->unsignedMediumInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('CASCADE');
             $table->dateTime('valido_desde');
             $table->dateTime('valido_hasta');
             $table->unsignedTinyInteger('estado');

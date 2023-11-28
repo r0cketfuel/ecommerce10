@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('favoritos', function (Blueprint $table) {
             $table->unsignedMediumInteger('id', true);
             $table->unsignedMediumInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('CASCADE');
             $table->unsignedMediumInteger('articulo_id');
             $table->foreign('articulo_id')->references('id')->on('articulos');
             $table->unique(['usuario_id', 'articulo_id']);

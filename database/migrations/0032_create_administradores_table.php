@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('apellidos', 50);
             $table->string('nombres', 50);
             $table->unsignedTinyInteger('rol_id')->nullable();
-            $table->foreign('rol_id')->references('id')->on('roles')->onDelete('set null');
+            $table->foreign('rol_id')->references('id')->on('roles')->onDelete('SET NULL');
             $table->rememberToken();
             $table->datetime('creado');
             $table->datetime('actualizado')->nullable();

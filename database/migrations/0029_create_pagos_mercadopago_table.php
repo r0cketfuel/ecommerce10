@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedMediumInteger('id', true);
             $table->string('mercadopago_id', 10);
             $table->unsignedMediumInteger('factura_id');
-            $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('cascade');
+            $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('CASCADE');
             $table->comment('Tabla con el número de pago otorgado por mercadopago asociado a una factura del sistema');
         });
     }
