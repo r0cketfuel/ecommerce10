@@ -19,7 +19,7 @@
                     <h4>Su pedido se registró bajo el número: {{ $order }}</h4>
                     <h4>Puedes ver los detalles de la compra haciendo click <a href="/shop/details?order={{ $order }}">AQUI</a></h4>
                     <h4>Tambien hemos enviado un correo con los detalles de la compra</h4>
-                        <button>Seguir comprando</button>
+                    <a href="/shop" class="btn-link">Seguir comprando</a>
                 </div>
             </div>
         </div>
