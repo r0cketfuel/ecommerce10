@@ -76,8 +76,8 @@
                     <td class="text-right">{{ $factura->cuit }}</td>
                     <td class="text-right">{{ $factura->domicilio }}</td>
                     <td class="text-right">{{ _money($factura->total) }}</td>
-                    <td class="text-right">{{ $factura->medio_pago_id }}</td>
-                    <td class="text-right">{{ $factura->medio_envio_id }}</td>
+                    <td class="text-right">{{ $factura->medioPago->medio }}</td>
+                    <td class="text-right">{{ $factura->medioEnvio->medio }}</td>
                     <td class="text-right">{{ $factura->cae }}</td>
                     <td class="text-right">{{ _date($factura->cae_vto) }}</td>
                     <td class="text-right">{{ $factura->estado->estado }}</td>

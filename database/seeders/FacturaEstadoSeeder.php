@@ -14,11 +14,11 @@ class FacturaEstadoSeeder extends Seeder
     public function run(): void
     {
         FacturaEstado::create([
-            "estado" => "Pagada"
+            "estado" => "Paga"
         ]);
         
         FacturaEstado::create([
-            "estado" => "Pendiente de pago"
+            "estado" => "Impaga"
         ]);
 
         FacturaEstado::create([
