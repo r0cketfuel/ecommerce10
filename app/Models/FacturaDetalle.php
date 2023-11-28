@@ -19,12 +19,7 @@ class FacturaDetalle extends Model
     protected $fillable = [
         'factura_id',
         'articulo_id',
-        'codigo',
-        'nombre',
-        'descripcion',
-        'opciones',
         'precio',
-        'moneda',
         'cantidad',
         'subtotal',
         'medio_envio_id'
@@ -40,12 +35,7 @@ class FacturaDetalle extends Model
         $detalle = self::create([
             'factura_id'        => $parametros['factura_id'],
             'articulo_id'       => $parametros['articulo_id'],
-            'codigo'            => $parametros['codigo'],
-            'nombre'            => $parametros['nombre'],
-            'descripcion'       => $parametros['descripcion'],
-            'opciones'          => $parametros['opciones'],
             'precio'            => $parametros['precio'],
-            'moneda'            => $parametros['moneda'],
             'cantidad'          => $parametros['cantidad'],
             'subtotal'          => $parametros['subtotal'],
             'medio_envio_id'    => $parametros['medio_envio_id']

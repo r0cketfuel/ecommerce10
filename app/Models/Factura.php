@@ -32,6 +32,7 @@ class Factura extends Model
         'codigo_postal',
         'total',
         'medio_pago_id',
+        'medio_envio_id',
         'cae',
         'cae_vto',
         'estado_id'
@@ -64,6 +65,7 @@ class Factura extends Model
             'telefono_alt'      => $parametros['telefono_alt']      ?? NULL,
             'total'             => $parametros['total'],
             'medio_pago_id'     => $parametros['medio_pago_id'],
+            'medio_envio_id'    => $parametros['medio_envio_id'],
             'cae'               => $parametros['cae'],
             'cae_vto'           => $parametros['cae_vto'],
             'estado_id'         => $parametros['estado_id']
