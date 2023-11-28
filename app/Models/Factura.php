@@ -17,7 +17,7 @@ class Factura extends Model
     protected $fillable = [
         'numero',
         'fecha',
-        'tipo_factura_id',
+        'factura_tipo_id',
         'apellidos',
         'nombres',
         'tipo_documento_id',
@@ -41,7 +41,7 @@ class Factura extends Model
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function tipo()
     {
-        return $this->belongsTo(TipoFactura::class, 'tipo_factura_id');
+        return $this->belongsTo(FacturaTipo::class, 'factura_tipo_id');
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function estado()
@@ -68,7 +68,7 @@ class Factura extends Model
         $factura = self::create([
             'numero'            => self::max('numero') + 1,
             'fecha'             => now(),
-            'tipo_factura_id'   => $parametros['tipo_factura_id'],
+            'factura_tipo_id'   => $parametros['factura_tipo_id'],
             'apellidos'         => $parametros['apellidos'],
             'nombres'           => $parametros['nombres'],
             'tipo_documento_id' => $parametros['tipo_documento_id'],

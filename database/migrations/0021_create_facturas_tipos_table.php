@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipos_facturas', function (Blueprint $table) {
+        Schema::create('facturas_tipos', function (Blueprint $table) {
             $table->unsignedTinyInteger('id', true);
             $table->string('tipo',1);
             $table->string('descripcion',100);
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos_facturas');
+        Schema::dropIfExists('facturas_tipos');
     }
 };

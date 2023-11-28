@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipoFactura extends Model
+class FacturaTipo extends Model
 {
-    protected $table    = 'tipos_facturas';
+    protected $table    = 'facturas_tipos';
     public $timestamps  = false;
 
     /**

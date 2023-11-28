@@ -15,8 +15,8 @@ return new class extends Migration
             $table->unsignedMediumInteger('id', true);
             $table->unsignedMediumInteger('numero');
             $table->dateTime('fecha');
-            $table->unsignedTinyInteger('tipo_factura_id');
-            $table->foreign('tipo_factura_id')->references('id')->on('tipos_facturas');
+            $table->unsignedTinyInteger('factura_tipo_id');
+            $table->foreign('factura_tipo_id')->references('id')->on('facturas_tipos');
             $table->string('apellidos', 50);
             $table->string('nombres', 50);
             $table->unsignedTinyInteger('tipo_documento_id');

@@ -44,7 +44,7 @@
         <button class="filterButton" id="boton_filtros"><i class="fa-solid fa-filter"></i></button>
     </div>
 
-    <table>
+    <table id="facturasTable">
         <thead>
             <tr>
                 <th class="text-center">Número</th>
@@ -66,7 +66,7 @@
         </thead>
         <tbody>
             @foreach($facturas as $factura)
-                <tr>
+                <tr data-factura-id="{{ $factura->id }}">
                     <td class="text-center">{{ $factura->numero }}</td>
                     <td class="text-center">{!! str_replace(" ","<br>",_dateTime($factura->fecha)) !!}</td>
                     <td class="text-center">{{ $factura->tipo->tipo }}</td>
@@ -86,4 +86,30 @@
             @endforeach
         </tbody>
     </table>
+@endsection
+
+@section("scripts")
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Obtén todas las filas de la tabla
+            var rows = document.querySelectorAll("#facturasTable tbody tr");
+
+            // Agrega un evento de clic a cada fila
+            rows.forEach(function (row) {
+                row.addEventListener("click", function () {
+                    // Muestra el modal al hacer clic en la fila
+                    mostrarModalDetalleFactura();
+                });
+            });
+
+            // Función para mostrar el modal
+            function mostrarModalDetalleFactura() {
+                // Obtén el modal
+                var modal = document.getElementById("modal_detalle_factura");
+
+                // Muestra el modal
+                modal.style.display = "block";
+            }
+        });
+    </script>
 @endsection

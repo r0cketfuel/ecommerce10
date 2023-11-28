@@ -253,7 +253,7 @@
 
             // Creación de la factura
             $factura = Factura::generarFactura([
-                "tipo_factura_id"   => 1,
+                "factura_tipo_id"   => 1,
                 "apellidos"         => $fields["apellidos"],
                 "nombres"           => $fields["nombres"],
                 "tipo_documento_id" => $tipoDocumentoId,
