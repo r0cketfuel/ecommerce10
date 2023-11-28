@@ -177,8 +177,6 @@ class AdminController extends Controller
     {
         $facturas = Factura::with("tipo")->with("estado")->with("medioPago")->with("medioEnvio")->get();
 
-        //dd($facturas);
-
         return view("admin.facturas.index", compact("facturas"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

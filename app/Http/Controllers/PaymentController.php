@@ -253,8 +253,6 @@
 
             // Creación de la factura
             $factura = Factura::generarFactura([
-                "fecha"             => now(),
-                "numero"            => rand(100,999),
                 "tipo_factura_id"   => 1,
                 "apellidos"         => $fields["apellidos"],
                 "nombres"           => $fields["nombres"],

@@ -56,8 +56,8 @@
                 <th class="text-center">Cuit</th>
                 <th class="text-center">Domicilio</th>
                 <th class="text-center">Total</th>
-                <th class="text-center">Medio Pago</th>
-                <th class="text-center">Medio Envío</th>
+                <th class="text-left">Medio Pago</th>
+                <th class="text-left">Medio Envío</th>
                 <th class="text-center">CAE</th>
                 <th class="text-center">CAE Vto</th>
                 <th class="text-center">Estado</th>
