@@ -47,10 +47,10 @@
         <thead>
             <tr>
                 <th class="text-center">Número</th>
-                <th class="text-left">Fecha</th>
-                <th class="text-left">Tipo</th>
-                <th class="text-center">Apellidos</th>
-                <th class="text-center">nombres</th>
+                <th class="text-center">Fecha</th>
+                <th class="text-center">Tipo</th>
+                <th class="text-left">Apellidos</th>
+                <th class="text-left">nombres</th>
                 <th class="text-left">Documento</th>
                 <th class="text-left">Cuil</th>
                 <th class="text-center">Cuit</th>
@@ -68,7 +68,7 @@
                 <tr>
                     <td class="text-center">{{ $factura->numero }}</td>
                     <td class="text-center">{{ _datetime($factura->fecha) }}</td>
-                    <td class="text-cneter">{{ $factura->tipo_factura_id }}</td>
+                    <td class="text-center">{{ $factura->tipos->tipo }}</td>
                     <td class="text-left">{{ $factura->apellidos }}</td>
                     <td class="text-left">{{ $factura->nombres }}</td>
                     <td class="text-center">{{ $factura->documento_nro }}</td>
