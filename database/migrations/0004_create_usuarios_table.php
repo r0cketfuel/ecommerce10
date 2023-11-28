@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('cuit', 11)->nullable();
             $table->date('fecha_nacimiento');
             $table->unsignedTinyInteger('genero_id')->nullable();
-            $table->foreign('genero_id')->references('id')->on('generos')->onUpdate('cascade')->onDelete('set null');
+            $table->foreign('genero_id')->references('id')->on('generos')->onUpdate('CASCADE')->onDelete('SET NULL');
             $table->string('domicilio', 50);
             $table->string('domicilio_nro', 5);
             $table->string('domicilio_piso', 2)->nullable();
