@@ -37,8 +37,7 @@ class FacturaDetalle extends Model
             'articulo_id'       => $parametros['articulo_id'],
             'precio'            => $parametros['precio'],
             'cantidad'          => $parametros['cantidad'],
-            'subtotal'          => $parametros['subtotal'],
-            'medio_envio_id'    => $parametros['medio_envio_id']
+            'subtotal'          => $parametros['subtotal']
         ]);
 
         return $detalle;

@@ -276,6 +276,7 @@
                 "codigo_postal"     => $fields["codigo_postal"],
                 "total"             => session("shop.checkout.total"),
                 "medio_pago_id"     => session("shop.checkout.medio_pago.id"),
+                "medio_envio_id"    => session("shop.checkout.medio_envio.id"),
                 "cae"               => "",
                 "cae_vto"           => "2099-01-01",
                 "estado_id"         => 1,
@@ -289,15 +290,9 @@
                 FacturaDetalle::generarDetalle([
                     "factura_id"        => $factura->id,
                     "articulo_id"       => $articulo->id,
-                    "codigo"            => $articulo->codigo,
-                    "nombre"            => $articulo->nombre,
-                    "descripcion"       => $articulo->descripcion,
-                    "opciones"          => $articulo->opciones,
                     "precio"            => $articulo->precio,
-                    "moneda"            => $articulo->moneda,
                     "cantidad"          => $items[$i]["cantidad"],
-                    "subtotal"          => (float)$articulo->precio * $items[$i]["cantidad"],
-                    "medio_envio_id"    => session("shop.checkout.medio_envio.id")
+                    "subtotal"          => (float)$articulo->precio * $items[$i]["cantidad"]
                 ]);
             }
         }
