@@ -50,8 +50,7 @@
                 <th class="text-center">Número</th>
                 <th class="text-center">Fecha</th>
                 <th class="text-center">Tipo</th>
-                <th class="text-left">Apellidos</th>
-                <th class="text-left">nombres</th>
+                <th class="text-left">Nombre / Razón social</th>
                 <th class="text-left">Documento</th>
                 <th class="text-left">Cuil</th>
                 <th class="text-center">Cuit</th>
@@ -70,8 +69,7 @@
                     <td class="text-center">{{ $factura->numero }}</td>
                     <td class="text-center">{!! str_replace(" ","<br>",_dateTime($factura->fecha)) !!}</td>
                     <td class="text-center">{{ $factura->tipo->tipo }}</td>
-                    <td class="text-left">{{ $factura->apellidos }}</td>
-                    <td class="text-left">{{ $factura->nombres }}</td>
+                    <td class="text-left">{{ $factura->apellidos }}, {{ $factura->nombres }}</td>
                     <td class="text-left">{{ $factura->tipo_documento_id }}<br>{{ $factura->documento_nro }}</td>
                     <td class="text-right">{{ $factura->cuil }}</td>
                     <td class="text-right">{{ $factura->cuit }}</td>
