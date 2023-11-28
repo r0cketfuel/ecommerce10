@@ -67,20 +67,20 @@
             @foreach($facturas as $factura)
                 <tr>
                     <td class="text-center">{{ $factura->numero }}</td>
-                    <td class="text-center">{{ _datetime($factura->fecha) }}</td>
+                    <td class="text-center">{!! str_replace(" ","<br>",_dateTime($factura->fecha)) !!}</td>
                     <td class="text-center">{{ $factura->tipo->tipo }}</td>
                     <td class="text-left">{{ $factura->apellidos }}</td>
                     <td class="text-left">{{ $factura->nombres }}</td>
-                    <td class="text-center">{{ $factura->documento_nro }}</td>
+                    <td class="text-left">{{ $factura->tipo_documento_id }}<br>{{ $factura->documento_nro }}</td>
                     <td class="text-right">{{ $factura->cuil }}</td>
                     <td class="text-right">{{ $factura->cuit }}</td>
-                    <td class="text-right">{{ $factura->domicilio }}</td>
+                    <td class="text-left">{{ $factura->domicilio }} {{ $factura->domicilio_nro }}<br>{{ $factura->domicilio_piso }} {{ $factura->domicilio_depto }}</td>
                     <td class="text-right">{{ _money($factura->total) }}</td>
-                    <td class="text-right">{{ $factura->medioPago->medio }}</td>
-                    <td class="text-right">{{ $factura->medioEnvio->medio }}</td>
-                    <td class="text-right">{{ $factura->cae }}</td>
-                    <td class="text-right">{{ _date($factura->cae_vto) }}</td>
-                    <td class="text-right">{{ $factura->estado->estado }}</td>
+                    <td class="text-left">{{ $factura->medioPago->medio }}</td>
+                    <td class="text-left">{{ $factura->medioEnvio->medio }}</td>
+                    <td class="text-center">{{ $factura->cae }}</td>
+                    <td class="text-center">{{ _date($factura->cae_vto) }}</td>
+                    <td class="text-center">{{ $factura->estado->estado }}</td>
                 </tr>
             @endforeach
         </tbody>
