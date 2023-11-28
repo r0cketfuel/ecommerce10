@@ -102,6 +102,26 @@
 
                 <li class='main-menu'>
                     <div>
+                        <a class='main-menu-link' href="#">Facturación</a>
+                        <i class='fa-solid fa-caret-down menu-arrow arrow'></i>
+                    </div>
+                    <ul class="main-menu-links sub-menu">
+
+                        <li class="more">
+                            <div>
+                                <div class="submenu-link">Facturas</div>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/facturas/">Listado</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class='main-menu'>
+                    <div>
                         <a class='main-menu-link' href="/admin/logout">Logout</a>
                     </div>
                 </li>

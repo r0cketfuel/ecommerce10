@@ -95,6 +95,7 @@ Route::prefix('admin')->group(function () {
         Route::get('',          'index')->name('admin.login');
         Route::post('',         'login');
         Route::get('logout',    'logout');
+        Route::get('facturas',  'facturas');
 
         // Rutas que requieren autenticación
         Route::middleware(['auth:admin'])->group(function () {

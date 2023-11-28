@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Administrador;
 use App\Models\Usuario;
 use App\Models\Articulo;
+use App\Models\Factura;
 use App\Models\InfoComercio;
 
 class AdminController extends Controller
@@ -171,6 +172,13 @@ class AdminController extends Controller
 
         return view("admin.comercio.index", compact("comercio"));
     }    
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function facturas(Factura $facturas)
+    {
+        $facturas = Factura::all();
+
+        return view("admin.facturas.index", compact("facturas"));
+    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function logout(Request $request)
     {
