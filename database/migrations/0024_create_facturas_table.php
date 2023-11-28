@@ -33,6 +33,8 @@ return new class extends Migration
             $table->decimal('total',10,2);
             $table->unsignedTinyInteger('medio_pago_id');
             $table->foreign('medio_pago_id')->references('id')->on('medios_pagos')->onUpdate('CASCADE');
+            $table->unsignedTinyInteger('medio_envio_id');
+            $table->foreign('medio_envio_id')->references('id')->on('medios_envios')->onUpdate('CASCADE');
             $table->string('cae',14)->nullable()->default(NULL);
             $table->date('cae_vto');
             $table->unsignedTinyInteger('estado_id');

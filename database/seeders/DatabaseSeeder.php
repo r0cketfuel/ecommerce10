@@ -36,8 +36,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdministradorSeeder::class);
         $this->call(FavoritoSeeder::class);
         $this->call(FacturaEstadoSeeder::class);
-        $this->call(FacturaSeeder::class);
-        $this->call(FacturaDetalleSeeder::class);
         $this->call(MercadopagoSeeder::class);
         $this->call(BannerSeeder::class);
     }

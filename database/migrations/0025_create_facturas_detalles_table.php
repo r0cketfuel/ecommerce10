@@ -16,16 +16,9 @@ return new class extends Migration
             $table->unsignedMediumInteger('factura_id');
             $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('CASCADE');
             $table->unsignedMediumInteger('articulo_id');
-            $table->string('codigo',12);
-            $table->string('nombre',100);
-            $table->string('descripcion',255);
-            $table->string('opciones',50)->nullable();
             $table->decimal('precio');
-            $table->unsignedTinyInteger('moneda');
             $table->unsignedMediumInteger('cantidad');
             $table->decimal('subtotal');
-            $table->unsignedTinyInteger('medio_envio_id');
-            $table->foreign('medio_envio_id')->references('id')->on('medios_envios')->onUpdate('CASCADE');
             $table->comment('Tabla con el detalle de cada factura del sistema');
         });
     }
