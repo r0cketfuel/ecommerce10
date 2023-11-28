@@ -32,6 +32,7 @@
 
 @section("body")
     @includeIf('admin.facturas.modals.filter')
+    @includeIf('admin.facturas.modals.detalleFactura')
 
     <div class="alert"></div>
 
