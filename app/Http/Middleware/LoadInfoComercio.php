@@ -19,8 +19,9 @@ class LoadInfoComercio
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Session::has("infoComercio")) {
-            Session::put("infoComercio", InfoComercio::first()->toArray());
+        if (!Session::has("infoComercio"))
+        {
+            Session::put("infoComercio",            InfoComercio::first()->toArray());
             Session::put("infoComercio.sucursales", Sucursal::all()->toArray());
 
             Session::put("shop.newsletter", array());
