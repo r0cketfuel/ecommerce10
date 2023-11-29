@@ -88,15 +88,19 @@ class Articulo extends Model
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function info(int $id)
     {
+        //=====================================================================//
+        // Método que devuelve un artículo con toda la información relacionada //
+        //=====================================================================//
+
         if($id > 0)
         {
             $articulo = self::where('id', $id)
-                ->with('detalle')
-                ->with('reviews')
                 ->with('imagenes')
+                ->with('detalle')
                 ->with('categoria')
                 ->with('subcategoria')
                 ->with('ratings')
+                ->with('reviews')
                 ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now());}])
                 ->first();
     
