@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('promociones', function (Blueprint $table) {
             $table->unsignedMediumInteger('id', true);
             $table->unsignedMediumInteger('articulo_id');
-            $table->foreign('articulo_id')->references('id')->on('articulos');
-            $table->dateTime('desde');
-            $table->dateTime('hasta');
+            $table->foreign('articulo_id')->references('id')->on('articulos')->onDelete("RESTRICT");
+            $table->dateTime('valido_desde');
+            $table->dateTime('valido_hasta');
             $table->unsignedTinyInteger('descuento');
         });
     }

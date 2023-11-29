@@ -124,7 +124,14 @@
                     <!-- Precio -->
                     <div class="tile-info-row">
                         <div>Precio:</div>
-                        <div id="precio">-</div>
+                        @if ($item->promocion)
+                            <div class="flex">
+                                <div class="discount">{{ _money($item->precio) }}</div>
+                                <div id="precio">{{ $item->precio }}</div>
+                            </div>
+                        @else
+                            <div id="precio">{{ $item->precio }}</div>
+                        @endif
                     </div>
                     <!-- /Precio -->
 

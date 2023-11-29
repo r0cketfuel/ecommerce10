@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TalleSeeder::class);
         $this->call(AtributoArticuloSeeder::class);
         $this->call(RatingSeeder::class);
+        $this->call(PromocionSeeder::class);
         $this->call(CuentaBancariaSeeder::class);
         $this->call(ReviewSeeder::class);
         $this->call(CotizacionSeeder::class);

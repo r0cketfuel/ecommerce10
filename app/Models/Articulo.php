@@ -61,6 +61,11 @@ class Articulo extends Model
         return $this->hasMany(ImagenArticulo::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function promocion()
+    {
+        return $this->hasOne(Promocion::class);
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function rutaImagenes($items)
     {
         foreach ($items as $item) 
@@ -80,7 +85,7 @@ class Articulo extends Model
     {
         if($id > 0)
         {
-            $articulo = self::where('id', $id)->with('imagenes')->with('categoria')->with('subcategoria')->first();
+            $articulo = self::where('id', $id)->with('imagenes')->with('categoria')->with('subcategoria')->with('promocion')->first();
     
             if($articulo)
             {
