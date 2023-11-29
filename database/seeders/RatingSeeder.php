@@ -15,10 +15,11 @@ class RatingSeeder extends Seeder
     {
         for ($i = 1; $i <= 30; $i++) {
             Rating::create([
-                "articulo_id"   => $i,
-                "puntuaciones"  => 0,
-                "sumatoria"     => 0,
-                "stars"         => 0
+                "articulo_id"       => $i,
+                "visualizaciones"   => 0,
+                "puntuaciones"      => 0,
+                "sumatoria"         => 0,
+                "promedio"          => 0
             ]);
         }
     }

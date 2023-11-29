@@ -1,28 +1,28 @@
 <ul class="tabs">
     <li class="tab active">Información</li>
-    <li class="tab">Reseñas({{ count($reviews) }})</li>
+    <li class="tab">Reseñas({{ count($item->reviews) }})</li>
 </ul>
 
 <div class="tab-content">
-    @if($detalle)
-        {!!$detalle->detalle!!}
+    @if($item->detalle)
+        {!! $item->detalle->detalle !!}
     @else
         <p>El artículo no tiene detalle</p>
     @endif
 </div>
 
 <div class="tab-content">
-    @for($i=0;$i<count($reviews);$i++)
+    @foreach ($item->reviews as $review)
         <div class="user-review">
             <div>
                 <div class="user-review-picture"><i class="fa-solid fa-user fa-2x"></i></div>
                 <div>
-                    <div><b>{{ $reviews[$i]["username"] }}</b></div>
-                    <div>{{ $reviews[$i]["fecha"] }}</div>
+                    <div><b>{{ $review->usuario->username }}</b></div>
+                    <div>{{ $review->fecha }}</div>
                 </div>
             </div>
-            <b>{{ $reviews[$i]["titulo"] }}</b>
-            {{ $reviews[$i]["texto"] }}
+            <b>{{ $review->titulo }}</b>
+            {{ $review->texto }}
         </div>
-    @endfor
+    @endforeach
 </div>

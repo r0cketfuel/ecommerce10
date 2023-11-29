@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->unsignedTinyInteger('id', true);
             $table->unsignedMediumInteger('usuario_id',);
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('RESTRICT');
             $table->unsignedMediumInteger('articulo_id',);
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('restrict');
-            $table->foreign('articulo_id')->references('id')->on('articulos')->onDelete('restrict');
+            $table->foreign('articulo_id')->references('id')->on('articulos')->onDelete('RESTRICT');
             $table->dateTime('fecha');
             $table->string('titulo',50);
             $table->string('texto',255);

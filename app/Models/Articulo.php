@@ -36,6 +36,11 @@ class Articulo extends Model
         return $this->hasOne(DetalleArticulo::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function atributos()
     {
         return $this->hasMany(AtributoArticulo::class);
@@ -86,9 +91,12 @@ class Articulo extends Model
         if($id > 0)
         {
             $articulo = self::where('id', $id)
+                ->with('detalle')
+                ->with('reviews')
                 ->with('imagenes')
                 ->with('categoria')
                 ->with('subcategoria')
+                ->with('ratings')
                 ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now());}])
                 ->first();
     

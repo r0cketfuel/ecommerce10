@@ -19,7 +19,6 @@ class Review extends Model
         'usuario_id',
         'articulo_id',
         'fecha',
-        'hora',
         'titulo',
         'texto'
     ];
@@ -28,6 +27,11 @@ class Review extends Model
     public function usuario()
     {
         return($this->belongsTo(Usuario::class));
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function articulo()
+    {
+        return($this->belongsTo(Articulo::class));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function reviews(int $id)

@@ -81,21 +81,12 @@ class ShopController extends Controller
 	{
         if(is_numeric($id) && $id>0)
         {
-            // Información básica del artículo
             $item = Articulo::info($id);
             
-            if($item)
+            if($item && $item->estado == 1)
             {
-                if($item->estado == 1)
-                {
-                    Rating::incrementaVisualizacion($id);
-
-                    $rating     = Rating::getRatingArticulo($id);
-                    $detalle    = DetalleArticulo::detalle($id);
-                    $reviews    = Review::reviews($id);
-                
-                    return view("shop.item", compact("item", "rating", "detalle", "reviews"));
-                }
+                Rating::incrementaVisualizacion($id);
+                return view("shop.item", compact("item"));
             }
         }
 

@@ -17,10 +17,10 @@ class Rating extends Model
      */
     protected $fillable = [
         'articulo_id',
+        'visualizaciones',
         'puntuaciones',
         'sumatoria',
-        'stars',
-        'visualizaciones'
+        'promedio'
     ];
     
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -57,7 +57,7 @@ class Rating extends Model
 
         $productRating->puntuaciones += 1;
         $productRating->sumatoria += $puntuacion;
-        $productRating->stars = ($productRating->sumatoria + $puntuacion) / ($productRating->puntuaciones + 1);
+        $productRating->estrellas = ($productRating->sumatoria + $puntuacion) / ($productRating->puntuaciones + 1);
         
         $productRating->save();
     }
