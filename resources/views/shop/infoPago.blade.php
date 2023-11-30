@@ -34,11 +34,11 @@
                 <div class="flex justify-between">
                     <div class="text-bold">Fecha de creación:</div>
                     <div>
-                        @isset($estado->card->date_created)
-                            {{ _date(explode("T",$estado->card->date_created)[0]) }}
+                        @if(isset($estado->card->date_created))
+                            {{ _date(explode("T", $estado->card->date_created)[0]) }}
                         @else
-                            {{ _date(explode("T",$estado->date_created)[0]) }}
-                        @endisset
+                            {{ _date(explode("T", $estado->date_created)[0]) }}
+                        @endif
                     </div>
                 </div>
                 <div class="flex justify-between">
