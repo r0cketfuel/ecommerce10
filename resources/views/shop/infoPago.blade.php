@@ -33,7 +33,7 @@
                         <div class="text-bold">Cuotas:</div>
                         <div>{{ $estado->installments }}</div>
                     </div>
-                @endif
+                @endisset
 
                 <div class="flex justify-between">
                     <div class="text-bold">Fecha de creación:</div>
@@ -42,7 +42,7 @@
                             {{ _date(explode("T",$estado->card->date_created)[0]) }}
                         @else
                             {{ _date(explode("T",$estado->date_created)[0]) }}
-                        @endif
+                        @endisset
                     </div>
                 </div>
                 <div class="flex justify-between">
@@ -65,7 +65,7 @@
                         </div>
                         {{ $estado->transaction_details->barcode["content"] }}
                     </div>
-                @endif
+                @endisset
             </div>
         </div>
     </div>

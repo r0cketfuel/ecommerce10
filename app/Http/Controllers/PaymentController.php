@@ -140,7 +140,14 @@ class PaymentController extends Controller
         $response       = $mercadoPago->charge($parametros);
 
         if($response->status==="approved")
-            $this->crearFacturas($data, $items);
+        {
+            $facturaId = $this->crearFacturas($data, $items);
+            
+            PagoMercadoPago::create([
+                "mercadopago_id"    => $response->id,
+                "factura_id"        => $facturaId
+            ]);
+        }
 
         // Respuesta de la api
         echo json_encode($response);
