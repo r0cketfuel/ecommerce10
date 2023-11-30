@@ -139,7 +139,7 @@ class PaymentController extends Controller
         $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
         $response       = $mercadoPago->charge($parametros);
 
-        if($response->status==="approved")
+        if($response && $response->status==="approved")
         {
             $facturaId = $this->crearFacturas($data, $items);
             
