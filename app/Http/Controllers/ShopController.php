@@ -13,16 +13,12 @@ use App\Models\Articulo;
 use App\Models\Banner;
 use App\Models\Categoria;
 use App\Models\CuentaBancaria;
-use App\Models\DetalleArticulo;
 use App\Models\Genero;
 use App\Models\MedioPago;
 use App\Models\MedioEnvio;
 use App\Models\Rating;
-use App\Models\Review;
 use App\Models\Subcategoria;
 use App\Models\TipoDocumento;
-
-//use App\Models\MercadoPago;
 
 class ShopController extends Controller
 {
@@ -220,26 +216,16 @@ class ShopController extends Controller
     public function infoPago($id)
     {
         //Pagos de pruebas: 
-        //1314307973 -> Tarjeta de crédito
-        //1314307973 -> Pagofácil
-        //1314307973 -> Rapipago
+        //1319858771 -> Pagofácil
 
-        // $mercadoPago    = new MercadoPago;
-        // $estado         = $mercadoPago->infoPago($id);
-        
-        // $barcode = new Barcode128;
-        // $barcode->setData($estado["barcode"]["content"]);
-        // $barcode->setDimensions(350, 50);
-        // $barcode->draw();
-        // $image = $barcode->base64();
-
-        
         $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
         $estado         = $mercadoPago->infoPago($id);
 
-        dd($estado);
-        
-        $image = null;
+        $barcode = new Barcode128;
+        $barcode->setData($estado->transaction_details->barcode["content"]);
+        $barcode->setDimensions(350, 50);
+        $barcode->draw();
+        $image = $barcode->base64();
         
         return view("shop.infoPago", compact("estado", "image"));
     }
