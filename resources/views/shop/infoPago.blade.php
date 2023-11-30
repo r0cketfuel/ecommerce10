@@ -26,10 +26,6 @@
                         <div>{{ $estado->card->cardholder->name }}</div>
                     </div>
                     <div class="flex justify-between">
-                        <div class="text-bold">Dni titular de la tarjeta:</div>
-                        <div>{{ $estado->card->cardholder->identification->number }}</div>
-                    </div>
-                    <div class="flex justify-between">
                         <div class="text-bold">Cuotas:</div>
                         <div>{{ $estado->installments }}</div>
                     </div>

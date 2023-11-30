@@ -221,11 +221,15 @@ class ShopController extends Controller
         $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
         $estado         = $mercadoPago->infoPago($id);
 
-        $barcode = new Barcode128;
-        $barcode->setData($estado->transaction_details->barcode["content"]);
-        $barcode->setDimensions(350, 50);
-        $barcode->draw();
-        $image = $barcode->base64();
+        $image = NULL;
+        if(isset($estado->transaction_details->barcode["content"]))
+        {
+            $barcode = new Barcode128;
+            $barcode->setData($estado->transaction_details->barcode["content"]);
+            $barcode->setDimensions(350, 50);
+            $barcode->draw();
+            $image = $barcode->base64();
+        }
         
         return view("shop.infoPago", compact("estado", "image"));
     }
