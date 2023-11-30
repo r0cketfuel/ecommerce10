@@ -140,28 +140,31 @@ document.addEventListener("DOMContentLoaded", function ()
                 .then((response) => response.json())
                 .then((data) => 
                 {
-                    switch(data["status"])
+                    if(data)
                     {
-                        case "approved":    pagoAprobado(data); break;
-                        case "in_process":  console.log("Pago pendiente");  break;
-                        
-                        case "rejected":
+                        switch(data["status"])
                         {
-                            switch(data["status_detail"])
+                            case "approved":    pagoAprobado();     break;
+                            case "in_process":  pagoPendiente();    break;
+                            
+                            case "rejected":
                             {
-                                case "cc_rejected_other_reason":                console.log("Pago rechazado: Sin razón específica");            break;
-                                case "cc_rejected_call_for_authorize":          console.log("Pago rechazado: Llamar para pedir autorización");  break;
-                                case "cc_rejected_insufficient_amount":         console.log("Pago rechazado: Fondos insuficientes");            break;
-                                case "cc_rejected_bad_filled_security_code":    console.log("Pago rechazado: Código de seguridad incorrecto");  break;
-                                case "cc_rejected_bad_filled_date":             console.log("Pago rechazado: Fecha de expiración");             break;
-                                case "cc_rejected_bad_filled_other":            console.log("Pago rechazado: Error en campo del formulario");   break;
+                                switch(data["status_detail"])
+                                {
+                                    case "cc_rejected_other_reason":                console.log("Pago rechazado: Sin razón específica");            break;
+                                    case "cc_rejected_call_for_authorize":          console.log("Pago rechazado: Llamar para pedir autorización");  break;
+                                    case "cc_rejected_insufficient_amount":         console.log("Pago rechazado: Fondos insuficientes");            break;
+                                    case "cc_rejected_bad_filled_security_code":    console.log("Pago rechazado: Código de seguridad incorrecto");  break;
+                                    case "cc_rejected_bad_filled_date":             console.log("Pago rechazado: Fecha de expiración");             break;
+                                    case "cc_rejected_bad_filled_other":            console.log("Pago rechazado: Error en campo del formulario");   break;
 
-                                default: console.log("Pago rechazado: Código de error: " + data["status_detail"]); break;
+                                    default: console.log("Pago rechazado: Código de error: " + data["status_detail"]); pagoRechazado(); break;
+                                }
+                                break;
                             }
-                            break;
-                        }
 
-                        default: console.log("Estado desconocido"); break;
+                            default: console.log("Estado desconocido"); break;
+                        }
                     }
                 });
             },
@@ -182,7 +185,17 @@ document.addEventListener("DOMContentLoaded", function ()
     });
 });
 
-function pagoAprobado(data)
+function pagoAprobado()
 {
     window.location.replace("/shop/success");
+}
+
+function pagoPendiente()
+{
+    window.location.replace("/shop/pending");
+}
+
+function pagoRechazado()
+{
+    window.location.replace("/shop/rejected");
 }
