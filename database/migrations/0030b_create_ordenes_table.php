@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreign('estado_id')->references('id')->on('ordenes_estados')->onDelete('RESTRICT');
             $table->datetime('creado');
             $table->datetime('actualizado')->nullable();
-            $table->datetime('eliminado')->nullable();
             $table->comment('Tabla con las ordenes del sistema y sus correspondientes estados');
         });
     }
