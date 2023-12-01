@@ -27,7 +27,7 @@
         <tbody>
             @foreach($ordenes as $orden)
                 <tr>
-                    <td class="text-center">{{ $orden->id }}</td>
+                    <td class="text-center">{{ str_pad($orden->id, 8, '0', STR_PAD_LEFT) }}</td>
                     <td class="text-center">{{ _datetime($orden->creado) }}</td>
                     <td class="text-center">{{ $orden->estado->estado }}</td>
                 </tr>

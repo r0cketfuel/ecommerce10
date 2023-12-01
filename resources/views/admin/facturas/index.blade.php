@@ -66,7 +66,7 @@
         <tbody>
             @foreach($facturas as $factura)
                 <tr data-factura-id="{{ $factura->id }}">
-                    <td class="text-center">{{ $factura->numero }}</td>
+                    <td class="text-center">{{ str_pad($factura->numero, 8, '0', STR_PAD_LEFT) }}</td>
                     <td class="text-center">{!! str_replace(" ","<br>",_dateTime($factura->fecha)) !!}</td>
                     <td class="text-center">{{ $factura->tipo->tipo }}</td>
                     <td class="text-left">{{ $factura->apellidos }}, {{ $factura->nombres }}</td>
