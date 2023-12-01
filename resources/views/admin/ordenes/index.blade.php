@@ -20,6 +20,7 @@
         <thead>
             <tr>
                 <th class="text-center">id</th>
+                <th class="text-center">fecha</th>
                 <th class="text-center">estado</th>
             </tr>
         </thead>
@@ -27,7 +28,8 @@
             @foreach($ordenes as $orden)
                 <tr>
                     <td class="text-center">{{ $orden->id }}</td>
-                    <td class="text-center">{{ $orden->estado }}</td>
+                    <td class="text-center">{{ _datetime($orden->creado) }}</td>
+                    <td class="text-center">{{ $orden->estado->estado }}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -14,9 +14,9 @@ class OrdenController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function index()
     {
-        $ordenes = Orden::all();
+        $ordenes = Orden::with('estado')->get();
 
-        return view("admin.ordenes.index", compact('ordenes'));
+        return view('admin.ordenes.index', compact('ordenes'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function create()
@@ -43,7 +43,7 @@ class OrdenController extends Controller
     {
         $orden->update($request->all());
 
-        return view("admin.orden.edit", compact('orden'))->with("success", "Orden actualizada exitosamente");
+        return view('admin.orden.edit', compact('orden'))->with('success', 'Orden actualizada exitosamente');
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function destroy(Orden $usuario)
