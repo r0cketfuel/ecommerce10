@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('facturas', function (Blueprint $table) {
-            $table->unsignedMediumInteger('id', true);
+            $table->unsignedInteger('id', true);
             $table->unsignedMediumInteger('numero');
             $table->dateTime('fecha');
             $table->unsignedTinyInteger('factura_tipo_id');

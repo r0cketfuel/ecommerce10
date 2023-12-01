@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('pagos_mercadopago', function (Blueprint $table) {
             $table->unsignedMediumInteger('id', true);
             $table->string('mercadopago_id', 10);
-            $table->unsignedMediumInteger('factura_id');
-            $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('CASCADE');
+            $table->unsignedInteger('factura_id');
+            $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('RESTRICT');
             $table->comment('Tabla con el número de pago otorgado por mercadopago asociado a una factura del sistema');
         });
     }

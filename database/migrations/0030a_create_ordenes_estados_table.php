@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ordenes', function (Blueprint $table) {
-            $table->unsignedMediumInteger('id',true);
-            $table->unsignedTinyInteger('estado');
-            $table->comment('Tabla con las ordenes del sistema y sus correspondientes estados');
+        Schema::create('ordenes_estados', function (Blueprint $table) {
+            $table->unsignedTinyInteger('id',true);
+            $table->string('estado', 20);
         });
     }
 
@@ -23,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ordenes');
+        Schema::dropIfExists('ordenes_estados');
     }
 };

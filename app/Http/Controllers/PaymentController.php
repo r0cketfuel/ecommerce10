@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use App\Services\ShoppingCartService;
 
 use App\Models\Articulo;
 use App\Models\Factura;
 use App\Models\FacturaDetalle;
+use App\Models\Orden;
 use App\Models\PagoMercadoPago;
 use App\Models\TipoDocumento;
 
@@ -26,18 +29,6 @@ class PaymentController extends Controller
             : $request->all();
     
         return $data;
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    private function prepareItems()
-    {
-        //dd($this->checkout["items"]);
-
-        $items = $this->checkout["items"];
-
-        // foreach ($this->checkout["items"] as $item) 
-        //     $items[] = Articulo::info($item["id"]);
-
-        return $items;
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     private function prepareItemsMp()
@@ -67,7 +58,6 @@ class PaymentController extends Controller
         $this->medioPagoId  = session("shop.checkout.medio_pago.id");
         $this->checkout     = $shoppingCart->checkOut();
     
-        $items      = $this->prepareItems();
         $itemsMp    = $this->prepareItemsMp();
 
         //DESCONTAR STOCK
@@ -80,27 +70,27 @@ class PaymentController extends Controller
         {            
             case(1):
             case(2):
-                $this->crearFacturas($data, $items);
+                $this->crearFacturas($data);
                 return redirect("/shop/success");
                 break;
 
             case(3):
-                $this->debitoCredito($data, $items, $itemsMp);
+                $this->debitoCredito($data, $itemsMp);
                 break;
 
             case(4):
-                $response = $this->pagofacil($data, $items, $itemsMp);
+                $response = $this->pagofacil($data, $itemsMp);
                 return redirect("/shop/success");
                 break;
 
             case(5):
-                $response = $this->rapipago($data, $items, $itemsMp);
+                $response = $this->rapipago($data, $itemsMp);
                 return redirect("/shop/success");
                 break;
         }
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function debitoCredito($data, $items, $itemsMp)
+    public function debitoCredito($data, $itemsMp)
     {
         $parametros = array(
             "issuer_id"                 => (int)$data["issuer_id"],
@@ -141,7 +131,7 @@ class PaymentController extends Controller
 
         if($response && $response->status==="approved")
         {
-            $facturaId = $this->crearFacturas($data, $items);
+            $facturaId = $this->crearFacturas($data);
             
             PagoMercadoPago::create([
                 "mercadopago_id"    => $response->id,
@@ -153,7 +143,7 @@ class PaymentController extends Controller
         echo json_encode($response);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function pagofacil($data, $items, $itemsMp)
+    public function pagofacil($data, $itemsMp)
     {
         if($this->medioPagoId==4 || $this->medioPagoId==5)
         {
@@ -194,7 +184,7 @@ class PaymentController extends Controller
             $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
             $response       = $mercadoPago->charge($parametros);
             
-            $facturaId      = $this->crearFacturas($data, $items);
+            $facturaId      = $this->crearFacturas($data);
 
             PagoMercadoPago::create([
                 "mercadopago_id"    => $response->id,
@@ -205,7 +195,7 @@ class PaymentController extends Controller
         }
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function rapipago($data, $items, $itemsMp)
+    public function rapipago($data, $itemsMp)
     {
         if($this->medioPagoId==4 || $this->medioPagoId==5)
         {
@@ -246,7 +236,7 @@ class PaymentController extends Controller
             $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
             $response       = $mercadoPago->charge($parametros);
 
-            $facturaId      = $this->crearFacturas($data, $items);
+            $facturaId      = $this->crearFacturas($data);
 
             PagoMercadoPago::create([
                 "mercadopago_id"    => $response->id,
@@ -257,7 +247,7 @@ class PaymentController extends Controller
         }
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function crearFacturas($fields, $items)
+    public function crearFacturas($fields)
     {
         //======================================================//
         // Método que crea la factura y el detalle de la compra //
@@ -269,41 +259,59 @@ class PaymentController extends Controller
         else
             $tipoDocumentoId = $fields["tipo_documento_id"];
 
-        // Creación de la factura
-        $factura = Factura::generarFactura([
-            "factura_tipo_id"   => 1,
-            "apellidos"         => $fields["apellidos"],
-            "nombres"           => $fields["nombres"],
-            "tipo_documento_id" => $tipoDocumentoId,
-            "documento_nro"     => $fields["documento_nro"],
-            "domicilio"         => $fields["domicilio"],
-            "domicilio_nro"     => $fields["domicilio_nro"],
-            "domicilio_piso"    => $fields["domicilio_piso"],
-            "domicilio_depto"   => $fields["domicilio_depto"],
-            "localidad"         => $fields["localidad"],
-            "codigo_postal"     => $fields["codigo_postal"],
-            "total"             => session("shop.checkout.total"),
-            "medio_pago_id"     => session("shop.checkout.medio_pago.id"),
-            "medio_envio_id"    => session("shop.checkout.medio_envio.id"),
-            "cae"               => "",
-            "cae_vto"           => "2099-01-01",
-            "estado_id"         => 1,
-        ]);
+        DB::beginTransaction();
 
-        // Creación del detalle de la factura
-        for($i=0;$i<count($items);$i++)
+        try
         {
-            $articulo = Articulo::info($items[$i]["id"]);
-
-            FacturaDetalle::generarDetalle([
-                "factura_id"        => $factura->id,
-                "articulo_id"       => $articulo->id,
-                "precio"            => $articulo->precio,
-                "cantidad"          => $items[$i]["cantidad"],
-                "subtotal"          => (float)$articulo->precio * $items[$i]["cantidad"]
+            // Creación de la factura
+            $factura = Factura::generarFactura([
+                "factura_tipo_id"   => 1,
+                "apellidos"         => $fields["apellidos"],
+                "nombres"           => $fields["nombres"],
+                "tipo_documento_id" => $tipoDocumentoId,
+                "documento_nro"     => $fields["documento_nro"],
+                "domicilio"         => $fields["domicilio"],
+                "domicilio_nro"     => $fields["domicilio_nro"],
+                "domicilio_piso"    => $fields["domicilio_piso"],
+                "domicilio_depto"   => $fields["domicilio_depto"],
+                "localidad"         => $fields["localidad"],
+                "codigo_postal"     => $fields["codigo_postal"],
+                "total"             => session("shop.checkout.total"),
+                "medio_pago_id"     => session("shop.checkout.medio_pago.id"),
+                "medio_envio_id"    => session("shop.checkout.medio_envio.id"),
+                "cae"               => "",
+                "cae_vto"           => "2099-01-01",
+                "estado_id"         => 1,
             ]);
-        }
 
+            // Creación de la orden
+            $orden = Orden::create([
+                "factura_id"        => $factura->id,
+                "estado_id"         => 1,
+            ]);
+
+            // Creación del detalle de la factura
+            for($i=0;$i<count($this->checkout["items"]);$i++)
+            {
+                $articulo = Articulo::info($this->checkout["items"][$i]["id"]);
+
+                FacturaDetalle::generarDetalle([
+                    "factura_id"        => $factura->id,
+                    "articulo_id"       => $articulo->id,
+                    "precio"            => $articulo->precio,
+                    "cantidad"          => $this->checkout["items"][$i]["cantidad"],
+                    "subtotal"          => (float)$articulo->precio * $this->checkout["items"][$i]["cantidad"]
+                ]);
+            }
+
+            DB::commit();
+        }
+        catch (\Exception $e)
+        {
+            DB::rollback();
+            throw $e;
+        }
+    
         return $factura->id;
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

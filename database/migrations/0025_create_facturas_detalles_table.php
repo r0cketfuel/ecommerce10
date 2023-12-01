@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('facturas_detalles', function (Blueprint $table) {
-            $table->unsignedMediumInteger('id', true);
-            $table->unsignedMediumInteger('factura_id');
-            $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('CASCADE');
+            $table->unsignedInteger('id', true);
+            $table->unsignedInteger('factura_id');
+            $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('RESTRICT');
             $table->unsignedMediumInteger('articulo_id');
             $table->decimal('precio');
             $table->unsignedMediumInteger('cantidad');
