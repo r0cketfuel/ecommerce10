@@ -57,7 +57,6 @@
                 <th class="text-center">Domicilio</th>
                 <th class="text-center">Total</th>
                 <th class="text-left">Medio Pago</th>
-                <th class="text-left">Medio Envío</th>
                 <th class="text-center">CAE</th>
                 <th class="text-center">CAE Vto</th>
                 <th class="text-center">Estado</th>
@@ -76,7 +75,6 @@
                     <td class="text-left">{{ $factura->domicilio }} {{ $factura->domicilio_nro }}<br>{{ $factura->domicilio_piso }} {{ $factura->domicilio_depto }}</td>
                     <td class="text-right">{{ _money($factura->total) }}</td>
                     <td class="text-left">{{ $factura->medioPago->medio }}</td>
-                    <td class="text-left">{{ $factura->medioEnvio->medio }}</td>
                     <td class="text-center">{{ $factura->cae }}</td>
                     <td class="text-center">{{ _date($factura->cae_vto) }}</td>
                     <td class="text-center">{{ $factura->estado->estado }}</td>
