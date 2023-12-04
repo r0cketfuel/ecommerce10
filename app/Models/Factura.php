@@ -65,7 +65,6 @@ class Factura extends Model
         //=====================================//
 
         $factura = self::create([
-            'numero'            => self::max('numero') + 1,
             'fecha'             => now(),
             'factura_tipo_id'   => $parametros['factura_tipo_id'],
             'apellidos'         => $parametros['apellidos'],
