@@ -15,7 +15,6 @@ class Factura extends Model
      * 
      */
     protected $fillable = [
-        'numero',
         'fecha',
         'factura_tipo_id',
         'apellidos',
