@@ -14,7 +14,7 @@ return [
     'contact'               => 'Contacto',
 
     'suscription_msg'       => 'Suscribite a nuestro newsletter para recibir las últimas novedades',
-    'follow_msg'            => 'También podes seguirnos en nuestras redes',
+    'follow_msg'            => 'Seguinos en nuestras redes',
 
     'email'                 => 'Correo electrónico',
 

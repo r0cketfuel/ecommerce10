@@ -14,7 +14,7 @@ return [
     'contact'               => 'Contact us',
 
     'suscription_msg'       => 'Suscribite to our newsletter to receive the latest news',
-    'follow_msg'            => 'Also you can follow us on',
+    'follow_msg'            => 'Follow us on',
 
     'email'                 => 'Email address',
 
