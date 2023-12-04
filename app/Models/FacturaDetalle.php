@@ -22,25 +22,6 @@ class FacturaDetalle extends Model
         'precio',
         'cantidad',
         'subtotal',
-        'medio_envio_id'
     ];
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public static function generarDetalle(array $parametros): FacturaDetalle
-    {
-        //===============================================//
-        // Método que genera un nuevo detalle de factura //
-        //===============================================//
-
-        $detalle = self::create([
-            'factura_id'        => $parametros['factura_id'],
-            'articulo_id'       => $parametros['articulo_id'],
-            'precio'            => $parametros['precio'],
-            'cantidad'          => $parametros['cantidad'],
-            'subtotal'          => $parametros['subtotal']
-        ]);
-
-        return $detalle;
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

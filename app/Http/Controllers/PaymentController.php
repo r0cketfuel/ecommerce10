@@ -263,46 +263,50 @@ class PaymentController extends Controller
 
         try
         {
-            // Creación de la factura
-            $factura = Factura::generarFactura([
+            $factura = Factura::create([
+                "fecha"             => now(),
                 "factura_tipo_id"   => 1,
-                "apellidos"         => $fields["apellidos"],
-                "nombres"           => $fields["nombres"],
-                "tipo_documento_id" => $tipoDocumentoId,
-                "documento_nro"     => $fields["documento_nro"],
+                'razon_social'      => $fields["razon_social"]  ?? NULL,
+                "apellidos"         => $fields["apellidos"]     ?? NULL,
+                "nombres"           => $fields["nombres"]       ?? NULL,
+                "tipo_documento_id" => $tipoDocumentoId         ?? NULL,
+                "documento_nro"     => $fields["documento_nro"] ?? NULL,
+                'cuil'              => $fields["cuil"]          ?? NULL,
+                'cuit'              => $fields["cuit"]          ?? NULL,
                 "domicilio"         => $fields["domicilio"],
                 "domicilio_nro"     => $fields["domicilio_nro"],
                 "domicilio_piso"    => $fields["domicilio_piso"],
                 "domicilio_depto"   => $fields["domicilio_depto"],
                 "localidad"         => $fields["localidad"],
                 "codigo_postal"     => $fields["codigo_postal"],
-                "total"             => session("shop.checkout.total"),
+                "envio"             => session("shop.checkout.medio_envio.costo"),
+                "items"             => session("shop.checkout.total"),
+                "iva"               => (float)session("shop.checkout.total") - ((float)session("shop.checkout.total") * 0.21),
+                "total"             => (float)session("shop.checkout.total") + (float)session("shop.checkout.medio_envio.costo"),
                 "medio_pago_id"     => session("shop.checkout.medio_pago.id"),
-                "medio_envio_id"    => session("shop.checkout.medio_envio.id"),
                 "cae"               => "",
                 "cae_vto"           => "2099-01-01",
-                "estado_id"         => 1,
+                "factura_estado_id" => 1,
             ]);
 
-            // Creación de la orden
             $orden = Orden::create([
                 "factura_id"        => $factura->id,
                 "estado_id"         => 1,
             ]);
 
             // Creación del detalle de la factura
-            for($i=0;$i<count($this->checkout["items"]);$i++)
+            foreach ($this->checkout["items"] as $item)
             {
-                $articulo = Articulo::info($this->checkout["items"][$i]["id"]);
-
-                FacturaDetalle::generarDetalle([
-                    "factura_id"        => $factura->id,
-                    "articulo_id"       => $articulo->id,
-                    "precio"            => $articulo->precio,
-                    "cantidad"          => $this->checkout["items"][$i]["cantidad"],
-                    "subtotal"          => (float)$articulo->precio * $this->checkout["items"][$i]["cantidad"]
+                $articulo = Articulo::info($item["id"]);
+            
+                FacturaDetalle::create([
+                    "factura_id"    => $factura->id,
+                    "articulo_id"   => $articulo->id,
+                    "precio"        => $articulo->precio,
+                    "cantidad"      => $item["cantidad"],
+                    "subtotal"      => (float)$articulo->precio * $item["cantidad"]
                 ]);
-            }
+            }            
 
             DB::commit();
         }
