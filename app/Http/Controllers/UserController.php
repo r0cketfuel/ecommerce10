@@ -8,6 +8,8 @@ use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UserLoginRequest;
 
 use App\Models\Usuario;
+use App\Models\Newsletter;
+
 use App\Services\FavoritosService;
 
 class UserController extends Controller
@@ -73,6 +75,9 @@ class UserController extends Controller
     
             foreach($usuario as $key => $value)
                 session()->put("shop.usuario.datos.$key", $value);
+
+            if(Newsletter::where('email', $usuario['email'])->count())
+                session()->put("shop.newsletter", $usuario['email']);
 
             return redirect()->back();
         }
