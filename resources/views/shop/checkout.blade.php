@@ -327,7 +327,7 @@
             }
 
             function mostrarPanelEnvio() {
-                panelEnvios.style.display = 'block'
+                panelEnvios.style.display = 'flex'
             }
 
             function ocultarPanelEnvio() {
