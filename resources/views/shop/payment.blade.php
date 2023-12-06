@@ -27,7 +27,7 @@
             display:                        grid;
             margin:                         0 auto;
             gap:                            10px;
-            width:                          70%;
+            width:                          100%;
             grid-template-areas:            "user       resume"
                                             "payment    .";
             align-items:                    start;
