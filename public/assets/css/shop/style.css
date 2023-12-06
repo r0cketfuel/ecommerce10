@@ -15,7 +15,7 @@
 
 :root {
     --containers-max-width:     	1366px;
-    --containers-side-padding:		10px;
+    --containers-side-padding:		20px;
 
 	--top-footer-background: 		#15161D;
 	--top-footer-border-color:		#d2143c;
