@@ -277,4 +277,15 @@ class ShopController extends Controller
         return view("shop.tests");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function changeLocale(Request $request)
+    {
+        /* https://glutendesign.com/posts/detect-and-change-language-on-the-fly-with-laravel */
+
+        $this->validate($request, ['locale' => 'required|in:es,en']);
+
+        Session()->put('locale', $request->locale);
+
+        return redirect()->back();
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
