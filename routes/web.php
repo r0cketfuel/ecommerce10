@@ -92,10 +92,12 @@ Route::controller(AjaxController::class)->group(function () {
 
 Route::prefix('admin')->group(function () {
     Route::controller(AdminController::class)->group(function () {
-        Route::get('',          'index')->name('admin.login');
-        Route::post('',         'login');
-        Route::get('logout',    'logout');
-        Route::get('facturas',  'facturas');
+        Route::get('',              'index')->name('admin.login');
+        Route::post('',             'login');
+        Route::get('logout',        'logout');
+        Route::get('facturas',      'facturas');
+
+        Route::match(['get', 'post'], 'mantenimiento', 'mantenimiento')->name('admin.mantenimiento');
 
         // Rutas que requieren autenticación
         Route::middleware(['auth:admin'])->group(function () {

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AdminLoginRequest;
 use Illuminate\Support\Facades\Session;
 
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Application;
+
 use App\Models\Administrador;
 use App\Models\Usuario;
 use App\Models\Articulo;
@@ -178,6 +181,27 @@ class AdminController extends Controller
         $facturas = Factura::with("tipo")->with("estado")->with("medioPago")->get();
 
         return view("admin.facturas.index", compact("facturas"));
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function mantenimiento(Request $request)
+    {
+        if($request->isMethod('post'))
+        {
+            if($request->input('estado'))
+            {
+                Artisan::call('down'); 
+                return response()->json(['message' => "DOWN"], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+            }
+            else
+            {
+                Artisan::call('up');
+                return response()->json(['message' => "UP"], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+            }
+        }
+    
+        $status = app()->isDownForMaintenance();
+    
+        return view('admin.mantenimiento.index', compact('status'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function logout(Request $request)

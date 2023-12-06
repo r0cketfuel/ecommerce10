@@ -94,6 +94,7 @@
                             <ul class="more-sub-menu sub-menu">
                                 <li><a href="/admin/comercio/">Datos del comercio</a></li>
                                 <li><a href="/admin/sucursales/">Sucursales</a></li>
+                                <li><a href="/admin/mantenimiento/">Modo mantenimiento</a></li>
                             </ul>
                         </li>
 
