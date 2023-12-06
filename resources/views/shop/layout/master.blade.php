@@ -21,19 +21,30 @@
         <script defer src="{{config('constants.framework_js')}}scroll.js"></script>
         <script defer src="{{config('constants.framework_js')}}navbar.js"></script>
 		@yield("js")
+        
+        <style>
+            .wrapper {
+				min-height: 		100vh;
+				flex: 				1;
+				display: 			flex;
+				flex-flow: 			column nowrap;
+			}
+		</style>
 
         @yield("inlineCSS")
 	</head>
 	<body id="top">
 
-        @guest
-            @include("shop.modals.login")
-        @endguest
+        <div class="wrapper">
+            @guest
+                @include("shop.modals.login")
+            @endguest
 
-        @include("shop.layout.headers")
-        @include("shop.layout.backToTop")
-        @include("shop.layout.whatsappBubble")
-        @yield("body")
+            @include("shop.layout.headers")
+            @include("shop.layout.backToTop")
+            @include("shop.layout.whatsappBubble")
+            @yield("body")
+        </div>
         @include("shop.layout.footers")
 
         @yield("scripts")
