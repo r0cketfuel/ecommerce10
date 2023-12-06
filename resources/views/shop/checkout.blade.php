@@ -24,7 +24,6 @@
             flex-flow:                      row wrap;
             margin:                         0 auto;
             width:                          100%;
-            max-width:                      900px;
             gap:                            20px;
         }
 
