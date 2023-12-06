@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'maintenance' => [
+        'maintenance1' => 'We are undergoing maintenance, we apologize for the inconvenience',
+        'maintenance2' => 'Please try again in a few minutes'
+    ],    
     'emptyProductList'      => 'No products found',
     'article_not_found'     => 'Article not found',
     'profileUpdateSuccess'  => 'Profile updated successfully',

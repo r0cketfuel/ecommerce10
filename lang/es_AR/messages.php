@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'maintenance'           => [
+        'maintenance1'      => 'Estamos haciendo mantenimiento, te pedimos disculpas',
+        'maintenance2'      => 'Por favor, reintentá dentro de unos minutos'
+    ],
     'emptyProductList'      => 'No hay artículos para mostrar',
     'article_not_found'     => 'Artículo no encontrado',
     'profileUpdateSuccess'  => 'Perfil actualizado correctamente',
