@@ -6,7 +6,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
-
+use App\Http\Controllers\MailController;
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ArticuloController;
@@ -55,7 +55,13 @@ Route::prefix('shop')->controller(ShopController::class)->group(function () {
         Route::get('account',          	'account')->name('user.account');
         Route::post('account',          'account');
     });
+
 });
+
+Route::prefix('shop')->controller(MailController::class)->group(function () {
+    Route::get('/email',                'signup');
+});
+
 
 Route::prefix('shop')->controller(UserController::class)->group(function () {
     Route::post('login',                'login')->name('login.user');

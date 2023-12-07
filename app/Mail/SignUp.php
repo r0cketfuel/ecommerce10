@@ -16,10 +16,11 @@ class SignUp extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(
+        public $apellidos,
+        public $nombres,
+        public $activationURL,
+    ) {}
 
     /**
      * Get the message envelope.
@@ -37,7 +38,7 @@ class SignUp extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.signup',
         );
     }
 
