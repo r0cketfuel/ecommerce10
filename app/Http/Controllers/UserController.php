@@ -18,7 +18,6 @@ class UserController extends Controller
     public function register(RegisterRequest $request)
 	{
         $usuario = Usuario::make($request->validated());
-        $usuario->creado = date(now());
         $usuario->save();
 
         return redirect("shop/login")->with("success", "Cuenta creada exitosamente");

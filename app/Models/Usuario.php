@@ -48,10 +48,7 @@ class Usuario extends Authenticatable implements MustVerifyEmail
         'telefono_celular',
         'telefono_alt',
         'email',
-        'estado',
-        'creado',
-        'alta',
-        'eliminado'
+        'estado'
     ];
 
     /**
