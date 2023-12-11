@@ -17,7 +17,10 @@ class Welcome extends Mailable
      * Create a new message instance.
      */
     public function __construct(
-        public $apellidos, $nombres
+
+        public $apellidos,
+        public $nombres
+
     ) {}
 
     /**

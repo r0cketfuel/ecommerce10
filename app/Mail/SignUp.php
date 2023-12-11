@@ -17,7 +17,11 @@ class SignUp extends Mailable
      * Create a new message instance.
      */
     public function __construct(
-        public $apellidos, $nombres, $activationURL,
+
+        public $apellidos,
+        public $nombres,
+        public $activationURL
+
     ) {}
 
     /**
