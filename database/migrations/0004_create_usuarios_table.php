@@ -40,7 +40,7 @@ return new class extends Migration
             $table->dateTime('creado');
             $table->dateTime('actualizado')->nullable()->default(NULL);
             $table->dateTime('eliminado')->nullable()->default(NULL);
-            $table->dateTime('alta')->nullable()->default(NULL);
+            $table->timestamp('alta')->nullable()->default(NULL);
             $table->rememberToken();
             $table->comment('Tabla con los usuarios del sistema');
         });
