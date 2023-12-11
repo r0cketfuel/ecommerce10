@@ -11,11 +11,14 @@ use Laravel\Sanctum\HasApiTokens;
 //Mutador para campos
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class Usuario extends Authenticatable
+class Usuario extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public $timestamps = false;
+    const CREATED_AT        = 'creado';
+    const UPDATED_AT        = 'actualizado';
+    const DELETED_AT        = 'eliminado';
+    const EMAIL_VERIFIED_AT = 'alta';
 
     /**
      * The attributes that are mass assignable.
@@ -47,6 +50,7 @@ class Usuario extends Authenticatable
         'email',
         'estado',
         'creado',
+        'alta',
         'eliminado'
     ];
 

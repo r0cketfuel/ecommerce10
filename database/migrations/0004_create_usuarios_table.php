@@ -38,8 +38,9 @@ return new class extends Migration
             $table->string('email', 50)->unique();
             $table->unsignedTinyInteger('estado')->default(0);
             $table->dateTime('creado');
-            $table->dateTime('alta')->nullable();
-            $table->boolean('eliminado')->default(False);
+            $table->dateTime('actualizado')->nullable()->default(NULL);
+            $table->dateTime('eliminado')->nullable()->default(NULL);
+            $table->dateTime('alta')->nullable()->default(NULL);
             $table->rememberToken();
             $table->comment('Tabla con los usuarios del sistema');
         });
@@ -50,6 +51,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('usuarios');
     }
 };
