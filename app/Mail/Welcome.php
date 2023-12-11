@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SignUp extends Mailable
+class Welcome extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,7 +17,7 @@ class SignUp extends Mailable
      * Create a new message instance.
      */
     public function __construct(
-        public $apellidos, $nombres, $activationURL,
+        public $apellidos, $nombres
     ) {}
 
     /**
@@ -26,7 +26,7 @@ class SignUp extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Sign Up',
+            subject: 'Welcome',
         );
     }
 
@@ -36,7 +36,7 @@ class SignUp extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.signup',
+            view: 'view.name',
         );
     }
 

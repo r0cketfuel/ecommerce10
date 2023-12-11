@@ -12,7 +12,7 @@ class MailController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function signup()
     {
-        $email          = "correo@dominio.com";
+        $email          = "fernando_p405@hotmail.com";
         $apellidos      = "Apellidos";
         $nombres        = "Nombres";
         $activationURL  = "as5d234daa7g4fg737s";
