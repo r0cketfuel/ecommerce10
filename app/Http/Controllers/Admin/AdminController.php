@@ -15,6 +15,7 @@ use App\Models\Administrador;
 use App\Models\Usuario;
 use App\Models\Articulo;
 use App\Models\Factura;
+use App\Models\Orden;
 use App\Models\InfoComercio;
 
 class AdminController extends Controller
@@ -94,11 +95,11 @@ class AdminController extends Controller
                 "extra" => "",
             ],
             [
-                "title" => "Widget 3",
+                "title" => "Ordenes pendientes",
                 "color" => "blue",
-                "value" => rand(0,999),
+                "value" => Orden::where('estado_id','1')->count(),
                 "link"  => ["url" => "/admin", "title" => "Link 3"],
-                "icon"  => "<i class='fa-solid fa-bell'></i>",
+                "icon"  => "<i class='fa-solid fa-file-pen'></i>",
                 "extra" => "",
             ],
             [

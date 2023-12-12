@@ -279,7 +279,7 @@ class PaymentController extends Controller
                 "domicilio_depto"   => $fields["domicilio_depto"],
                 "localidad"         => $fields["localidad"],
                 "codigo_postal"     => $fields["codigo_postal"],
-                "envio"             => session("shop.checkout.medio_envio.costo"),
+                "envio"             => session("shop.checkout.medio_envio.costo") ?? 0,
                 "items"             => session("shop.checkout.total"),
                 "iva"               => (float)session("shop.checkout.total") - ((float)session("shop.checkout.total") * 0.21),
                 "total"             => (float)session("shop.checkout.total") + (float)session("shop.checkout.medio_envio.costo"),
