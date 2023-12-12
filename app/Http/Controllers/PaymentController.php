@@ -13,7 +13,7 @@ use App\Models\FacturaDetalle;
 use App\Models\Orden;
 use App\Models\PagoMercadoPago;
 use App\Models\TipoDocumento;
-
+use App\Services\CallMeBotAPI;
 use App\Services\MercadoPago;
 
 class PaymentController extends Controller
@@ -309,6 +309,8 @@ class PaymentController extends Controller
             }            
 
             DB::commit();
+            $callMeBotApi = new CallMeBotAPI(env('CALL_ME_BOT_API_KEY'), "+5492914403921");
+            $callMeBotApi->sendWhatsapp("Ha ingresado una compra");
         }
         catch (\Exception $e)
         {
