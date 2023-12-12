@@ -103,11 +103,11 @@ class AdminController extends Controller
                 "extra" => "",
             ],
             [
-                "title" => "Widget 4",
+                "title" => "Ordenes en proceso",
                 "color" => "green",
-                "value" => rand(0,999),
+                "value" => Orden::where('estado_id','2')->count(),
                 "link"  => ["url" => "/admin", "title" => "Link 4"],
-                "icon"  => "<i class='fa-solid fa-bolt'></i>",
+                "icon"  => "<i class='fa-solid fa-list-check'></i>",
                 "extra" => "",
             ],
             [
