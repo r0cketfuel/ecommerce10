@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 //Mutador para campos
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -14,6 +15,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Usuario extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    use SoftDeletes;
 
     const CREATED_AT        = 'creado';
     const UPDATED_AT        = 'actualizado';
@@ -147,7 +150,7 @@ class Usuario extends Authenticatable implements MustVerifyEmail
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function activos()
     {
-        $usuarios = Usuario::where('estado', 1)->where('alta', '<>', NULL)->where('eliminado', False)->get();
+        $usuarios = Usuario::where('estado', 1)->whereNotNull('alta')->get();
 
         return($usuarios);
     }
