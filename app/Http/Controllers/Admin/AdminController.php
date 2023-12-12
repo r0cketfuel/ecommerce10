@@ -56,7 +56,7 @@ class AdminController extends Controller
             [
                 "title" => "Usuarios activos",
                 "color" => "green",
-                "value" => Usuario::activos()->count(),
+                "value" => Usuario::where('estado', 1)->whereNotNull('alta')->count(),
                 "link"  => ["url" => "/admin/usuarios?estado=1", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-user-group'></i>",
                 "extra" => "",
@@ -64,7 +64,7 @@ class AdminController extends Controller
             [
                 "title" => "Usuarios pendientes activación",
                 "color" => "yellow",
-                "value" => Usuario::where("alta", NULL)->where("eliminado", False)->count(),
+                "value" => Usuario::whereNull("alta")->count(),
                 "link"  => ["url" => "/admin/usuarios", "title" => "Listado"],
                 "icon"  => "<i class='fa-solid fa-user-plus'></i>",
                 "extra" => "",
