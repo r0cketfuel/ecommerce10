@@ -299,7 +299,7 @@ class PaymentController extends Controller
             {
                 $articulo = Articulo::info($item["id"]);
             
-                FacturaDetalle::create([
+                $factura = FacturaDetalle::create([
                     "factura_id"    => $factura->id,
                     "articulo_id"   => $articulo->id,
                     "precio"        => $articulo->precio,
@@ -310,7 +310,7 @@ class PaymentController extends Controller
 
             DB::commit();
             $callMeBotApi = new CallMeBotAPI(env('CALL_ME_BOT_API_KEY'), "+5492914403921");
-            $callMeBotApi->sendWhatsapp("Ha ingresado una compra");
+            $callMeBotApi->sendWhatsapp("Ha ingresado una compra. Se ha generado la factura Nro: " . $factura->id . " y la orden Nro: " . $orden->id);
         }
         catch (\Exception $e)
         {
