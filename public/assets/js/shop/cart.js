@@ -389,37 +389,22 @@ function addToCart(id)
 
     promise.then((data) => 
     {
-        carticon.innerHTML = data;
-        cartQtyAfter = data;
+        carticon.innerHTML  = data;
+        cartQtyAfter        = data;
 
-        addToCartButton.innerHTML = "";
+        addToCartButton.disabled    = true;
+        addToCartButton.innerHTML   = "";
         addToCartButton.classList.add('button--loading');
 
         setTimeout(function()
         {
             addToCartButton.classList.remove('button--loading');
-            if(cartQtyAfter!=cartQtyBefore)
-            {
-                addToCartButton.classList.remove('btn-primary');
-                addToCartButton.classList.add('btn-success');
-                addToCartButton.innerHTML = "Agregado al carrito";
-                addToCartButton.disabled = false;
-                closeModal("modal-add");
+            addToCartButton.innerHTML   = buttonLabel;
+            addToCartButton.disabled    = false;
 
-                setTimeout(function()
-                {
-                    if(modal)
-                        modal.style.display = "none";
-                    addToCartButton.innerHTML = buttonLabel;
-                    addToCartButton.classList.remove('btn-success');
-                    addToCartButton.classList.add('btn-primary');
-    
-                },2000);
-            }
-            else
-            {
-                addToCartButton.innerHTML = buttonLabel;
-            }
+            if(cartQtyAfter!=cartQtyBefore)
+                closeModal("modal-add");
+            
         }, 1000);
     });
 }
