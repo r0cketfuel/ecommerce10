@@ -34,7 +34,7 @@ form:focus {
     -webkit-box-direction:          normal;
         -ms-flex-flow:              column;
             flex-flow:              column;
-    gap:                            10px;
+    gap:                            20px;
 }
 
 .form-error {
