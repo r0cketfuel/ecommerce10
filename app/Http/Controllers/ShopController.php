@@ -264,7 +264,7 @@ class ShopController extends Controller
         return view("shop.success", compact("order"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function logout(UserController $user)
+    public function logout(UsuarioController $user)
     {
         $user->logout();
         session()->flush();

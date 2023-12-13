@@ -12,7 +12,7 @@ use App\Models\Newsletter;
 
 use App\Services\FavoritosService;
 
-class UserController extends Controller
+class UsuarioController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function register(RegisterRequest $request)

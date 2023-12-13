@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AjaxController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\MailController;
 
@@ -42,7 +42,7 @@ Route::controller(MailController::class)->group(function () {
     Route::get('/email',                'signup');
 });
 
-Route::controller(UserController::class)->group(function () {
+Route::controller(UsuarioController::class)->group(function () {
     Route::post('login',                'login')->name('login.user');
     Route::post('login/guest',          'loginGuest')->name('login.guest');
     Route::post('register',             'register');
