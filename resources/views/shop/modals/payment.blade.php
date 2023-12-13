@@ -10,7 +10,7 @@
         <div style="padding: 50px; background: white">
             <div class="flex justify-center align-center">
                 <span class="loader"></span>
-                Verificando pago...
+                procesando...
             </div>
         </div>
     </div>

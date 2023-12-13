@@ -89,16 +89,16 @@
             <div class="panel" id="user">
                 <div class="panel-title panel-title-underlined">Datos personales</div>
                 <div class="panel-content">
-                    <div class="grid">
+                    <div class="input-group">
 
                         <label>
                             Apellidos
-                            <input form="form-checkout" type="text" id="apellidos" name="apellidos" required pattern="[a-zA-Z]+" title="Sólo se permiten letras" value="{{session('shop.usuario.datos.apellidos')}}">
+                            <input form="form-checkout" type="text" id="apellidos" name="apellidos" required pattern="[a-zA-Z]+" title="Sólo se permiten letras" value="{{ session('shop.usuario.datos.apellidos') }}">
                         </label>
 
                         <label>
                             Nombres
-                            <input  form="form-checkout" type="text" id="nombres" name="nombres" required pattern="[a-zA-Z]+" title="Sólo se permiten letras" value="{{session('shop.usuario.datos.nombres')}}">
+                            <input  form="form-checkout" type="text" id="nombres" name="nombres" required pattern="[a-zA-Z]+" title="Sólo se permiten letras" value="{{ session('shop.usuario.datos.nombres') }}">
                         </label>
                         
                         <label>
@@ -106,59 +106,59 @@
                             <select form="form-checkout" id="tipo_documento_id" name="tipo_documento_id" required>
                                 <option value="" selected disabled>Seleccione</option>
                                 @foreach($tiposDocumentos as $tipoDocumento)
-                                    <option value="{{$tipoDocumento->id}}" @if(session('shop.usuario.datos.tipo_documento_id') == $tipoDocumento->id) selected @endif>{{$tipoDocumento->tipo}}</option>
+                                    <option value="{{ $tipoDocumento->id }}" @if(session('shop.usuario.datos.tipo_documento_id') == $tipoDocumento->id) selected @endif>{{ $tipoDocumento->tipo }}</option>
                                 @endforeach
                             </select>
                         </label>
 
                         <label>
                             Número de documento
-                            <input form="form-checkout" type="text" id="documento_nro" name="documento_nro" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.documento_nro')}}">
+                            <input form="form-checkout" type="text" id="documento_nro" name="documento_nro" required pattern="[0-9]+" title="Sólo se permiten números" value="{{ session('shop.usuario.datos.documento_nro') }}">
                         </label>
 
                         <label>
                             Localidad
-                            <input form="form-checkout" type="text" id="localidad" name="localidad" required value="{{session('shop.usuario.datos.localidad')}}">
+                            <input form="form-checkout" type="text" id="localidad" name="localidad" required value="{{ session('shop.usuario.datos.localidad') }}">
                         </label>
 
                         <label>
                             Codigo postal
-                            <input form="form-checkout" type="text" id="codigo_postal" name="codigo_postal" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.codigo_postal')}}">
+                            <input form="form-checkout" type="text" id="codigo_postal" name="codigo_postal" required pattern="[0-9]+" title="Sólo se permiten números" value="{{ session('shop.usuario.datos.codigo_postal') }}">
                         </label>
 
                         <label>
                             Domicilio
-                            <input form="form-checkout" type="text" id="domicilio" name="domicilio" required value="{{session('shop.usuario.datos.domicilio')}}">
+                            <input form="form-checkout" type="text" id="domicilio" name="domicilio" required value="{{ session('shop.usuario.datos.domicilio') }}">
                         </label>
 
                         <div class="flex">
                             <label>
                                 Domicilio número
-                                <input form="form-checkout" type="text" id="domicilio_nro" name="domicilio_nro" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.domicilio_nro')}}">
+                                <input form="form-checkout" type="text" id="domicilio_nro" name="domicilio_nro" required pattern="[0-9]+" title="Sólo se permiten números" value="{{ session('shop.usuario.datos.domicilio_nro') }}">
                             </label>
                             
                             <label>
                                 Domicilio piso
-                                <input form="form-checkout" type="text" id="domicilio_piso" name="domicilio_piso" value="{{session('shop.usuario.datos.domicilio_piso')}}">
+                                <input form="form-checkout" type="text" id="domicilio_piso" name="domicilio_piso" value="{{ session('shop.usuario.datos.domicilio_piso') }}">
                             </label>
 
                             <label>
                                 Domicilio depto
-                                <input form="form-checkout" type="text" id="domicilio_depto" name="domicilio_depto" value="{{session('shop.usuario.datos.domicilio_depto')}}">
+                                <input form="form-checkout" type="text" id="domicilio_depto" name="domicilio_depto" value="{{ session('shop.usuario.datos.domicilio_depto') }}">
                             </label>
                         </div>
 
                         <label>
                             Teléfono celular
-                            <input form="form-checkout" type="text" id="telefono_celular" name="telefono_celular" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.telefono_celular')}}">
+                            <input form="form-checkout" type="text" id="telefono_celular" name="telefono_celular" required pattern="[0-9]+" title="Sólo se permiten números" value="{{ session('shop.usuario.datos.telefono_celular') }}">
                         </label>
                         <label>
                             Teléfono alternativo
-                            <input form="form-checkout" type="text" id="telefono_alt" name="telefono_alt" pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.telefono_alt')}}">
+                            <input form="form-checkout" type="text" id="telefono_alt" name="telefono_alt" pattern="[0-9]+" title="Sólo se permiten números" value="{{ session('shop.usuario.datos.telefono_alt') }}">
                         </label>
                         <label>
                             Correo electrónico
-                            <input form="form-checkout" type="email" id="email" name="email" required value="{{session('shop.usuario.datos.email')}}">
+                            <input form="form-checkout" type="email" id="email" name="email" required value="{{ session('shop.usuario.datos.email') }}">
                         </label>
                     
                     </div>
@@ -168,31 +168,30 @@
 
             <!-- Panel datos pago -->
             <div class="panel" id="payment">
-                <div class="panel-title panel-title-underlined">Pago</div>
+                <div class="panel-title panel-title-underlined">{{ session("shop.checkout.medio_pago.medio") }}</div>
                 <div class="panel-content">
 
                     <!-- Efectivo -->
                     @if(session("shop.checkout.medio_pago.id")==1)
-                        <button form='form-checkout' class='btn-primary' type='submit'>Confirmar compra</button>
+
                     @endif
 
                     <!-- Transferencia bancaria -->
                     @if(session("shop.checkout.medio_pago.id")==2)
                         <div class="grid" style="grid-template-columns: auto 1fr; gap: 20px;">
                             <div class="text-bold">Banco:</div>
-                            <div>{{$cuentaBancaria["banco"]}}</div>
+                            <div>{{ $cuentaBancaria["banco"] }}</div>
                             <div class="text-bold">Cuit:</div>
-                            <div>{{$cuentaBancaria["cuit"]}}</div>
+                            <div>{{ $cuentaBancaria["cuit"] }}</div>
                             <div class="text-bold">Titular:</div>
-                            <div>{{$cuentaBancaria["titular"]}}</div>
+                            <div>{{ $cuentaBancaria["titular"] }}</div>
                             <div class="text-bold">Cuenta:</div>
-                            <div>{{$cuentaBancaria["cuenta"]}}</div>
+                            <div>{{ $cuentaBancaria["cuenta"] }}</div>
                             <div class="text-bold">CBU:</div>
-                            <div>{{$cuentaBancaria["cbu"]}}</div>
+                            <div>{{ $cuentaBancaria["cbu"] }}</div>
                             <div class="text-bold">Alias:</div>
-                            <div>{{$cuentaBancaria["alias"]}}</div>
+                            <div>{{ $cuentaBancaria["alias"] }}</div>
                         </div>
-                        <button form='form-checkout' class='btn-primary' type='submit'>Confirmar compra</button>
                     @endif
 
                     <!-- Tarjeta de crédito o débito mercadopago -->
@@ -202,21 +201,45 @@
 
                         <div>5031 7557 3453 0604</div>
 
-                        <label>Número de tarjeta<div id="form-checkout__cardNumber"         class="container"></div></label>
-                        <label>Fecha de expiración<div id="form-checkout__expirationDate"   class="container"></div></label>
-                        <label>Código de seguridad<div id="form-checkout__securityCode"     class="container"></div></label>
-                        <label>Titular de la tarjeta<input id="form-checkout__cardholderName"></label>
-                        <label>Banco emisor<select id="form-checkout__issuer"></select></label>
-                        <label>Cuotas<select id="form-checkout__installments"></select></label>
+                        <label>
+                            Número de tarjeta
+                            <div id="form-checkout__cardNumber" class="container"></div>
+                        </label>
+                        
+                        <label>
+                            Fecha de expiración
+                            <div id="form-checkout__expirationDate" class="container"></div>
+                        </label>
+                        
+                        <label>
+                            Código de seguridad
+                            <div id="form-checkout__securityCode" class="container"></div>
+                        </label>
+                        
+                        <label>
+                            Titular de la tarjeta
+                            <input id="form-checkout__cardholderName">
+                        </label>
+                        
+                        <label>
+                            Banco emisor
+                            <select id="form-checkout__issuer"></select>
+                        </label>
+                        
+                        <label>
+                            Cuotas
+                            <select id="form-checkout__installments"></select>
+                        </label>
+
                         <progress value="0" class="progress-bar">Cargando...</progress>
-                        <button id="prueba" form="form-checkout" class="btn-primary" type="submit" id="form-checkout__submit">Confirmar compra</button>
                     @endif
 
                     <!-- Pagofácil o Rapipago mercadopago -->
                     @if(session("shop.checkout.medio_pago.id")==4 || session("shop.checkout.medio_pago.id")==5)
-                        <button form="form-checkout" type="submit">Pagar</button>
+
                     @endif
 
+                    <button form='form-checkout' class='btn-primary' type='submit'>Confirmar compra</button>
                 </div>
             </div>
     
@@ -227,7 +250,7 @@
                     <div class="flex-col gap1">
                         <div class="flex justify-between">
                             <div class="text-bold">Subtotal:</div>
-                            <div id="sub-total">{{_money(session("shop.checkout.total_items"))}}</div>
+                            <div id="sub-total">{{ _money(session("shop.checkout.total_items")) }}</div>
                         </div>
                         <div class="flex justify-between">
                             <div class="text-bold">Envío:</div>
@@ -237,10 +260,12 @@
                             <div class="text-bold">Descuentos:</div>
                             <div id="descuentos">{{ _money(0) }}</div>
                         </div>
-                        <div style="border-bottom: 1px solid; margin: 5px 0;"><div style="flex: 1 1;"></div></div>
+                        <div style="border-bottom: 1px solid; margin: 5px 0;">
+                            <div style="flex: 1 1;"></div>
+                        </div>
                         <div class="flex justify-between">
                             <div class="text-bold">Total:</div>
-                            <div id="total">{{_money(session("shop.checkout.total"))}}</div>
+                            <div id="total">{{ _money(session("shop.checkout.total")) }}</div>
                         </div>
                     </div>
                 </div>
@@ -251,7 +276,6 @@
         <!-- /Grid -->
 
         <form id="form-checkout" action="/shop/process_payment" method="post">@csrf</form>
-
     </div>
 
 @endsection
@@ -260,14 +284,15 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
-            const button = document.getElementById("prueba");
-            if(button)
-                button.addEventListener("click", () => funcion());
-            });
+            const form = document.getElementById("form-checkout");
+            
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
 
-            function funcion(id)
-            {
                 openModal("modal-payment");
-            }
+
+                form.submit();
+            });
+        });
     </script>
 @endsection
