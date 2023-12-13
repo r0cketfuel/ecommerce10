@@ -374,11 +374,8 @@ function addToCart(id)
     let cartQtyAfter    = document.getElementById("qty").innerHTML;
     
     let inputQty        = inputField.value;
-	
     let buttonLabel     = addToCartButton.innerHTML;
-
-	let parametros = {
-    };
+	let parametros      = {};
 	
     if(selectSizes.value)   parametros["talle_id"]  = selectSizes.value;
     if(selectColors.value)  parametros["color"] 	= selectColors.value;
@@ -404,7 +401,7 @@ function addToCart(id)
 
             if(cartQtyAfter!=cartQtyBefore)
                 closeModal("modal-add");
-            
+
         }, 1000);
     });
 }
