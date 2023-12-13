@@ -15,20 +15,17 @@ class FavoritoSeeder extends Seeder
     {
         Favorito::create([
             "usuario_id"    => 1,
-            "articulo_id"   => 1,
-            "fecha"         => date("Y-m-d H:i:s")
+            "articulo_id"   => 1
         ]);
 
         Favorito::create([
             "usuario_id"    => 1,
-            "articulo_id"   => 2,
-            "fecha"         => date("Y-m-d H:i:s")
+            "articulo_id"   => 2
         ]);
 
         Favorito::create([
             "usuario_id"    => 1,
-            "articulo_id"   => 3,
-            "fecha"         => date("Y-m-d H:i:s")
+            "articulo_id"   => 3
         ]);
     }
 }

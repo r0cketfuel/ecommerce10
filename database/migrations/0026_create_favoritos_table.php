@@ -18,7 +18,9 @@ return new class extends Migration
             $table->unsignedMediumInteger('articulo_id');
             $table->foreign('articulo_id')->references('id')->on('articulos');
             $table->unique(['usuario_id', 'articulo_id']);
-            $table->dateTime('fecha');
+            $table->dateTime('creado');
+            $table->dateTime('actualizado')->nullable()->default(NULL);
+            $table->dateTime('eliminado')->nullable()->default(NULL);
             $table->comment('Tabla con los articulos favoritos de los usuarios del sistema');
         });
     }

@@ -40,8 +40,10 @@
             $favorito = new Favorito;
 
             // Verificar si el item ya se encontraba agregado a favoritos
-            if(Favorito::where("usuario_id", $usuario_id)->where("articulo_id", $articulo_id)->count())
+            if(Favorito::where("usuario_id", $usuario_id)->where("articulo_id", $articulo_id)->withTrashed()->count())
             {
+                Favorito::where("usuario_id", $usuario_id)->where("articulo_id", $articulo_id)->restore();
+
                 $response   = array(
                     "success"       => false,
                     "data"          => array(
@@ -52,11 +54,12 @@
                 return($response);
             }
             
-            $favorito->usuario_id   = $usuario_id;
-            $favorito->articulo_id  = $articulo_id;
-            $favorito->fecha        = timestamp();
+            $favorito = Favorito::create([
+                "usuario_id"   => $usuario_id,
+                "articulo_id"  => $articulo_id
+            ]);
 
-            if($favorito->save())
+            if($favorito)
             {
                 session()->push("shop.usuario.favoritos", $favorito->where("usuario_id", $usuario_id)->where("articulo_id", $articulo_id)->first());
 
