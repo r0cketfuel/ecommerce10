@@ -25,11 +25,11 @@
 
 		.carousel-slide {
 			flex: 					1;
-			transition: 			all 0.5s;
+			transition: 			all 0.5s ease-in-out;
 		}
 
 		.panel {
-			box-shadow: 			none;
+			box-shadow: unset;
 		}
 	</style>
 @endsection
@@ -75,8 +75,7 @@
 					</div>
 					<br>
 					<div class="flex">
-						<button class="btnPrev">Anterior</button>
-						<button class="btnNext">siguiente</button>
+						<button class="btnNext">siguiente <i class="fa-solid fa-chevron-right"></i></button>
 					</div>
 				</div>
 
@@ -102,8 +101,8 @@
 					</div>
 					<br>
 					<div class="flex">
-						<button class="btnPrev">Anterior</button>
-						<button class="btnNext">siguiente</button>
+						<button class="btnPrev"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
+						<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right"></i></button>
 					</div>
 				</div>
 			
@@ -157,8 +156,8 @@
 					</div>
 					<br>
 					<div class="flex">
-						<button class="btnPrev">Anterior</button>
-						<button class="btnNext">siguiente</button>
+						<button class="btnPrev"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
+						<button class="btn-primary">Confirmar compra</button>
 					</div>
 				</div>
 			</div>
@@ -178,11 +177,7 @@
 			const nextButtons = document.querySelectorAll(".btnNext");
 			const prevButtons = document.querySelectorAll(".btnPrev");
 
-			// loop through slides and set each slide's translateX property to index * 100% 
-			slides.forEach((slide, indx) => {
-				slide.style.transform = `translateX(${indx * 100}%)`;
-				slide.style.display = "block";
-			});
+
 
 			nextButtons.forEach(button => {
 				button.addEventListener("click", function () {
@@ -190,7 +185,7 @@
 
 					// move slide by -100%
 					slides.forEach((slide, indx) => {
-						slide.style.transform = `translateX(${100 * (0 - curSlide)}%)`;
+						slide.style.transform = `translateX(${-100 * curSlide}%)`;
 					});
 				});
 			});
@@ -201,7 +196,7 @@
 
 					// move slide by 100%
 					slides.forEach((slide, indx) => {
-						slide.style.transform = `translateX(${100 * (0 - curSlide)}%)`;
+						slide.style.transform = `translateX(${-100 * curSlide}%)`;
 					});
 				});
 			});
