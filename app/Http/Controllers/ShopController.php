@@ -288,4 +288,76 @@ class ShopController extends Controller
         return redirect()->back();
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function checkoutV2(ShoppingCartService $shoppingCart, Request $request)
+	{
+        $checkout = $shoppingCart->checkOut();
+
+        foreach ($checkout["items"] as &$item)
+        {
+            $articulo = Articulo::info($item["id"]);
+        
+            $item["descripcion"]    = $articulo->descripcion ?? NULL;
+            $item["imagen"]         = count($articulo->imagenes) ? $articulo->imagenes[0]["miniatura"] : NULL;
+        }
+
+        if($request->isMethod("post"))
+        {
+            session()->put("shop.checkout.total", $checkout["total"]);
+
+            if($request->has("radio_medioPago") && is_numeric($request->input("radio_medioPago")) && (int)$request->input("radio_medioPago")>0)
+                if((int)$request->input("radio_medioPago")<=MedioPago::count())
+                {
+                    $medio = MedioPago::find($request->input("radio_medioPago"));
+                    session()->put("shop.checkout.medio_pago.id",    $medio["id"]);
+                    session()->put("shop.checkout.medio_pago.medio", $medio["medio"]);
+                }
+
+            if($request->has("radio_medioEnvio") && is_numeric($request->input("radio_medioEnvio")) && (int)$request->input("radio_medioEnvio")>0)
+                if((int)$request->input("radio_medioEnvio")<=MedioEnvio::count())
+                {
+                    $medio = MedioEnvio::find($request->input("radio_medioEnvio"));
+                    session()->put("shop.checkout.medio_envio.id",      $medio["id"]);
+                    session()->put("shop.checkout.medio_envio.medio",   $medio["medio"]);
+                    session()->put("shop.checkout.medio_envio.costo",   $medio["costo"]);
+                }
+
+            if(session("shop.checkout.medio_envio.id")==2)
+            {
+                if($request->has("input_codigoPostal"))     session()->put("shop.checkout.envio.codigo_postal",       $request->input("input_codigoPostal"));
+                if($request->has("input_ciudad"))           session()->put("shop.checkout.envio.ciudad",              $request->input("input_ciudad"));
+                if($request->has("input_domicilio"))        session()->put("shop.checkout.envio.domicilio",           $request->input("input_domicilio"));
+                if($request->has("input_domicilioNro"))     session()->put("shop.checkout.envio.domicilio_nro",       $request->input("input_domicilioNro"));
+                if($request->has("input_domicilioPiso"))    session()->put("shop.checkout.envio.domicilio_piso",      $request->input("input_domicilioPiso"));
+                if($request->has("input_domicilioDepto"))   session()->put("shop.checkout.envio.domicilio_depto",     $request->input("input_domicilioDepto"));
+                if($request->has("textarea_aclaraciones"))  session()->put("shop.checkout.envio.aclaraciones",        $request->input("textarea_aclaraciones"));
+            }
+
+            // return redirect("/shop/payment");
+        }
+
+        $generos            = Genero::all();
+        $tiposDocumentos    = TipoDocumento::all();
+
+        // Medios de pago activos
+        $mediosPagoListado = MedioPago::activos();
+        
+        // Medios de envío activos
+        $mediosEnvioListado = MedioEnvio::activos();
+
+        // Seleccionar el primer medio de pago por defecto
+        $medioPagoSeleccionado = $mediosPagoListado[0]["id"];
+
+        // Seleccionar el medio de pago guardado en sesión
+        if(session()->has("shop.checkout.medio_pago"))
+            $medioPagoSeleccionado = session("shop.checkout.medio_pago.id");
+        
+        // Seleccionar el primer medio de envío por defecto
+        $medioEnvioSeleccionado = $mediosEnvioListado[0]["id"];
+
+        // Seleccionar el medio de envío guardado en sesión
+        if(session()->has("shop.checkout.medio_pago"))
+            $medioEnvioSeleccionado = session("shop.checkout.medio_envio.id");
+
+        return view("shop.checkout.index", compact("checkout", "mediosPagoListado", "mediosEnvioListado", "medioPagoSeleccionado", "medioEnvioSeleccionado", "generos", "tiposDocumentos"));
+	}
 }

@@ -28,8 +28,10 @@ Route::controller(ShopController::class)->group(function () {
     // Rutas que requieren autenticación
     Route::middleware(['extend.auth'])->group(function () {
         Route::get('favoritos',        	'favoritos');
-        Route::get('checkout',         	'checkout');
-        Route::post('checkout',        	'checkout');
+
+        Route::get('checkout',         	'checkoutV2');
+        Route::post('checkout',        	'checkoutV2');
+        
         Route::get('payment',          	'payment');
         Route::get('success',          	'success');
 

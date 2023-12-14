@@ -46,7 +46,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Checkout
+            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > {{ $title }}
         </div>
 
         @if(count($checkout["items"])>0)
