@@ -17,6 +17,7 @@ use App\Models\Articulo;
 use App\Models\Factura;
 use App\Models\Orden;
 use App\Models\InfoComercio;
+use App\Models\Visita;
 
 class AdminController extends Controller
 {
@@ -177,7 +178,7 @@ class AdminController extends Controller
         return view("admin.comercio.index", compact("comercio"));
     }    
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function facturas(Factura $facturas)
+    public function facturas()
     {
         $facturas = Factura::with("tipo")->with("estado")->with("medioPago")->get();
 
@@ -205,10 +206,16 @@ class AdminController extends Controller
         return view('admin.mantenimiento.index', compact('status'));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function visitas()
+    {
+        $visitas = Visita::all();
+
+        return view("admin.visitas.index", compact('visitas'));
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function logout(Request $request)
     {
         Auth::guard("admin")->logout();
-        session()->flush();
     
         return redirect()->route('admin.login');
     }

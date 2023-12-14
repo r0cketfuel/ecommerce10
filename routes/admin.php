@@ -21,6 +21,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('',             'login');
     Route::get('logout',        'logout');
     Route::get('facturas',      'facturas');
+    Route::get('visitas',       'visitas');
 
     // Rutas que requieren autenticación
     Route::middleware(['auth:admin'])->group(function () {
