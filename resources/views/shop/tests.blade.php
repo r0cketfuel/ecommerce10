@@ -14,19 +14,22 @@
 	<style>
 		.carousel-container {
 			flex: 					1;
-			position: 				relative;
 			overflow: 				hidden;
 		}
 
-		.pantalla {
-			display: 				none;
-			position: 				relative;
+		.carousel-slider {
+			display: 				flex;
+			flex-flow: 				row nowrap;
+			width: 					300%;
+		}
+
+		.carousel-slide {
+			flex: 					1;
 			transition: 			all 0.5s;
-			width: 					100%;
 		}
 
 		.panel {
-			box-shadow: none;
+			box-shadow: 			none;
 		}
 	</style>
 @endsection
@@ -41,121 +44,122 @@
 
 		<!-- Pantallas -->
 		<div class="carousel-container">
-
-			<div class="pantalla pantalla1">
-				<div class="panel">
-					<div class="panel-title panel-title-underlined">Pantalla 1</div>
-                    <div class="panel-content">
-						<div class="input-group">
-							<label>
-								Input 1
-								<input type="text">
-							</label>
-							<label>
-								Input 2
-								<input type="text">
-							</label>
-							<label>
-								Input 3
-								<input type="text">
-							</label>
-							<label>
-								Input 4
-								<input type="text">
-							</label>
-							<label>
-								Input 5
-								<input type="text">
-							</label>
+			<div class="carousel-slider">
+				<div class="carousel-slide">
+					<div class="panel">
+						<div class="panel-title panel-title-underlined">Pantalla 1</div>
+						<div class="panel-content">
+							<div class="input-group">
+								<label>
+									Input 1
+									<input type="text">
+								</label>
+								<label>
+									Input 2
+									<input type="text">
+								</label>
+								<label>
+									Input 3
+									<input type="text">
+								</label>
+								<label>
+									Input 4
+									<input type="text">
+								</label>
+								<label>
+									Input 5
+									<input type="text">
+								</label>
+							</div>
 						</div>
 					</div>
-				</div>
-				<br>
-				<div class="flex">
-					<button class="btnPrev">Anterior</button>
-					<button class="btnNext">siguiente</button>
-				</div>
-			</div>
-
-			<div class="pantalla pantalla2">
-				<div class="panel">
-					<div class="panel-title panel-title-underlined">Pantalla 2</div>
-                    <div class="panel-content">
-						<div class="input-group">
-							<label>
-								Input 1
-								<input type="text">
-							</label>
-							<label>
-								Input 2
-								<input type="text">
-							</label>
-							<label>
-								Input 3
-								<input type="text">
-							</label>
-						</div>
+					<br>
+					<div class="flex">
+						<button class="btnPrev">Anterior</button>
+						<button class="btnNext">siguiente</button>
 					</div>
 				</div>
-				<br>
-				<div class="flex">
-					<button class="btnPrev">Anterior</button>
-					<button class="btnNext">siguiente</button>
+
+				<div class="carousel-slide">
+					<div class="panel">
+						<div class="panel-title panel-title-underlined">Pantalla 2</div>
+						<div class="panel-content">
+							<div class="input-group">
+								<label>
+									Input 1
+									<input type="text">
+								</label>
+								<label>
+									Input 2
+									<input type="text">
+								</label>
+								<label>
+									Input 3
+									<input type="text">
+								</label>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="flex">
+						<button class="btnPrev">Anterior</button>
+						<button class="btnNext">siguiente</button>
+					</div>
 				</div>
-			</div>
 			
-			<div class="pantalla pantalla3">
-				<div class="panel">
-					<div class="panel-title panel-title-underlined">Pantalla 3</div>
-                    <div class="panel-content">
-						<div class="input-group">
-							<label>
-								Input 1
-								<input type="text">
-							</label>
-							<label>
-								Input 2
-								<input type="text">
-							</label>
-							<label>
-								Input 3
-								<input type="text">
-							</label>
-							<label>
-								Input 4
-								<input type="text">
-							</label>
-							<label>
-								Input 5
-								<input type="text">
-							</label>
-							<label>
-								Input 6
-								<input type="text">
-							</label>
-							<label>
-								Input 7
-								<input type="text">
-							</label>
-							<label>
-								Input 8
-								<input type="text">
-							</label>
-							<label>
-								Input 9
-								<input type="text">
-							</label>
-							<label>
-								Input 10
-								<input type="text">
-							</label>
+				<div class="carousel-slide">
+					<div class="panel">
+						<div class="panel-title panel-title-underlined">Pantalla 3</div>
+						<div class="panel-content">
+							<div class="input-group">
+								<label>
+									Input 1
+									<input type="text">
+								</label>
+								<label>
+									Input 2
+									<input type="text">
+								</label>
+								<label>
+									Input 3
+									<input type="text">
+								</label>
+								<label>
+									Input 4
+									<input type="text">
+								</label>
+								<label>
+									Input 5
+									<input type="text">
+								</label>
+								<label>
+									Input 6
+									<input type="text">
+								</label>
+								<label>
+									Input 7
+									<input type="text">
+								</label>
+								<label>
+									Input 8
+									<input type="text">
+								</label>
+								<label>
+									Input 9
+									<input type="text">
+								</label>
+								<label>
+									Input 10
+									<input type="text">
+								</label>
+							</div>
 						</div>
 					</div>
-				</div>
-				<br>
-				<div class="flex">
-					<button class="btnPrev">Anterior</button>
-					<button class="btnNext">siguiente</button>
+					<br>
+					<div class="flex">
+						<button class="btnPrev">Anterior</button>
+						<button class="btnNext">siguiente</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -167,7 +171,7 @@
 @section("scripts")
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
-			const slides = document.querySelectorAll(".pantalla");
+			const slides = document.querySelectorAll(".carousel-slide");
 			const maxSlide = slides.length - 1;
 			let curSlide = 0;
 
@@ -186,7 +190,7 @@
 
 					// move slide by -100%
 					slides.forEach((slide, indx) => {
-						slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+						slide.style.transform = `translateX(${100 * (0 - curSlide)}%)`;
 					});
 				});
 			});
@@ -197,7 +201,7 @@
 
 					// move slide by 100%
 					slides.forEach((slide, indx) => {
-						slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+						slide.style.transform = `translateX(${100 * (0 - curSlide)}%)`;
 					});
 				});
 			});
