@@ -1,108 +1,220 @@
-<!DOCTYPE html>
-<html lang="{{str_replace('_', '-', app()->getLocale())}}">
-	<head>
-        <meta charset="utf-8">
-        <meta name="viewport"       content="width=device-width, initial-scale=1.0">
-        <meta name="csrf-token"     content="{{csrf_token()}}">
-        <meta name="description"    content="{{ session('infoComercio.nombre') }}">
-        
-        <title>Página de pruebas</title>
+@extends("shop.layout.master")
 
-		<style>
-			body {
-				margin: 			0;
-				padding: 			0;
+@php
+    $title = "Página de pruebas";
+@endphp
 
-				min-height: 		100vh;
-				box-sizing: 		border-box;
+@section("title", $title)
 
-				display: 			flex;
-				flex-flow: 			column nowrap;
-			}
+@section("css")
+	<link rel="stylesheet"	href="{{ config('constants.framework_css') }}panel.css">
+@endsection
 
-			header {
-				background: 		orangered;
-			}
+@section("inlineCSS")
+	<style>
+		.carousel-container {
+			flex: 					1;
+			position: 				relative;
+			overflow: 				hidden;
+		}
 
-			header .header {
-				display: 			flex;
-				flex-flow: 			column nowrap;
-				gap: 				10px;
-			}
+		.pantalla {
+			position: 				absolute;
+			transition: 			all 0.5s;
+			width: 					100%;
 
-			header .logo {
-				text-transform: 	uppercase;
-			}
+		}
 
-			header nav .navbar ul {
-				margin: 			0;
-				padding: 			0;
-				list-style: 		none;
-				display: 			flex;
-				flex-flow: 			row nowrap;
-				gap: 				10px;
-			}
+		.btn {
+			position: 				absolute;
+			width: 					40px;
+			height: 				40px;
+			padding: 				10px;
+			border: 				none;
+			border-radius: 			50%;
+			z-index: 				5;
+			cursor: 				pointer;
+			background-color: 		#fff;
+			color:					black;
+			border:                 1px solid rgb(230, 230, 230);
+			font-size: 				18px;
+		}
 
-			.contenedor {
-				flex: 				1;
-				background: 		grey;
-			}
+		.btn:active {
+			transform: 				scale(1.1);
+		}
 
-			footer {
-				background: 		blueviolet;
-			}
+		.btn-prev {
+			top: 					45%;
+			left: 					2%;
+		}
 
-			footer .footer {
-				display: 			flex;
-				flex-flow: 			row nowrap;
-				justify-content: 	space-between;
-				gap: 				50px;
-			}
+		.btn-next {
+			top: 					45%;
+			right: 					2%;
+		}
+	</style>
+@endsection
 
-			.wrapper {
-				min-height: 		100vh;
-				flex: 				1;
-				display: 			flex;
-				flex-flow: 			column nowrap;
-			}
-		</style>
+@section("body")
+    <div class="main-container">
 
-	</head>
-	<body id="top">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Página de pruebas
+        </div>
 
-			<div class="wrapper">
-				<header>
-					<div class="header">
-						<div class="logo">
-							<h1>Logo</h1>
+		<!-- Pantallas -->
+		<div class="carousel-container">
+
+			<div class="pantalla pantalla1">
+			
+				<div class="panel">
+					<div class="panel-title panel-title-underlined">Pantalla 1</div>
+                    <div class="panel-content">
+						<div class="input-group">
+							<label>
+								Input 1
+								<input type="text">
+							</label>
+							<label>
+								Input 2
+								<input type="text">
+							</label>
+							<label>
+								Input 3
+								<input type="text">
+							</label>
+							<label>
+								Input 4
+								<input type="text">
+							</label>
+							<label>
+								Input 5
+								<input type="text">
+							</label>
 						</div>
-						<nav>
-							<div class="navbar">
-								<ul>
-									<li>Menu 1</li>
-									<li>Menu 2</li>
-									<li>Menu 3</li>
-									<li>Menu 4</li>
-								</ul>
-							</div>
-						</nav>
 					</div>
-				</header>
-				<div class="contenedor">
-					<p>Párrafo 1</p>
-					<p>Párrafo 2</p>
-					<p>Párrafo 3</p>
 				</div>
+
 			</div>
 
-			<!-- Footer -->
-			<footer>
-				<div class="footer">
-					<div class="footer-section">Section 1</div>
-					<div class="footer-section">Section 2</div>
-					<div class="footer-section">Section 3</div>
+			<div class="pantalla pantalla2">
+			
+				<div class="panel">
+					<div class="panel-title panel-title-underlined">Pantalla 2</div>
+                    <div class="panel-content">
+						<div class="input-group">
+							<label>
+								Input 1
+								<input type="text">
+							</label>
+							<label>
+								Input 2
+								<input type="text">
+							</label>
+							<label>
+								Input 3
+								<input type="text">
+							</label>
+						</div>
+					</div>
 				</div>
-			</footer>
 
-	</body>
-</html>
+			</div>
+			
+			<div class="pantalla pantalla3">
+			
+				<div class="panel">
+					<div class="panel-title panel-title-underlined">Pantalla 3</div>
+                    <div class="panel-content">
+						<div class="input-group">
+							<label>
+								Input 1
+								<input type="text">
+							</label>
+							<label>
+								Input 2
+								<input type="text">
+							</label>
+							<label>
+								Input 3
+								<input type="text">
+							</label>
+							<label>
+								Input 4
+								<input type="text">
+							</label>
+							<label>
+								Input 5
+								<input type="text">
+							</label>
+							<label>
+								Input 6
+								<input type="text">
+							</label>
+							<label>
+								Input 7
+								<input type="text">
+							</label>
+							<label>
+								Input 8
+								<input type="text">
+							</label>
+							<label>
+								Input 9
+								<input type="text">
+							</label>
+							<label>
+								Input 10
+								<input type="text">
+							</label>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<button class="btn btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+			<button class="btn btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+		</div>
+		<!-- /Pantallas -->
+
+    </div>
+@endsection
+
+@section("scripts")
+	<script>
+		const slides    = document.querySelectorAll(".pantalla");
+		let maxSlide    = slides.length - 1;
+		let curSlide    = 0;
+
+		const nextSlide = document.querySelector(".btn-next");
+		const prevSlide = document.querySelector(".btn-prev");
+
+		// loop through slides and set each slides translateX property to index * 100% 
+		slides.forEach((slide, indx) => {
+			slide.style.transform = `translateX(${indx * 100}%)`;
+		});
+
+		nextSlide.addEventListener("click", function ()
+		{
+			if(curSlide < maxSlide) ++curSlide;
+
+			// move slide by -100%
+			slides.forEach((slide, indx) => {
+				slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+			});
+		});
+
+		prevSlide.addEventListener("click", function ()
+		{
+			if(curSlide > 0) --curSlide;
+
+			// move slide by 100%
+			slides.forEach((slide, indx) => {
+				slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+			});
+		});
+    </script>
+@endsection
