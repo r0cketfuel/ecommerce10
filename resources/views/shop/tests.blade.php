@@ -74,8 +74,8 @@
 						</div>
 					</div>
 					<br>
-					<div class="flex">
-						<button class="btnNext">siguiente <i class="fa-solid fa-chevron-right"></i></button>
+					<div class="flex justify-end">
+						<button class="btnNext w125px">siguiente <i class="fa-solid fa-chevron-right"></i></button>
 					</div>
 				</div>
 
@@ -100,9 +100,9 @@
 						</div>
 					</div>
 					<br>
-					<div class="flex">
-						<button class="btnPrev"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
-						<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right"></i></button>
+					<div class="flex justify-between">
+						<button class="btnPrev w125px"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
+						<button class="btnNext w125px">Siguiente <i class="fa-solid fa-chevron-right"></i></button>
 					</div>
 				</div>
 			
@@ -155,9 +155,9 @@
 						</div>
 					</div>
 					<br>
-					<div class="flex">
-						<button class="btnPrev"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
-						<button class="btn-primary">Confirmar compra</button>
+					<div class="flex justify-between">
+						<button class="btnPrev w125px"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
+						<button class="btn-primary w250px">Finalizar compra</button>
 					</div>
 				</div>
 			</div>
@@ -186,6 +186,7 @@
 					// move slide by -100%
 					slides.forEach((slide, indx) => {
 						slide.style.transform = `translateX(${-100 * curSlide}%)`;
+						smoothScroll("top");
 					});
 				});
 			});
@@ -197,9 +198,17 @@
 					// move slide by 100%
 					slides.forEach((slide, indx) => {
 						slide.style.transform = `translateX(${-100 * curSlide}%)`;
+						smoothScroll("top");
 					});
 				});
 			});
+
+			function smootScroll(id)
+			{
+				let element = document.getElementById(id);
+				if(element)
+					element.scrollIntoView({block: "start", behavior: "smooth"});
+			}
 		});
     </script>
 @endsection

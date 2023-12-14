@@ -60,6 +60,14 @@
             justify-content:        space-evenly;
 }
 
+.justify-end {
+    -webkit-box-pack:               end;
+        -ms-flex-pack:              end;
+            -webkit-justify-content:end;
+               -moz-box-pack:       end;
+            justify-content:        end;
+}
+
 .align-center {
     -webkit-box-align:              center;
         -ms-flex-align:             center;
