@@ -39,7 +39,7 @@
 
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Página de pruebas
+            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > {{ $title }}
         </div>
 
 		<!-- Pantallas -->
