@@ -26,7 +26,7 @@
 		.carousel-slider {
 			display: 				flex;
 			flex-flow: 				row nowrap;
-			width: 					300%;
+			width: 					500%;
 		}
 
 		.carousel-slide {
@@ -35,24 +35,8 @@
 		}
 
 		.panel {
-			box-shadow: unset;
+			box-shadow: 			unset;
 		}
-
-        .checkout-panels {
-            display:                        flex;
-            flex-flow:                      row wrap;
-            margin:                         0 auto;
-            width:                          100%;
-            gap:                            20px;
-        }
-
-        .checkout-panels>div:nth-child(1) {
-            flex:                           9999 1;
-        }
-
-        .checkout-panels>div:nth-child(2) {
-            flex:                           1 1 250px;
-        }
 	</style>
 @endsection
 
@@ -88,6 +72,29 @@
 			
 				<div class="carousel-slide">
 					<!-- Contenido del Carousel -->
+					@include("shop.checkout.panel-medio-pago")
+					<br>
+					@include("shop.checkout.panel-medio-envio")
+					<br>
+					<div class="flex justify-between">
+						<button class="btnPrev"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
+						<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right"></i></button>
+					</div>
+				</div>
+			
+				<div class="carousel-slide">
+					<!-- Contenido del Carousel -->
+					@include("shop.checkout.3")
+					<br>
+					<div class="flex justify-between">
+						<button class="btnPrev"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
+						<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right"></i></button>
+					</div>
+				</div>
+
+				<div class="carousel-slide">
+					<!-- Contenido del Carousel -->
+					@include("shop.checkout.4")
 					<br>
 					<div class="flex justify-between">
 						<button class="btnPrev w125px"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
