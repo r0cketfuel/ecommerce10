@@ -123,7 +123,6 @@
 				button.addEventListener("click", function () {
 					if (curSlide < maxSlide) ++curSlide;
 
-					// move slide by -100%
 					slides.forEach((slide, indx) => {
 						slide.style.transform = `translateX(${-100 * curSlide}%)`;
 					});
@@ -135,7 +134,6 @@
 				button.addEventListener("click", function () {
 					if (curSlide > 0) --curSlide;
 
-					// move slide by 100%
 					slides.forEach((slide, indx) => {
 						slide.style.transform = `translateX(${-100 * curSlide}%)`;
 					});
@@ -145,7 +143,6 @@
 
 			function smootScroll(id)
 			{
-				console.log("aca");
 				let element = document.getElementById(id);
 				if(element)
 					element.scrollIntoView({block: "start", behavior: "smooth"});
