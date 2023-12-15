@@ -39,6 +39,19 @@
 			transition: 			all 0.5s ease-in-out;
 		}
 
+		.btnPrev,
+		.btnNext {
+			padding:				8px 16px;
+			border: 				1px solid rgb(200,200,200);
+			border-radius:  		4px;
+		}
+
+		.btnPrev:hover,
+		.btnNext:hover {
+			cursor: 				pointer;
+			background-color: 		rgba(0, 0, 0, 0.05);
+		}
+
 		.panel {
 			box-shadow: 			unset;
 		}
@@ -112,12 +125,12 @@
 @section("scripts")
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
-			const slides = document.querySelectorAll(".carousel-slide");
-			const maxSlide = slides.length - 1;
-			let curSlide = 0;
-
-			const nextButtons = document.querySelectorAll(".btnNext");
-			const prevButtons = document.querySelectorAll(".btnPrev");
+			const slides 		= document.querySelectorAll(".carousel-slide");
+			const nextButtons 	= document.querySelectorAll(".btnNext");
+			const prevButtons 	= document.querySelectorAll(".btnPrev");
+			
+			let curSlide 		= 0;
+			const maxSlide 		= slides.length - 1;
 
 			nextButtons.forEach(button => {
 				button.addEventListener("click", function () {
@@ -147,6 +160,79 @@
 				if(element)
 					element.scrollIntoView({block: "start", behavior: "smooth"});
 			}
+
+			const radiosMedioPago   = document.querySelectorAll('input[name="radio_medioPago"]');
+                const radiosMedioEnvio  = document.querySelectorAll("input[type='radio'][name='radio_medioEnvio']");
+                
+                const panelEnvios       = document.getElementById('shipmentPanel');
+                const dataFields        = document.getElementById("shipmentData");
+
+                radiosMedioPago.forEach(function (radio) {
+                    radio.addEventListener("change", function () { handleMediosPago(this); return false });
+                });
+
+                radiosMedioEnvio.forEach(function (radio) {
+                    radio.addEventListener("change", function () { handleMediosEnvio(this); return false });
+                });
+
+                medioPagoSeleccionado();
+
+                function handleMediosPago(radio)
+                {
+                    if(radio.value !== '1')
+                    {
+                        mostrarPanelEnvio();
+                    }
+                    else
+                    {
+                        restablecerMedioEnvio();
+                        ocultarPanelEnvio();
+                    }
+                }
+
+                function handleMediosEnvio(radio)
+                {
+                    if(radio.value === '1')
+                    {
+                        ocultarCamposEnvio();
+                    }
+                    else
+                    {
+                        mostrarCamposEnvio();
+                    }
+                }
+
+                function mostrarPanelEnvio() {
+                    panelEnvios.style.display = 'flex'
+                }
+
+                function ocultarPanelEnvio() {
+                    panelEnvios.style.display = 'none';
+                }
+
+                function mostrarCamposEnvio() {
+                    dataFields.style.display = "block";
+                }
+
+                function ocultarCamposEnvio() {
+                    dataFields.style.display = "none";
+                }
+
+                function medioPagoSeleccionado()
+                {
+                    const medio = document.querySelector('input[name="radio_medioPago"]:checked');
+                    handleMediosPago(medio);
+                }
+
+                function restablecerMedioEnvio()
+                {
+                    const primerMedioEnvio = document.querySelector("input[type='radio'][name='radio_medioEnvio']:first-child");
+                    if (primerMedioEnvio)
+                    {
+                        primerMedioEnvio.checked = true;
+                        ocultarCamposEnvio();
+                    }
+                }
 		});
     </script>
 @endsection
