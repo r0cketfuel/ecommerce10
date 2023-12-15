@@ -31,7 +31,7 @@
 		.carousel-slider {
 			display: 				flex;
 			flex-flow: 				row nowrap;
-			width: 					500%;
+			width: 					600%;
 		}
 
 		.carousel-slide {
@@ -66,6 +66,7 @@
 		<div class="carousel-container">
 			<div class="carousel-slider">
 				
+				<!-- Pantalla 1 -->
 				<div class="carousel-slide">
 					<div class="flex justify-end">
 						<a class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></a>
@@ -75,6 +76,7 @@
 					@include("shop.checkout.1")
 				</div>
 
+				<!-- Pantalla 2 -->
 				<div class="carousel-slide">
 					<div class="flex justify-between">
 						<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
@@ -85,6 +87,7 @@
 					@include("shop.checkout.2")
 				</div>
 			
+				<!-- Pantalla 3 -->
 				<div class="carousel-slide">
 					<div class="flex justify-between">
 						<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
@@ -93,10 +96,20 @@
 					<br>
 					<!-- Contenido del Carousel -->
 					@include("shop.checkout.panel-medio-pago")
+				</div>
+
+				<!-- Pantalla 4 -->
+				<div class="carousel-slide">
+					<div class="flex justify-between">
+						<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+						<a class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></a>
+					</div>
 					<br>
+					<!-- Contenido del Carousel -->
 					@include("shop.checkout.panel-medio-envio")
 				</div>
-			
+
+				<!-- Pantalla 5 -->
 				<div class="carousel-slide">
 					<div class="flex justify-between">
 						<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
@@ -107,6 +120,7 @@
 					@include("shop.checkout.3")
 				</div>
 
+				<!-- Pantalla 6 -->
 				<div class="carousel-slide">
 					<div class="flex justify-start">
 						<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
@@ -162,77 +176,79 @@
 			}
 
 			const radiosMedioPago   = document.querySelectorAll('input[name="radio_medioPago"]');
-                const radiosMedioEnvio  = document.querySelectorAll("input[type='radio'][name='radio_medioEnvio']");
-                
-                const panelEnvios       = document.getElementById('shipmentPanel');
-                const dataFields        = document.getElementById("shipmentData");
+			const radiosMedioEnvio  = document.querySelectorAll("input[type='radio'][name='radio_medioEnvio']");
+			
+			const panelEnvios       = document.getElementById('shipmentPanel');
+			const dataFields        = document.getElementById("shipmentData");
 
-                radiosMedioPago.forEach(function (radio) {
-                    radio.addEventListener("change", function () { handleMediosPago(this); return false });
-                });
+			radiosMedioPago.forEach(function (radio) {
+				radio.addEventListener("change", function () { handleMediosPago(this); return false });
+			});
 
-                radiosMedioEnvio.forEach(function (radio) {
-                    radio.addEventListener("change", function () { handleMediosEnvio(this); return false });
-                });
+			radiosMedioEnvio.forEach(function (radio) {
+				radio.addEventListener("change", function () { handleMediosEnvio(this); return false });
+			});
 
-                medioPagoSeleccionado();
+			medioPagoSeleccionado();
 
-                function handleMediosPago(radio)
-                {
-                    if(radio.value !== '1')
-                    {
-                        mostrarPanelEnvio();
-                    }
-                    else
-                    {
-                        restablecerMedioEnvio();
-                        ocultarPanelEnvio();
-                    }
-                }
+			function handleMediosPago(radio)
+			{
+				if(radio.value !== '1')
+				{
+					habilitaEnvio();
+				}
+				else
+				{
+					restablecerMedioEnvio();
+					deshabilitaEnvio();
+				}
 
-                function handleMediosEnvio(radio)
-                {
-                    if(radio.value === '1')
-                    {
-                        ocultarCamposEnvio();
-                    }
-                    else
-                    {
-                        mostrarCamposEnvio();
-                    }
-                }
+				
+			}
 
-                function mostrarPanelEnvio() {
-                    panelEnvios.style.display = 'flex'
-                }
+			function handleMediosEnvio(radio)
+			{
+				if(radio.value === '1')
+				{
+					ocultarCamposEnvio();
+				}
+				else
+				{
+					mostrarCamposEnvio();
+				}
+			}
 
-                function ocultarPanelEnvio() {
-                    panelEnvios.style.display = 'none';
-                }
+			function habilitaEnvio() {
+				
+			}
 
-                function mostrarCamposEnvio() {
-                    dataFields.style.display = "block";
-                }
+			function deshabilitaEnvio() {
 
-                function ocultarCamposEnvio() {
-                    dataFields.style.display = "none";
-                }
+			}
 
-                function medioPagoSeleccionado()
-                {
-                    const medio = document.querySelector('input[name="radio_medioPago"]:checked');
-                    handleMediosPago(medio);
-                }
+			function mostrarCamposEnvio() {
+				dataFields.style.display = "block";
+			}
 
-                function restablecerMedioEnvio()
-                {
-                    const primerMedioEnvio = document.querySelector("input[type='radio'][name='radio_medioEnvio']:first-child");
-                    if (primerMedioEnvio)
-                    {
-                        primerMedioEnvio.checked = true;
-                        ocultarCamposEnvio();
-                    }
-                }
+			function ocultarCamposEnvio() {
+				dataFields.style.display = "none";
+			}
+
+			function medioPagoSeleccionado()
+			{
+				const medio = document.querySelector('input[name="radio_medioPago"]:checked');
+				handleMediosPago(medio);
+			}
+
+			function restablecerMedioEnvio()
+			{
+				const primerMedioEnvio = document.querySelector("input[type='radio'][name='radio_medioEnvio']:first-child");
+				if (primerMedioEnvio)
+				{
+					primerMedioEnvio.checked = true;
+					ocultarCamposEnvio();
+				}
+			}
 		});
     </script>
 @endsection

@@ -1,5 +1,5 @@
 <div class="panel" id="shipmentPanel">
-    <div class="panel-title panel-title-underlined">Necesitas envío?</div>
+    <div class="panel-title panel-title-underlined">Envio</div>
     <div class="panel-content">
         <div class="input-group">
             @foreach($mediosEnvioListado as $envio)
@@ -15,7 +15,7 @@
         </div>
 
         <!-- Datos envío -->
-        <div id="shipmentData" style="display: none;">
+        <div id="shipmentData">
             <br>
             <div class="input-group">
                 <label>

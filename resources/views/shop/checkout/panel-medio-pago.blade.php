@@ -1,5 +1,5 @@
 <div class="panel">
-    <div class="panel-title panel-title-underlined">Cómo vas a abonar tu compra?</div>
+    <div class="panel-title panel-title-underlined">Forma de pago</div>
     <div class="panel-content">
         <div class="input-group">
             @foreach($mediosPagoListado as $medio)
