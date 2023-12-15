@@ -1,10 +1,15 @@
 @extends("shop.layout.master")
 
 @php
-    $title = "$item->nombre";
+    $title = "Detalles del producto";
 @endphp
 
 @section("title", $title)
+
+@php
+    $breadcrumbs = [
+    ];
+@endphp
 
 @section("css")
     <link rel="stylesheet"	href="{{ config('constants.shop_css') }}carousel.css">
@@ -35,11 +40,7 @@
     @endauth
 
     <div class="main-container">
-
-        <!-- Breadcrumb -->
-        <div class="breadcrumb">
-            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Detalle item
-        </div>
+        @include("shop.layout.breadcrumb")
 
         <!-- Grid -->
         <div class="grid grid-cols-12 grid-align-start">

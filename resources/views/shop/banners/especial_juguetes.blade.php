@@ -1,6 +1,16 @@
 @extends("shop.layout.master")
 
-@section("title","Especial Juguetes")
+@php
+    $title = "Especial juguetes";
+@endphp
+
+@section("title", $title)
+
+@php
+    $breadcrumbs = [
+    ];
+@endphp
+
 
 @section("css")
 @endsection
@@ -9,10 +19,7 @@
 @endsection
 
 @section("body")
-
-    <!-- Contenido de la página -->
     <div class="main-container">
-
+        @include("shop.layout.breadcrumb")
     </div>
-
 @endsection

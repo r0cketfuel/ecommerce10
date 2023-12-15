@@ -6,6 +6,11 @@
 
 @section("title", $title)
 
+@php
+    $breadcrumbs = [
+    ];
+@endphp
+
 @section("css")
 	<link rel="stylesheet"	href="{{ config('constants.shop_css') }}productCards.css">
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}panel.css">
@@ -42,64 +47,60 @@
 
 @section("body")
     <div class="main-container">
-
-        <!-- Breadcrumb -->
-        <div class="breadcrumb">
-            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > {{ $title }}
-        </div>
+		@include("shop.layout.breadcrumb")
 
 		<!-- Pantallas -->
 		<div class="carousel-container">
 			<div class="carousel-slider">
+				
 				<div class="carousel-slide">
+					<div class="flex justify-end">
+						<a class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></a>
+					</div>
+					<br>
 					<!-- Contenido del Carousel -->
 					@include("shop.checkout.1")
-					<br>
-					<div class="flex justify-end">
-						<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right"></i></button>
-					</div>
 				</div>
 
 				<div class="carousel-slide">
+					<div class="flex justify-between">
+						<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+						<a class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></a>
+					</div>
+					<br>
 					<!-- Contenido del Carousel -->
 					@include("shop.checkout.2")
-					<br>
-					<div class="flex justify-between">
-						<button class="btnPrev"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
-						<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right"></i></button>
-					</div>
 				</div>
 			
 				<div class="carousel-slide">
+					<div class="flex justify-between">
+						<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+						<a class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></a>
+					</div>
+					<br>
 					<!-- Contenido del Carousel -->
 					@include("shop.checkout.panel-medio-pago")
 					<br>
 					@include("shop.checkout.panel-medio-envio")
-					<br>
-					<div class="flex justify-between">
-						<button class="btnPrev"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
-						<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right"></i></button>
-					</div>
 				</div>
 			
 				<div class="carousel-slide">
+					<div class="flex justify-between">
+						<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+						<a class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></a>
+					</div>
+					<br>
 					<!-- Contenido del Carousel -->
 					@include("shop.checkout.3")
-					<br>
-					<div class="flex justify-between">
-						<button class="btnPrev"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
-						<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right"></i></button>
-					</div>
 				</div>
 
 				<div class="carousel-slide">
+					<div class="flex justify-start">
+						<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+					</div>
+					<br>
 					<!-- Contenido del Carousel -->
 					@include("shop.checkout.4")
-					<br>
-					<div class="flex justify-between">
-						<button class="btnPrev w125px"><i class="fa-solid fa-chevron-left"></i> Anterior</button>
-						<button class="btn-primary w250px">Finalizar compra</button>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -125,8 +126,8 @@
 					// move slide by -100%
 					slides.forEach((slide, indx) => {
 						slide.style.transform = `translateX(${-100 * curSlide}%)`;
-						smoothScroll("top");
 					});
+					smoothScroll("top");
 				});
 			});
 
@@ -137,13 +138,14 @@
 					// move slide by 100%
 					slides.forEach((slide, indx) => {
 						slide.style.transform = `translateX(${-100 * curSlide}%)`;
-						smoothScroll("top");
 					});
+					smoothScroll("top");
 				});
 			});
 
 			function smootScroll(id)
 			{
+				console.log("aca");
 				let element = document.getElementById(id);
 				if(element)
 					element.scrollIntoView({block: "start", behavior: "smooth"});
