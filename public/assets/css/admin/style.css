@@ -8,8 +8,6 @@
 
 @import url("navbar.css");
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 :root {
     --containers-max-width:     	1680px;
     --containers-side-padding:		10px;

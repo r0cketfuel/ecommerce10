@@ -8,7 +8,10 @@
 
         <title>@yield("title") - {{session("infoComercio.nombre")}}</title>
 
-        <!-- Hojas de estilo -->
+        <!-- Font -->
+        <link rel="stylesheet"	href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+
+        <!-- Estilos -->
         <link rel="stylesheet"	href="{{config('constants.admin_css')}}style.css">
         <link rel="stylesheet"	href="{{config('constants.framework_css')}}alert.css">
         @yield("css")
