@@ -8,14 +8,19 @@
         
         <title>@yield("title") - {{session("infoComercio.nombre")}}</title>
 
-        <!-- Hojas de estilo -->
+        <!-- Font -->
+        <!-- <link rel="stylesheet"	href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"> -->
+
+        <!-- Estilos -->
         <link rel="stylesheet"	href="{{ config('constants.shop_css') }}style.css">
         <link rel="stylesheet"	href="{{ config('constants.shop_css') }}login.css">
         <link rel="stylesheet"	href="{{ config('constants.framework_css') }}modal.css">
+        
+        
         @yield("css")
 
         <!-- Font awesome -->
-		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+		<!-- <link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
         
         <!-- Scripts -->
         <script defer src="{{config('constants.framework_js')}}scroll.js"></script>

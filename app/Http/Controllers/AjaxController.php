@@ -46,13 +46,13 @@ class AjaxController extends Controller
         //============================================//
         // Método que actualiza el carrito de compras //
         //============================================//
-
+        
         if($request->filled("id") && $request->filled("cantidad"))
         {
             $id         = json_decode($request->input("id"),true);
             $cantidad   = json_decode($request->input("cantidad"),true);
             $opciones   = json_decode($request->input("opciones"),true);
-    
+
             echo json_encode($shoppingCartService->updateCart($id, $cantidad, $opciones));
         }
         else

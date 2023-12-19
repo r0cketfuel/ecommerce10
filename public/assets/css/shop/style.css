@@ -11,8 +11,6 @@
 @import url("navbar.css");
 @import url("footers.css");
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 :root {
     --containers-max-width:     	1366px;
     --containers-side-padding:		20px;
@@ -24,7 +22,7 @@
 }
 
 html {
-    background-color:				(240,240,240);
+    background-color:				(240, 240, 240);
 }
 
 body {
