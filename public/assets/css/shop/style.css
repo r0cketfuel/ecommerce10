@@ -7,9 +7,12 @@
 @import url("../framework/breadcrumb.css");
 @import url("../framework/whatsappBubble.css");
 
+@import url("../fonts.css");
+
 @import url("headers.css");
 @import url("navbar.css");
 @import url("footers.css");
+
 
 :root {
     --containers-max-width:     	1366px;
