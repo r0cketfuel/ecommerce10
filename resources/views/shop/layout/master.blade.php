@@ -9,7 +9,7 @@
         <title>@yield("title") - {{session("infoComercio.nombre")}}</title>
 
         <!-- Font -->
-        <link rel="stylesheet"	href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+        <!-- <link rel="stylesheet"	href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"> -->
 
         <!-- Estilos -->
         <link rel="stylesheet"	href="{{ config('constants.shop_css') }}style.css">
@@ -19,7 +19,7 @@
         @yield("css")
 
         <!-- Font awesome -->
-		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+		<!-- <link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
         
         <!-- Scripts -->
         <script defer src="{{config('constants.framework_js')}}scroll.js"></script>
@@ -28,18 +28,55 @@
         
         <style>
             .wrapper {
-				min-height: 		100vh;
-				flex: 				1;
-				display: 			flex;
-				flex-flow: 			column nowrap;
+				min-height: 		    100vh;
+				flex: 				    1;
+				display: 			    flex;
+				flex-flow: 			    column nowrap;
+                opacity: 			    0;
 			}
+
+            #loader {
+                position:               absolute;
+                height:                 100vh;
+                width:                  100%;
+                top:                    50%;
+                left:                   50%;
+                -webkit-transform:      translate(-50%, -50%);
+                    -ms-transform:      translate(-50%, -50%);
+                        transform:      translate(-50%, -50%);
+                
+                display:                flex;
+                justify-content:        center;
+                align-items:            center;
+            }
+
+            .loader {
+                width: 					120px;
+                height: 				120px;
+                border: 				10px solid rgb(50,50,50);
+                border-bottom-color: 	transparent;
+                border-radius: 			50%;
+                display: 				block;
+                box-sizing: 			border-box;
+                animation: 				rotation 1s linear infinite;
+            }
+
+            @keyframes rotation {
+                0% {transform: rotate(0deg);} 100% {transform: rotate(360deg);}
+            } 
 		</style>
 
         @yield("inlineCSS")
 	</head>
 	<body id="top">
 
-        <div class="wrapper">
+        <!-- Loader -->
+        <div id="loader">
+            <span class="loader"></span>
+        </div>
+
+        <!-- Wrapper -->
+        <div class="wrapper" id="wrapper">
             @guest
                 @include("shop.modals.login")
             @endguest
@@ -68,5 +105,19 @@
                 });
             </script>
         @endguest
+
+        <script>
+            window.addEventListener("load", function () {
+
+            const wrapper   = document.getElementById("wrapper");
+            const loader    = document.getElementById("loader");
+
+            wrapper.style.transition    = "opacity 0.5s";
+            wrapper.style.opacity       = 1;
+
+            loader.style.display        = "none"
+
+            });
+        </script>
 	</body>
 </html>
