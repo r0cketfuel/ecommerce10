@@ -20,16 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
 //======================//
 function sidebarOpenClose() {
     let navLinks = document.querySelector(".nav-links");
-    navLinks.style.left = navLinks.style.left === "0" ? "-100%" : "0";
 
     let menuOpenBtn     = document.getElementsByClassName("font-awesome-icon-bars")[0];
     let menuCloseBtn    = document.getElementsByClassName("font-awesome-icon-close")[0];
 
     menuOpenBtn.onclick = function () {
-        navLinks.style.left = "0";
+        document.getElementById("top").style.overflowY = "hidden";
+		navLinks.style.left = "0";
     }
 
     menuCloseBtn.onclick = function () {
+		document.getElementById("top").style.overflowY = "scroll";
         navLinks.style.left = "-100%";
     }
 }
