@@ -1,7 +1,11 @@
 <header>
     <div class="top-header">
         <div class="top-header-container">
-            <marquee>{{ session("marquesinas") }}</marquee>
+            <marquee>
+                @foreach (session("shop.marquesinas") as $marquesina)
+                    {{ $marquesina->mensaje }}
+                @endforeach
+            </marquee>
             <ul>
                 <li>
                     @auth

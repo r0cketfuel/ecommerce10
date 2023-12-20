@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\InfoComercio;
 use App\Models\Sucursal;
 use App\Models\Visita;
+use App\Models\Marquesina;
 
 class LoadInfoComercio
 {
@@ -24,7 +25,9 @@ class LoadInfoComercio
             Session::put("infoComercio",            InfoComercio::first()->toArray());
             Session::put("infoComercio.sucursales", Sucursal::all()->toArray());
 
-            Session::put("shop.newsletter", array());
+            Session::put("shop.marquesinas",        Marquesina::vigentes());
+
+            Session::put("shop.newsletter",         array());
 
             $this->registrarVisita($request);
         }

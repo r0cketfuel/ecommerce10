@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('mensaje', 50);
             $table->dateTime('valido_desde');
             $table->dateTime('valido_hasta');
+            $table->datetime('creado');
+            $table->datetime('actualizado')->nullable();
+            $table->datetime('eliminado')->nullable();
             $table->comment('Tabla con las marquesinas que se muestran en el top header');
         });
     }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Marquesina;
 use App\Models\Newsletter;
 use Illuminate\Database\Seeder;
 
@@ -41,6 +42,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FavoritoSeeder::class);
         $this->call(FacturaEstadoSeeder::class);
         $this->call(MercadopagoSeeder::class);
+        $this->call(MarquesinaSeeder::class);
         $this->call(BannerSeeder::class);
         $this->call(OrdenEstadoSeeder::class);
     }
