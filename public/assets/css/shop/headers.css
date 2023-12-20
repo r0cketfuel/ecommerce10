@@ -64,31 +64,26 @@ header li {
     padding-top:                    10px;
 }
 
-.main-header h1, .main-header h2
-{
+.main-header h1, .main-header h2 {
 	margin: 						0 0 0 10px;
     white-space:                    nowrap;
 }
 
-.main-header h1
-{
+.main-header h1 {
 	font-size: 						30px;
 	font-weight:					bold;
 }
 
-.main-header h2
-{
+.main-header h2 {
 	font-weight:					normal;
 	font-size: 						12px;
 }
 
-.main-header a:link, .main-header a:visited, .main-header a:active
-{
+.main-header a:link, .main-header a:visited, .main-header a:active {
 	color:							var(--main-header-color);	
 }
 
-.main-header .search-bar
-{
+.main-header .search-bar {
     display:                        flex;
     flex-flow:                      row nowrap;
     width: 							100%;
@@ -100,15 +95,13 @@ header li {
 	width: 							100%;
 }
 
-.main-header .main-header-top .iconos
-{
+.main-header .main-header-top .iconos {
 	display: 						flex;
 	flex-flow: 						row nowrap;
 	gap:							10px;
 }
 
-.tickets-container-icon, .wishlist-container-icon, .shopping-cart-container-icon
-{
+.tickets-container-icon, .wishlist-container-icon, .shopping-cart-container-icon {
 	position:						relative;
 	width:							50px;
 	display:						flex;
@@ -118,13 +111,11 @@ header li {
 	font-size: 						clamp(16px,3vw,18px);
 }
 
-.shopping-cart-container-label
-{
+.shopping-cart-container-label {
 	font-size: 						11px;
 }
 
-.qty
-{
+.qty {
 	position: 						absolute;
 	display: 						flex;
 	justify-content:				center;
@@ -170,8 +161,8 @@ header li {
 @media (max-width:768px)
 {
 	.main-header-top {
-		flex-direction: column;
-		gap: 25px;
+		flex-direction: 			column;
+		gap: 						25px;
 	}
 
 	.main-header h1, .main-header h2 {
