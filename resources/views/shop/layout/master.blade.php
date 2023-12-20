@@ -48,9 +48,9 @@
             }
 
             .loader {
-                width: 					120px;
-                height: 				120px;
-                border: 				10px solid rgb(50,50,50);
+                width: 					60px;
+                height: 				60px;
+                border: 				5px solid rgb(50,50,50);
                 border-bottom-color: 	transparent;
                 border-radius: 			50%;
                 display: 				block;
