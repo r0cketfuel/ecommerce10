@@ -168,4 +168,8 @@ header li {
 	.main-header h1, .main-header h2 {
 		display: 					none;
 	}
+
+	.main-header .search-bar {
+		display: 					none;
+	}
 }
