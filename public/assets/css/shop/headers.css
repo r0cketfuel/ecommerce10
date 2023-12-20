@@ -57,7 +57,7 @@ header li {
     display:                        flex;
     gap:                            100px;
     box-sizing:                     border-box;
-    padding-top:                    10px;
+    padding-top:                    20px;
 }
 
 .main-header-bottom {
@@ -158,11 +158,11 @@ header li {
 	}
 }
 
-@media (max-width:768px)
+@media (max-width: 768px)
 {
 	.main-header-top {
 		flex-direction: 			column;
-		gap: 						25px;
+		gap: 						unset;
 	}
 
 	.main-header h1, .main-header h2 {
