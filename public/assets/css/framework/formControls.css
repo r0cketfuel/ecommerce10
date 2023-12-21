@@ -220,16 +220,16 @@ select.attribute {
 /* BOTONES GENERICOS */
 /*===================*/
 button {
+    user-select:                    none;
 	height: 						var(--controls-height);
 	width: 							100%;
 	cursor: 						pointer;
 	-webkit-box-sizing: 			border-box;
             box-sizing: 			border-box;
-	font-size: 						13px;
 	text-transform: 				uppercase;
 	border: 						1px solid #6c757d;
-	background-color: 				#6c757d;
-	color: 							white;
+	background:                     none;
+	color: 							black;
 	border-radius: 					4px;
 	outline: 						none;
     padding:                        0;

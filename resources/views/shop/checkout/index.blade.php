@@ -44,6 +44,7 @@
 			padding:				8px 16px;
 			border: 				1px solid rgb(200,200,200);
 			border-radius:  		4px;
+			width:					unset;
 		}
 
 		.btnPrev:hover,
@@ -69,7 +70,7 @@
 					<!-- Pantalla 1 -->
 					<div class="carousel-slide">
 						<div class="flex justify-end">
-							<a class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></a>
+							<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
 						</div>
 						<br>
 						<!-- Contenido del Carousel -->
@@ -79,8 +80,8 @@
 					<!-- Pantalla 2 -->
 					<div class="carousel-slide">
 						<div class="flex justify-between">
-							<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
-							<a class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></a>
+							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+							<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
 						</div>
 						<br>
 						<!-- Contenido del Carousel -->
@@ -90,8 +91,8 @@
 					<!-- Pantalla 3 -->
 					<div class="carousel-slide">
 						<div class="flex justify-between">
-							<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
-							<a class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></a>
+							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+							<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
 						</div>
 						<br>
 						<!-- Contenido del Carousel -->
@@ -101,8 +102,8 @@
 					<!-- Pantalla 4 -->
 					<div class="carousel-slide">
 						<div class="flex justify-between">
-							<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
-							<a class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></a>
+							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+							<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
 						</div>
 						<br>
 						<!-- Contenido del Carousel -->
@@ -112,8 +113,8 @@
 					<!-- Pantalla 5 -->
 					<div class="carousel-slide">
 						<div class="flex justify-between">
-							<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
-							<a class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></a>
+							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+							<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
 						</div>
 						<br>
 						<!-- Contenido del Carousel -->
@@ -123,7 +124,7 @@
 					<!-- Pantalla 6 -->
 					<div class="carousel-slide">
 						<div class="flex justify-start">
-							<a class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
 						</div>
 						<br>
 						<!-- Contenido del Carousel -->

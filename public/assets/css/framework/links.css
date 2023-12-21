@@ -21,6 +21,7 @@ a:active {
 }
 
 a.btn-link {
+    user-select:            none;
 	height: 				var(--controls-height);
 	width: 					100%;
 	cursor: 				pointer;
