@@ -13,11 +13,11 @@
                 <div class="input-group">
                     <label>
                         Usuario o email
-                        <input form="form-login" type="text" name="username" required maxlength="16">
+                        <input form="form-login" type="text" name="username" required maxlength="16" autocomplete="off">
                     </label>
                     <label>
                         Password
-                        <input form="form-login" type="password" name="password" required maxlength="16">
+                        <input form="form-login" type="password" name="password" required maxlength="16" autocomplete="off">
                     </label>
                     <div class="radio-fix">
                         <input form="form-login" type="checkbox" id="check_remember" name="check_remember">
