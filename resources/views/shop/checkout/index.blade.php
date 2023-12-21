@@ -80,7 +80,7 @@
 					<!-- Pantalla 2 -->
 					<div class="carousel-slide">
 						<div class="flex justify-between">
-							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</button>
 							<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
 						</div>
 						<br>
@@ -91,7 +91,7 @@
 					<!-- Pantalla 3 -->
 					<div class="carousel-slide">
 						<div class="flex justify-between">
-							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</button>
 							<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
 						</div>
 						<br>
@@ -102,7 +102,7 @@
 					<!-- Pantalla 4 -->
 					<div class="carousel-slide">
 						<div class="flex justify-between">
-							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</button>
 							<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
 						</div>
 						<br>
@@ -113,7 +113,7 @@
 					<!-- Pantalla 5 -->
 					<div class="carousel-slide">
 						<div class="flex justify-between">
-							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</button>
 							<button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
 						</div>
 						<br>
@@ -124,7 +124,7 @@
 					<!-- Pantalla 6 -->
 					<div class="carousel-slide">
 						<div class="flex justify-start">
-							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</a>
+							<button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</button>
 						</div>
 						<br>
 						<!-- Contenido del Carousel -->
