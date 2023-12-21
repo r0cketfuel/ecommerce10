@@ -6,6 +6,11 @@
 
 @section("title", $title)
 
+@php
+    $breadcrumbs = [
+    ];
+@endphp
+
 @section("css")
     <link rel="stylesheet"	href="{{ config('constants.shop_css') }}productCards.css">
 @endsection
@@ -18,11 +23,7 @@
 
     <!-- Contenido de la página -->
     <div class="main-container">
-
-        <!-- Breadcrumb -->
-        <div class="breadcrumb">
-            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Favoritos
-        </div>
+        @include("shop.layout.breadcrumb")
 
         @if($favoritosItemQty)
             <ul class="favourites-list">

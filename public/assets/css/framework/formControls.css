@@ -242,21 +242,25 @@ button {
 button.btn-primary {
 	border: 						1px solid #007bff;
 	background-color: 				#007bff;
+    color:                          white;
 }
 
 button.btn-secondary {
 	border: 						1px solid #6c757d;
 	background-color: 				#6c757d;
+    color:                          white;
 }
 
 button.btn-success {
 	border: 						1px solid #28a745;
 	background-color: 				#28a745;
+    color:                          white;
 }
 
 button.btn-danger {
 	border: 						1px solid #dc3545;
 	background-color: 				#dc3545;
+    color:                          white;
 }
 
 /* MARGEN BOTONES CON FONTAWESOME */
