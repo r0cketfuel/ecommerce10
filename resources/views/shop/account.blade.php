@@ -6,6 +6,11 @@
 
 @section("title", $title)
 
+@php
+    $breadcrumbs = [
+    ];
+@endphp
+
 @section("css")
     <link rel="stylesheet"	href="{{  config('constants.framework_css') }}alert.css">
     <link rel="stylesheet"	href="{{  config('constants.framework_css') }}accordion.css">
@@ -42,11 +47,7 @@
 
     <!-- Contenido de la página -->
     <div class="main-container">
-
-        <!-- Breadcrumb -->
-        <div class="breadcrumb">
-            <a href="/shop"><i class="fa-solid fa-house-chimney fa-sm"></i> Home</a> > Mi cuenta
-        </div>
+        @include("shop.layout.breadcrumb")
 
         <div class="flex-col gap1" style="max-width: 700px">
             <div class="accordion">
