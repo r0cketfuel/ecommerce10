@@ -19,6 +19,7 @@ Route::controller(ShopController::class)->group(function () {
     Route::get('banners/{banner}',  	'banners');
     Route::get('login',             	'login')->name('user.login');
     Route::get('register',          	'register');
+    Route::get('register2',          	'register2');
     Route::get('recovery',          	'recovery');
     Route::get('infopago/{id}',     	'infoPago');
     Route::get('logout',				'logout');

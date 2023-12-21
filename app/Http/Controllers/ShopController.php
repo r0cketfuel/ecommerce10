@@ -203,6 +203,18 @@ class ShopController extends Controller
     
         return view("shop.register", compact("generos", "tiposDocumentos"));
     }
+
+    public function register2()
+    {
+        // Usuario autenticado, redirigir a la página de inicio
+        if(Auth::check())
+            return redirect("/shop");
+
+        $generos            = Genero::all();
+        $tiposDocumentos    = TipoDocumento::all();
+    
+        return view("shop.register2", compact("generos", "tiposDocumentos"));
+    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function recovery()
     {
