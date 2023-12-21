@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\SubcategoriaController;
 use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\Admin\OrdenController;
 use App\Http\Controllers\Admin\SucursalController;
-
+use App\Http\Controllers\Admin\MarquesinaController;
 
 //===================================//
 // Rutas del panel de administración //
@@ -37,5 +37,6 @@ Route::controller(AdminController::class)->group(function () {
         Route::resource('usuarios',         UsuarioController::class);
         Route::resource('ordenes',          OrdenController::class);
         Route::resource('sucursales',       SucursalController::class);
+        Route::resource('marquesinas',      MarquesinaController::class);
     });
 });

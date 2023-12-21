@@ -57,6 +57,16 @@
 
                         <li class="more">
                             <div>
+                                <div class="submenu-link">Marquesinas</div>
+                                <i class="fa-solid fa-caret-right more-arrow arrow"></i>
+                            </div>
+                            <ul class="more-sub-menu sub-menu">
+                                <li><a href="/admin/marquesinas/">Listado</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="more">
+                            <div>
                                 <div class="submenu-link">Categorías</div>
                                 <i class="fa-solid fa-caret-right more-arrow arrow"></i>
                             </div>
