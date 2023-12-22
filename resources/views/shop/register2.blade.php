@@ -18,7 +18,6 @@
 @endsection
 
 @section("js")
-    <script defer src="{{  config('constants.framework_js') }}formError.js"></script>
     <script defer src="{{  config('constants.framework_js') }}alert.js"></script>
 @endsection
 
@@ -85,7 +84,7 @@
 
                             <label>
                                 Password
-                                <input  form="form" type="password" id="password" name="password" value="{{  old('password_repeat') }}" {{ ($errors->first("password") ? " class=form-error" : "") }}>
+                                <input  form="form" type="password" id="password" name="password" value="{{  old('password') }}" {{ ($errors->first("password") ? " class=form-error" : "") }}>
                                 {!! $errors->first("password", "<p class='field-validation-msg'>:message</p>") !!}
                             </label>
 
@@ -307,13 +306,25 @@
                     element.scrollIntoView({ block: "start", behavior: "smooth" });
             }
 
-            document.getElementById('form').addEventListener('invalid', function (e) {
-                e.preventDefault();
-                window.scrollTo(0, 0);
-                console.log("aca");
-            }, true);
+            const errorFields = document.querySelectorAll(".form-error");
 
+            errorFields.forEach(errorField => {
+                errorField.addEventListener("input", function () {
+                    errorField.classList.remove("form-error");
+                    const errorMessage = errorField.closest(".panel").querySelector(".field-validation-msg");
+                    if (errorMessage) {
+                        errorMessage.remove();
+                    }
+                });
+            });
+
+            if (errorFields.length > 0) {
+                const elementLabel = errorFields[0].closest(".panel");
+                setTimeout(function() { 
+                    smoothScroll(elementLabel);
+                }, 1000);
+                errorFields[0].focus();
+            }
         });
     </script>
-
 @endsection

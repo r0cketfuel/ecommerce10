@@ -48,7 +48,8 @@ Route::controller(MailController::class)->group(function () {
 Route::controller(UsuarioController::class)->group(function () {
     Route::post('login',                'login')->name('login.user');
     Route::post('login/guest',          'loginGuest')->name('login.guest');
-    Route::post('register',             'register');
+    Route::post('register',          	'register');
+    Route::post('register2',          	'register');
     Route::post('recovery',             'recovery');
 });
 
