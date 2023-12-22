@@ -40,13 +40,6 @@ class Usuario extends Authenticatable implements MustVerifyEmail
         'cuil',
         'fecha_nacimiento',
         'genero_id',
-        'domicilio',
-        'domicilio_nro',
-        'domicilio_piso',
-        'domicilio_depto',
-        'domicilio_aclaraciones',
-        'localidad',
-        'codigo_postal',
         'telefono_fijo',
         'telefono_celular',
         'telefono_alt',
@@ -87,6 +80,11 @@ class Usuario extends Authenticatable implements MustVerifyEmail
     public function genero()
     {
         return($this->belongsTo(Genero::class));
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function domicilios()
+    {
+        return($this->hasMany(UsuarioDomicilio::class));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     protected function username(): Attribute

@@ -25,13 +25,6 @@ return new class extends Migration
             $table->date('fecha_nacimiento');
             $table->unsignedTinyInteger('genero_id')->nullable();
             $table->foreign('genero_id')->references('id')->on('generos')->onUpdate('CASCADE')->onDelete('SET NULL');
-            $table->string('domicilio', 50);
-            $table->string('domicilio_nro', 5);
-            $table->string('domicilio_piso', 2)->nullable();
-            $table->string('domicilio_depto', 2)->nullable();
-            $table->string('domicilio_aclaraciones', 150)->nullable();
-            $table->string('localidad', 50);
-            $table->string('codigo_postal', 10);
             $table->string('telefono_fijo', 15)->nullable();
             $table->string('telefono_celular', 15);
             $table->string('telefono_alt', 15)->nullable();

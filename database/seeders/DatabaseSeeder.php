@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Marquesina;
-use App\Models\Newsletter;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RolSeeder::class);
         $this->call(NewsletterSeeder::class);
         $this->call(UsuarioSeeder::class);
+        $this->call(UsuarioDomicilioSeeder::class);
         $this->call(CategoriaSeeder::class);
         $this->call(SubcategoriaSeeder::class);
         $this->call(ArticuloSeeder::class);
