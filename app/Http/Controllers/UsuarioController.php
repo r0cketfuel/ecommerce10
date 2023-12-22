@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\RegisterRequest;
-use App\Http\Requests\UserLoginRequest;
+use App\Http\Requests\Usuario\StoreUsuarioRequest;
+use App\Http\Requests\Usuario\UserLoginRequest;
 
 use App\Models\Usuario;
 use App\Models\Newsletter;
@@ -15,7 +15,7 @@ use App\Services\FavoritosService;
 class UsuarioController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function register(RegisterRequest $request)
+    public function register(StoreUsuarioRequest $request)
 	{
         $usuario = Usuario::make($request->validated());
         $usuario->save();
