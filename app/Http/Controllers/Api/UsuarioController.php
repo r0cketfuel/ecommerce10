@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Http\Requests\Usuario\StoreUsuarioRequest;
 use App\Http\Requests\Usuario\UpdateUsuarioRequest;
 
@@ -49,6 +50,21 @@ class UsuarioController extends Controller
         $usuario->delete();
         
         return response()->json(['message' => __('messages.success.model_delete', ['model' => $this->modelName])], 200, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function checkUsernameAvailability(Request $request)
+    {
+        $username       = $request->input('username');
+        $isAvailable    = $this->isUsernameAvailable($username);
+
+        return response()->json(['is_available' => $isAvailable]);
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    protected function isUsernameAvailable($username)
+    {
+        $count = Usuario::where("username", $username)->count();
+
+        return !$count;
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

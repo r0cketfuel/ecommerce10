@@ -29,3 +29,5 @@ Route::apiResource('categorias',    CategoriaController::class);
 Route::apiResource('subcategorias', SubcategoriaController::class);
 Route::apiResource('usuarios',      UsuarioController::class);
 Route::apiResource('favoritos',     FavoritoController::class);
+
+Route::post('usuarios/check-username-availability', [UsuarioController::class, 'checkUsernameAvailability']);
