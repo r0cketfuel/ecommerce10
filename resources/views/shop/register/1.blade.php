@@ -9,19 +9,19 @@
         <div class="panel-content">
             <label>
                 Usuario
-                <input type="text" id="username" name="username" value="usuario1234" {{ ($errors->first("username") ? " class=form-error" : "") }} autocomplete="off">
+                <input type="text" id="username" name="username" tabindex="1" {{ ($errors->first("username") ? " class=form-error" : "") }} autocomplete="off">
                 {!! $errors->first("username", "<p class='field-validation-msg'>:message</p>") !!}
             </label>
 
             <label>
                 Password
-                <input type="password" id="password" name="password" value="password" {{ ($errors->first("password") ? " class=form-error" : "") }}>
+                <input type="password" id="password" name="password" tabindex="2" {{ ($errors->first("password") ? " class=form-error" : "") }}>
                 {!! $errors->first("password", "<p class='field-validation-msg'>:message</p>") !!}
             </label>
 
             <label>
                 Repetir password
-                <input type="password" id="password_repeat" name="password_repeat" value="password" {{ ($errors->first("password_repeat") ? " class=form-error" : "") }}>
+                <input type="password" id="password_repeat" name="password_repeat" tabindex="3" {{ ($errors->first("password_repeat") ? " class=form-error" : "") }}>
                 {!! $errors->first("password_repeat", "<p class='field-validation-msg'>:message</p>") !!}
             </label>
         </div>

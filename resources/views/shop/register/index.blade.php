@@ -212,6 +212,24 @@
                 }
             }
 
+        // Obtén todos los elementos interactivos dentro del formulario actual
+        const formElements = document.querySelectorAll('.step-form input, .step-form button');
+
+        formElements.forEach(function (element, index) {
+            // Agrega un evento de escucha al elemento
+            element.addEventListener('keydown', function (event) {
+                if (event.key === 'Tab') {
+                    event.preventDefault();
+
+                    // Calcula el índice del próximo elemento en el formulario
+                    const nextIndex = (index + 1) % formElements.length;
+
+                    // Establece el foco en el próximo elemento
+                    formElements[nextIndex].focus();
+                }
+            });
+        });
+
         });
     </script>
 @endsection
