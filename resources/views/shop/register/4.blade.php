@@ -9,29 +9,29 @@
         <div class="panel-content">
             <label>
                 Teléfono fijo
-                <input form="form" type="text" name="telefono_fijo" value="{{ old('telefono_fijo') }}" {{ ($errors->first("telefono_fijo") ? " class=form-error" : "") }}>
+                <input type="text" name="telefono_fijo" value="2914587456" {{ ($errors->first("telefono_fijo") ? " class=form-error" : "") }}>
                 {!! $errors->first("telefono_fijo", "<p class='field-validation-msg'>:message</p>") !!}
             </label>
 
             <label>
                 Teléfono celular
-                <input form="form" type="text" name="telefono_celular" value="{{ old('telefono_celular') }}" {{ ($errors->first("telefono_celular") ? " class=form-error" : "") }}>
+                <input type="text" name="telefono_celular" value="2914478523" {{ ($errors->first("telefono_celular") ? " class=form-error" : "") }}>
                 {!! $errors->first("telefono_celular", "<p class='field-validation-msg'>:message</p>") !!}
             </label>
 
             <label>
                 Teléfono alternativo
-                <input form="form" type="text" name="telefono_alt" value="{{ old('telefono_alt') }}" {{ ($errors->first("telefono_alt") ? " class=form-error" : "") }}>
+                <input type="text" name="telefono_alt" value="{{ old('telefono_alt') }}" {{ ($errors->first("telefono_alt") ? " class=form-error" : "") }}>
                 {!! $errors->first("telefono_alt", "<p class='field-validation-msg'>:message</p>") !!}
             </label>
 
             <label>
                 Correo electrónico
-                <input form="form" type="email" name="email" value="{{ old('email') }}" {{ ($errors->first("email") ? " class=form-error" : "") }} autocomplete="off">
+                <input type="email" name="email" value="correo@dominio.com" {{ ($errors->first("email") ? " class=form-error" : "") }} autocomplete="off">
                 {!! $errors->first("email", "<p class='field-validation-msg'>:message</p>") !!}
             </label>
                 
-            <button form="form" type="submit" class="btn-primary">Registrarme</button>
+            <button class="btnNext">Registrarme</button>
         </div>
     </div>
 </div>

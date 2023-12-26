@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Usuario\StoreUsuarioRequest;
 use App\Http\Requests\Usuario\UserLoginRequest;
 
@@ -15,12 +16,85 @@ use App\Services\FavoritosService;
 class UsuarioController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function register(StoreUsuarioRequest $request)
+    public function register(Request $request)
 	{
-        $usuario = Usuario::make($request->validated());
-        $usuario->save();
+        $currentStep = $request->input("currentStep");
 
-        return redirect("shop/login")->with("success", "Cuenta creada exitosamente");
+        $rules      = [];
+        $messages   = [];
+
+        if($currentStep == 1)
+        {
+            $rules = [
+                "username"          => array("required","unique:usuarios,username","min:5","max:16","regex:#^[a-zA-Z0-9]*$#"),
+                "password"          => array("required","min:8","max:16"),
+                "password_repeat"   => array("same:password"),
+            ];
+
+            $messages = [
+                // Mensajes de error específicos para la pantalla 1
+            ];
+        }
+
+        if($currentStep == 2)
+        {
+            $rules = [
+                "apellidos"         => array("required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"),
+                "nombres"           => array("required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"),
+                "tipo_documento_id" => array("required","integer","min:1", "exists:tipos_documentos,id"),
+                "documento_nro"     => array("required","unique:usuarios,documento_nro","min:1","max:99999999"),
+                "genero_id"         => array("integer","min:1","exists:generos,id"),
+                "cuil"              => array("nullable","numeric","digits:11"),
+                "cuit"              => array("nullable","numeric","digits:11"),
+                "fecha_nacimiento"  => array("required","date"),
+            ];
+            
+            $messages = [
+                // Mensajes de error específicos para la pantalla 2
+            ];
+        }
+
+        if($currentStep == 3)
+        {
+            $rules = [
+            ];
+            
+            $messages = [
+                // Mensajes de error específicos para la pantalla 3
+            ];
+        }
+
+        if($currentStep == 4)
+        {
+            $rules = [
+                "telefono_fijo"     => array("nullable","numeric","max:999999999999999"),
+                "telefono_celular"  => array("required","numeric","max:999999999999999"),
+                "telefono_alt"      => array("nullable","numeric","max:999999999999999"),
+                "email"             => array("required","unique:usuarios,email"),
+            ];
+            
+            $messages = [
+                // Mensajes de error específicos para la pantalla 4
+            ];
+        }
+
+        // Validar campos y manejar errores
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails())
+            return response()->json(['errors' => $validator->errors()], 422);
+
+        if($currentStep == 4)
+        {
+            $usuario = Usuario::make($request->all());
+            $usuario->save();
+
+            //return redirect("shop/login")->with("success", "Cuenta creada exitosamente");
+            return response()->json(['success' => true, 'redirect_url' => '/shop/login']);
+        }
+
+        // Lógica adicional según el paso actual
+        return response()->json(['success' => true]);
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function recovery(Request $request)
