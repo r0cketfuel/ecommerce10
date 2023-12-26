@@ -213,7 +213,7 @@ class ShopController extends Controller
         $generos            = Genero::all();
         $tiposDocumentos    = TipoDocumento::all();
     
-        return view("shop.register2", compact("generos", "tiposDocumentos"));
+        return view("shop.register.index", compact("generos", "tiposDocumentos"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function recovery()
