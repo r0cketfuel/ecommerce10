@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ config('constants.framework_css') }}alert.css">
 
     </head>
-    <body>
+    <body id="top">
 
         @if ($errors->any())
             @foreach ($errors->all() as $error)
