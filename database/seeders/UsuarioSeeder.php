@@ -28,8 +28,8 @@ class UsuarioSeeder extends Seeder
             "telefono_celular"          => "2912345678",
             "telefono_alt"              => NULL,
             "email"                     => "usuariodeprueba@hotmail.com",
+            "token_verificacion_email"  => NULL,
             "estado"                    => 1,
-            "creado"                    => "2022-11-25",
             "alta"                      => "2023-11-25",
         ]);
 
@@ -50,8 +50,8 @@ class UsuarioSeeder extends Seeder
                 "telefono_celular"          => "2912345678",
                 "telefono_alt"              => NULL,
                 "email"                     => "usuario$i@hotmail.com",
-                "estado"                    => 1,
-                "creado"                    => "2022-11-25",
+                "token_verificacion_email"  => NULL,
+                "estado"                    => 0
             ]);
         }
     }

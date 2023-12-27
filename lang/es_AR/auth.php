@@ -14,8 +14,10 @@ return [
     */
 
     'failed'        => 'Credenciales inválidas',
-    'unconfirmed'   => 'Su cuenta no está activada. Debe activar su cuenta para poder continuar',
+    'unconfirmed'   => 'Tu cuenta no está activada. Debes activar tu cuenta para poder continuar',
+    'confirmed'     => 'Tu cuenta ha sido verificada. Puedes ingresar con tus credenciales',
+    'empty_token'   => 'Debe proporcionar un token válido',
+    'invalid_token' => 'El token proporcionado es inválido o ha expirado',
     'password'      => 'La contraseña es incorrecta',
     'throttle'      => 'Demasiados intentos. Intente nuevamente en :segundos segundos',
-
 ];

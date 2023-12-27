@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('telefono_celular', 15);
             $table->string('telefono_alt', 15)->nullable();
             $table->string('email', 50)->unique();
+            $table->string('token_verificacion_email', 32)->nullable()->default(NULL);
             $table->unsignedTinyInteger('estado')->default(0);
             $table->dateTime('creado');
             $table->dateTime('actualizado')->nullable()->default(NULL);

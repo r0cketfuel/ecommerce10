@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Usuario\StoreUsuarioRequest;
 use App\Http\Requests\Usuario\UserLoginRequest;
+use Illuminate\Support\Str;
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SignUp;
+use App\Mail\Recovery;
 
 use App\Models\Usuario;
 use App\Models\Newsletter;
@@ -81,8 +86,10 @@ class UsuarioController extends Controller
         if($currentStep == 4)
         {
             $usuario = Usuario::make($request->all());
+            $usuario->token_verificacion_email = Str::random(32);
             $usuario->save();
 
+            Mail::to($usuario->email)->send(new SignUp($usuario->apellidos, $usuario->nombres, "http://ecommerce.dell/shop/activate/" . $usuario->token_verificacion_email));
             //return response()->json(['success' => true, 'redirect_url' => '/shop/login']);
         }
 
@@ -99,8 +106,7 @@ class UsuarioController extends Controller
 
             if($usuario)
             {
-                // Enviar correo
-
+                Mail::to($usuario->email)->send(new Recovery($usuario->apellidos, $usuario->nombres));
                 return view("shop.recovery", ["success" => 1]);
             }
             else

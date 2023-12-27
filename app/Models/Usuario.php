@@ -44,7 +44,9 @@ class Usuario extends Authenticatable implements MustVerifyEmail
         'telefono_celular',
         'telefono_alt',
         'email',
-        'estado'
+        'token_verificacion_email',
+        'estado',
+        'alta'
     ];
 
     /**
@@ -108,6 +110,14 @@ class Usuario extends Authenticatable implements MustVerifyEmail
         return new Attribute(
             get: function ($value) { return ucwords(strtolower($value)); },
             set: function ($value) { return ucwords(strtolower($value)); }
+        );
+    }
+
+    protected function email(): Attribute
+    {
+        return new Attribute(
+            get: function ($value) { return strtolower($value); },
+            set: function ($value) { return strtolower($value); }
         );
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

@@ -2,24 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Usuario;
 
-use App\Mail\SignUp;
+use App\Mail\Welcome;
 
 class MailController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function signup()
+    public function VerifyEmail($token = NULL)
     {
-        $email          = "fernando_p405@hotmail.com";
-        $apellidos      = "Apellidos";
-        $nombres        = "Nombres";
-        $activationURL  = "as5d234daa7g4fg737s";
+        if($token)
+        {
+            $usuario = Usuario::where('token_verificacion_email', $token)->first();
 
-        Mail::to($email)->send(new SignUp($apellidos, $nombres, $activationURL));
+            if($usuario)
+            {
+                $usuario->update([
+                    'estado'                    => 1,
+                    'alta'                      => now(),
+                    'token_verificacion_email'  => NULL
+                ]);
+                
+                Mail::to($usuario->email)->send(new Welcome($usuario->apellidos, $usuario->nombres));
 
-        echo "Correo enviado!";
+                return redirect()->route('user.login')->with(trans("auth.confirmed"));
+            }
+
+            return redirect("/shop")->with(trans("auth.invalid_token"));
+        }
+
+        return redirect("/shop")->with(trans("auth.empty_token"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
