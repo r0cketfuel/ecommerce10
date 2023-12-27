@@ -19,6 +19,7 @@ form {
     color:                          inherit;
     list-style:                     none;
     cursor:                         auto;
+    width:                          100%;
 }
 
 form:focus {

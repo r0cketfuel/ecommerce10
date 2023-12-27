@@ -56,10 +56,6 @@
 		.panel {
 			box-shadow: 			unset;
 		}
-
-        form {
-            width: 100%;
-        }
 	</style>
 @endsection
 

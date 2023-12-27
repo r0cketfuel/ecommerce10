@@ -36,10 +36,11 @@
                     </a>
                 </div>
                 <div class="search-bar">
-                    <form id="form-search" action="/shop"></form>
                     <div class="input-container">
-                        <input form="form-search" type="text" name="busqueda" value="{{ isset($busqueda['searchbar']) ? $busqueda['searchbar'] : '' }}" placeholder="{{ __('general.search') }}...">
-                        <button form="form-search" type="submit" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <form action="/shop">
+                            <input type="text" name="busqueda" value="{{ isset($busqueda['searchbar']) ? $busqueda['searchbar'] : '' }}" placeholder="{{ __('general.search') }}...">
+                            <button type="submit" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </form>
                     </div>
                 </div>
                 <div class="iconos">
