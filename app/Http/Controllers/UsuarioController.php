@@ -20,77 +20,73 @@ class UsuarioController extends Controller
 	{
         $currentStep = $request->input("currentStep");
 
-        $rules      = [];
-        $messages   = [];
+        $rules = [];
 
-        if($currentStep == 1)
+        switch($currentStep)
         {
-            $rules = [
-                "username"          => array("required","unique:usuarios,username","min:5","max:16","regex:#^[a-zA-Z0-9]*$#"),
-                "password"          => array("required","min:8","max:16"),
-                "password_repeat"   => array("same:password"),
-            ];
+            case(1):
+            {
+                $rules = [
+                    "username"          => ["required","unique:usuarios,username","min:5","max:16","regex:#^[a-zA-Z0-9]*$#"],
+                    "password"          => ["required","min:8","max:16"],
+                    "password_repeat"   => ["same:password"],
+                ];
 
-            $messages = [
-                // Mensajes de error específicos para la pantalla 1
-            ];
-        }
+                break;
+            }
 
-        if($currentStep == 2)
-        {
-            $rules = [
-                "apellidos"         => array("required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"),
-                "nombres"           => array("required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"),
-                "tipo_documento_id" => array("required","integer","min:1", "exists:tipos_documentos,id"),
-                "documento_nro"     => array("required","unique:usuarios,documento_nro","integer","min:6","max:99999999"),
-                "genero_id"         => array("integer","min:1","exists:generos,id"),
-                "cuil"              => array("nullable","numeric","digits:11"),
-                "cuit"              => array("nullable","numeric","digits:11"),
-                "fecha_nacimiento"  => array("required","date"),
-            ];
-            
-            $messages = [
-                // Mensajes de error específicos para la pantalla 2
-            ];
-        }
 
-        if($currentStep == 3)
-        {
-            $rules = [
-            ];
-            
-            $messages = [
-                // Mensajes de error específicos para la pantalla 3
-            ];
-        }
+            case(2):
+            {
+                $rules = [
+                    "apellidos"         => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
+                    "nombres"           => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
+                    "tipo_documento_id" => ["required","integer","min:1", "exists:tipos_documentos,id"],
+                    "documento_nro"     => ["required","unique:usuarios,documento_nro","integer","min:6","max:99999999"],
+                    "genero_id"         => ["integer","min:1","exists:generos,id"],
+                    "cuil"              => ["nullable","numeric","digits:11"],
+                    "cuit"              => ["nullable","numeric","digits:11"],
+                    "fecha_nacimiento"  => ["required","date"],
+                ];
 
-        if($currentStep == 4)
-        {
-            $rules = [
-                "telefono_fijo"     => array("nullable","numeric","max:999999999999999"),
-                "telefono_celular"  => array("required","numeric","max:999999999999999"),
-                "telefono_alt"      => array("nullable","numeric","max:999999999999999"),
-                "email"             => array("required","unique:usuarios,email"),
-            ];
-            
-            $messages = [
-                // Mensajes de error específicos para la pantalla 4
-            ];
+                break;
+            }
+
+
+            case(3):
+            {
+                $rules = [
+                ];
+
+                break;
+            }
+
+
+            case(4):
+            {
+                $rules = [
+                    "telefono_fijo"     => ["nullable","numeric","max:999999999999999"],
+                    "telefono_celular"  => ["required","numeric","max:999999999999999"],
+                    "telefono_alt"      => ["nullable","numeric","max:999999999999999"],
+                    "email"             => ["required","unique:usuarios,email"],
+                ];
+
+                break;
+            }
         }
 
         // Validar campos y manejar errores
-        $validator = Validator::make($request->all(), $rules, $messages);
+        $validator = Validator::make($request->all(), $rules);
 
         if($validator->fails())
-            return response()->json(['errors' => $validator->errors()], 422);
+            return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
 
         if($currentStep == 4)
         {
             $usuario = Usuario::make($request->all());
             $usuario->save();
 
-            //return redirect("shop/login")->with("success", "Cuenta creada exitosamente");
-            return response()->json(['success' => true, 'redirect_url' => '/shop/login']);
+            //return response()->json(['success' => true, 'redirect_url' => '/shop/login']);
         }
 
         // Lógica adicional según el paso actual

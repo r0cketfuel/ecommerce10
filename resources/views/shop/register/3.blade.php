@@ -10,38 +10,32 @@
         <div class="panel-content">
             <label>
                 Domicilio
-                <input type="text" name="domicilio" tabindex="1" {{ ($errors->first("domicilio") ? " class=form-error" : "") }}>
-                {!! $errors->first("domicilio", "<p class='field-validation-msg'>:message</p>") !!}
+                <input type="text" name="domicilio" tabindex="1">
             </label>
 
             <label>
                 Domicilio número
-                <input type="text" name="domicilio_nro" tabindex="2" {{ ($errors->first("domicilio_nro") ? " class=form-error" : "") }}>
-                {!! $errors->first("domicilio_nro", "<p class='field-validation-msg'>:message</p>") !!}
+                <input type="text" name="domicilio_nro" tabindex="2">
             </label>
 
             <label>
                 Domicilio piso
-                <input type="text" name="domicilio_piso" tabindex="3" {{ ($errors->first("domicilio_piso") ? " class=form-error" : "") }}>
-                {!! $errors->first("domicilio_piso", "<p class='field-validation-msg'>:message</p>") !!}
+                <input type="text" name="domicilio_piso" tabindex="3">
             </label>
 
             <label>
                 Domicilio depto
-                <input type="text" name="domicilio_depto" tabindex="4" {{ ($errors->first("domicilio_depto") ? " class=form-error" : "") }}>
-                {!! $errors->first("domicilio_depto", "<p class='field-validation-msg'>:message</p>") !!}
+                <input type="text" name="domicilio_depto" tabindex="4">
             </label>
 
             <label>
                 Localidad
-                <input type="text" name="localidad" tabindex="5" {{ ($errors->first("localidad") ? " class=form-error" : "") }}>
-                {!! $errors->first("localidad", "<p class='field-validation-msg'>:message</p>") !!}
+                <input type="text" name="localidad" tabindex="5">
             </label>
 
             <label>
                 Código postal
-                <input type="text" name="codigo_postal" tabindex="6" {{ ($errors->first("codigo_postal") ? " class=form-error" : "") }}>
-                {!! $errors->first("codigo_postal", "<p class='field-validation-msg'>:message</p>") !!}
+                <input type="text" name="codigo_postal" tabindex="6">
             </label>
         </div>
     </div>

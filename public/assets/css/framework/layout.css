@@ -161,6 +161,10 @@
     width:                              100%;
 }
 
+.mw100 {
+    max-width:                          100%;
+}
+
 .mw90 {
     max-width:                          90%;
 }

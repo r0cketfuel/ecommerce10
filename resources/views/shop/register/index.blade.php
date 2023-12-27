@@ -31,7 +31,7 @@
 		.carousel-slider {
 			display: 				flex;
 			flex-flow: 				row nowrap;
-			width: 					400%;
+			width: 					500%;
 		}
 
 		.carousel-slide {
@@ -67,6 +67,8 @@
     <div class="main-container">
         @include("shop.layout.breadcrumb")
 
+        <div id="error-messages"></div>
+
         <div class="carousel-container">
             <div class="carousel-slider">
                 
@@ -97,6 +99,12 @@
                     @csrf
                     @include('shop.register.4')
                 </form>
+
+                <!-- Pantalla 5 -->
+                <div style="width: 100%;">
+                    @include('shop.register.success')
+                </div>
+
             </div>
         </div>
     </div>
@@ -104,15 +112,13 @@
 
 @section("scripts")
 	<script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", () => {
             const slides 		= document.querySelectorAll(".carousel-slide");
             const nextButtons 	= document.querySelectorAll(".btnNext");
             const prevButtons 	= document.querySelectorAll(".btnPrev");
+            const forms         = document.getElementsByClassName('step-form');
             
             let curSlide 		= 0;
-            const maxSlide 		= slides.length - 1;
-
-            const forms         = document.getElementsByClassName('step-form');
 
             let datosRecopilados = {};
 
@@ -127,57 +133,66 @@
                 }
 
                 // Verificar si es el último formulario
-                if (esUltimoFormulario(event.target)) {
+                if(esUltimoFormulario(event.target)) {
                     // Todos los formularios han sido enviados, puedes usar datosRecopilados para crear el modelo
                     console.log('Datos completos:', datosRecopilados);
                 }
             })};
 
-            function esUltimoFormulario(formulario) {
-
-                // Lógica para determinar si es el último formulario, por ejemplo, basado en la clase, el índice, etc.
-
-                if(formulario.dataset.step==='4')
+            function esUltimoFormulario(formulario)
+            {
+                if(formulario.dataset.step === "4")
                     return true;
 
                 return false;
             }
 
-            nextButtons.forEach(button => {
-                button.addEventListener("click", function () {
-                    submitForm();
-                });
-            });
-
+            // Event listener para los botones 'Anterior'
             prevButtons.forEach(button => {
-                button.addEventListener("click", function () {
-                    if (curSlide > 0) --curSlide;   
-
-                    slides.forEach((slide, indx) => {
-                        slide.style.transform = `translateX(${-100 * curSlide}%)`;
-                    });
-                    smoothScroll("top");
-                });
+                button.addEventListener("click", function () { moveLeft(); });
             });
 
-            function smoothScroll(id) {
-                const element = document.getElementById(id);
-                if(element)
-                    element.scrollIntoView({ block: "start", behavior: "smooth" });
+            // Event listener para los botones 'Siguiente'
+            nextButtons.forEach(button => {
+                button.addEventListener("click", function () { submitForm(); });
+            });
+
+            // Función desplazamiento de las pantallas a la izquierda
+            function moveLeft()
+            {
+                if(curSlide > 0)
+                    --curSlide;
+
+                slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%)`; });
+
+                smoothScroll("top");
             }
 
-            function submitForm() {
-                const button = event.target;
-                const form = button.closest(".step-form");
+            // Función desplazamiento de las pantallas a la derecha
+            function moveRight()
+            {
+                if(curSlide < (slides.length - 1))
+                    ++curSlide;
 
-                if (form) {
+                slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%)`; });
+
+                smoothScroll("top");
+            }
+
+            function submitForm()
+            {
+                const button    = event.target;
+                const form      = button.closest(".step-form");
+
+                if(form)
+                {
                     // Recopilar datos de todos los formularios anteriores y el formulario actual
                     const allForms = document.querySelectorAll(".step-form");
                     const formData = new FormData();
 
                     allForms.forEach((form, index) => {
                         // Solo recopila datos del formulario actual y los formularios anteriores
-                        if (index <= curSlide) {
+                        if(index <= curSlide) {
                             const formFields = new FormData(form);
                             formFields.forEach((value, key) => {
                                 formData.append(key, value);
@@ -191,21 +206,58 @@
                     })
                     .then(response => response.json())
                     .then(data => {
-                        console.log("Respuesta del servidor:", data);
 
-                        if (data["success"] === true) {
-        if (data['redirect_url']) {
-            // Redirigir a la URL proporcionada por el servidor
-            window.location.href = data['redirect_url'];
-        } else if (curSlide < maxSlide) {
-            ++curSlide;
-            slides.forEach((slide, indx) => {
-                slide.style.transform = `translateX(${-100 * curSlide}%)`;
-            });
-            smoothScroll("top");
-        }
-    }
-})
+                        if(data["success"] === true)
+                        {
+                            if(data['redirect_url'])
+                            {
+                                window.location.href = data['redirect_url'];
+                            }
+                            else
+                            {
+                                moveRight();
+                            }
+                        }
+                        else
+                        {
+                            // Función para recorrer el JSON y agregar mensajes de error debajo de los inputs
+                            function mostrarErrores(errors)
+                            {
+                                // Eliminar elementos con la clase 'field-validation-msg'
+                                document.querySelectorAll('.field-validation-msg').forEach(el => el.remove());
+
+                                // Recorre cada campo en los errores
+                                for (var campo in errors) {
+                                    if (errors.hasOwnProperty(campo))
+                                    {
+                                        // Obtiene el mensaje de error para el campo actual
+                                        var mensajes = errors[campo];
+
+                                        // Agrega un mensaje de error debajo del input correspondiente
+
+                                        // Buscar el elemento dentro del formulario actual
+                                        var input = document.querySelector('.step-form [name="' + campo + '"]');
+
+                                        if(input)
+                                        {
+                                            // Crea un elemento <p> con la clase 'field-validation-msg' y agrega el mensaje
+                                            mensajes.forEach(function (mensaje) {
+                                            var p = document.createElement("p");
+                                            p.className = "field-validation-msg";
+                                            p.innerHTML = mensaje;
+
+                                            // Inserta el mensaje de error debajo del input
+                                            input.parentNode.insertBefore(p, input.nextSibling);
+                                            });
+                                        }
+                                    }
+                                }
+                            }
+
+                            // Llama a la función con el JSON de errores
+                            mostrarErrores(data.errors);
+                        }
+                    })
                     .catch(error => {
                         console.error("Error al enviar el formulario:", error);
                     });
@@ -218,7 +270,7 @@
         formElements.forEach(function (element, index) {
             // Agrega un evento de escucha al elemento
             element.addEventListener('keydown', function (event) {
-                if (event.key === 'Tab') {
+                if(event.key === 'Tab') {
                     event.preventDefault();
 
                     // Calcula el índice del próximo elemento en el formulario

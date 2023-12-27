@@ -9,26 +9,22 @@
         <div class="panel-content">
             <label>
                 Teléfono fijo
-                <input type="text" name="telefono_fijo" tabindex="1" {{ ($errors->first("telefono_fijo") ? " class=form-error" : "") }}>
-                {!! $errors->first("telefono_fijo", "<p class='field-validation-msg'>:message</p>") !!}
+                <input type="text" name="telefono_fijo" tabindex="1">
             </label>
 
             <label>
                 Teléfono celular
-                <input type="text" name="telefono_celular" tabindex="2" {{ ($errors->first("telefono_celular") ? " class=form-error" : "") }}>
-                {!! $errors->first("telefono_celular", "<p class='field-validation-msg'>:message</p>") !!}
+                <input type="text" name="telefono_celular" tabindex="2">
             </label>
 
             <label>
                 Teléfono alternativo
-                <input type="text" name="telefono_alt" tabindex="3" {{ ($errors->first("telefono_alt") ? " class=form-error" : "") }}>
-                {!! $errors->first("telefono_alt", "<p class='field-validation-msg'>:message</p>") !!}
+                <input type="text" name="telefono_alt" tabindex="3">
             </label>
 
             <label>
                 Correo electrónico
-                <input type="email" name="email" tabindex="4" {{ ($errors->first("email") ? " class=form-error" : "") }} autocomplete="off">
-                {!! $errors->first("email", "<p class='field-validation-msg'>:message</p>") !!}
+                <input type="email" name="email" tabindex="4">
             </label>
                 
             <button class="btnNext">Registrarme</button>
