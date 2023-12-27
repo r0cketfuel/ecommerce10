@@ -179,6 +179,12 @@
                 smoothScroll("top");
             }
 
+            function limpiarErrores()
+            {
+                document.querySelectorAll('.field-validation-msg').forEach(el => el.remove());
+                document.querySelectorAll('.form-error').forEach(el => el.classList.remove("form-error"));
+            }
+
             function submitForm()
             {
                 const button    = event.target;
@@ -215,6 +221,7 @@
                             }
                             else
                             {
+                                limpiarErrores();
                                 moveRight();
                             }
                         }
@@ -223,8 +230,7 @@
                             // Función para recorrer el JSON y agregar mensajes de error debajo de los inputs
                             function mostrarErrores(errors)
                             {
-                                // Eliminar elementos con la clase 'field-validation-msg'
-                                document.querySelectorAll('.field-validation-msg').forEach(el => el.remove());
+                                limpiarErrores();
 
                                 // Recorre cada campo en los errores
                                 for (var campo in errors) {
@@ -241,6 +247,7 @@
                                         if(input)
                                         {
                                             // Crea un elemento <p> con la clase 'field-validation-msg' y agrega el mensaje
+                                            input.classList.add("form-error");
                                             mensajes.forEach(function (mensaje) {
                                             var p = document.createElement("p");
                                             p.className = "field-validation-msg";
