@@ -101,17 +101,20 @@ class UsuarioController extends Controller
 	{
         if($request->filled("email") && $request->filled("telefono_celular"))
         {
-            // Buscar un modelo que coincida con la información ingresada
-            $usuario = Usuario::where("email",$request->get("email"))->where("telefono_celular",$request->get("telefono_celular"))->first();
+            $telefono   = $request->input("telefono_celular");
+            $email      = strtolower($request->input("email"));
+
+            $usuario = Usuario::where("email", $email)->where("telefono_celular", $telefono)->first();
 
             if($usuario)
             {
                 Mail::to($usuario->email)->send(new Recovery($usuario->apellidos, $usuario->nombres));
-                return view("shop.recovery", ["success" => 1]);
+
+                return redirect()->route("user.login")->with("success", "Se ha enviado un correo a su casilla de correos");
             }
             else
             {
-                return view("shop.recovery", ["success" => 2]);
+                return redirect()->back()->withErrors(trans("auth.failed"));
             }
         }
 

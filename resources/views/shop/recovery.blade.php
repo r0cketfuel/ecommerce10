@@ -43,11 +43,11 @@
                 <div class="panel-content">
                     <label>
                         Teléfono celular
-                        <input required form="form" type="text" name="telefono_celular">
+                        <input required form="form" type="text" name="telefono_celular" value="2914403921">
                     </label>
                     <label>
                         Correo electrónico
-                        <input required form="form" type="email" id="email" name="email">
+                        <input required form="form" type="email" name="email" value="FERNANDO_P405@HOTMAIL.COM">
                     </label>
                     <button form="form" class="btn-primary" type="submit">Enviar</button>
                 </div>

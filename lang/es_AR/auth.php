@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed'        => 'Credenciales inválidas',
+    'failed'        => 'Los datos ingresados son incorrectos',
     'unconfirmed'   => 'Tu cuenta no está activada. Debes activar tu cuenta para poder continuar',
     'confirmed'     => 'Tu cuenta ha sido verificada. Puedes ingresar con tus credenciales',
     'empty_token'   => 'Debe proporcionar un token válido',
