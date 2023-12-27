@@ -67,34 +67,32 @@
     <div class="main-container">
         @include("shop.layout.breadcrumb")
 
-        <div id="error-messages"></div>
-
         <div class="carousel-container">
             <div class="carousel-slider">
                 
                 <!-- Pantalla 1 -->
-                <form method="post" class="step-form" data-step="1">
+                <form method="post" class="step-form">
                     <input type="hidden" name="currentStep" value="1">
                     @csrf
                     @include('shop.register.1')
                 </form>
 
                 <!-- Pantalla 2 -->
-                <form method="post" class="step-form" data-step="2">
+                <form method="post" class="step-form">
                     <input type="hidden" name="currentStep" value="2">
                     @csrf
                     @include('shop.register.2')
                 </form>
 
                 <!-- Pantalla 3 -->
-                <form method="post" class="step-form" data-step="3">
+                <form method="post" class="step-form">
                     <input type="hidden" name="currentStep" value="3">
                     @csrf
                     @include('shop.register.3')
                 </form>
 
                 <!-- Pantalla 4 -->
-                <form method="post" class="step-form" data-step="4">
+                <form method="post" class="step-form">
                     <input type="hidden" name="currentStep" value="4">
                     @csrf
                     @include('shop.register.4')
@@ -131,21 +129,7 @@
                 for (var [key, value] of formData.entries()) {
                     datosRecopilados[key] = value;
                 }
-
-                // Verificar si es el último formulario
-                if(esUltimoFormulario(event.target)) {
-                    // Todos los formularios han sido enviados, puedes usar datosRecopilados para crear el modelo
-                    console.log('Datos completos:', datosRecopilados);
-                }
             })};
-
-            function esUltimoFormulario(formulario)
-            {
-                if(formulario.dataset.step === "4")
-                    return true;
-
-                return false;
-            }
 
             // Event listener para los botones 'Anterior'
             prevButtons.forEach(button => {

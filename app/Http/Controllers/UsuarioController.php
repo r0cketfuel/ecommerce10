@@ -35,7 +35,6 @@ class UsuarioController extends Controller
                 break;
             }
 
-
             case(2):
             {
                 $rules = [
@@ -52,7 +51,6 @@ class UsuarioController extends Controller
                 break;
             }
 
-
             case(3):
             {
                 $rules = [
@@ -60,7 +58,6 @@ class UsuarioController extends Controller
 
                 break;
             }
-
 
             case(4):
             {
