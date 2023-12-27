@@ -41,7 +41,6 @@ Route::controller(ShopController::class)->group(function () {
 });
 
 Route::controller(MailController::class)->group(function () {
-    Route::get('/email',                'signup');
     Route::get('/activate/{token}',     'VerifyEmail');
 });
 
