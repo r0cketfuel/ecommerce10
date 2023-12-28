@@ -107,10 +107,13 @@
 @section("scripts")
 	<script>
         document.addEventListener("DOMContentLoaded", () => {
-            const slides 		= document.querySelectorAll(".carousel-slide");
-            const nextButtons 	= document.querySelectorAll(".btnNext");
-            const prevButtons 	= document.querySelectorAll(".btnPrev");
-            const forms         = document.getElementsByClassName('step-form');
+
+            const slides 		    = document.querySelectorAll(".carousel-slide");
+            const nextButtons 	    = document.querySelectorAll(".btnNext");
+            const prevButtons 	    = document.querySelectorAll(".btnPrev");
+            const forms             = document.getElementsByClassName('step-form');
+            const carouselContainer = document.querySelector(".carousel-container");
+            const loader            = document.getElementById("loader");
             
             let curSlide 		= 0;
 
@@ -165,6 +168,22 @@
                 document.querySelectorAll('.form-error').forEach(el => el.classList.remove("form-error"));
             }
 
+            function loading(status)
+            {
+                carouselContainer.style.transition  = "opacity 0.4s";
+
+                if(status)
+                {
+                    carouselContainer.style.opacity     = 0.4;
+                    loader.style.display                = "flex"
+                }
+                else
+                {
+                    carouselContainer.style.opacity     = 1;
+                    loader.style.display                = "none"
+                }
+            }
+
             function submitForm()
             {
                 const button    = event.target;
@@ -172,6 +191,9 @@
 
                 if(form)
                 {
+                    limpiarErrores();
+                    loading(true);
+
                     // Recopilar datos de todos los formularios anteriores y el formulario actual
                     const allForms = document.querySelectorAll(".step-form");
                     const formData = new FormData();
@@ -193,6 +215,8 @@
                     .then(response => response.json())
                     .then(data => {
 
+                        loading(false);
+
                         if(data["success"] === true)
                         {
                             if(data['redirect_url'])
@@ -201,7 +225,6 @@
                             }
                             else
                             {
-                                limpiarErrores();
                                 moveRight();
                             }
                         }
