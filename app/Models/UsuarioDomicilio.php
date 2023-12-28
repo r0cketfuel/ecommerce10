@@ -23,6 +23,7 @@ class UsuarioDomicilio extends Model
      * 
      */
     protected $fillable = [
+        'usuario_id',
         'domicilio',
         'domicilio_nro',
         'domicilio_piso',
@@ -32,4 +33,11 @@ class UsuarioDomicilio extends Model
         'codigo_postal',
         'principal'
     ];
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function usuario()
+    {
+        return($this->belongsTo(Usuario::class));
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
