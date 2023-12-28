@@ -6,6 +6,8 @@
 @import url("/assets/css/framework/layout.css");
 @import url("/assets/css/framework/breadcrumb.css");
 
+@import url("../fonts.css");
+
 @import url("navbar.css");
 
 :root {

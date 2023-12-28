@@ -9,17 +9,17 @@
         <div class="panel-content">
             <label>
                 Usuario
-                <input type="text" name="username" tabindex="1">
+                <input type="text" name="username" tabindex="1" autocomplete="off">
             </label>
 
             <label>
                 Password
-                <input type="password" name="password" tabindex="2">
+                <input type="password" name="password" tabindex="2" autocomplete="off">
             </label>
 
             <label>
                 Repetir password
-                <input type="password" name="password_repeat" tabindex="3">
+                <input type="password" name="password_repeat" tabindex="3" autocomplete="off">
             </label>
         </div>
     </div>

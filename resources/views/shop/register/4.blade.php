@@ -24,7 +24,7 @@
 
             <label>
                 Correo electrónico
-                <input type="email" name="email" tabindex="4">
+                <input type="email" name="email" tabindex="4" autocomplete="off">
             </label>
                 
             <button class="btnNext">Registrarme</button>
