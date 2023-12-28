@@ -210,7 +210,7 @@
 
                     fetch(form.action, {
                         method: form.method,
-                        body: formData,
+                        body:   formData,
                     })
                     .then(response => response.json())
                     .then(data => {
