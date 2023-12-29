@@ -21,7 +21,8 @@ class InfoComercioSeeder extends Seeder
             "twitter" 	        => "https://www.twitter.com",
             "instagram"     	=> "https://www.instagram.com",
             "pinterest" 	    => "https://www.pinterest.com",
-            "tiktok"            => "https://www.tiktok.com/"
+            "tiktok"            => "https://www.tiktok.com/",
+            "whatsapp"          => "+5492914403921"
         ]);
     }
 }
