@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('instagram', 50)->nullable();
             $table->string('twitter', 50)->nullable();
             $table->string('pinterest', 50)->nullable();
+            $table->string('tiktok', 50)->nullable();
             $table->comment('Tabla con la información del comercio');
         });
     }
