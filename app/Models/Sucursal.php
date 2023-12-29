@@ -8,9 +8,9 @@ class Sucursal extends Model
 {
     use SoftDeletes;
 
-    const CREATED_AT = 'creado';
-    const UPDATED_AT = 'actualizado';
-    const DELETED_AT = 'eliminado';
+    const CREATED_AT    = 'creado';
+    const UPDATED_AT    = 'actualizado';
+    const DELETED_AT    = 'eliminado';
 
     protected $table    = 'sucursales';
 
