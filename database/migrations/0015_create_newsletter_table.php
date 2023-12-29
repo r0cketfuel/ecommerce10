@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('email',50)->unique();
             $table->dateTime('fecha_alta');
             $table->unsignedTinyInteger('estado');
+            $table->datetime('creado');
+            $table->datetime('actualizado')->nullable();
+            $table->datetime('eliminado')->nullable();
             $table->comment('Tabla con la lista de correos que reciben newsletter');
         });
     }

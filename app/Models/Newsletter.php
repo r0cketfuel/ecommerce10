@@ -3,10 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Newsletter extends Model
 {
-    public $timestamps  = false;
+    use SoftDeletes;
+
+    const CREATED_AT = 'creado';
+    const UPDATED_AT = 'actualizado';
+    const DELETED_AT = 'eliminado';
 
     /**
      * The attributes that are mass assignable.
@@ -27,7 +32,7 @@ class Newsletter extends Model
         // Método que busca un correo en la base de datos y si lo encuentra devuelve el registro //
         //=======================================================================================//
 
-        return(Newsletter::where('email', $email)->where('estado', $estado)->get());
+        return(self::where('email', $email)->where('estado', $estado)->get());
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function suscribe(string $email): array
