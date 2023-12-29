@@ -141,7 +141,7 @@
 	grid-template-rows:				30px repeat(3,20px);
     gap:                            5px;
     border:                         1px solid rgb(240,240,240);
-    background:                     white;
+    background:                     rgb(253,253,253);
 }
 
 .product-checkout-card .product-checkout-card-extra ul {
