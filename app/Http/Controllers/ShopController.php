@@ -360,4 +360,12 @@ class ShopController extends Controller
 
         return view("shop.checkout.index", compact("checkout", "mediosPagoListado", "mediosEnvioListado", "medioPagoSeleccionado", "medioEnvioSeleccionado", "generos", "tiposDocumentos"));
 	}
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function compras()
+    {
+        $usuario = Usuario::find(Auth::id());
+
+        return view("shop.compras", compact("usuario"));
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

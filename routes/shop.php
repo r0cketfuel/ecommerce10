@@ -37,6 +37,8 @@ Route::controller(ShopController::class)->group(function () {
 
         Route::get('account',          	'account')->name('user.account');
         Route::post('account',          'account');
+
+        Route::get('compras',           'compras');
     });
 });
 
