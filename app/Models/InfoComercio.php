@@ -22,7 +22,8 @@ class InfoComercio extends Model
         'cuit',
         'facebook',
         'instagram',
-        'tiktok'
+        'tiktok',
+        'whatsapp'
     ];
 
 }
