@@ -126,7 +126,7 @@
                     <div class="tile-info-row">
                         <div>Precio:</div>
                         @if ($item->promocion)
-                            <div class="flex align-items-center gap-1">
+                            <div class="flex align-items-center gap-2">
                                 <div class="discount">{{ _money($item->precio) }}</div>
                                 <div id="precio" class="text-line-through">{{ $item->precio }}</div>
                             </div>
