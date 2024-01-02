@@ -33,19 +33,21 @@
                 <div class="panel-content">
                     <fieldset>
                         <legend>Categoría</legend>
-                        <select form="form" id="categoria_id" name="categoria" value="{{ old('categoria') }}">
-                            <option value="" disabled selected>Categoría</option>
-                            @foreach ($categorias as $categoria)
-                                <option value="{{ $categoria['id'] }}">{{ $categoria['nombre'] }}</option>
-                            @endforeach
-                        </select>
-
-                        <select form="form" id="subcategoria_id" name="subcategoria" disabled value="{{ old('subcategoria') }}">
-                            <option value="" disabled selected>Subcategoría</option>
-                        </select>
                         <div class="flex gap-3">
-                            <button type="button" class="btn-secondary openModal" id="boton_agregar_categoria"><span><i class="fa-solid fa-plus"></i></span>Categoría</button>
-                            <button type="button" class="btn-secondary openModal" id="boton_agregar_subcategoria"><span><i class="fa-solid fa-plus"></i></span>Subcategoría</button>
+                            <select form="form" id="categoria_id" name="categoria" value="{{ old('categoria') }}">
+                                <option value="" disabled selected>Categoría</option>
+                                @foreach ($categorias as $categoria)
+                                    <option value="{{ $categoria['id'] }}">{{ $categoria['nombre'] }}</option>
+                                @endforeach
+                            </select>
+                            <button type="button" class="btn-secondary openModal w50px" id="boton_agregar_categoria"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <select form="form" id="subcategoria_id" name="subcategoria" disabled value="{{ old('subcategoria') }}">
+                                <option value="" disabled selected>Subcategoría</option>
+                            </select>
+                            <button type="button" class="btn-secondary openModal w50px" id="boton_agregar_subcategoria"><i class="fa-solid fa-plus"></i></button>
                         </div>
                     </fieldset>
 
