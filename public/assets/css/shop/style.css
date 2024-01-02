@@ -114,9 +114,7 @@ ul.product-list {
 }
 
 .discount {
-	background:						rgb(250,180,180);
-	color:							red;
-	font-size:						11px;
+		color:						rgb(10,200,10);
 	font-weight: 					bold;
 	padding: 						4px;
 }
