@@ -49,7 +49,7 @@
     <div class="main-container">
         @include("shop.layout.breadcrumb")
 
-        <div class="flex-column gap-1" style="max-width: 700px">
+        <div class="flex flex-column gap-3" style="max-width: 700px">
             <div class="accordion">
                 <div class="accordion-header">Datos personales<span class="arrow"><i class="fa-solid fa-chevron-down"></i></span></div>
                 <div class="accordion-panel">
