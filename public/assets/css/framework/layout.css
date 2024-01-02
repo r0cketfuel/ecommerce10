@@ -28,6 +28,10 @@
     font-weight:                    bold;
 }
 
+.text-line-through {
+    text-decoration:                line-through;
+}
+
 /*==================*/
 /* FLEX & GRID GAPS */
 /*==================*/
