@@ -14,6 +14,19 @@
     box-sizing:         border-box;
 }            
 
+.product-card-discount {
+    position:           absolute;
+    top:                5px;
+    right:              5px;
+    background:         rgba(10, 250, 20, 0.75);
+    padding:            4px;
+}
+
+.product-card-discount span {
+    color:              rgb(0, 110, 0);
+    font-weight:        bold;
+}
+
 .product-card .product-card-extra ul {
     margin:             0;
     padding:            0;

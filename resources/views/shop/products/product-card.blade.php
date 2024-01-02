@@ -8,6 +8,11 @@
             <img loading="lazy" src="{{ asset('images/content/no-image.png') }}" alt="imagen">
         @endif
     </div>
+    @if($item->promocion)
+        <div class="product-card-discount">
+            <span>{{ $item->promocion->descuento }}% OFF</span>
+        </div>
+    @endif
     <div class="product-card-extra">
         <ul>
             @auth
