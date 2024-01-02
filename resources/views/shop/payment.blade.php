@@ -224,21 +224,21 @@
             <div class="panel">
                 <div class="panel-title panel-title-underlined">Resumen de compra</div>
                 <div class="panel-content">
-                    <div class="flex-col gap1">
-                        <div class="flex justify-between">
+                    <div class="flex-column gap-1">
+                        <div class="flex justify-content-between">
                             <div class="text-bold">Subtotal:</div>
                             <div id="sub-total">{{_money(session("shop.checkout.total_items"))}}</div>
                         </div>
-                        <div class="flex justify-between">
+                        <div class="flex justify-content-between">
                             <div class="text-bold">Envío:</div>
                             <div id="envio">{{ _money(session("shop.checkout.medio_envio.costo")) }}</div>
                         </div>
-                        <div class="flex justify-between">
+                        <div class="flex justify-content-between">
                             <div class="text-bold">Descuentos:</div>
                             <div id="descuentos">{{ _money(0) }}</div>
                         </div>
                         <div style="border-bottom: 1px solid; margin: 5px 0;"><div style="flex: 1 1;"></div></div>
-                        <div class="flex justify-between">
+                        <div class="flex justify-content-between">
                             <div class="text-bold">Total:</div>
                             <div id="total">{{_money(session("shop.checkout.total"))}}</div>
                         </div>

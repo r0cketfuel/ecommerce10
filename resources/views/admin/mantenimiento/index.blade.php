@@ -18,7 +18,7 @@
 @section("body")
     <div class="alert"></div>
 
-    <div class="flex align-center">Estado: 
+    <div class="flex align-items-center">Estado: 
         <label class="switch">
             <input type="checkbox" id="check-mantenimiento" {{ $status ? 'checked' : '' }}>
             <div class="slider round"></div>

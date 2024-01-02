@@ -8,7 +8,6 @@
 .grid {
     display: 					    -ms-grid;
     display: 					    grid;
-    gap:                            15px;
 }
 
 .grid-align-start {

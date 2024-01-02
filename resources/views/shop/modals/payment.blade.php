@@ -8,7 +8,7 @@
         </div>
 
         <div style="padding: 50px; background: white">
-            <div class="flex justify-center align-center">
+            <div class="flex justify-content-center align-items-center">
                 <span class="loader"></span>
                 procesando...
             </div>

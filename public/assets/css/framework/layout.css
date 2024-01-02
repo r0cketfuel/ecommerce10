@@ -9,11 +9,6 @@
 @import url("flex.css");
 
 
-.copyright {
-    text-align:                     center;
-    font-size:                      12px;
-}
-
 /*======*/
 /* TEXT */
 /*======*/
@@ -36,32 +31,82 @@
 /*==================*/
 /* FLEX & GRID GAPS */
 /*==================*/
-.gap0 {
-    gap:                            0px;
+.gap-0 {
+	gap: 0;
 }
 
-.gap1 {
-    gap:                            5px;
+.gap-1 {
+	gap: 0.25rem;
 }
 
-.gap2 {
-    gap:                            10px;
+.gap-2 {
+	gap: 0.5rem;
 }
 
-.gap3 {
-    gap:                            15px;
+.gap-3 {
+	gap: 1rem;
 }
 
-.gap4 {
-    gap:                            20px;
+.gap-4 {
+	gap: 1.5rem;
 }
 
-.gap5 {
-    gap:                            25px;
+.gap-5 {
+	gap: 3rem;
 }
 
-.gap6 {
-    gap:                            30px;
+.row-gap-0 {
+	row-gap: 0;
+}
+
+.row-gap-1 {
+	row-gap: 0.25rem;
+}
+
+.row-gap-2 {
+	row-gap: 0.5rem;
+}
+
+.row-gap-3 {
+	row-gap: 1rem;
+}
+
+.row-gap-4 {
+	row-gap: 1.5rem;
+}
+
+.row-gap-5 {
+	row-gap: 3rem;
+}
+
+.column-gap-0 {
+	-moz-column-gap: 0;
+	column-gap: 0;
+}
+
+.column-gap-1 {
+	-moz-column-gap: 0.25rem;
+	column-gap: 0.25rem;
+}
+
+.column-gap-2 {
+	-moz-column-gap: 0.5rem;
+	column-gap: 0.5rem;
+}
+
+.column-gap-3 {
+	-moz-column-gap: 1rem;
+	column-gap: 1rem;
+}
+
+.column-gap-4 {
+	-moz-column-gap: 1.5rem;
+	column-gap: 1.5rem;
+}
+
+.column-gap-5 {
+	-moz-column-gap: 3rem;
+	column-gap: 3rem;
 }
 
 
@@ -231,10 +276,6 @@
     .main-container {
         padding:                    15px;
     }
-
-    .flex {
-        gap:                        15px;
-    }
 }
 
 @media(max-width: 900px)
@@ -244,9 +285,7 @@
 
 @media(max-width: 768px)
 {
-    .flex {
-        gap:                        10px;
-    }
+
 }
 
 @media(max-width: 600px)
@@ -256,9 +295,7 @@
 
 @media(max-width: 480px)
 {
-    .flex {
-        gap:                        5px;
-    }
+
 }
 
 @media(max-width: 320px)

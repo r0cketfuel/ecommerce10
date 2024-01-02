@@ -1,6 +1,5 @@
 @php 
     $sucursales = session('infoComercio.sucursales');
-    $copyright  = date("Y");
 @endphp
 
 <footer>
@@ -83,7 +82,7 @@
                     <img class="afip" src="{{ config('constants.images') }}/afip.jpg" alt="afipQR">
                 </a>
             </div>
-            <div class="copyright">{{ $copyright }} - FG Design</div>
+            <div>{{ date("Y") }} - FG Design</div>
         </div>
     </div>
 </footer>

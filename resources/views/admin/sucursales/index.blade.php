@@ -36,15 +36,15 @@
                 <td class="text-left">{{ $sucursal->nombre }}</td>
                 <td class="text-left">{{ $sucursal->direccion }}<br>{{ $sucursal->entre_calles_1 }} {{ $sucursal->entre_calles_2 }}</td>
                 <td class="text-left">
-                    <div class="flex justify-between"><div>Localidad:</div><div>{{ $sucursal->localidad }}</div></div>
-                    <div class="flex justify-between"><div>CP:</div><div>{{ $sucursal->codigo_postal }}</div></div>
-                    <div class="flex justify-between"><div>Provincia:</div><div>{{ $sucursal->provincia }}</div></div>
-                    <div class="flex justify-between"><div>País:</div><div>{{ $sucursal->pais }}</div></div>
+                    <div class="flex justify-content-between"><div>Localidad:</div><div>{{ $sucursal->localidad }}</div></div>
+                    <div class="flex justify-content-between"><div>CP:</div><div>{{ $sucursal->codigo_postal }}</div></div>
+                    <div class="flex justify-content-between"><div>Provincia:</div><div>{{ $sucursal->provincia }}</div></div>
+                    <div class="flex justify-content-between"><div>País:</div><div>{{ $sucursal->pais }}</div></div>
                 </td>
                 <td class="text-left">
-                    <div class="flex justify-between"><div>Teléfono 1:</div><div>{{ $sucursal->telefono_1 }}</div></div>
-                    <div class="flex justify-between"><div>Teléfono 2:</div><div>{{ $sucursal->telefono_2 }}</div></div>
-                    <div class="flex justify-between"><div>Fax:</div><div>{{ $sucursal->fax }}</div></div>
+                    <div class="flex justify-content-between"><div>Teléfono 1:</div><div>{{ $sucursal->telefono_1 }}</div></div>
+                    <div class="flex justify-content-between"><div>Teléfono 2:</div><div>{{ $sucursal->telefono_2 }}</div></div>
+                    <div class="flex justify-content-between"><div>Fax:</div><div>{{ $sucursal->fax }}</div></div>
                 </td>
                 <td class="text-left">{{ $sucursal->email }}</td>
                 <td class="text-center">{{ $sucursal->principal }}</td>

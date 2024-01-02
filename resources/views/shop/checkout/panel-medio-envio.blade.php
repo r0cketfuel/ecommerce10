@@ -1,6 +1,6 @@
 <!-- Panel datos pago -->
 <div class="carousel-slide">
-    <div class="flex justify-end">
+    <div class="flex justify-content-end">
         <button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
     </div>
     <br>

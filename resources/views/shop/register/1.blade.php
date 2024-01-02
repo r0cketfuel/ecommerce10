@@ -1,5 +1,5 @@
 <div class="carousel-slide">
-    <div class="flex justify-end">
+    <div class="flex justify-content-end">
         <button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
     </div>
     <br>
@@ -9,17 +9,17 @@
         <div class="panel-content">
             <label>
                 Usuario
-                <input type="text" name="username" tabindex="1" autocomplete="off">
+                <input type="text" name="username" autocomplete="off" autofocus>
             </label>
 
             <label>
                 Password
-                <input type="password" name="password" tabindex="2" autocomplete="off">
+                <input type="password" name="password" autocomplete="off">
             </label>
 
             <label>
                 Repetir password
-                <input type="password" name="password_repeat" tabindex="3" autocomplete="off">
+                <input type="password" name="password_repeat" autocomplete="off">
             </label>
         </div>
     </div>

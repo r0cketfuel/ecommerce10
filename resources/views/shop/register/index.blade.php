@@ -22,7 +22,15 @@
 @endsection
 
 @section("inlineCSS")
-	<style>
+
+    <style>
+        @media (max-width: 600px)
+        {
+            .panel-content .flex {
+                flex-flow: column nowrap;
+            }
+        }
+
 		.carousel-container {
 			flex: 					1;
 			overflow: 				hidden;

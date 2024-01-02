@@ -38,7 +38,7 @@
         @include("shop.layout.banners")
 
         <!-- Barra superior de búsqueda -->
-        <div class="flex justify-between align-center">
+        <div class="flex justify-content-between align-items-center">
             <div>
                 <span class="text-bold">{{ __('general.showing') }}: </span>{{ $busqueda["titulo"] }}
             </div>

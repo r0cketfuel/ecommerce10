@@ -13,14 +13,14 @@
             </div>
             <div class="modal-additem-rightPanel">
                 <!-- Precio -->
-                <div class="flex justify-between align-center">
+                <div class="flex justify-content-between align-items-center">
                     <div>{{ __('general.price') }}:</div>
                     <div id="precio">-</div>
                 </div>
                 <!-- /Precio -->
 
                 <!-- Atributo Tamaño -->
-                <div class="flex justify-between align-center">
+                <div class="flex justify-content-between align-items-center">
                     <div>{{ __('general.sizes') }}:</div>
                     <div style="display: flex;">
                         <select id="sizes">
@@ -31,7 +31,7 @@
                 <!-- /Atributo Tamaño -->
                 
                 <!-- Atributo Color -->
-                <div class="flex justify-between align-center">
+                <div class="flex justify-content-between align-items-center">
                     <div>{{ __('general.colors') }}:</div>
                     <div style="display: flex;">
                         <select id="colors">
@@ -42,14 +42,14 @@
                 <!-- /Atributo Color -->
 
                 <!-- Stock disponible -->
-                <div class="flex justify-between align-center">
+                <div class="flex justify-content-between align-items-center">
                     <div>{{ __('general.stock_available') }}:</div>
                     <div id="stock">-</div>
                 </div>                         
                 <!-- /Stock disponible -->
 
                 <!-- Cantidad -->
-                <div id="qtyControl" class="flex justify-between align-center">
+                <div id="qtyControl" class="flex justify-content-between align-items-center">
                     <div>{{ __('general.quantity') }}:</div>
                     <div style="display: flex; max-width: 120px;">
                         <button id="minusButton"><i class="fa-solid fa-minus"></i></button>
@@ -59,7 +59,7 @@
                 </div>
 
                 <!-- subtotal -->
-                <div class="flex justify-between align-center">
+                <div class="flex justify-content-between align-items-center">
                     <div>{{ __('general.subtotal') }}:</div>
                     <div id="subtotal">-</div>
                 </div>

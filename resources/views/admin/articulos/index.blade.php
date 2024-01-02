@@ -35,7 +35,7 @@
 
     <div class="alert"></div>
 
-    <div class="flex justify-between">
+    <div class="flex justify-content-between gap-3">
         <a class="btn-link btn-link-primary w100px" href="articulos/create"><span><i class="fa-solid fa-plus"></i></span>Nuevo</a>
         <div class="input-container">
             <input form="form-search" type="text" name="busqueda" value="{{ isset($busqueda['searchbar']) ? $busqueda['searchbar'] : '' }}" placeholder="{{ __('general.search') }}...">

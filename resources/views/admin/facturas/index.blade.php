@@ -36,7 +36,7 @@
 
     <div class="alert"></div>
 
-    <div class="flex justify-between">
+    <div class="flex justify-content-between">
         <div class="input-container">
             <input form="form-search" type="text" name="busqueda" value="{{ isset($busqueda['searchbar']) ? $busqueda['searchbar'] : '' }}" placeholder="{{ __('general.search') }}...">
             <button form="form-search" type="submit" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>

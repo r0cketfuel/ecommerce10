@@ -15,23 +15,23 @@
         <div class="panel w500px">
             <div class="panel-title panel-title-underlined">Info</div>
             <div class="panel-content">
-                <div class="flex justify-between">
+                <div class="flex justify-content-between">
                     <div class="text-bold">Medio de pago:</div>
                     <div>{{ $estado->payment_method_id }}</div>
                 </div>
 
                 @isset($estado->card->cardholder->name)
-                    <div class="flex justify-between">
+                    <div class="flex justify-content-between">
                         <div class="text-bold">Titular de la tarjeta:</div>
                         <div>{{ $estado->card->cardholder->name }}</div>
                     </div>
-                    <div class="flex justify-between">
+                    <div class="flex justify-content-between">
                         <div class="text-bold">Cuotas:</div>
                         <div>{{ $estado->installments }}</div>
                     </div>
                 @endisset
 
-                <div class="flex justify-between">
+                <div class="flex justify-content-between">
                     <div class="text-bold">Fecha de creación:</div>
                     <div>
                         @if(isset($estado->card->date_created))
@@ -41,15 +41,15 @@
                         @endif
                     </div>
                 </div>
-                <div class="flex justify-between">
+                <div class="flex justify-content-between">
                     <div class="text-bold">Total:</div>
                     <div>{{ _money($estado->transaction_details->total_paid_amount) }}</div>
                 </div>
-                <div class="flex justify-between">
+                <div class="flex justify-content-between">
                     <div class="text-bold">Estado:</div>
                     <div>{{ $estado->status }}</div>
                 </div>
-                <div class="flex justify-between">
+                <div class="flex justify-content-between">
                     <div class="text-bold">Descripción:</div>
                     <div>{{ $estado->status_detail }}</div>
                 </div>

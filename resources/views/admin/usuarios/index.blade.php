@@ -47,9 +47,9 @@
                     <td class="text-left">{{ $usuario->domicilio }} {{ $usuario->domicilio_nro }}<br>{{ $usuario->domicilio_piso }} {{ $usuario->domicilio_depto }}</td>
                     <td class="text-left">{{ $usuario->localidad }}<br>{{ $usuario->codigo_postal }}</td>
                     <td class="text-left">
-                        <div class="flex justify-between"><div>Fijo:</div><div>{{ $usuario->telefono_fijo }}</div></div>
-                        <div class="flex justify-between"><div>Celular:</div><div>{{ $usuario->telefono_celular }}</div></div>
-                        <div class="flex justify-between"><div>Alternativo:</div><div>{{ $usuario->telefono_alt }}</div></div>
+                        <div class="flex justify-content-between"><div>Fijo:</div><div>{{ $usuario->telefono_fijo }}</div></div>
+                        <div class="flex justify-content-between"><div>Celular:</div><div>{{ $usuario->telefono_celular }}</div></div>
+                        <div class="flex justify-content-between"><div>Alternativo:</div><div>{{ $usuario->telefono_alt }}</div></div>
                     </td>
                     <td class="text-left">{{ $usuario->email }}</td>
                     <td class="text-center">

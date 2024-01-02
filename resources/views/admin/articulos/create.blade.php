@@ -26,7 +26,7 @@
     @include('admin.articulos.modals.categoria')
     @include('admin.articulos.modals.subcategoria')
     
-    <div class="grid grid-cols-12 grid-align-start gap3">
+    <div class="grid grid-cols-12 grid-align-start gap-3">
         <div class="col-span-6 col-span-900p-12">
             <div class="panel">
                 <div class="panel-title">Datos del producto</div>
@@ -43,9 +43,9 @@
                         <select form="form" id="subcategoria_id" name="subcategoria" disabled value="{{ old('subcategoria') }}">
                             <option value="" disabled selected>Subcategoría</option>
                         </select>
-                        <div class="flex">
-                            <button type="button" class="openModal" id="boton_agregar_categoria"><span><i class="fa-solid fa-plus"></i></span>Categoría</button>
-                            <button type="button" class="openModal" id="boton_agregar_subcategoria"><span><i class="fa-solid fa-plus"></i></span>Subcategoría</button>
+                        <div class="flex gap-3">
+                            <button type="button" class="btn-secondary openModal" id="boton_agregar_categoria"><span><i class="fa-solid fa-plus"></i></span>Categoría</button>
+                            <button type="button" class="btn-secondary openModal" id="boton_agregar_subcategoria"><span><i class="fa-solid fa-plus"></i></span>Subcategoría</button>
                         </div>
                     </fieldset>
 
@@ -108,7 +108,7 @@
 
                     <fieldset>
                         <legend>Atributos</legend>
-                        <div id="clone" class="flex row">
+                        <div id="clone" class="flex gap-3">
                             <select name="talles[]">
                                 <option value="" disabled selected>Talles</option>
                                 @foreach ($talles as $talle)
@@ -119,7 +119,7 @@
                             <input form="form" type="color"  name="color[]">
                             <button class="btn-danger" onclick="eliminarAtributo(this.parentNode);" style="width: 70px; display: block"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
-                        <button form="form" type="button" onclick="agregarAtributo();"><span><i class="fa-solid fa-plus"></i></span>Atributo</button>
+                        <button form="form" type="button" class="btn-secondary" onclick="agregarAtributo();"><span><i class="fa-solid fa-plus"></i></span>Atributo</button>
                     </fieldset>
 
                     <script>
