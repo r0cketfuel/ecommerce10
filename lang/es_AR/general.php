@@ -40,4 +40,5 @@ return [
     'register_msg'          => 'No tenés una cuenta?',
     'forgot_password_msg'   => 'Olvidaste tu contraseña?',
     'remember_check'        => 'Recordarme',
+    'empty_purchase_list'   => 'Todavía no realizaste ninguna compra'
 ];

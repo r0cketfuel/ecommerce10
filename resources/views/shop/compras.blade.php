@@ -23,7 +23,13 @@
 @section("body")
     <div class="main-container">
         @include("shop.layout.breadcrumb")
+        @if(count($items))
+            @foreach($items as $item)
 
+            @endforeach
+        @else
+            <p>{{ __("general.empty_purchase_list") }}</p>
+        @endif
     </div>
 @endsection
 

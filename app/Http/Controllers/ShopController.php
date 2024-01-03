@@ -365,7 +365,11 @@ class ShopController extends Controller
     {
         $usuario = Usuario::find(Auth::id());
 
-        return view("shop.compras", compact("usuario"));
+        $items = [
+            
+        ];
+
+        return view("shop.compras", compact("usuario", "items"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
