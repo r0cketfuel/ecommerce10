@@ -119,15 +119,13 @@
         </script>
 
         <script>
-            function submitForm()
-            {
+            document.getElementById('search_form').addEventListener('submit', function (event) {
+                
                 const searchInput = document.getElementById('busqueda').value.trim();
 
-                if (searchInput !== '')
-                    return true;
-                
-                return false;
-            }
+                if(searchInput === '')
+                    event.preventDefault();
+            });
         </script>
 	</body>
 </html>
