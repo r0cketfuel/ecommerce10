@@ -6,14 +6,44 @@
                     {{ $marquesina->mensaje }}
                 @endforeach
             </marquee>
-            <ul>
-                <li>
-                    @auth
-                        <a href="/shop/account">{{ auth()->user()->nombres }}&nbsp;<i class="fa-solid fa-user-gear"></i></a>
-                        &nbsp;|&nbsp; 
-                        <a href="/shop/logout">{{ __('general.logout') }}&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
-                    @endauth
-                    @guest
+            @auth
+                <nav>
+                    <div class="navbar">
+                        <div class="nav-links">
+                            <ul class="links">
+
+                                <li class="main-menu">
+                                    <div>
+                                        <a class="main-menu-link" href="#"><i class="fa-solid fa-user"></i>&nbsp;{{ auth()->user()->apellidos }}, {{ auth()->user()->nombres }}</a>
+                                        <i class="fa-solid fa-caret-down menu-arrow arrow"></i>
+                                    </div>
+                                    <ul class="main-menu-links sub-menu">
+                                        <li class="more flex gap-3">
+                                            <div style="color: black">
+                                                <a class="submenu-link" href="/shop/account"><i class="fa-solid fa-user-gear"></i>Mi cuenta</a>
+                                            </div>
+                                        </li>
+                                        <li class="more flex gap-3">
+                                            <div style="color: black">
+                                                <a class="submenu-link" href="/shop/compras"><i class="fa-solid fa-shopping-bag"></i>Mis compras</a>
+                                            </div>
+                                        </li>
+                                        <li class="more flex gap-3">
+                                            <div style="color: black">
+                                                <a class="submenu-link" href="/shop/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>Salir</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            @endauth
+            @guest
+                <ul>
+                    <li>
                         @if (session('shop.usuario.datos.id') == -1)
                             <a href="/shop/account">{{ session('shop.usuario.datos.username') }}&nbsp;<i class="fa-solid fa-user-gear"></i></a>
                             &nbsp;|&nbsp; 
@@ -21,9 +51,9 @@
                         @else
                             <a href="{{ route('user.login') }}" id="login-link"><i class="fa-solid fa-user"></i>&nbsp;{{ __('general.login') }}</a>
                         @endif
-                    @endguest
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            @endguest
         </div>
     </div>
     <div class="main-header">
@@ -37,7 +67,7 @@
                 </div>
                 <div class="search-bar">
                     <div class="input-container">
-                        <form id="search_form" action="/shop" method="get">
+                        <form id="search_form" action="/shop" method="get" onsubmit="return submitForm()">
                             <input type="text" name="busqueda" id="busqueda" value="{{ isset($busqueda['searchbar']) ? $busqueda['searchbar'] : '' }}" placeholder="{{ __('general.search') }}...">
                             <button type="submit" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
