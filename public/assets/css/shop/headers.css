@@ -21,6 +21,7 @@ header li {
     padding:                        5px var(--containers-side-padding);
     max-width:                      var(--containers-max-width);
     display:                        flex;
+	align-items: 					center;
     gap:                            20px;
     box-sizing:                     border-box;
 }
