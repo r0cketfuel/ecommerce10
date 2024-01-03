@@ -19,7 +19,8 @@
     top:                5px;
     right:              5px;
     background:         rgba(10, 250, 20, 0.75);
-    padding:            4px;
+    padding:            4px 8px;
+    border-radius:      4px;
 }
 
 .product-card-discount span {
