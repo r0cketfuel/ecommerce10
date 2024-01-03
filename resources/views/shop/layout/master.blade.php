@@ -125,8 +125,8 @@
 
                 if (searchInput !== '')
                     return true;
-                else
-                    return false;
+                
+                return false;
             }
         </script>
 	</body>
