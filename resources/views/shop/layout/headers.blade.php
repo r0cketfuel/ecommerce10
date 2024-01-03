@@ -9,7 +9,7 @@
             <ul>
                 <li>
                     @auth
-                        <a href="/shop/account">{{ auth()->user()->username }}&nbsp;<i class="fa-solid fa-user-gear"></i></a>
+                        <a href="/shop/account">{{ auth()->user()->nombres }}&nbsp;<i class="fa-solid fa-user-gear"></i></a>
                         &nbsp;|&nbsp; 
                         <a href="/shop/logout">{{ __('general.logout') }}&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                     @endauth
