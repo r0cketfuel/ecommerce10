@@ -117,5 +117,17 @@
 
             });
         </script>
+
+        <script>
+            function submitForm()
+            {
+                const searchInput = document.getElementById('busqueda').value.trim();
+
+                if (searchInput !== '')
+                    return true;
+                else
+                    return false;
+            }
+        </script>
 	</body>
 </html>

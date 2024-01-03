@@ -35,7 +35,7 @@ class ShopController extends Controller
             "params"    => array()
         );
 
-        if($request->filled("busqueda"))
+        if($request->filled("busqueda") && $request->input("busqueda") != "")
         {
             $busqueda["titulo"]     = "Resultados de la búsqueda: '" . $request->input("busqueda") . "'";
             $busqueda["searchbar"]  = $request->input("busqueda");

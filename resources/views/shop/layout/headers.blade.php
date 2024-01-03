@@ -37,8 +37,8 @@
                 </div>
                 <div class="search-bar">
                     <div class="input-container">
-                        <form action="/shop">
-                            <input type="text" name="busqueda" value="{{ isset($busqueda['searchbar']) ? $busqueda['searchbar'] : '' }}" placeholder="{{ __('general.search') }}...">
+                        <form id="search_form" action="/shop" method="get" onsubmit="return submitForm()">
+                            <input type="text" name="busqueda" id="busqueda" value="{{ isset($busqueda['searchbar']) ? $busqueda['searchbar'] : '' }}" placeholder="{{ __('general.search') }}...">
                             <button type="submit" class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
