@@ -1,54 +1,3 @@
-<style>
-        .user-menu {
-            position:           relative;
-            display:            inline-block;
-        }
-
-        .user-menu .main-menu-link {
-            display:            flex;
-            gap:                5px;
-            white-space:        nowrap;
-            cursor:             pointer;
-        }
-
-        .user-menu .main-menu-submenu {
-            position:           absolute;
-            top:                18px;
-            right:              0;
-            background:         white;
-            color:              black;
-            z-index:            10;
-            border:             1px solid black;
-            padding:            10px;
-            display:            none;
-            white-space:        nowrap;
-        }
-
-        .user-menu .main-menu-link:hover + .main-menu-submenu,
-        .user-menu .main-menu-submenu:hover {
-            display:            flex;
-            flex-flow:          column nowrap;
-        }
-
-        .submenu-item:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-        
-        .user-menu .main-menu-submenu .submenu-item {
-            display:            flex;
-            gap:                5px;
-            padding:            5px;
-        }
-
-        .user-menu .main-menu-submenu .submenu-item .user-menu-icon {
-            width:              20px;
-        }
-
-        .user-menu .main-menu-submenu .submenu-item .user-menu-link {
-            flex:               1;
-        }
-    </style>
-
 <header>
     <div class="top-header">
         <div class="top-header-container">
@@ -71,6 +20,10 @@
                         <li class="submenu-item">
                             <div class="user-menu-icon"><i class="fa-solid fa-shopping-bag"></i></div>
                             <div class="user-menu-link"><a href="/shop/compras">Mis compras</a></div>
+                        </li>
+                        <li class="submenu-item">
+                            <div class="user-menu-icon"><i class="fa-solid fa-heart"></i></div>
+                            <div class="user-menu-link"><a href="/shop/favoritos">Favoritos</a></div>
                         </li>
                         <li class="submenu-item">
                             <div class="user-menu-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>

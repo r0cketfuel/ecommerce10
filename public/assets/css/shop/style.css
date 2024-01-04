@@ -13,6 +13,7 @@
 @import url("navbar.css");
 @import url("footers.css");
 
+@import url("userMenu.css");
 
 :root {
     --containers-max-width:     	1366px;

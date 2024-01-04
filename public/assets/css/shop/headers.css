@@ -19,7 +19,7 @@ header li {
 
 .top-header-container {
     margin:                         0 auto;
-    padding:                        5px var(--containers-side-padding);
+    padding:                        0px var(--containers-side-padding);
     max-width:                      var(--containers-max-width);
     display:                        flex;
 	align-items: 					center;
