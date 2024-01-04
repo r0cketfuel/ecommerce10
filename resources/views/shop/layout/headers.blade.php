@@ -1,42 +1,50 @@
 <style>
-    .user-menu {
-        position:       relative;
-    }
+        .user-menu {
+            position:           relative;
+            display:            inline-block;
+        }
 
-    .user-menu .main-menu-link {
-        white-space: 	nowrap;
-    }
+        .user-menu .main-menu-link {
+            display:            flex;
+            gap:                5px;
+            white-space:        nowrap;
+            cursor:             pointer;
+        }
 
-    .user-menu .main-menu-submenu {
-        position:       absolute;
-        background:     white;
-        color:          black;
-        z-index:        99999;
-        border:         1px solid black;
-        padding:        10px;
-        display:        none;
-    }
+        .user-menu .main-menu-submenu {
+            position:           absolute;
+            background:         white;
+            color:              black;
+            z-index:            10;
+            border:             1px solid black;
+            padding:            10px;
+            display:            none;
+        }
 
-    .user-menu .main-menu-link:hover + .main-menu-submenu {
-        display:        flex;
-        flex-flow:      column nowrap;
-        gap:            10px;
-    }
+        .user-menu .main-menu-link:hover + .main-menu-submenu,
+        .user-menu .main-menu-submenu:hover {
+            display:            flex;
+            flex-flow:          column nowrap;
+        }
 
-    .user-menu .main-menu-submenu .submenu-item {
-        display:        flex;
-        gap:            5px;
-    }
+        .submenu-item:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .user-menu .main-menu-submenu .submenu-item {
+            display:            flex;
+            gap:                5px;
+            padding:            5px;
+        }
 
-    .user-menu .main-menu-submenu .submenu-item .user-menu-icon {
-        width:          20px;
-    }
+        .user-menu .main-menu-submenu .submenu-item .user-menu-icon {
+            width:              20px;
+        }
 
-    .user-menu .main-menu-submenu .submenu-item .user-menu-link {
-        flex:           1;
-    }
-
-</style>
+        .user-menu .main-menu-submenu .submenu-item .user-menu-link {
+            flex:               1;
+        }
+    </style>
 
 <header>
     <div class="top-header">
@@ -48,12 +56,10 @@
             </marquee>
             @auth
                 <nav class="user-menu">
-                    <ul class="main-menu-link">
-                        <li>
-                            <a href="#"><i class="fa-solid fa-user"></i>&nbsp;{{ auth()->user()->apellidos }}, {{ auth()->user()->nombres }}</a>
-                            <div class="menu-arrow"><i class="fa-solid fa-chevron-down fa-sm"></i></div>
-                        </li>
-                    </ul>
+                    <div class="main-menu-link">
+                        <div class="menu-link"><a href="#"><i class="fa-solid fa-user"></i>&nbsp;{{ auth()->user()->apellidos }}, {{ auth()->user()->nombres }}</a></div>
+                        <div class="menu-arrow"><i class="fa-solid fa-chevron-down fa-sm"></i></div>
+                    </div>
                     <ul class="main-menu-submenu">
                         <li class="submenu-item">
                             <div class="user-menu-icon"><i class="fa-solid fa-user-gear"></i></div>
