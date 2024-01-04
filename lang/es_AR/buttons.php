@@ -7,4 +7,5 @@ return [
     'insert'            => 'Insertar',
     'addToCart'         => 'Agregar al carrito',
     'suscribe'          => 'Suscribirse',
+    'invoice'           => 'Factura'
 ];

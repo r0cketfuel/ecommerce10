@@ -365,9 +365,21 @@ class ShopController extends Controller
     {
         $usuario = Usuario::find(Auth::id());
 
-        $items = [
-            
+        $articulos = [
+            [
+                "id"    => 1,
+            ],
+            [
+                "id"    => 2,
+            ],
+            [
+                "id"    => 3,
+            ],
         ];
+
+        foreach($articulos as $articulo) {
+            $items[] = Articulo::info($articulo['id']);
+        }
 
         return view("shop.compras", compact("usuario", "items"));
     }
