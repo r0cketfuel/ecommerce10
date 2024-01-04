@@ -55,7 +55,7 @@
                 <div class="accordion-panel">
                     <div class="panel-container">
                         <div class="input-group">
-                            <div class="flex">
+                            <div class="flex gap-3">
                                 <label>
                                     Apellidos
                                     <input disabled value="{{ session('shop.usuario.datos.apellidos') }}">
@@ -81,7 +81,7 @@
                                 <input disabled value="{{ session('shop.usuario.datos.documento_nro') }}">
                             </label>
 
-                            <div class="flex">
+                            <div class="flex gap-3">
                                 <label>
                                     Fecha de nacimiento
                                     <input form="form" type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ session('shop.usuario.datos.fecha_nacimiento') }}">
@@ -107,7 +107,14 @@
                                 Cuit
                                 <input form="form" id="cuit" name="cuit" value="{{ session('shop.usuario.datos.cuit') }}">
                             </label>
-
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-header">Datos de contacto<span class="arrow"><i class="fa-solid fa-chevron-down"></i></span></div>
+                    <div class="accordion-panel">
+                        <div class="panel-container">
                             <label>
                                 Domicilio
                                 <input form="form" id="domicilio" name="domicilio" value="{{ session('shop.usuario.datos.domicilio') }}">
