@@ -33,17 +33,26 @@
                 </nav>
             @endauth
             @guest
-                <ul>
-                    <li>
-                        @if (session('shop.usuario.datos.id') == -1)
-                            <a href="/shop/account">{{ session('shop.usuario.datos.username') }}&nbsp;<i class="fa-solid fa-user-gear"></i></a>
-                            &nbsp;|&nbsp; 
-                            <a href="/shop/logout">{{ __('general.logout') }}&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
-                        @else
-                            <a href="{{ route('user.login') }}" id="login-link"><i class="fa-solid fa-user"></i>&nbsp;{{ __('general.login') }}</a>
-                        @endif
-                    </li>
-                </ul>
+                @if(session('shop.usuario.datos.id') == -1)
+                    <nav class="user-menu">
+                        <div class="main-menu-link">
+                            <div class="menu-link"><a href="#"><i class="fa-regular fa-user"></i>&nbsp;{{ session('shop.usuario.datos.username') }}</a></div>
+                            <div class="menu-arrow"><i class="fa-solid fa-chevron-down fa-sm"></i></div>
+                        </div>
+                        <ul class="main-menu-submenu">
+                            <li class="submenu-item">
+                                <div class="user-menu-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+                                <div class="user-menu-link"><a href="/shop/logout">Salir</a></div>
+                            </li>
+                        </ul>
+                    </nav>
+                @else
+                    <nav class="user-menu">
+                        <div class="main-menu-link">
+                            <div class="menu-link"><a href="{{ route('user.login') }}" id="login-link"><i class="fa-solid fa-user"></i>&nbsp;{{ __('general.login') }}</a></div>
+                        </div>
+                    </nav>
+                @endif
             @endguest
         </div>
     </div>
