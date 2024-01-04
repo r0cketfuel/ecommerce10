@@ -38,6 +38,7 @@ header li {
     margin:                         0 auto;
     padding:                        0px var(--containers-side-padding);
     max-width:                      var(--containers-max-width);
+	box-sizing:                     border-box;
 }
 
 .main-header-top {
