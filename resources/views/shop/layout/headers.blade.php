@@ -13,12 +13,15 @@
 
         .user-menu .main-menu-submenu {
             position:           absolute;
+            top:                18px;
+            right:              0;
             background:         white;
             color:              black;
             z-index:            10;
             border:             1px solid black;
             padding:            10px;
             display:            none;
+            white-space:        nowrap;
         }
 
         .user-menu .main-menu-link:hover + .main-menu-submenu,
@@ -57,7 +60,7 @@
             @auth
                 <nav class="user-menu">
                     <div class="main-menu-link">
-                        <div class="menu-link"><a href="#"><i class="fa-solid fa-user"></i>&nbsp;{{ auth()->user()->apellidos }}, {{ auth()->user()->nombres }}</a></div>
+                        <div class="menu-link"><a href="#"><i class="fa-regular fa-user"></i>&nbsp;{{ auth()->user()->apellidos }}, {{ auth()->user()->nombres }}</a></div>
                         <div class="menu-arrow"><i class="fa-solid fa-chevron-down fa-sm"></i></div>
                     </div>
                     <ul class="main-menu-submenu">
