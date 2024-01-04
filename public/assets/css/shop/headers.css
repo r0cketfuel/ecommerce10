@@ -6,6 +6,7 @@ header ul,
 header li {
     margin:                         0;
     padding:                        0;
+	list-style: 					none;
 }
 
 /*==============*/
@@ -13,7 +14,7 @@ header li {
 /*==============*/
 .top-header {
 	color: 							white;
-	background-color: 				rgb(20,20,20);
+	background-color: 				rgb(25, 25, 25);
 }
 
 .top-header-container {
@@ -24,21 +25,6 @@ header li {
 	align-items: 					center;
     gap:                            20px;
     box-sizing:                     border-box;
-}
-
-.top-header li {
-	display:						inline-block;
-	margin-right: 					20px;
-}
-
-.top-header li a {
-	color:							unset;
-}
-
-.top-header li:last-child {
-	white-space: 					nowrap;
-	text-align:						right;
-	margin-right:					0;
 }
 
 /*===============*/

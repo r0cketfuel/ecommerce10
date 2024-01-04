@@ -1,3 +1,43 @@
+<style>
+    .user-menu {
+        position:       relative;
+    }
+
+    .user-menu .main-menu-link {
+        white-space: 	nowrap;
+    }
+
+    .user-menu .main-menu-submenu {
+        position:       absolute;
+        background:     white;
+        color:          black;
+        z-index:        99999;
+        border:         1px solid black;
+        padding:        10px;
+        display:        none;
+    }
+
+    .user-menu .main-menu-link:hover + .main-menu-submenu {
+        display:        flex;
+        flex-flow:      column nowrap;
+        gap:            10px;
+    }
+
+    .user-menu .main-menu-submenu .submenu-item {
+        display:        flex;
+        gap:            5px;
+    }
+
+    .user-menu .main-menu-submenu .submenu-item .user-menu-icon {
+        width:          20px;
+    }
+
+    .user-menu .main-menu-submenu .submenu-item .user-menu-link {
+        flex:           1;
+    }
+
+</style>
+
 <header>
     <div class="top-header">
         <div class="top-header-container">
@@ -7,38 +47,27 @@
                 @endforeach
             </marquee>
             @auth
-                <nav>
-                    <div class="navbar">
-                        <div class="nav-links">
-                            <ul class="links">
-
-                                <li class="main-menu">
-                                    <div>
-                                        <a class="main-menu-link" href="#"><i class="fa-solid fa-user"></i>&nbsp;{{ auth()->user()->apellidos }}, {{ auth()->user()->nombres }}</a>
-                                        <i class="fa-solid fa-caret-down menu-arrow arrow"></i>
-                                    </div>
-                                    <ul class="main-menu-links sub-menu">
-                                        <li class="more flex gap-3">
-                                            <div style="color: black">
-                                                <a class="submenu-link" href="/shop/account"><i class="fa-solid fa-user-gear"></i>Mi cuenta</a>
-                                            </div>
-                                        </li>
-                                        <li class="more flex gap-3">
-                                            <div style="color: black">
-                                                <a class="submenu-link" href="/shop/compras"><i class="fa-solid fa-shopping-bag"></i>Mis compras</a>
-                                            </div>
-                                        </li>
-                                        <li class="more flex gap-3">
-                                            <div style="color: black">
-                                                <a class="submenu-link" href="/shop/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>Salir</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
+                <nav class="user-menu">
+                    <ul class="main-menu-link">
+                        <li>
+                            <a href="#"><i class="fa-solid fa-user"></i>&nbsp;{{ auth()->user()->apellidos }}, {{ auth()->user()->nombres }}</a>
+                            <div class="menu-arrow"><i class="fa-solid fa-chevron-down fa-sm"></i></div>
+                        </li>
+                    </ul>
+                    <ul class="main-menu-submenu">
+                        <li class="submenu-item">
+                            <div class="user-menu-icon"><i class="fa-solid fa-user-gear"></i></div>
+                            <div class="user-menu-link"><a href="/shop/account">Mi cuenta</a></div>
+                        </li>
+                        <li class="submenu-item">
+                            <div class="user-menu-icon"><i class="fa-solid fa-shopping-bag"></i></div>
+                            <div class="user-menu-link"><a href="/shop/compras">Mis compras</a></div>
+                        </li>
+                        <li class="submenu-item">
+                            <div class="user-menu-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+                            <div class="user-menu-link"><a href="/shop/logout">Salir</a></div>
+                        </li>
+                    </ul>
                 </nav>
             @endauth
             @guest
