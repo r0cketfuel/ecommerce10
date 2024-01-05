@@ -85,6 +85,12 @@ class UsuarioController extends Controller
             $usuario->token_verificacion_email = Str::random(32);
             $usuario->save();
 
+            if($request->input("check_suscribe"))
+            {
+                $newsletter = new Newsletter;
+                $newsletter->suscribe($usuario->email);
+            }
+
             Mail::to($usuario->email)->send(new SignUp($usuario->apellidos, $usuario->nombres, "http://ecommerce.dell/shop/activate/" . $usuario->token_verificacion_email));
             //return response()->json(['success' => true, 'redirect_url' => '/shop/login']);
         }

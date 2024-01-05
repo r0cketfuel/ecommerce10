@@ -43,8 +43,8 @@
             </label>
 
             <div class="radio-fix">
-                <input form="form-login" type="checkbox" id="check_suscribe" name="check_suscribe">
-                <label for="check_remember">Quiero suscribirme al Newsletter</label>
+                <input type="checkbox" id="check_suscribe" name="check_suscribe">
+                <label for="check_suscribe">Quiero suscribirme al Newsletter</label>
             </div>
         </div>
     </div>
