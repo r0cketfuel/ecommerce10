@@ -9,7 +9,7 @@
             @auth
                 <nav class="user-menu">
                     <div class="main-menu-link">
-                        <div class="menu-link"><a href="#"><i class="fa-regular fa-user"></i>&nbsp;{{ auth()->user()->nombres }}</a></div>
+                        <div class="menu-link"><a href="#"><i class="fa-regular fa-user"></i>&nbsp;{{ explode(' ', auth()->user()->nombres)[0] }}</a></div>
                         <div class="menu-arrow"><i class="fa-solid fa-chevron-down fa-sm"></i></div>
                     </div>
                     <ul class="main-menu-submenu">
