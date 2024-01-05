@@ -26,7 +26,7 @@ class MailController extends Controller
                 
                 Mail::to($usuario->email)->send(new Welcome($usuario->apellidos, $usuario->nombres));
 
-                return redirect()->route('user.login')->with(trans("auth.confirmed"));
+                return view('shop.confirmation');
             }
 
             return redirect("/shop")->with(trans("auth.invalid_token"));

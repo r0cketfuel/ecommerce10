@@ -1,4 +1,5 @@
 <div class="carousel-slide">
+    <!-- Botones -->
     <div class="flex justify-content-between">
         <button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</button>
     </div>

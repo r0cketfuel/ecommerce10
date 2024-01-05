@@ -39,7 +39,7 @@
 		.carousel-slider {
 			display: 				flex;
 			flex-flow: 				row nowrap;
-			width: 					500%;
+			width: 					300%;
 		}
 
 		.carousel-slide {
@@ -89,20 +89,6 @@
                 </form>
 
                 <!-- Pantalla 3 -->
-                <form method="post" class="step-form">
-                    <input type="hidden" name="currentStep" value="3">
-                    @csrf
-                    @include('shop.register.3')
-                </form>
-
-                <!-- Pantalla 4 -->
-                <form method="post" class="step-form">
-                    <input type="hidden" name="currentStep" value="4">
-                    @csrf
-                    @include('shop.register.4')
-                </form>
-
-                <!-- Pantalla 5 -->
                 <div style="width: 100%;">
                     @include('shop.register.success')
                 </div>
