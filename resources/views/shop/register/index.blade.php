@@ -85,7 +85,7 @@
                 <form method="post" class="step-form">
                     <input type="hidden" name="currentStep" value="2">
                     @csrf
-                    @include('shop.register.1')
+                    @include('shop.register.2')
                 </form>
 
                 <!-- Pantalla 3 -->
