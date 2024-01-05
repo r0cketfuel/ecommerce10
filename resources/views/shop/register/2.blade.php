@@ -8,7 +8,7 @@
     <div class="panel">
         <div class="panel-title panel-title-underlined">Datos personales</div>
         <div class="panel-content">
-            <div class="flex">
+            <div class="flex gap-3">
                 <label>
                     Apellidos
                     <input type="text" name="apellidos">
@@ -20,7 +20,7 @@
                 </label>
             </div>
 
-            <div class="flex">
+            <div class="flex gap-3">
                 <label>
                     Fecha de nacimiento
                     <input type="date" name="fecha_nacimiento" max="{{ date('Y-m-d') }}">
@@ -50,16 +50,6 @@
             <label>
                 Número de documento
                 <input type="text" name="documento_nro">
-            </label>
-
-            <label>
-                Cuil
-                <input type="text" name="cuil">
-            </label>
-
-            <label>
-                Cuit
-                <input type="text" name="cuit">
             </label>
         </div>
     </div>

@@ -10,32 +10,32 @@
         <div class="panel-content">
             <label>
                 Domicilio
-                <input type="text" name="domicilio" tabindex="1">
+                <input type="text" name="domicilio">
             </label>
 
             <label>
                 Domicilio número
-                <input type="text" name="domicilio_nro" tabindex="2">
+                <input type="text" name="domicilio_nro">
             </label>
 
             <label>
                 Domicilio piso
-                <input type="text" name="domicilio_piso" tabindex="3">
+                <input type="text" name="domicilio_piso">
             </label>
 
             <label>
                 Domicilio depto
-                <input type="text" name="domicilio_depto" tabindex="4">
+                <input type="text" name="domicilio_depto">
             </label>
 
             <label>
                 Localidad
-                <input type="text" name="localidad" tabindex="5">
+                <input type="text" name="localidad">
             </label>
 
             <label>
                 Código postal
-                <input type="text" name="codigo_postal" tabindex="6">
+                <input type="text" name="codigo_postal">
             </label>
         </div>
     </div>

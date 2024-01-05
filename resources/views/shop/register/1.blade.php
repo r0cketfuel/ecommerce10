@@ -9,7 +9,7 @@
         <div class="panel-content">
             <label>
                 Usuario
-                <input type="text" name="username" autocomplete="off" autofocus>
+                <input type="text" name="username" autocomplete="off">
             </label>
 
             <label>

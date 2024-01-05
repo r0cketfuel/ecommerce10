@@ -9,25 +9,25 @@
         <div class="panel-content">
             <label>
                 Teléfono fijo
-                <input type="text" name="telefono_fijo" tabindex="1">
+                <input type="text" name="telefono_fijo">
             </label>
 
             <label>
                 Teléfono celular
-                <input type="text" name="telefono_celular" tabindex="2">
+                <input type="text" name="telefono_celular">
             </label>
 
             <label>
                 Teléfono alternativo
-                <input type="text" name="telefono_alt" tabindex="3">
+                <input type="text" name="telefono_alt">
             </label>
 
             <label>
                 Correo electrónico
-                <input type="email" name="email" tabindex="4" autocomplete="off">
+                <input type="email" name="email" autocomplete="off">
             </label>
                 
-            <button class="btnNext">Registrarme</button>
+            <button class="btnNext btn-primary">Registrarme</button>
         </div>
     </div>
 </div>
