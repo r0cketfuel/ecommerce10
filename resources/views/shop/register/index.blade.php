@@ -55,8 +55,8 @@
 			width:					unset;
 		}
 
-		.btnPrev:hover,
-		.btnNext:hover {
+		.btnPrev:not(.btn-primary):hover,
+		.btnNext:not(.btn-primary):hover {
 			cursor: 				pointer;
 			background-color: 		rgba(0, 0, 0, 0.05);
 		}
