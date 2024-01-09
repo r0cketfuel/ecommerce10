@@ -22,7 +22,6 @@
 @endsection
 
 @section("inlineCSS")
-
     <style>
         @media (max-width: 600px)
         {
