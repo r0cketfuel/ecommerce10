@@ -18,7 +18,7 @@
 @endsection
 
 @section("js")
-
+	<script defer src="{{ config('constants.shop_js') }}carouselForms.js"></script>
 @endsection
 
 @section("inlineCSS")
@@ -26,7 +26,7 @@
         @media (max-width: 600px)
         {
             .panel-content .flex {
-                flex-flow: column nowrap;
+                flex-flow: 			column nowrap;
             }
         }
 
