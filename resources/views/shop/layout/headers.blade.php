@@ -14,20 +14,28 @@
                     </div>
                     <ul class="main-menu-submenu">
                         <li class="submenu-item">
-                            <div class="user-menu-icon"><i class="fa-solid fa-user-gear"></i></div>
-                            <div class="user-menu-link"><a href="/shop/account">Mi cuenta</a></div>
+                            <a href="/shop/account">
+                                <div class="user-menu-icon"><i class="fa-solid fa-user-gear"></i></div>
+                                <div class="user-menu-link">Mi cuenta</div>
+                            </a>
                         </li>
                         <li class="submenu-item">
-                            <div class="user-menu-icon"><i class="fa-solid fa-shopping-bag"></i></div>
-                            <div class="user-menu-link"><a href="/shop/compras">Mis compras</a></div>
+                            <a href="/shop/compras">
+                                <div class="user-menu-icon"><i class="fa-solid fa-shopping-bag"></i></div>
+                                <div class="user-menu-link">Mis compras</div>
+                            </a>
                         </li>
                         <li class="submenu-item">
-                            <div class="user-menu-icon"><i class="fa-solid fa-heart"></i></div>
-                            <div class="user-menu-link"><a href="/shop/favoritos">Favoritos</a></div>
+                            <a href="/shop/favoritos">
+                                <div class="user-menu-icon"><i class="fa-solid fa-heart"></i></div>
+                                <div class="user-menu-link">Favoritos</div>
+                            </a>
                         </li>
                         <li class="submenu-item">
-                            <div class="user-menu-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
-                            <div class="user-menu-link"><a href="/shop/logout">Salir</a></div>
+                            <a href="/shop/logout">
+                                <div class="user-menu-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+                                <div class="user-menu-link">Salir</div>
+                            </a>
                         </li>
                     </ul>
                 </nav>
