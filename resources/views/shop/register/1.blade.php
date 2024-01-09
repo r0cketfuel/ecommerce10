@@ -1,9 +1,4 @@
 <div class="carousel-slide">
-    <!-- Botones -->
-    <div class="flex justify-content-end">
-        <button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
-    </div>
-    <br>
     <!-- Contenido -->
     <div class="panel">
         <div class="panel-title panel-title-underlined">Datos personales</div>
@@ -47,5 +42,9 @@
                 <label for="check_suscribe">Quiero suscribirme al Newsletter</label>
             </div>
         </div>
+    </div>
+    <!-- Botones -->
+    <div class="flex justify-content-end mt-4">
+        <button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
     </div>
 </div>

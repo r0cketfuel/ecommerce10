@@ -1,9 +1,4 @@
 <div class="carousel-slide">
-    <!-- Botones -->
-    <div class="flex justify-content-between">
-        <button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</button>
-    </div>
-    <br>
     <!-- Contenido -->
     <div class="panel">
         <div class="panel-title panel-title-underlined">Usuario y contraseña</div>
@@ -22,8 +17,10 @@
                 Repetir password
                 <input type="password" name="password_repeat" autocomplete="off">
             </label>
-
-            <button class="btnNext btn-primary"><span><i class="fa-solid fa-user-plus"></i></span>Completar registro</button>
         </div>
+    </div>
+    <!-- Botones -->
+    <div class="flex justify-content-end mt-4">
+        <button class="btnNext btn-primary">Completar registro</button>
     </div>
 </div>
