@@ -192,17 +192,17 @@
                         <div class="input-group">
                             <label>
                                 Password anterior
-                                <input form="form3" type="password" id="password_old" name="password_old" required value="12345678">
+                                <input form="form3" type="password" id="password_old" name="password_old" required>
                             </label>
     
                             <label>
                                 Nuevo password
-                                <input form="form3" type="password" id="password_new" name="password_new" required value="0123456789">
+                                <input form="form3" type="password" id="password_new" name="password_new" required>
                             </label>
     
                             <label>
                                 Repetir password
-                                <input form="form3" type="password" id="password_repeat" name="password_repeat" required value="0123456789">
+                                <input form="form3" type="password" id="password_repeat" name="password_repeat" required>
                             </label>
     
                             <button form="form3" name="form3" class="btn-primary">Guardar cambios</button>

@@ -19,5 +19,6 @@ return [
     'empty_token'   => 'Debe proporcionar un token válido',
     'invalid_token' => 'El token proporcionado es inválido o ha expirado',
     'password'      => 'La contraseña es incorrecta',
+    'password_old'  => 'La contraseña anterior es incorrecta',
     'throttle'      => 'Demasiados intentos. Intente nuevamente en :segundos segundos',
 ];

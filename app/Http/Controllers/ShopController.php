@@ -239,8 +239,6 @@ class ShopController extends Controller
     {
         if($request->isMethod("post"))
         {
-            //dd($request);
-
             $user = Usuario::find(Auth::id());
 
             if($request->has("form1"))
@@ -272,7 +270,7 @@ class ShopController extends Controller
 
                 // Verificar que la contraseña anterior sea válida
                 if(!Hash::check($request->input('password_old'), $user->password))
-                    return redirect()->back()->with('error', trans('messages.invalidPassword'));
+                    return redirect()->back()->with('error', trans('auth.password_old'));
     
                 // Actualizar la contraseña del usuario en la base de datos
                 $user->password = $request->input('password_new');
