@@ -45,11 +45,11 @@
         </div>
     @endif
 
-    <!-- Contenido de la página -->
     <div class="main-container">
         @include("shop.layout.breadcrumb")
 
-        <div class="flex flex-column gap-3" style="max-width: 700px">
+        <div class="flex flex-column gap-3" style="max-width: 700px;">
+
             <div class="accordion">
                 <div class="accordion-header">Datos personales<span class="arrow"><i class="fa-solid fa-chevron-down"></i></span></div>
                 <div class="accordion-panel">
@@ -84,12 +84,12 @@
                             <div class="flex gap-3">
                                 <label>
                                     Fecha de nacimiento
-                                    <input form="form" type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ session('shop.usuario.datos.fecha_nacimiento') }}">
+                                    <input form="form1" type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ session('shop.usuario.datos.fecha_nacimiento') }}">
                                 </label>
 
                                 <label>
                                     Género
-                                    <select form="form" id="genero_id" name="genero_id">
+                                    <select form="form1" id="genero_id" name="genero_id">
                                         <option value="" disabled selected>Seleccione</option>
                                         @foreach ($generos as $genero)
                                             <option value="{{ $genero->id }}" @if (session('shop.usuario.datos.genero_id') == $genero->id) selected @endif> {{ $genero->genero }}</option>
@@ -100,66 +100,74 @@
 
                             <label>
                                 Cuil
-                                <input form="form" id="cuil" name="cuil" value="{{ session('shop.usuario.datos.cuil') }}">
+                                <input form="form1" id="cuil" name="cuil" value="{{ session('shop.usuario.datos.cuil') }}">
                             </label>
 
                             <label>
                                 Cuit
-                                <input form="form" id="cuit" name="cuit" value="{{ session('shop.usuario.datos.cuit') }}">
-                            </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header">Datos de contacto<span class="arrow"><i class="fa-solid fa-chevron-down"></i></span></div>
-                    <div class="accordion-panel">
-                        <div class="panel-container">
-                            <label>
-                                Domicilio
-                                <input form="form" id="domicilio" name="domicilio" value="{{ session('shop.usuario.datos.domicilio') }}">
+                                <input form="form1" id="cuit" name="cuit" value="{{ session('shop.usuario.datos.cuit') }}">
                             </label>
 
-                            <div class="flex">
+                            <button type="submit" form="form1" name="form" class="btn-primary">Guardar cambios</button>
+                        </div>
+                        <!-- /Input group -->
+                    </div>
+                    <!-- /Panel container-->
+                </div>
+                <!-- /Accordion panel-->
+            </div>
+            <!-- /Accordion-->
+
+            <div class="accordion">
+                <div class="accordion-header">Datos de contacto<span class="arrow"><i class="fa-solid fa-chevron-down"></i></span></div>
+                <div class="accordion-panel">
+                    <div class="panel-container">
+                        <div class="input-group">
+                            <label>
+                                Domicilio
+                                <input form="form2" id="domicilio" name="domicilio" value="{{ session('shop.usuario.datos.domicilio') }}">
+                            </label>
+
+                            <div class="flex gap-3">
                                 <label>
                                     Domicilio número
-                                    <input form="form" type="text" id="domicilio_nro" name="domicilio_nro" required value="{{ session('shop.usuario.datos.domicilio_nro') }}">
+                                    <input form="form2" type="text" id="domicilio_nro" name="domicilio_nro" required value="{{ session('shop.usuario.datos.domicilio_nro') }}">
                                 </label>
                                 
                                 <label>
                                     Domicilio piso
-                                    <input form="form" type="text" id="domicilio_piso" name="domicilio_piso" value="{{ session('shop.usuario.datos.domicilio_piso') }}">
+                                    <input form="form2" type="text" id="domicilio_piso" name="domicilio_piso" value="{{ session('shop.usuario.datos.domicilio_piso') }}">
                                 </label>
 
                                 <label>
                                     Domicilio depto
-                                    <input form="form" type="text" id="domicilio_depto" name="domicilio_depto" value="{{ session('shop.usuario.datos.domicilio_depto') }}">
+                                    <input form="form2" type="text" id="domicilio_depto" name="domicilio_depto" value="{{ session('shop.usuario.datos.domicilio_depto') }}">
                                 </label>
                             </div>
 
                             <label>
                                 Localidad
-                                <input form="form" type="text" id="localidad" name="localidad" required value="{{ session('shop.usuario.datos.localidad') }}">
+                                <input form="form2" type="text" id="localidad" name="localidad" required value="{{ session('shop.usuario.datos.localidad') }}">
                             </label>
 
                             <label>
                                 Codigo postal
-                                <input form="form" type="text" id="codigo_postal" name="codigo_postal" required value="{{ session('shop.usuario.datos.codigo_postal') }}">
+                                <input form="form2" type="text" id="codigo_postal" name="codigo_postal" required value="{{ session('shop.usuario.datos.codigo_postal') }}">
                             </label>
 
                             <label>
                                 Teléfono fijo
-                                <input form="form" type="text" id="telefono_fijo" name="telefono_fijo" value="{{ session('shop.usuario.datos.telefono_fijo') }}">
+                                <input form="form2" type="text" id="telefono_fijo" name="telefono_fijo" value="{{ session('shop.usuario.datos.telefono_fijo') }}">
                             </label>
 
                             <label>
                                 Teléfono celular
-                                <input form="form" type="text" id="telefono_celular" name="telefono_celular" required value="{{ session('shop.usuario.datos.telefono_celular') }}">
+                                <input form="form2" type="text" id="telefono_celular" name="telefono_celular" required value="{{ session('shop.usuario.datos.telefono_celular') }}">
                             </label>
 
                             <label>
                                 Teléfono alternativo
-                                <input form="form" type="text" id="telefono_alt" name="telefono_alt" value="{{ session('shop.usuario.datos.telefono_alt') }}">
+                                <input form="form2" type="text" id="telefono_alt" name="telefono_alt" value="{{ session('shop.usuario.datos.telefono_alt') }}">
                             </label>
 
                             <label>
@@ -167,11 +175,15 @@
                                 <input type="email" disabled value="{{ session('shop.usuario.datos.email') }}">
                             </label>
 
-                            <button form="form" name="form" class="btn-primary">Guardar cambios</button>
+                            <button form="form2" name="form" class="btn-primary">Guardar cambios</button>
                         </div>
+                        <!-- /Input group -->
                     </div>
+                    <!-- /Panel container-->
                 </div>
+                <!-- /Accordion panel-->
             </div>
+            <!-- /Accordion-->
 
             <div class="accordion">
                 <div class="accordion-header">Cambio de contraseña<span class="arrow"><i class="fa-solid fa-chevron-down"></i></span></div>
@@ -195,14 +207,19 @@
     
                             <button form="form-password" name="form-password" class="btn-primary">Guardar cambios</button>
                         </div>
+                        <!-- /Input group -->
                     </div>
+                    <!-- /Panel container-->
                 </div>
+                <!-- /Accordion panel-->
             </div>
-        </div>
+            <!-- /Accordion-->
 
+        </div>
     </div>
 
-    <form id="form" method="post">@csrf</form>
+    <form id="form1" method="post">@csrf</form>
+    <form id="form2" method="post">@csrf</form>
     <form id="form-password" method="post">@csrf</form>
 
 @endsection
