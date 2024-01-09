@@ -14,7 +14,7 @@ header li {
 /*==============*/
 .top-header {
 	color: 							white;
-	background-color: 				rgb(25, 25, 25);
+	background-color: 				rgb(50, 50, 50);
 }
 
 .top-header-container {
@@ -31,7 +31,8 @@ header li {
 /*  MAIN HEADER  */
 /*===============*/
 .main-header {
-    border-bottom:                  1px solid rgb(220,220,220);
+    background-color: 				rgb(245, 245, 245);
+	border-bottom: 					1px solid rgb(220, 220, 220);
 }
 
 .main-header-container {
@@ -44,9 +45,9 @@ header li {
 .main-header-top {
     display:                        flex;
 	align-items: 					center;
-    gap:                            100px;
+    gap:                            40px;
     box-sizing:                     border-box;
-    padding-top:                    20px;
+    padding-top:                    10px;
 }
 
 .main-header-bottom {
@@ -59,8 +60,9 @@ header li {
 }
 
 .main-header h1 {
-	font-size: 						30px;
+	font-size: 						28px;
 	font-weight:					bold;
+	letter-spacing: 				-2px;
 }
 
 .main-header h2 {
