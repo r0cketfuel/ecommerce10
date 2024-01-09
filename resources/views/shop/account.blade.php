@@ -108,7 +108,7 @@
                                 <input form="form1" id="cuit" name="cuit" value="{{ session('shop.usuario.datos.cuit') }}">
                             </label>
 
-                            <button type="submit" form="form1" name="form" class="btn-primary">Guardar cambios</button>
+                            <button type="submit" form="form1" name="form1" class="btn-primary">Guardar cambios</button>
                         </div>
                         <!-- /Input group -->
                     </div>
@@ -175,7 +175,7 @@
                                 <input type="email" disabled value="{{ session('shop.usuario.datos.email') }}">
                             </label>
 
-                            <button form="form2" name="form" class="btn-primary">Guardar cambios</button>
+                            <button form="form2" name="form2" class="btn-primary">Guardar cambios</button>
                         </div>
                         <!-- /Input group -->
                     </div>
@@ -192,20 +192,20 @@
                         <div class="input-group">
                             <label>
                                 Password anterior
-                                <input form="form-password" type="password" id="password_old" name="password_old" required>
+                                <input form="form3" type="password" id="password_old" name="password_old" required value="12345678">
                             </label>
     
                             <label>
                                 Nuevo password
-                                <input form="form-password" type="password" id="password_new" name="password_new" required>
+                                <input form="form3" type="password" id="password_new" name="password_new" required value="0123456789">
                             </label>
     
                             <label>
                                 Repetir password
-                                <input form="form-password" type="password" id="password_repeat" name="password_repeat" required>
+                                <input form="form3" type="password" id="password_repeat" name="password_repeat" required value="0123456789">
                             </label>
     
-                            <button form="form-password" name="form-password" class="btn-primary">Guardar cambios</button>
+                            <button form="form3" name="form3" class="btn-primary">Guardar cambios</button>
                         </div>
                         <!-- /Input group -->
                     </div>
@@ -220,6 +220,6 @@
 
     <form id="form1" method="post">@csrf</form>
     <form id="form2" method="post">@csrf</form>
-    <form id="form-password" method="post">@csrf</form>
+    <form id="form3" method="post">@csrf</form>
 
 @endsection

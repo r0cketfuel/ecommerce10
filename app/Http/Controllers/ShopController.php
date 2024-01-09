@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\ShoppingCartService;
 use App\Services\Barcode128;
 use App\Services\MercadoPago;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Usuario;
 use App\Models\Articulo;
@@ -238,17 +239,47 @@ class ShopController extends Controller
     {
         if($request->isMethod("post"))
         {
+            //dd($request);
+
             $user = Usuario::find(Auth::id());
-            $user->fill($request->except(['apellidos', 'nombres', 'tipo_documento_id', 'documento_nro', 'email']));
-            $user->save();
 
-            // Carga los datos del usuario en sesión
-            $usuario = Usuario::find(Auth::id())->toArray();
+            if($request->has("form1"))
+            {
+                $user->fill($request->except(['apellidos', 'nombres', 'tipo_documento_id', 'documento_nro', 'email']));
+                $user->save();
     
-            foreach($usuario as $key => $value)
-                session()->put("shop.usuario.datos.$key", $value);
+                // Carga los datos del usuario en sesión
+                $usuario = Usuario::find(Auth::id())->toArray();
+        
+                foreach($usuario as $key => $value)
+                    session()->put("shop.usuario.datos.$key", $value);
+    
+                return redirect()->route('user.account')->with('success', trans('messages.profileUpdateSuccess'));
+            }
 
-            return redirect()->route('user.account')->with('success', trans('messages.profileUpdateSuccess'));
+            if($request->has("form2"))
+            {
+                
+            }
+
+            if($request->has("form3"))
+            {
+                $request->validate([
+                    'password_old'     => 'required',
+                    'password_new'     => 'required|min:8',
+                    'password_repeat'  => 'required|same:password_new',
+                ]);
+
+                // Verificar que la contraseña anterior sea válida
+                if(!Hash::check($request->input('password_old'), $user->password))
+                    return redirect()->back()->with('error', trans('messages.invalidPassword'));
+    
+                // Actualizar la contraseña del usuario en la base de datos
+                $user->password = $request->input('password_new');
+                $user->save();
+    
+                return redirect()->route('user.account')->with('success', trans('messages.passwordChangeSuccess'));
+            }
         }
 
         $generos            = Genero::all();
