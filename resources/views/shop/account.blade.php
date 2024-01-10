@@ -51,7 +51,10 @@
         <div class="flex flex-column gap-3" style="max-width: 700px;">
 
             <div class="accordion">
-                <div class="accordion-header">Datos personales<span class="arrow"><i class="fa-solid fa-chevron-down"></i></span></div>
+                <div class="accordion-header">
+                    <div class="accordion-title">Datos personales</div>
+                    <div class="arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                </div>
                 <div class="accordion-panel">
                     <div class="panel-container">
                         <div class="input-group">
@@ -119,7 +122,10 @@
             <!-- /Accordion-->
 
             <div class="accordion">
-                <div class="accordion-header">Datos de contacto<span class="arrow"><i class="fa-solid fa-chevron-down"></i></span></div>
+                <div class="accordion-header">
+                    <div class="accordion-title">Datos de contacto</div>
+                    <div class="arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                </div>
                 <div class="accordion-panel">
                     <div class="panel-container">
                         <div class="input-group">
@@ -186,7 +192,10 @@
             <!-- /Accordion-->
 
             <div class="accordion">
-                <div class="accordion-header">Cambio de contraseña<span class="arrow"><i class="fa-solid fa-chevron-down"></i></span></div>
+            <div class="accordion-header">
+                    <div class="accordion-title">Cambio de contraseña</div>
+                    <div class="arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                </div>
                 <div class="accordion-panel">
                     <div class="panel-container">
                         <div class="input-group">

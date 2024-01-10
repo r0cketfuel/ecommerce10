@@ -24,7 +24,6 @@
     -webkit-box-align:              center;
         -ms-flex-align:             center;
             align-items:            center;
-    padding:                        5px 10px;
     letter-spacing:                 1px;
     font-weight:                    bold;
     text-transform:                 uppercase;
@@ -51,7 +50,16 @@
     gap:                            15px;
 }
 
+.accordion-header .accordion-title {
+    margin-left:                    10px;
+}
+
 .accordion-header .arrow {
+    display:                        flex;
+    width:                          30px;
+    height:                         30px;
+    align-items:                    center;
+    justify-content:                center;
     -webkit-transition: 			all 0.25s ease;
     -o-transition: 			        all 0.25s ease;
     transition: 			        all 0.25s ease;
