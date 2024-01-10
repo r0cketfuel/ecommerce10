@@ -46,12 +46,11 @@ header li {
     display:                        flex;
 	align-items: 					center;
     gap:                            40px;
-    box-sizing:                     border-box;
-    padding-top:                    10px;
+    margin-top:                    	10px;
 }
 
 .main-header-bottom {
-    padding-top:                    10px;
+    margin-top:                    	10px;
 }
 
 .main-header h1, .main-header h2 {
@@ -80,10 +79,8 @@ header li {
     width: 							100%;
 }
 
-.main-header .search-bar .input-container {
+.main-header .search-bar form {
 	position: 						relative;
-    display: 						inline-block;
-	width: 							100%;
 }
 
 .main-header .main-header-top .iconos {
