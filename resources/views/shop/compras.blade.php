@@ -36,7 +36,10 @@
                         @endif
                     </div>
                     <div>{{ _money($item["precio"]) }}</div>
-                    <div><button><span><i class="fa-solid fa-receipt"></i></span>{{ __('buttons.invoice') }}</button></div>
+                    <div class="flex">
+                        <button><span><i class="fa-solid fa-receipt"></i></span>{{ __('buttons.invoice') }}</button>
+                        <button><span><i class="fa-solid fa-receipt"></i></span>{{ __('buttons.invoice') }}</button>
+                    </div>
                 </li>
             @endforeach
         @else

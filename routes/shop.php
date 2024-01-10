@@ -39,6 +39,7 @@ Route::controller(ShopController::class)->group(function () {
         Route::post('account',          'account');
 
         Route::get('compras',           'compras');
+        Route::get('compras/estado',    'estadocompras');
     });
 });
 
