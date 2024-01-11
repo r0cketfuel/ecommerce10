@@ -46,11 +46,11 @@ header li {
     display:                        flex;
 	align-items: 					center;
     gap:                            40px;
-    margin-top:                    	10px;
+    padding-top:                 	10px;
 }
 
 .main-header-bottom {
-    margin-top:                    	10px;
+    padding-top:                 	10px;
 }
 
 .main-header h1, .main-header h2 {

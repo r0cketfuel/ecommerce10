@@ -43,7 +43,7 @@
         @include("shop.layout.breadcrumb")
 
         <!-- Grid -->
-        <div class="grid grid-cols-12 grid-align-start">
+        <div class="grid grid-cols-12 grid-align-start gap-4">
 
             <!-- Mosaicos -->
             <div class="col-span-7 col-span-900p-12">
@@ -70,27 +70,10 @@
                             @endforeach
                         @else
                             <!-- En caso de que no haya imágenes, puedes mostrar una imagen de reemplazo o un mensaje -->
-                            <div class="tile active">
-                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
-                            </div>
-                            <div class="tile main">
+                            <div class="tile main" style="grid-column: span 6;">
                                 <a href="#">
                                     <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
                                 </a>
-                                <button class="btn btn-next"><i class="fa-solid fa-chevron-right"></i></button>
-                                <button class="btn btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
-                            </div>
-                            <div class="tile">
-                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
-                            </div>
-                            <div class="tile">
-                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
-                            </div>
-                            <div class="tile">
-                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
-                            </div>
-                            <div class="tile">
-                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
                             </div>
                         @endif
                     </div>
@@ -197,10 +180,14 @@
         let curSlide = 0;
 
         const nextSlide = document.querySelector(".btn-next");
-        nextSlide.addEventListener("click", () => { curSlide = curSlide === maxSlide ? 0 : curSlide + 1; imageGrid(tiles[curSlide]); });
+        
+        if(nextSlide)
+            nextSlide.addEventListener("click", () => { curSlide = curSlide === maxSlide ? 0 : curSlide + 1; imageGrid(tiles[curSlide]); });
 
         const prevSlide = document.querySelector(".btn-prev");
-        prevSlide.addEventListener("click", () => { curSlide = curSlide === 0 ? maxSlide : curSlide - 1; imageGrid(tiles[curSlide]); });
+
+        if(prevSlide)
+            prevSlide.addEventListener("click", () => { curSlide = curSlide === 0 ? maxSlide : curSlide - 1; imageGrid(tiles[curSlide]); });
 
         //==================================//
         // CARGA LAS MINIATURAS EN EL VISOR //
