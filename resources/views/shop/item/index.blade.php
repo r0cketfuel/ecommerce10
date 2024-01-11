@@ -69,11 +69,8 @@
                                 @endif
                             @endforeach
                         @else
-                            <!-- En caso de que no haya imágenes, puedes mostrar una imagen de reemplazo o un mensaje -->
                             <div class="tile main" style="grid-column: span 6;">
-                                <a href="#">
-                                    <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
-                                </a>
+                                <img src="{{ asset('images/content/no-image.png') }}" alt="No Image">
                             </div>
                         @endif
                     </div>
@@ -89,7 +86,9 @@
                         <h2>{{ $item->descripcion }}</h2>
                     </div>
 
-                    @include("shop.layout.rating")
+                    @if (env('RATING_SYSTEM')==true)
+                        @include ("shop.layout.rating")
+                    @endif
 
                     @if ($item->categoria)
                         <div class="tile-info-row">
@@ -122,7 +121,7 @@
                     <!-- Atributo Tamaño -->
                     <div class="tile-info-row">
                         <p>Tamaño:</p>
-                        <div style="display: flex;">
+                        <div class="flex">
                             <select id="sizes" class="attribute"></select>
                         </div>
                     </div>
@@ -130,7 +129,7 @@
                     <!-- Atributo Color -->
                     <div class="tile-info-row">
                         <p>Color:</p>
-                        <div style="display: flex;">
+                        <div class="flex">
                             <select id="colors" class="attribute"></select>
                         </div>
                     </div>
@@ -143,7 +142,7 @@
                     <!-- Cantidad -->
                     <div id="qtyControl" class="tile-info-row">
                         <div>Cantidad:</div>
-                        <div style="display: flex; max-width: 120px;">
+                        <div class="flex">
                             <button id="minusButton"><i class="fa-solid fa-minus"></i></button>
                             <input 	id="addToCartQty" type="number" disabled>
                             <button id="plusButton"><i class="fa-solid fa-plus"></i></button>
