@@ -83,7 +83,7 @@ class ShopController extends Controller
             if($item && $item->estado == 1)
             {
                 Rating::incrementaVisualizacion($id);
-                return view("shop.item", compact("item"));
+                return view("shop.item.index", compact("item"));
             }
         }
 

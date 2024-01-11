@@ -164,7 +164,7 @@
         </div>
         <!-- /Grid -->
 
-        @include("shop.layout.tabs")
+        @include("shop.item.tabs")
 
     </div>
 @endsection
