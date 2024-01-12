@@ -1,16 +1,25 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var alerts = document.querySelectorAll('.alert');
-    var offset = 20; // Espacio entre alertas
+function createAlertContainer(className, message)
+{
+    const alertContainer = document.createElement("div");
+    alertContainer.className = "alert " + className;
 
-    alerts.forEach(function (alert, index) {
-        var previousAlertHeight = 0;
+    const closeBtn = document.createElement("span");
+    closeBtn.className = "closebtn";
+    closeBtn.innerHTML = "&times;";
+    
+    closeBtn.onclick = function () {
+        this.parentElement.style.display = 'none';
+    };
 
-        // Calcula la posición superior para cada alerta
-        for (var i = 0; i < index; i++) {
-            previousAlertHeight += alerts[i].offsetHeight + offset;
-        }
+    alertContainer.innerHTML = message;
+    alertContainer.appendChild(closeBtn);
 
-        // Establece la posición superior
-        alert.style.top = (40 + previousAlertHeight) + 'px';
-    });
-});
+    return alertContainer;
+}
+
+function displayAlert(className, message)
+{
+    const alertContainer = createAlertContainer(className, message);
+    document.body.appendChild(alertContainer);
+    alertContainer.style.display = 'flex';
+}

@@ -20,58 +20,14 @@
         
         <!-- Scripts -->
         <script defer src="{{config('constants.framework_js')}}scroll.js"></script>
+        <script defer src="{{config('constants.framework_js')}}loader.js"></script>
         <script defer src="{{config('constants.framework_js')}}navbar.js"></script>
 		@yield("js")
-        
-        <style>
-            .wrapper {
-				min-height: 		    100vh;
-				flex: 				    1;
-				display: 			    flex;
-				flex-flow: 			    column nowrap;
-                opacity: 			    0;
-			}
-
-            #loader {
-                position:               absolute;
-                height:                 100vh;
-                width:                  100%;
-                top:                    50%;
-                left:                   50%;
-                -webkit-transform:      translate(-50%, -50%);
-                    -ms-transform:      translate(-50%, -50%);
-                        transform:      translate(-50%, -50%);
-                
-                display:                flex;
-                justify-content:        center;
-                align-items:            center;
-                z-index:                99999;
-            }
-
-            .loader {
-                width: 					60px;
-                height: 				60px;
-                border: 				5px solid rgb(50,50,50);
-                border-bottom-color: 	transparent;
-                border-radius: 			50%;
-                display: 				block;
-                box-sizing: 			border-box;
-                animation: 				rotation 1s linear infinite;
-            }
-
-            @keyframes rotation {
-                0% {transform: rotate(0deg);} 100% {transform: rotate(360deg);}
-            } 
-		</style>
 
         @yield("inlineCSS")
 	</head>
 	<body id="top">
-
-        <!-- Loader -->
-        <div id="loader">
-            <span class="loader"></span>
-        </div>
+        @include("shop.layout.loader")
 
         @if ($errors->any())
             @foreach ($errors->all() as $error)
@@ -95,7 +51,6 @@
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             </div>
         @endif
-
 
         <!-- Wrapper -->
         <div class="wrapper" id="wrapper">
@@ -127,20 +82,6 @@
                 });
             </script>
         @endguest
-
-        <script>
-            window.addEventListener("load", function () {
-
-            const wrapper   = document.getElementById("wrapper");
-            const loader    = document.getElementById("loader");
-
-            wrapper.style.transition    = "opacity 0.5s";
-            wrapper.style.opacity       = 1;
-
-            loader.style.display        = "none"
-
-            });
-        </script>
 
         <script>
             document.getElementById('search_form').addEventListener('submit', function (event) {

@@ -71,7 +71,7 @@ class ShopController extends Controller
         // Listado de artículos
         $items = Articulo::search($busqueda["params"])->appends(request()->query());
 
-        return view("shop.index",compact("busqueda", "banners", "items"));
+        return view("shop.index", compact("busqueda", "banners", "items"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function item($id)
@@ -299,11 +299,6 @@ class ShopController extends Controller
         session()->flush();
     
         return redirect("/shop");
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function tests()
-    {
-        return view("shop.tests");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function changeLocale(Request $request)

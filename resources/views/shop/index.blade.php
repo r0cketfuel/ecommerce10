@@ -21,14 +21,10 @@
     <script defer src="{{ config('constants.shop_js') }}cardSort.js"></script>
 	<script defer src="{{ config('constants.shop_js') }}ajaxSuscribe.js"></script>
     <script defer src="{{ config('constants.framework_js') }}modal.js"></script>
+    <script defer src="{{ config('constants.framework_js') }}alert.js"></script>
 @endsection
 
 @section("body")
-
-    <div class="alert" style="display: none;">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    </div>
-
     @include("shop.modals.addItem")
 
     <!-- Contenido de la página -->
@@ -62,7 +58,6 @@
     
     <!-- Newsletter -->
     @include("shop.layout.newsletter")
-
 @endsection
 
 @section("scripts")
@@ -72,38 +67,26 @@
 
             if (items.length > 0)
                 items.forEach(x => x.addEventListener("click", () => { addItem(x.dataset["value"]); return false }));
-        });
 
-        function addItem(id)
-        {
-            const icon          = document.getElementById("heart");
-            const itemsQty      = parseInt(icon.innerHTML);
+            function addItem(id) {
+                const icon = document.getElementById("heart");
+                const itemsQty = parseInt(icon.innerHTML);
 
-            const url           = "/shop/ajax/agregaFavorito";
-            const parameters    = "articulo_id=" + id;
-            const promise       = ajax(url, parameters);
+                const url = "/shop/ajax/agregaFavorito";
+                const parameters = "articulo_id=" + id;
+                const promise = ajax(url, parameters);
 
-            promise.then((data) => {
-
-                const alertContainer = document.querySelector(".alert");
-
-                if(data["success"])
-                {
-                    if(itemsQty < parseInt(data["data"]["itemQty"]))
-                    {
-                        icon.innerHTML              = data["data"]["itemQty"];
-                        alertContainer.className    = "alert success";
-                        alertContainer.innerHTML    = data["data"]["message"] + '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>';
+                promise.then((data) => {
+                    if (data["success"]) {
+                        if (itemsQty < parseInt(data["data"]["itemQty"])) {
+                            icon.innerHTML = data["data"]["itemQty"];
+                            displayAlert("success", data["data"]["message"]);
+                        }
+                    } else {
+                        displayAlert("danger", data["data"]["message"]);
                     }
-                }
-                else
-                {
-                    alertContainer.className = "alert danger";
-                    alertContainer.innerHTML = data["data"]["message"] + '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>';
-                }
-
-                alertContainer.style.display = 'flex';
-            });
-        }
+                });
+            }
+        });
     </script>
 @endsection

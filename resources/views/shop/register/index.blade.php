@@ -60,10 +60,6 @@
 			cursor: 				pointer;
 			background-color: 		rgba(0, 0, 0, 0.05);
 		}
-
-		.panel {
-			box-shadow: 			unset;
-		}
 	</style>
 @endsection
 
@@ -78,14 +74,14 @@
                 <form method="post" class="step-form">
                     <input type="hidden" name="currentStep" value="1">
                     @csrf
-                    @include('shop.register.1')
+                    @include('shop.register.step1')
                 </form>
 
                 <!-- Pantalla 2 -->
                 <form method="post" class="step-form">
                     <input type="hidden" name="currentStep" value="2">
                     @csrf
-                    @include('shop.register.2')
+                    @include('shop.register.step2')
                 </form>
 
                 <!-- Pantalla 3 -->

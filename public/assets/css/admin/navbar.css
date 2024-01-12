@@ -4,8 +4,8 @@
 	--navbar-menu-font-color:		black;
 	--navbar-sidebar-font-color:	white;
 
-	--navbar-menu-background:		rgb(240,240,240);
-	--navbar-sidebar-background:	black;
+	--navbar-menu-background:		rgb(240, 240, 240);
+	--navbar-sidebar-background:	rgb(20, 20, 20);
 }
 
 nav {
@@ -15,7 +15,7 @@ nav {
 nav .navbar {
 	display: 					    flex;
 	flex-flow: 						column nowrap;
-    background-color:               black;
+    background-color:               var(--navbar-sidebar-background);
 }
 
 nav .navbar .links {
@@ -37,6 +37,7 @@ nav .navbar .logo a {
 	color:						    var(--navbar-logo-font-color);
 	font-size: 					    26px;
 	text-decoration: 			    none;
+	letter-spacing: 				-1px;
 }
 
 nav .navbar .nav-links {

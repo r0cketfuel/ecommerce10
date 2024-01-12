@@ -16,14 +16,13 @@ use App\Http\Controllers\MailController;
 Route::controller(ShopController::class)->group(function () {
     Route::get('',                  	'index');
     Route::get('item/{id}',         	'item');
-    Route::get('banners/{banner}',  	'banners');
+    Route::get('banner/{banner}',       'banners');
     Route::get('login',             	'login')->name('user.login');
     Route::get('register',          	'register');
     Route::get('recovery',          	'recovery');
     Route::get('infopago/{id}',     	'infoPago');
     Route::get('logout',				'logout');
 
-    Route::get('tests',				    'tests');
 
     // Rutas que requieren autenticación
     Route::middleware(['extend.auth'])->group(function () {
