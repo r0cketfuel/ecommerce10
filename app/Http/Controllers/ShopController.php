@@ -181,7 +181,7 @@ class ShopController extends Controller
         for($i=0;$i<count($favoritos);++$i)
             array_push($items, Articulo::info($favoritos[$i]["articulo_id"]));
 
-        return view("shop.favoritos", compact("items"));
+        return view("shop.user.favoritos", compact("items"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function login()
@@ -232,7 +232,7 @@ class ShopController extends Controller
             $image = $barcode->base64();
         }
         
-        return view("shop.infoPago", compact("estado", "image"));
+        return view("shop.user.infoPago", compact("estado", "image"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function account(Request $request)
@@ -283,7 +283,7 @@ class ShopController extends Controller
         $generos            = Genero::all();
         $tiposDocumentos    = TipoDocumento::all();
 
-        return view("shop.account", compact("generos", "tiposDocumentos"));
+        return view("shop.user.account", compact("generos", "tiposDocumentos"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function success(ShoppingCartService $shoppingCart, $order = null)
@@ -405,12 +405,12 @@ class ShopController extends Controller
             $items[] = Articulo::info($articulo['id']);
         }
 
-        return view("shop.compras", compact("usuario", "items"));
+        return view("shop.user.compras", compact("usuario", "items"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function estadocompras()
     {
-        return view("shop.order-status");
+        return view("shop.user.order-status");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
