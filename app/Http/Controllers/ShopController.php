@@ -139,7 +139,7 @@ class ShopController extends Controller
                 if($request->has("textarea_aclaraciones"))  session()->put("shop.checkout.envio.aclaraciones",        $request->input("textarea_aclaraciones"));
             }
 
-            return redirect("/shop/payment");
+            return redirect("shop/payment");
         }
 
         // Medios de pago activos
@@ -188,7 +188,7 @@ class ShopController extends Controller
     {
         // Usuario autenticado, redirigir a la página cuenta de usuario
         if(Auth::check())
-            return redirect("/shop/account");
+            return redirect("shop/account");
         
         return view("shop.login");
     }
@@ -197,7 +197,7 @@ class ShopController extends Controller
     {
         // Usuario autenticado, redirigir a la página de inicio
         if(Auth::check())
-            return redirect("/shop");
+            return redirect("shop");
 
         $generos            = Genero::all();
         $tiposDocumentos    = TipoDocumento::all();
@@ -209,7 +209,7 @@ class ShopController extends Controller
     {
         // Usuario autenticado, redirigir a la página de inicio
         if(Auth::check())
-            return redirect("/shop");
+            return redirect("shop");
             
         return view("shop.recovery");
     }
@@ -222,17 +222,22 @@ class ShopController extends Controller
         $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
         $estado         = $mercadoPago->infoPago($id);
 
-        $image = NULL;
-        if(isset($estado->transaction_details->barcode["content"]))
+        if($estado)
         {
-            $barcode = new Barcode128;
-            $barcode->setData($estado->transaction_details->barcode["content"]);
-            $barcode->setDimensions(350, 50);
-            $barcode->draw();
-            $image = $barcode->base64();
+            $image = NULL;
+            if(isset($estado->transaction_details->barcode["content"]))
+            {
+                $barcode = new Barcode128;
+                $barcode->setData($estado->transaction_details->barcode["content"]);
+                $barcode->setDimensions(350, 50);
+                $barcode->draw();
+                $image = $barcode->base64();
+            }
+            
+            return view("shop.user.infoPago", compact("estado", "image"));
         }
-        
-        return view("shop.user.infoPago", compact("estado", "image"));
+
+        return redirect("shop");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function account(Request $request)
@@ -298,7 +303,7 @@ class ShopController extends Controller
         $user->logout();
         session()->flush();
     
-        return redirect("/shop");
+        return redirect("shop");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function changeLocale(Request $request)
@@ -356,7 +361,7 @@ class ShopController extends Controller
                 if($request->has("textarea_aclaraciones"))  session()->put("shop.checkout.envio.aclaraciones",        $request->input("textarea_aclaraciones"));
             }
 
-            // return redirect("/shop/payment");
+            // return redirect("shop/payment");
         }
 
         $generos            = Genero::all();

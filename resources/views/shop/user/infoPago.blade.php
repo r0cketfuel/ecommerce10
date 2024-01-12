@@ -1,10 +1,15 @@
 @extends("shop.layout.master")
 
 @php
-    $title = "Información sobre un pago";
+    $title = "Estado de pago";
 @endphp
 
 @section("title", $title)
+
+@php
+    $breadcrumbs = [
+    ];
+@endphp
 
 @section("css")
     <link rel="stylesheet"	href="{{ config('constants.framework_css') }}panel.css">
@@ -12,6 +17,8 @@
 
 @section("body")
     <div class="main-container">
+        @include("shop.layout.breadcrumb")
+        
         <div class="panel w500px">
             <div class="panel-title panel-title-underlined">Info</div>
             <div class="panel-content">
