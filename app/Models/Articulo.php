@@ -106,8 +106,6 @@ class Articulo extends Model
     
             if($articulo)
             {
-                $articulo->precio = $articulo->precio - ($articulo->precio * $articulo->promocion->descuento / 100);
-
                 self::rutaImagenes([$articulo]);
                 return($articulo);
             }

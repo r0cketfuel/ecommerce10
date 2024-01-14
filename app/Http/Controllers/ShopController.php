@@ -78,10 +78,13 @@ class ShopController extends Controller
 	{
         if(is_numeric($id) && $id>0)
         {
-            $item = Articulo::info($id);
+            $item = Articulo::info($id);    
             
             if($item && $item->estado == 1)
             {
+                if($item->promocion)
+                    $item->precio = $item->precio - ($item->precio * $item->promocion->descuento / 100);
+            
                 Rating::incrementaVisualizacion($id);
                 return view("shop.item.index", compact("item"));
             }
