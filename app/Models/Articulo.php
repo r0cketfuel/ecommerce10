@@ -95,13 +95,14 @@ class Articulo extends Model
         if($id > 0)
         {
             $articulo = self::where('id', $id)
+                ->with('atributos')
                 ->with('imagenes')
                 ->with('detalle')
                 ->with('categoria')
                 ->with('subcategoria')
                 ->with('ratings')
                 ->with('reviews')
-                ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now());}])
+                ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now()); }])
                 ->first();
     
             if($articulo)

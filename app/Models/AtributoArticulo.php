@@ -36,13 +36,13 @@ class AtributoArticulo extends Model
         return $this->belongsTo(Talle::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public static function search(int $articulo_id, array $opciones = array())
+    public static function search(int $articuloId, array $opciones = array())
     {
         //================================================================//
         // Método que devuelve registros segun los parámetros solicitados //
         //================================================================//
         
-        $query = AtributoArticulo::query()->where('articulo_id',$articulo_id);
+        $query = AtributoArticulo::query()->where('articulo_id', $articuloId);
         
         //Relaciones
         $query->with('talle');

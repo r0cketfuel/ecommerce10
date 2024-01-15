@@ -47,6 +47,8 @@
             if($id>0 && $cantidad>=0)
             {
                 $atributoArticulo   = new AtributoArticulo;
+                $atributosId        = $atributoArticulo->search($id, $opciones)->first()->id;
+                
                 $limiteCompra       = $atributoArticulo->maximoCompra($id, $opciones);
                 
                 $index = $this->itemIndex($id, $opciones);
@@ -57,7 +59,7 @@
                     // ITEM NO EXISTE EN EL CARRITO - AGREGAR //
                     //----------------------------------------//
                     if($cantidad<=$limiteCompra && $cantidad>0)
-                        $this->addItem($id, $cantidad, $opciones);
+                        $this->addItem($id, $atributosId, $cantidad, $opciones);
                 }
                 else
                 {
@@ -78,7 +80,7 @@
             return($this->totalItems());
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        public function addItem(int $id, int $cantidad, array $opciones = array())
+        public function addItem(int $id, int $atributosId, int $cantidad, array $opciones = array())
         {
             //=====================================================//
             // Método que inserta un item en el carrito de compras //
@@ -87,11 +89,12 @@
             $info = Articulo::info($id);
 
             session()->push("shop.usuario.carrito", array(
-                "id" 		=> $id,
-                "cantidad"	=> $cantidad,
-                "precio"	=> $info["precio"],
-                "subtotal"	=> $info["precio"] * $cantidad,
-                "opciones"  => $opciones
+                "id" 		    => $id,
+                "atributos_id"  => $atributosId,
+                "cantidad"	    => $cantidad,
+                "precio"	    => $info["precio"],
+                "subtotal"	    => $info["precio"] * $cantidad,
+                "opciones"      => $opciones
             ));
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
