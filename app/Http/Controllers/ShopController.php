@@ -30,24 +30,24 @@ class ShopController extends Controller
         $banners = Banner::vigentes();
         
         // Sistema de búsqueda de artículos
-        $busqueda = array(
+        $busqueda = [
             "titulo"    => "Todos los artículos",
             "searchbar" => "",
-            "params"    => array()
-        );
+            "params"    => []
+        ];
 
         if($request->filled("busqueda") && $request->input("busqueda") != "")
         {
             $busqueda["titulo"]     = "Resultados de la búsqueda: '" . $request->input("busqueda") . "'";
             $busqueda["searchbar"]  = $request->input("busqueda");
-            $busqueda["params"]     = array("query" => $request->input("busqueda"));
+            $busqueda["params"]     = ["query" => $request->input("busqueda")];
         }
         else
         {
             if($request->filled("categoria"))
             {
                 $busqueda["titulo"] = Categoria::find($request->input("categoria"))["nombre"];
-                $busqueda["params"] = array("categoria" => $request->input("categoria"));
+                $busqueda["params"] = ["categoria" => $request->input("categoria")];
             }
             else
             {
@@ -57,7 +57,7 @@ class ShopController extends Controller
                     $categoria      = Categoria::find($subcategoria["categoria_id"]);
 
                     $busqueda["titulo"] = $categoria["nombre"] . " > " . $subcategoria["nombre"];
-                    $busqueda["params"] = array("subcategoria" => $request->input("subcategoria"));
+                    $busqueda["params"] = ["subcategoria" => $request->input("subcategoria")];
                 }
             }
         }
@@ -179,7 +179,7 @@ class ShopController extends Controller
     public function favoritos()
 	{
         $favoritos  = session("shop.usuario.favoritos");
-        $items      = array();
+        $items      = [];
 
         for($i=0;$i<count($favoritos);++$i)
             array_push($items, Articulo::info($favoritos[$i]["articulo_id"]));
