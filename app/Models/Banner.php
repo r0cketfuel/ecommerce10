@@ -36,11 +36,8 @@ class Banner extends Model
 
         $banners = Banner::where('valido_desde', '<=', now())->where('valido_hasta', '>=', now())->get();
 
-        // Agregar rutas de imágenes según configuración
         foreach ($banners as $banner)
-        {
             $banner->imagen = config('constants.banners') . '/' . $banner->imagen;
-        }
     
         return $banners;
     }
