@@ -36,18 +36,4 @@ class Subcategoria extends Model
         return $this->belongsTo(Categoria::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public static function eliminaSubcategoria(int $id): int
-    {
-        $subcategoria = self::find($id);
-    
-        if($subcategoria)
-        {
-            $subcategoria->update(['eliminado' => false]);
-    
-            return(1);
-        }
-    
-        return(0);
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
