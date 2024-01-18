@@ -87,7 +87,7 @@
                     <td class="text-center">
                         <a href="/admin/articulos/{{ $articulo->id }}"><i class="fa-solid fa-eye"></i></a>
                         <button type="button" class="deleteButton" id="{{ $articulo->id }}"><i class="fa-solid fa-trash"></i></button>
-                    </td>                        
+                    </td>
                 </tr>
             @endforeach
         </tbody>
