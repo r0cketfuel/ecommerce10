@@ -11,7 +11,7 @@
 		public function __construct()
 		{
             if(!session()->has("shop.usuario.carrito"))
-                session()->put("shop.usuario.carrito", array());
+                $this->clear();
 		}
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		public function clear(): int
@@ -20,6 +20,8 @@
 			// Método que limpia el carrito de compras //
 			//=========================================//
             session()->put("shop.usuario.carrito", array());
+            session()->put("shop.usuario.carrito.items", array());
+            session()->put("shop.usuario.carrito.confirmacion", False);
 
             return($this->totalItems());
 		}
@@ -30,9 +32,9 @@
             // Método que devuelve el índice del arreglo donde esta el item //
             //==============================================================//
 
-            for($i=0;$i<count(session("shop.usuario.carrito"));$i++)
-                if(session("shop.usuario.carrito.$i.id") == $id)
-                    if(empty(array_diff_assoc(session("shop.usuario.carrito.$i.opciones"), $opciones)))
+            for($i=0;$i<count(session("shop.usuario.carrito.items"));$i++)
+                if(session("shop.usuario.carrito.items.$i.id") == $id)
+                    if(empty(array_diff_assoc(session("shop.usuario.carrito.items.$i.opciones"), $opciones)))
                         return($i);
             
             return(-1);
@@ -88,7 +90,7 @@
 
             $info = Articulo::info($id);
 
-            session()->push("shop.usuario.carrito", array(
+            session()->push("shop.usuario.carrito.items", array(
                 "id" 		    => $id,
                 "atributos_id"  => $atributosId,
                 "cantidad"	    => $cantidad,
@@ -104,7 +106,7 @@
             // Método que actualiza la cantidad de un item en el carrito de compras //
             //======================================================================//
 
-            session()->put("shop.usuario.carrito.$index.cantidad", $cantidad);
+            session()->put("shop.usuario.carrito.items.$index.cantidad", $cantidad);
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function removeItem(int $index)
@@ -113,7 +115,7 @@
             // Método que elimina un item del carrito de compras //
             //===================================================//
 
-            array_splice(session("shop.usuario.carrito"), $index, 1);
+            array_splice(session("shop.usuario.carrito.items"), $index, 1);
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		public function checkOut(): array
@@ -123,7 +125,7 @@
 			//=========================================================================================//
 
 			$chekOutArray = array(
-				"items"	=> session("shop.usuario.carrito"),
+				"items"	=> session("shop.usuario.carrito.items"),
 				"total"	=> $this->total()
 			);
 
@@ -137,8 +139,8 @@
 			//==========================================================//
 
 			$total = 0;
-			for($i=0;$i<count(session("shop.usuario.carrito"));++$i)
-				$total  = $total + session("shop.usuario.carrito.$i.subtotal");
+			for($i=0;$i<count(session("shop.usuario.carrito.items"));++$i)
+				$total  = $total + session("shop.usuario.carrito.items.$i.subtotal");
 
 			return($total);
 		}
@@ -151,7 +153,7 @@
 
             $index = $this->itemIndex($id, $opciones);
             if($index>=0)
-                return(session("shop.usuario.carrito.$index.cantidad"));
+                return(session("shop.usuario.carrito.items.$index.cantidad"));
 
 			return(-1);
         }
@@ -163,8 +165,8 @@
             //====================================================//
 
             $total = 0;
-            for($i=0;$i<count(session("shop.usuario.carrito"));++$i)
-                $total += session("shop.usuario.carrito.$i.cantidad");
+            for($i=0;$i<count(session("shop.usuario.carrito.items"));++$i)
+                $total += session("shop.usuario.carrito.items.$i.cantidad");
 
             return($total);
         }

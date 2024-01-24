@@ -334,6 +334,19 @@ class ShopController extends Controller
 
         if($request->isMethod("post"))
         {
+            $currentStep = $request->input("currentStep");
+    
+            switch($currentStep)
+            {
+                case(1):
+                    {
+                        session()->put("shop.checkout.items.confirmation", True);
+                        return response()->json(['success' => true]);
+                        
+                        break;
+                    }
+            }
+
             session()->put("shop.checkout.total", $checkout["total"]);
 
             if($request->has("radio_medioPago") && is_numeric($request->input("radio_medioPago")) && (int)$request->input("radio_medioPago")>0)
