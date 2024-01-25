@@ -24,14 +24,14 @@
 			// Método que limpia el carrito de compras //
 			//=========================================//
 
-            session()->put(self::SESSION_CART_KEY,          array());
-            session()->put(self::SESSION_CART_ITEMS_KEY,    array());
+            session()->put(self::SESSION_CART_KEY,          []);
+            session()->put(self::SESSION_CART_ITEMS_KEY,    []);
             session()->put(self::SESSION_CONFIRMATION_KEY,  False);
 
             return $this->totalItems();
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        public function itemIndex(int $id, array $opciones = array()): int
+        public function itemIndex(int $id, array $opciones = []): int
         {
             //==============================================================//
             // Método que devuelve el índice del arreglo donde esta el item //
@@ -44,7 +44,7 @@
             return -1;
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        public function updateCart(int $id, int $cantidad, array $opciones = array())
+        public function updateCart(int $id, int $cantidad, array $opciones = [])
         {
             //============================================//
             // Método que actualiza el carrito de compras //
@@ -88,7 +88,7 @@
             return $this->totalItems();
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        public function addItem(int $id, int $atributosId, int $cantidad, array $opciones = array())
+        public function addItem(int $id, int $atributosId, int $cantidad, array $opciones = [])
         {
             //=====================================================//
             // Método que inserta un item en el carrito de compras //
@@ -96,14 +96,14 @@
 
             $info = Articulo::info($id);
 
-            session()->push(self::SESSION_CART_ITEMS_KEY, array(
+            session()->push(self::SESSION_CART_ITEMS_KEY, [
                 "id"             => $id,
                 "atributos_id"   => $atributosId,
                 "cantidad"       => $cantidad,
                 "precio"         => $info["precio"],
                 "subtotal"       => $info["precio"] * $cantidad,
                 "opciones"       => $opciones
-            ));
+            ]);
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function updateItem(int $index, int $cantidad)
@@ -130,10 +130,10 @@
 			// Método que devuelve un array con los items del carrito, información, total y subtotales //
 			//=========================================================================================//
 
-            $chekOutArray = array(
+            $chekOutArray = [
                 "items" => session(self::SESSION_CART_ITEMS_KEY),
                 "total" => $this->total()
-            );
+            ];
 
             return $chekOutArray;
         }
@@ -153,7 +153,7 @@
             return $total;
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        public function itemQuantity(int $id, array $opciones = array()): int
+        public function itemQuantity(int $id, array $opciones = []): int
         {
             //==========================================================================//
 			// Método que devuelve la cantidad de un determinado artículo en el carrito //
