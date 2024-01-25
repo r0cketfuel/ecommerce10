@@ -8,7 +8,7 @@
     class ShoppingCartService
     {
         const SESSION_CART_KEY          = "shop.usuario.carrito";
-        const SESSION_ITEMS_KEY         = "shop.usuario.carrito.items";
+        const SESSION_CART_ITEMS_KEY    = "shop.usuario.carrito.items";
         const SESSION_CONFIRMATION_KEY  = "shop.usuario.carrito.confirmacion";
 
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -25,7 +25,7 @@
 			//=========================================//
 
             session()->put(self::SESSION_CART_KEY,          array());
-            session()->put(self::SESSION_ITEMS_KEY,         array());
+            session()->put(self::SESSION_CART_ITEMS_KEY,    array());
             session()->put(self::SESSION_CONFIRMATION_KEY,  False);
 
             return $this->totalItems();
@@ -37,8 +37,8 @@
             // Método que devuelve el índice del arreglo donde esta el item //
             //==============================================================//
 
-            for($i=0;$i<count(session(self::SESSION_ITEMS_KEY));$i++)
-                if(session(self::SESSION_ITEMS_KEY)[$i]["id"] == $id && empty(array_diff_assoc(session(self::SESSION_ITEMS_KEY)[$i]["opciones"], $opciones)))
+            for($i=0;$i<count(session(self::SESSION_CART_ITEMS_KEY));$i++)
+                if(session(self::SESSION_CART_ITEMS_KEY)[$i]["id"] == $id && empty(array_diff_assoc(session(self::SESSION_CART_ITEMS_KEY)[$i]["opciones"], $opciones)))
                     return $i;
 
             return -1;
@@ -96,7 +96,7 @@
 
             $info = Articulo::info($id);
 
-            session()->push(self::SESSION_ITEMS_KEY, array(
+            session()->push(self::SESSION_CART_ITEMS_KEY, array(
                 "id"             => $id,
                 "atributos_id"   => $atributosId,
                 "cantidad"       => $cantidad,
@@ -112,7 +112,7 @@
             // Método que actualiza la cantidad de un item en el carrito de compras //
             //======================================================================//
 
-            session()->put(self::SESSION_ITEMS_KEY . ".$index.cantidad", $cantidad);
+            session()->put(self::SESSION_CART_ITEMS_KEY . ".$index.cantidad", $cantidad);
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function removeItem(int $index)
@@ -121,7 +121,7 @@
             // Método que elimina un item del carrito de compras //
             //===================================================//
 
-            array_splice(session(self::SESSION_ITEMS_KEY), $index, 1);
+            array_splice(session(self::SESSION_CART_ITEMS_KEY), $index, 1);
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function checkOut(): array
@@ -131,7 +131,7 @@
 			//=========================================================================================//
 
             $chekOutArray = array(
-                "items" => session(self::SESSION_ITEMS_KEY),
+                "items" => session(self::SESSION_CART_ITEMS_KEY),
                 "total" => $this->total()
             );
 
@@ -146,8 +146,8 @@
 
             $total = 0;
 
-            for($i=0;$i<count(session(self::SESSION_ITEMS_KEY));$i++)
-                $total = $total + session(self::SESSION_ITEMS_KEY)[$i]["subtotal"];
+            for($i=0;$i<count(session(self::SESSION_CART_ITEMS_KEY));$i++)
+                $total = $total + session(self::SESSION_CART_ITEMS_KEY)[$i]["subtotal"];
 
 
             return $total;
@@ -161,7 +161,7 @@
 
             $index = $this->itemIndex($id, $opciones);
             if($index>=0)
-                return session(self::SESSION_ITEMS_KEY)[$index]["cantidad"];
+                return session(self::SESSION_CART_ITEMS_KEY)[$index]["cantidad"];
 
             return -1;
         }
@@ -173,8 +173,8 @@
             //====================================================//
 
             $total = 0;
-            for($i=0;$i<count(session(self::SESSION_ITEMS_KEY));$i++)
-                $total += session(self::SESSION_ITEMS_KEY)[$i]["cantidad"];
+            for($i=0;$i<count(session(self::SESSION_CART_ITEMS_KEY));$i++)
+                $total += session(self::SESSION_CART_ITEMS_KEY)[$i]["cantidad"];
 
             return $total;
         }
