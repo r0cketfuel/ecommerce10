@@ -147,42 +147,32 @@
     position:                       relative;
 
     display:                        grid;
-    grid-template-areas:			"descripcion    descripcion     descripcion     descripcion     descripcion"
+    grid-template-areas:			"descripcion    descripcion     descripcion     descripcion     acciones"
                                     "imagen         talleLbl        colorLbl        precioLbl       subtotalLbl"
                                     "imagen         talle           color           precio          subtotal"
                                     "imagen         .               .               .               .";
     grid-template-columns:          auto 1fr 1fr 1fr 1fr;
-	grid-template-rows:				30px repeat(3,20px);
+	grid-template-rows:				40px repeat(3,20px);
     gap:                            5px;
     border:                         1px solid rgb(240,240,240);
     background:                     rgb(253,253,253);
 }
 
-.product-checkout-card .product-checkout-card-extra ul {
-    margin:                         0;
-    padding:                        0;
-    list-style:                     none;
-    display:                        block;
-}
-
-.product-checkout-card .product-checkout-card-extra ul li {
-    height:                         30px;
-    width:                          30px;
-    border-radius:                  50%;
-    display:                        flex;
-    justify-content:                center;
-    align-items:                    center;
-    margin-top:                     10px;
-    background-color:               #0f78f2;
-    color:                          white;
-}
-
 .product-checkout-card .product-checkout-card-extra {
-    position:                       absolute;
-    opacity:                        0;
-    top:                            10px;
-    right:                          0;
-    transition:                     all linear .2s;
+    display:                        flex;
+    flex-flow:                      row nowrap;
+    justify-content:                end;
+    gap:                            5px;
+    grid-area:                      acciones;
+}
+
+.product-checkout-card .product-checkout-card-extra button {
+    height:                         25px;
+    width:                          25px;
+}
+
+.product-checkout-card .product-checkout-card-extra button:hover {
+    background-color: rgba(50, 50, 50, 0.2);
 }
 
 .product-checkout-card div {
