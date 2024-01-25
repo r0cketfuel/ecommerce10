@@ -38,10 +38,10 @@ class LoadInfoComercio
      */
     private function registrarVisita(Request $request)
     {
-        $ip = $request->ip();
-        $visita = new Visita();
-        $visita->ip = $ip;
-        $visita->fecha = now();
+        $visita         = new Visita();
+        $visita->ip     = $request->ip();
+        $visita->fecha  = now();
+        
         $visita->save();
     }
 }
