@@ -94,14 +94,14 @@
             // Método que inserta un item en el carrito de compras //
             //=====================================================//
 
-            $info = Articulo::info($id);
+            $articulo = Articulo::find($id);
 
             session()->push(self::SESSION_CART_ITEMS_KEY, [
                 "id"             => $id,
                 "atributos_id"   => $atributosId,
                 "cantidad"       => $cantidad,
-                "precio"         => $info["precio"],
-                "subtotal"       => $info["precio"] * $cantidad,
+                "precio"         => $articulo->precio,
+                "subtotal"       => $articulo->precio * $cantidad,
                 "opciones"       => $opciones
             ]);
         }
