@@ -15,10 +15,10 @@
         public function __construct()
         {
             if(!session()->has(self::SESSION_CART_KEY))
-                $this->clear();
+                $this->init();
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        public function clear(): int
+        public function init(): int
         {
 			//=========================================//
 			// Método que limpia el carrito de compras //

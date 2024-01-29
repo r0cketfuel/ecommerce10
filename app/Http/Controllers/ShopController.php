@@ -296,7 +296,7 @@ class ShopController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function success(ShoppingCartService $shoppingCart, $order = null)
     {
-        $shoppingCart->clear();
+        $shoppingCart->init();
 
         return view("shop.success", compact("order"));
     }
