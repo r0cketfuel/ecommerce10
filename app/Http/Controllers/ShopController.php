@@ -340,7 +340,7 @@ class ShopController extends Controller
             {
                 case(1):
                     {
-                        session()->put("shop.checkout.items.confirmation", True);
+                        session()->put("shop.checkout.confirmation", now());
                         return response()->json(['success' => true]);
                         
                         break;

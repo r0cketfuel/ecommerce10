@@ -7,10 +7,9 @@
 
     class ShoppingCartService
     {
-        const SESSION_CART_KEY          = "shop.usuario.carrito";
-        const SESSION_CART_ITEMS_KEY    = "shop.usuario.carrito.items";
-        const SESSION_CONFIRMATION_KEY  = "shop.usuario.carrito.confirmacion";
-
+        const SESSION_CART_KEY                  = "shop.usuario.carrito";
+        const SESSION_CART_ITEMS_KEY            = "shop.usuario.carrito.items";
+        
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function __construct()
         {
@@ -26,7 +25,6 @@
 
             session()->put(self::SESSION_CART_KEY,          []);
             session()->put(self::SESSION_CART_ITEMS_KEY,    []);
-            session()->put(self::SESSION_CONFIRMATION_KEY,  False);
 
             return $this->totalItems();
         }
