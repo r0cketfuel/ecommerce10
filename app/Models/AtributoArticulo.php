@@ -54,19 +54,17 @@ class AtributoArticulo extends Model
         return $query->get();
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function maximoCompra(int $articulo_id, array $opciones = array())
+    public function maximoCompra(AtributoArticulo $atributoArticulo)
     {
         //===============================================================================================================//
         // Método que devuelve el máximo de compra de la combinación de un artículo según su stock o su límite de compra //
         //===============================================================================================================//
-        
-        $item = $this->search($articulo_id, $opciones)->first();
 
-        if($item['compra_max']!=NULL)
-            if($item['compra_max']<$item['stock']) 
-                return($item['compra_max']); 
+        if($atributoArticulo->compra_max != NULL)
+            if($atributoArticulo->compra_max < $atributoArticulo->stock) 
+                return($atributoArticulo->compra_max); 
         
-        return $item['stock'];
+        return $atributoArticulo->stock;
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function modificaStock(int $id, int $stock): array

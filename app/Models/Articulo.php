@@ -150,4 +150,25 @@ class Articulo extends Model
         return $items;
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public static function precio(int $id)
+    {
+        //======================================================================//
+        // Método que devuelve el precio del artículo o el precio con descuento //
+        //======================================================================//
+
+        if($id > 0)
+        {
+            $articulo = self::where("id", $id)
+                ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now()); }])
+                ->first();
+            
+            $precio = $articulo->precio;
+
+            if($articulo->promocion)
+                $precio = $articulo->precio - ($articulo->precio * $articulo->promocion->descuento / 100);
+
+            return $precio;
+        }
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

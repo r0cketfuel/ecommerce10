@@ -160,9 +160,13 @@ async function info(id)
         {
             let combinacion = data.atributos.combinaciones.find(c => c.talle_id == null && c.color === null);
             updateStock(combinacion);
-            updateInputField(combinacion);
-            displayQtyControl();
-            updateSubtotal();
+
+            if(combinacion.stock > 0)
+            {
+                updateInputField(combinacion);
+                displayQtyControl();
+                updateSubtotal();
+            }
         }
     }
 
@@ -205,10 +209,14 @@ function selectSizesChangeEvent()
     else
     {
         updateStock(combinacion);
-        updateInputField(combinacion);
-        updatePhoto(combinacion);
-        displayQtyControl();
-        updateSubtotal();
+        
+        if(combinacion.stock > 0)
+        {
+            updateInputField(combinacion);
+            updatePhoto(combinacion);
+            displayQtyControl();
+            updateSubtotal();
+        }
     }
 }
 
@@ -225,10 +233,14 @@ function selectColorsChangeEvent()
     if (combinacion)
     {
         updateStock(combinacion);
-        updateInputField(combinacion);
-        updatePhoto(combinacion);
-        displayQtyControl();
-        updateSubtotal();
+
+        if(combinacion.stock > 0)
+        {
+            updateInputField(combinacion);
+            updatePhoto(combinacion);
+            displayQtyControl();
+            updateSubtotal();
+        }
     }
 }
 
@@ -237,8 +249,12 @@ function selectColorsChangeEvent()
 //====================================================================================//
 function updateStock(combinacion)
 {
-    const stock     = document.getElementById("stock");
-    stock.innerHTML = combinacion.stock + (combinacion.stock > 1 ? " unidades" : " unidad");
+    const stock = document.getElementById("stock");
+
+    if(combinacion.stock == 0)
+        stock.innerHTML = "<span style='background-color: red; padding: 4px 8px; color: white; font-weight: bold;'>SIN STOCK</span>";
+    else
+        stock.innerHTML = combinacion.stock + (combinacion.stock == 1 ? " unidad" : " unidades");
 }
 
 //==============================================//

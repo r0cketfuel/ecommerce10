@@ -52,10 +52,9 @@
 
             if($id>0 && $cantidad>=0)
             {
-                $atributoArticulo   = new AtributoArticulo;
-                $atributosId        = $atributoArticulo->search($id, $opciones)->first()->id;
-
-                $limiteCompra       = $atributoArticulo->maximoCompra($id, $opciones);
+                $articulo           = Articulo::find($id);
+                $atributoArticulo   = AtributoArticulo::search($id, $opciones)->first();
+                $limiteCompra       = $atributoArticulo->maximoCompra($atributoArticulo);
 
                 $index = $this->itemIndex($id, $opciones);
 
@@ -66,7 +65,7 @@
                     //----------------------------------------//
                     if($cantidad<=$limiteCompra && $cantidad>0)
                     {
-                        $this->addItem($id, $atributosId, $cantidad, $opciones);
+                        $this->addItem($articulo, $atributoArticulo, $cantidad);
                     }
                 }
                 else
@@ -88,21 +87,16 @@
             return $this->totalItems();
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        public function addItem(int $id, int $atributosId, int $cantidad, array $opciones = [])
+        public function addItem($articulo, $atributoArticulo, int $cantidad)
         {
             //=====================================================//
             // Método que inserta un item en el carrito de compras //
             //=====================================================//
-
-            $articulo = Articulo::find($id);
-
+            
             session()->push(self::SESSION_CART_ITEMS_KEY, [
-                "id"             => $id,
-                "atributos_id"   => $atributosId,
-                "cantidad"       => $cantidad,
-                "precio"         => $articulo->precio,
-                "subtotal"       => $articulo->precio * $cantidad,
-                "opciones"       => $opciones
+                "id"             => $articulo->id,
+                "atributos_id"   => $atributoArticulo->id,
+                "cantidad"       => $cantidad
             ]);
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -135,6 +129,18 @@
                 "total" => $this->total()
             ];
 
+            for($i=0;$i<count($chekOutArray["items"]);$i++)
+            {
+                $articulo   = Articulo::find(session(self::SESSION_CART_ITEMS_KEY)[$i]["id"]);
+                $precio     = Articulo::precio($articulo->id);
+                $cantidad   = session(self::SESSION_CART_ITEMS_KEY)[$i]["cantidad"];
+                $subtotal   = $precio * $cantidad;
+
+                $chekOutArray["items"][$i]["precio"]    = $precio;
+                $chekOutArray["items"][$i]["subtotal"]  = $subtotal;
+                $chekOutArray["items"][$i]["opciones"]  = [];
+            }
+
             return $chekOutArray;
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -147,8 +153,13 @@
             $total = 0;
 
             for($i=0;$i<count(session(self::SESSION_CART_ITEMS_KEY));$i++)
-                $total = $total + session(self::SESSION_CART_ITEMS_KEY)[$i]["subtotal"];
-
+            {
+                $articulo   = Articulo::find(session(self::SESSION_CART_ITEMS_KEY)[$i]["id"]);
+                $precio     = Articulo::precio($articulo->id);
+                $cantidad   = session(self::SESSION_CART_ITEMS_KEY)[$i]["cantidad"];
+                $subtotal   = $precio * $cantidad;
+                $total      = $total + $subtotal;
+            }
 
             return $total;
         }
