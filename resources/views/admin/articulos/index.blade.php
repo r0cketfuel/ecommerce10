@@ -51,7 +51,6 @@
                 <th class="text-left">Nombre</th>
                 <th class="text-left">Descripción</th>
                 <th class="text-center">Precio</th>
-                <th class="text-center">Moneda</th>
                 <th class="text-left">Categoría</th>
                 <th class="text-left">Subcategoría</th>
                 <th class="text-center">Visualizaciones</th>
@@ -66,7 +65,6 @@
                     <td class="text-left">{{ $articulo->nombre }}</td>
                     <td class="text-left">{{ $articulo->descripcion }}</td>
                     <td class="text-right">{{ _money($articulo->precio) }}</td>
-                    <td class="text-center">{{ $articulo->moneda }}</td>
                     <td class="text-left">
                         @if(isset($articulo->categoria))
                             {{ $articulo->categoria->nombre }}

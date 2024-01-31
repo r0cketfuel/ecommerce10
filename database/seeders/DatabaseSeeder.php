@@ -32,7 +32,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PromocionSeeder::class);
         $this->call(CuentaBancariaSeeder::class);
         $this->call(ReviewSeeder::class);
-        $this->call(CotizacionSeeder::class);
         $this->call(CuponSeeder::class);
         $this->call(MedioPagoSeeder::class);
         $this->call(MedioEnvioSeeder::class);

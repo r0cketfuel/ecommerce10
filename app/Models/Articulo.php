@@ -24,7 +24,6 @@ class Articulo extends Model
         'nombre',
         'descripcion',
         'precio',
-        'moneda',
         'categoria_id',
         'subcategoria_id',
         'estado'

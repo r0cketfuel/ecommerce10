@@ -92,20 +92,6 @@
                                 <p class="field-validation-msg"><i class="fa-solid fa-triangle-exclamation"></i> {{ $errors->first('precio') }}</p>
                             @endif
                         </div>
-                        <div class="flex">
-                            <label>
-                                Moneda
-                                <select form="form" name="moneda" class="{{ $errors->has('moneda') ? 'form-error' : '' }}" required>
-                                    <option value="" disabled selected>Seleccione...</option>
-                                    <option value="1" {{ old('moneda') == 1 ? 'selected' : '' }}>Pesos</option>
-                                    <option value="2" {{ old('moneda') == 2 ? 'selected' : '' }}>Dólares</option>
-                                </select>
-                            </label>
-                            @if ($errors->has('moneda'))
-                                <p class="field-validation-msg"><i class="fa-solid fa-triangle-exclamation"></i> {{ $errors->first('moneda') }}</p>
-                            @endif
-                        </div>
-                        <p class="nota">El precio del dólar se actualiza todos los días a las: FALTA</p>
                     </fieldset>
 
                     <fieldset>

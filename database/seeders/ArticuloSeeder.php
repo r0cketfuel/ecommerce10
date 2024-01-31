@@ -19,7 +19,6 @@ class ArticuloSeeder extends Seeder
                 "nombre"            => "Item $i",
                 "descripcion"       => "Descripción item $i",
                 "precio"            => $i * 100.00,
-                "moneda"            => 1,
                 "categoria_id"      => ($i % 3) + 1,
                 "subcategoria_id"   => $i % 2 == 0 ? $i % 3 + 1 : NULL,
                 "estado"            => 1

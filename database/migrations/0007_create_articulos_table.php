@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('nombre',100);
             $table->string('descripcion',255);
             $table->decimal('precio',$precision = 9,$scale = 2);
-            $table->unsignedTinyInteger('moneda');
             $table->unsignedMediumInteger('categoria_id')->nullable();
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('SET NULL');
             $table->unsignedTinyInteger('subcategoria_id')->nullable();

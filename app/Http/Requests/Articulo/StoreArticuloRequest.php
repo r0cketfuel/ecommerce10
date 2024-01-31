@@ -26,7 +26,6 @@ class StoreArticuloRequest extends FormRequest
             'nombre'            => array('required','string','max:100'),
             'descripcion'       => array('required','string','max:255'),
             'precio'            => array('required','numeric','regex:/^\d+(\.\d{1,2})?$/'),
-            'moneda'            => array('required','integer'),
             'categoria_id'      => array('nullable','integer'),
             'subcategoria_id'   => array('nullable','integer'),
             'estado'            => array('nullable','integer'),
