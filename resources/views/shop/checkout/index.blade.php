@@ -75,8 +75,7 @@
 
 		.progress-indicator li {
 			border-radius: 			50%;
-			height:					30px;
-			width: 					30px;
+			padding: 				8px 12px;
 			border: 				3px solid rgb(220, 220, 220);
 			display: 				flex;
 			justify-content: 		center;
