@@ -69,7 +69,8 @@
 			margin: 				0;
 			padding: 				0;
 			display: 				flex;
-			justify-content: 		space-between;
+			justify-content: 		center;
+			align-items: center;
 		}
 
 		.progress-indicator li {
@@ -92,6 +93,16 @@
 			border: 				3px solid rgb(30, 200, 30);
 			color: 					white;
 		}
+
+		.progress-indicator div {
+			height: 2px;
+			width: 150px;
+			background-color: rgb(200,200,200);;
+		}
+		
+		.progress-indicator div.success {
+			background-color: 		rgb(80, 210, 80);
+		}
 	</style>
 @endsection
 
@@ -102,11 +113,11 @@
 		@if(count($checkout["items"])>0)
 
 			<ul class="progress-indicator">
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>5</li>
+				<li>1</li><div></div>
+				<li>2</li><div></div>
+				<li>3</li><div></div>
+				<li>4</li><div></div>
+				<li>5</li><div></div>
 				<li>6</li>
 			</ul>
 

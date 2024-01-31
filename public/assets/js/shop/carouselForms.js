@@ -193,15 +193,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateProgressIndicator() {
         const progressIndicatorItems = document.querySelectorAll('.progress-indicator li');
+        const progressIndicatorDivision = document.querySelectorAll('.progress-indicator div');
     
         progressIndicatorItems.forEach((item, index) => {
-            if (index < curSlide) {
+            if (index < curSlide)
+            {
                 item.classList.remove('current-step');
                 item.classList.add('success');
-            } else if (index === curSlide) {
+                item.classList.add('success');
+            }
+            else if (index === curSlide)
+            {
                 item.classList.remove('success');
                 item.classList.add('current-step');
-            } else {
+            }
+            else
+            {
+                item.classList.remove('success', 'current-step');
+            }
+        });
+
+        progressIndicatorDivision.forEach((item, index) => {
+            if (index < curSlide)
+            {
+                item.classList.remove('current-step');
+                item.classList.add('success');
+                item.classList.add('success');
+            }
+            else if (index === curSlide)
+            {
+                item.classList.remove('success');
+                item.classList.add('current-step');
+            }
+            else
+            {
                 item.classList.remove('success', 'current-step');
             }
         });
