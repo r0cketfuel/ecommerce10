@@ -343,7 +343,6 @@ class ShopController extends Controller
                 case(1):
                 {
                     session()->put("shop.checkout.confirmation", now());
-                    session()->put("shop.checkout.currentstep", 2);
 
                     return response()->json(['success' => true]);
                     break;
@@ -351,40 +350,30 @@ class ShopController extends Controller
 
                 case(2):
                 {
-                    session()->put("shop.checkout.currentstep", 3);
-                    
                     return response()->json(['success' => true]);
                     break;
                 }
 
                 case(3):
                 {
-                    session()->put("shop.checkout.currentstep", 4);
-                    
                     return response()->json(['success' => true]);
                     break;
                 }
 
                 case(4):
                 {
-                    session()->put("shop.checkout.currentstep", 5);
-
                     return response()->json(['success' => true]);
                     break;
                 }
 
                 case(5):
                 {
-                    session()->put("shop.checkout.currentstep", 6);
-
                     return response()->json(['success' => true]);
                     break;
                 }
 
                 case(6):
                 {
-                    session()->put("shop.checkout.currentstep", 7);
-                    
                     return response()->json(['success' => true]);
                     break;
                 }
