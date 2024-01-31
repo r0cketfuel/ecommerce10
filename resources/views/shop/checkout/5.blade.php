@@ -1,12 +1,12 @@
-<!-- Panel datos pago -->
 <div class="carousel-slide">
-    <div class="flex justify-content-end">
+    <div class="flex justify-content-between">
+        <button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</button>
         <button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
     </div>
     <br>
     <!-- Contenido -->
     <div class="panel" id="shipmentPanel">
-        <div class="panel-title panel-title-underlined">Envio</div>
+        <div class="panel-title panel-title-underlined">5 - Envío</div>
         <div class="panel-content">
             <div class="input-group">
                 @foreach($mediosEnvioListado as $envio)

@@ -366,6 +366,20 @@ class ShopController extends Controller
                     
                     break;
                 }
+
+                case(5):
+                {
+                    return response()->json(['success' => true]);
+                    
+                    break;
+                }
+
+                case(6):
+                {
+                    return response()->json(['success' => true]);
+                    
+                    break;
+                }
             }
 
             session()->put("shop.checkout.total", $checkout["total"]);

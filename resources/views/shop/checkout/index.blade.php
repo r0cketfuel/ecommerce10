@@ -92,28 +92,28 @@
 					<form method="post" class="step-form">
 						<input type="hidden" name="currentStep" value="3">
 						@csrf
-						@include("shop.checkout.panel-medio-pago")
+						@include("shop.checkout.3")
 					</form>
 
 					<!-- Pantalla 4 -->
 					<form method="post" class="step-form">
 						<input type="hidden" name="currentStep" value="4">
 						@csrf
-						@include("shop.checkout.panel-medio-envio")
+						@include("shop.checkout.4")
 					</form>
 
 					<!-- Pantalla 5 -->
 					<form method="post" class="step-form">
 						<input type="hidden" name="currentStep" value="5">
 						@csrf
-						@include("shop.checkout.3")
+						@include("shop.checkout.5")
 					</form>
 
 					<!-- Pantalla 6 -->
 					<form method="post" class="step-form">
 						<input type="hidden" name="currentStep" value="6">
 						@csrf
-						@include("shop.checkout.4")
+						@include("shop.checkout.6")
 					</form>
 
 				</div>
