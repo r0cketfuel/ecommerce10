@@ -70,7 +70,7 @@
 			padding: 				0;
 			display: 				flex;
 			justify-content: 		center;
-			align-items: center;
+			align-items: 			center;
 		}
 
 		.progress-indicator li {
@@ -94,9 +94,9 @@
 		}
 
 		.progress-indicator div {
-			height: 2px;
-			width: 150px;
-			background-color: rgb(200,200,200);;
+			height: 				3px;
+			width: 					150px;
+			background-color: 		rgb(200,200,200);
 		}
 		
 		.progress-indicator div.success {
