@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let curSlide = 0;
     let datosRecopilados = {};
 
+    updateProgressIndicator();
+
     for (let i = 0; i < forms.length; i++) {
         forms[i].addEventListener('submit', function (event) {
             event.preventDefault();
@@ -34,8 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función desplazamiento de las pantallas a la izquierda
     function moveLeft()
     {
-        if(curSlide > 0)
+        if (curSlide > 0)
+        {
             --curSlide;
+            updateProgressIndicator();
+        }
 
         slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%)`; });
 
@@ -45,8 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función desplazamiento de las pantallas a la derecha
     function moveRight()
     {
-        if(curSlide < (slides.length - 1))
+        if (curSlide < (slides.length - 1))
+        {
             ++curSlide;
+            updateProgressIndicator();
+        }
 
         slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%)`; });
 
@@ -182,4 +190,20 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    function updateProgressIndicator() {
+        const progressIndicatorItems = document.querySelectorAll('.progress-indicator li');
+    
+        progressIndicatorItems.forEach((item, index) => {
+            if (index < curSlide) {
+                item.classList.remove('current-step');
+                item.classList.add('success');
+            } else if (index === curSlide) {
+                item.classList.remove('success');
+                item.classList.add('current-step');
+            } else {
+                item.classList.remove('success', 'current-step');
+            }
+        });
+    }
 });

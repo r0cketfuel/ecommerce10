@@ -63,6 +63,35 @@
 		.panel {
 			box-shadow: 			unset;
 		}
+
+		.progress-indicator {
+			list-style: 			none;
+			margin: 				0;
+			padding: 				0;
+			display: 				flex;
+			justify-content: 		space-between;
+		}
+
+		.progress-indicator li {
+			border-radius: 			50%;
+			height:					30px;
+			width: 					30px;
+			border: 				1px solid rgb(220, 220, 220);
+			display: 				flex;
+			justify-content: 		center;
+			align-items: 			center;
+			font-weight: 			bold;
+		}
+
+		.progress-indicator li.current-step {
+			border: 				3px solid rgb(30, 200, 30);
+		}
+
+		.progress-indicator li.success {
+			background-color: 		rgb(80, 210, 80);
+			border: 				3px solid rgb(30, 200, 30);
+			color: 					white;
+		}
 	</style>
 @endsection
 
@@ -71,6 +100,16 @@
 		@include("shop.layout.breadcrumb")
 		
 		@if(count($checkout["items"])>0)
+
+			<ul class="progress-indicator">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+
 			<div class="carousel-container">
 				<div class="carousel-slider">
 
