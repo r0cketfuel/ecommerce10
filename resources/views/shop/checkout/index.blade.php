@@ -76,7 +76,7 @@
 			border-radius: 			50%;
 			height:					30px;
 			width: 					30px;
-			border: 				1px solid rgb(220, 220, 220);
+			border: 				3px solid rgb(220, 220, 220);
 			display: 				flex;
 			justify-content: 		center;
 			align-items: 			center;
