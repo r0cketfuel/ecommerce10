@@ -11,18 +11,18 @@
             <div class="flex gap-3">
                 <label>
                     Apellidos
-                    <input type="text" id="apellidos" name="apellidos" required pattern="[a-zA-Z]+" title="Sólo se permiten letras" value="{{session('shop.usuario.datos.apellidos')}}">
+                    <input type="text" name="apellidos" required pattern="[a-zA-Z]+" title="Sólo se permiten letras" value="{{session('shop.usuario.datos.apellidos')}}">
                 </label>
 
                 <label>
                     Nombres
-                    <input type="text" id="nombres" name="nombres" required pattern="[a-zA-Z]+" title="Sólo se permiten letras" value="{{session('shop.usuario.datos.nombres')}}">
+                    <input type="text" name="nombres" required pattern="[a-zA-Z]+" title="Sólo se permiten letras" value="{{session('shop.usuario.datos.nombres')}}">
                 </label>
             </div>
             <div class="flex gap-3">
                 <label>
                     Tipo de documento
-                    <select id="tipo_documento_id" name="tipo_documento_id" required>
+                    <select name="tipo_documento_id" required>
                         <option value="" selected disabled>Seleccione</option>
                         @foreach($tiposDocumentos as $tipoDocumento)
                             <option value="{{$tipoDocumento->id}}" @if(session('shop.usuario.datos.tipo_documento_id') == $tipoDocumento->id) selected @endif>{{$tipoDocumento->tipo}}</option>
@@ -32,13 +32,13 @@
 
                 <label>
                     Número de documento
-                    <input type="text" id="documento_nro" name="documento_nro" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.documento_nro')}}">
+                    <input type="text" name="documento_nro" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.documento_nro')}}">
                 </label>
             </div>
 
             <label>
                 Correo electrónico
-                <input type="email" id="email" name="email" required value="{{session('shop.usuario.datos.email')}}" autocomplete="off">
+                <input type="email" name="email" required value="{{session('shop.usuario.datos.email')}}" autocomplete="off">
             </label>
         </div>
     </div>
