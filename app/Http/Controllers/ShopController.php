@@ -339,12 +339,33 @@ class ShopController extends Controller
             switch($currentStep)
             {
                 case(1):
-                    {
-                        session()->put("shop.checkout.confirmation", now());
-                        return response()->json(['success' => true]);
-                        
-                        break;
-                    }
+                {
+                    session()->put("shop.checkout.confirmation", now());
+                    return response()->json(['success' => true]);
+                    
+                    break;
+                }
+
+                case(2):
+                {
+                    return response()->json(['success' => true]);
+                    
+                    break;
+                }
+
+                case(3):
+                {
+                    return response()->json(['success' => true]);
+                    
+                    break;
+                }
+
+                case(4):
+                {
+                    return response()->json(['success' => true]);
+                    
+                    break;
+                }
             }
 
             session()->put("shop.checkout.total", $checkout["total"]);
