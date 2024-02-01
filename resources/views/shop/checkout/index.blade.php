@@ -112,11 +112,16 @@
 		@if(count($checkout["items"])>0)
 
 			<ul class="progress-indicator">
-				<li>1</li><div></div>
-				<li>2</li><div></div>
-				<li>3</li><div></div>
-				<li>4</li><div></div>
-				<li>5</li><div></div>
+				<li>1</li>
+				<div></div>
+				<li>2</li>
+				<div></div>
+				<li>3</li>
+				<div></div>
+				<li>4</li>
+				<div></div>
+				<li>5</li>
+				<div></div>
 				<li>6</li>
 			</ul>
 
