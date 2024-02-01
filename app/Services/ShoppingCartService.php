@@ -36,7 +36,7 @@
             //==============================================================//
 
             for($i=0;$i<count(session(self::SESSION_CART_ITEMS_KEY));$i++)
-                if(session(self::SESSION_CART_ITEMS_KEY)[$i]["id"] == $id && empty(array_diff_assoc(session(self::SESSION_CART_ITEMS_KEY)[$i]["atributos_id"], $atributos_id)))
+                if(session(self::SESSION_CART_ITEMS_KEY)[$i]["id"] == $id && session(self::SESSION_CART_ITEMS_KEY)[$i]["attributos_id"] == $atributos_id)
                     return $i;
 
             return -1;
