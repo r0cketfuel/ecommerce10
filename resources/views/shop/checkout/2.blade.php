@@ -35,6 +35,17 @@
                     <input type="text" name="documento_nro" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.documento_nro')}}">
                 </label>
             </div>
+            <div class="flex gap-3">
+                <label>
+                    Teléfono celular
+                    <input type="text" name="telefono_celular" pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.telefono_celular')}}">
+                </label>
+
+                <label>
+                    Teléfono alternativo
+                    <input type="text" name="telefono_alt" pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.telefono_alt')}}">
+                </label>
+            </div>
 
             <label>
                 Correo electrónico
