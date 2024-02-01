@@ -65,6 +65,7 @@
 		}
 
 		.progress-indicator {
+			user-select: 			none;
 			list-style: 			none;
 			margin: 				0;
 			padding: 				0;
