@@ -22,7 +22,7 @@
                 <!-- Atributo Tamaño -->
                 <div class="flex justify-content-between align-items-center">
                     <div>{{ __('general.sizes') }}:</div>
-                    <div style="display: flex;">
+                    <div class="flex">
                         <select id="sizes">
                             <option value="" disabled selected>{{ __('general.select_option') }}</option>
                         </select>
@@ -33,7 +33,7 @@
                 <!-- Atributo Color -->
                 <div class="flex justify-content-between align-items-center">
                     <div>{{ __('general.colors') }}:</div>
-                    <div style="display: flex;">
+                    <div class="flex">
                         <select id="colors">
                             <option value="" disabled selected>{{ __('general.select_option') }}</option>
                         </select>
@@ -51,7 +51,7 @@
                 <!-- Cantidad -->
                 <div id="qtyControl" class="flex justify-content-between align-items-center">
                     <div>{{ __('general.quantity') }}:</div>
-                    <div style="display: flex; max-width: 120px;">
+                    <div class="flex" style="max-width: 120px">
                         <button id="minusButton"><i class="fa-solid fa-minus"></i></button>
                         <input 	id="addToCartQty" type="number">
                         <button id="plusButton"><i class="fa-solid fa-plus"></i></button>

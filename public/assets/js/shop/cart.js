@@ -380,47 +380,46 @@ function addOption(selectElement,value,text,disabled,selected)
 //=====================================//
 // FUNCION QUE AGREGA ITEMS AL CARRITO //
 //=====================================//
-function addToCart(id)
-{
+function addToCart(id) {
     let modal = document.getElementById("modal-add");
     const url = "/shop/ajax/updateCart";
-	
-    let carticon        = document.getElementById("qty");
-    let cartQtyBefore   = document.getElementById("qty").innerHTML;
-    let cartQtyAfter    = document.getElementById("qty").innerHTML;
     
-    let inputQty        = inputField.value;
-    let buttonLabel     = addToCartButton.innerHTML;
-	let parametros      = {};
-	
-    if(selectSizes.value)   parametros["talle_id"]  = selectSizes.value;
-    if(selectColors.value)  parametros["color"] 	= selectColors.value;
-	
-	//let parameters  = "parameters=" + encodeURIComponent(JSON.stringify(parametros));
-	let parameters  = "id=" + id + "&cantidad=" + inputQty + "&opciones=" + JSON.stringify(parametros);
-    const promise   = ajax(url,parameters);
+    let carticon = document.getElementById("qty");
+    let cartQtyBefore = document.getElementById("qty").innerHTML;
+    let cartQtyAfter = document.getElementById("qty").innerHTML;
 
-    promise.then((data) => 
-    {
-        carticon.innerHTML  = data;
-        cartQtyAfter        = data;
+    let inputQty = inputField.value;
+    let buttonLabel = addToCartButton.innerHTML;
 
-        addToCartButton.disabled    = true;
-        addToCartButton.innerHTML   = "";
+    // Obtén la combinación seleccionada directamente
+    let selectedCombination = data.atributos.combinaciones.find(comb => comb.talle_id == selectSizes.value && comb.color === selectColors.value);
+
+    // Si no hay talles y colores seleccionados, asumimos que siempre hay una combinación id
+    const atributosId = selectedCombination ? selectedCombination.id : data.atributos.combinaciones[0].id;
+
+    const parameters = "id=" + id + "&cantidad=" + inputQty + "&atributos_id=" + atributosId;
+    const promise = ajax(url, parameters);
+
+    promise.then((data) => {
+        carticon.innerHTML = data;
+        cartQtyAfter = data;
+
+        addToCartButton.disabled = true;
+        addToCartButton.innerHTML = "";
         addToCartButton.classList.add('button--loading');
 
-        setTimeout(function()
-        {
+        setTimeout(function () {
             addToCartButton.classList.remove('button--loading');
-            addToCartButton.innerHTML   = buttonLabel;
-            addToCartButton.disabled    = false;
+            addToCartButton.innerHTML = buttonLabel;
+            addToCartButton.disabled = false;
 
-            if(cartQtyAfter!=cartQtyBefore)
+            if (cartQtyAfter != cartQtyBefore)
                 closeModal("modal-add");
 
         }, 1000);
     });
 }
+
 
 //======================================================//
 
@@ -451,6 +450,7 @@ function itemRemove(dataset)
 {
     let parametros = {
         id:         dataset.id,
+        atributos:  dataset.atributosId,
         cantidad:   "0"
     };
 

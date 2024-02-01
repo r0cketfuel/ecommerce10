@@ -12,6 +12,7 @@
 
                 @php
                     $id             = $checkout["items"][$i]["id"];
+                    $atributosId    = $checkout["items"][$i]["atributos_id"];
                     $descripcion    = $checkout["items"][$i]["descripcion"];
                     $precio         = $checkout["items"][$i]["precio"];
                     $imagen         = $checkout["items"][$i]["imagen"] ? $checkout["items"][$i]["imagen"] : asset('images/content/no-image.png');
@@ -42,8 +43,8 @@
                     <li>Subtotal</li>
                     <li>{{ $subtotal }}</li>
                     <div class="product-checkout-card-extra">
-                        <button class="btn-link" data-id="{{ $id }}" data-talle_id="{{ $talle_id }}" data-color="{{ $color }}" onclick="modalUpdateItem(this.dataset)"><i class="fa-solid fa-pen"></i></button>
-                        <button class="btn-link" data-id="{{ $id }}" data-talle_id="{{ $talle_id }}" data-color="{{ $color }}" onclick="itemRemove(this.dataset)"><i class="fa-solid fa-xmark"></i></button>
+                        <button class="btn-link" data-id="{{ $id }}" data-atributos_id="{{ $atributosId }}" onclick="modalUpdateItem(this.dataset)"><i class="fa-solid fa-pen"></i></button>
+                        <button class="btn-link" data-id="{{ $id }}" data-atributos_id="{{ $atributosId }}" onclick="itemRemove(this.dataset)"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                 </ul>
             @endfor

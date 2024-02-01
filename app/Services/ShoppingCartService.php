@@ -29,20 +29,20 @@
             return $this->totalItems();
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        public function itemIndex(int $id, array $opciones = []): int
+        public function itemIndex(int $id, int $atributos_id): int
         {
             //==============================================================//
             // Método que devuelve el índice del arreglo donde esta el item //
             //==============================================================//
 
             for($i=0;$i<count(session(self::SESSION_CART_ITEMS_KEY));$i++)
-                if(session(self::SESSION_CART_ITEMS_KEY)[$i]["id"] == $id && empty(array_diff_assoc(session(self::SESSION_CART_ITEMS_KEY)[$i]["opciones"], $opciones)))
+                if(session(self::SESSION_CART_ITEMS_KEY)[$i]["id"] == $id && empty(array_diff_assoc(session(self::SESSION_CART_ITEMS_KEY)[$i]["atributos_id"], $atributos_id)))
                     return $i;
 
             return -1;
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        public function updateCart(int $id, int $cantidad, array $opciones = [])
+        public function updateCart(int $id, int $cantidad, int $atributos_id)
         {
             //============================================//
             // Método que actualiza el carrito de compras //
@@ -51,10 +51,11 @@
             if($id>0 && $cantidad>=0)
             {
                 $articulo           = Articulo::find($id);
-                $atributoArticulo   = AtributoArticulo::search($id, $opciones)->first();
-                $limiteCompra       = $atributoArticulo->maximoCompra($atributoArticulo);
+                //$atributoArticulo   = AtributoArticulo::search($id, $opciones)->first();
+                $atributoArticulo   = AtributoArticulo::find($id);
+                $limiteCompra       = $atributoArticulo->maximoCompra($atributos_id);
 
-                $index = $this->itemIndex($id, $opciones);
+                $index = $this->itemIndex($id, $atributos_id);
 
                 if($index<0)
                 {
@@ -162,18 +163,18 @@
             return $total;
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        public function itemQuantity(int $id, array $opciones = []): int
-        {
-            //==========================================================================//
-			// Método que devuelve la cantidad de un determinado artículo en el carrito //
-			//==========================================================================//
+        // public function itemQuantity(int $id, array $opciones = []): int
+        // {
+        //     //==========================================================================//
+		// 	// Método que devuelve la cantidad de un determinado artículo en el carrito //
+		// 	//==========================================================================//
 
-            $index = $this->itemIndex($id, $opciones);
-            if($index>=0)
-                return session(self::SESSION_CART_ITEMS_KEY)[$index]["cantidad"];
+        //     $index = $this->itemIndex($id, $opciones);
+        //     if($index>=0)
+        //         return session(self::SESSION_CART_ITEMS_KEY)[$index]["cantidad"];
 
-            return -1;
-        }
+        //     return -1;
+        // }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function totalItems(): int
         {

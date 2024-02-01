@@ -54,11 +54,13 @@ class AtributoArticulo extends Model
         return $query->get();
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function maximoCompra(AtributoArticulo $atributoArticulo)
+    public static function maximoCompra(int $id)
     {
         //===============================================================================================================//
         // Método que devuelve el máximo de compra de la combinación de un artículo según su stock o su límite de compra //
         //===============================================================================================================//
+
+        $atributoArticulo = self::find($id);
 
         if($atributoArticulo->compra_max != NULL)
             if($atributoArticulo->compra_max < $atributoArticulo->stock) 

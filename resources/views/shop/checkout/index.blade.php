@@ -287,16 +287,12 @@
 			function itemRemove(dataset)
 			{
 				let parametros = {
-					id:             dataset.id,
-					opciones: {
-						talle_id:   '',
-						color:      ''
-					},
-					cantidad:       '0'
+					id:         	dataset.id,
+					atributosId:	dataset.atributos_id,
+					cantidad:   	'0'
 				};
 
-				if(parseInt(dataset.talle_id)>0)    parametros["opciones"]["talle_id"] = dataset.talle_id;
-				if(parseInt(dataset.idcolor)>0)     parametros["opciones"]["color_id"] = dataset.idcolor;
+				console.log(parametros);
 
 				const url           = "/shop/ajax/updateCart";
 				const parameters    = encodeURIComponent(JSON.stringify(parametros));
