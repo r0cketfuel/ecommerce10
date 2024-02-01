@@ -297,7 +297,7 @@
 				
 				promise.then((data) => 
 				{
-					//window.location.replace("/shop/checkout")
+					window.location.replace("/shop/checkout");
 				});
 			}
 		</script>
