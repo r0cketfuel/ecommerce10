@@ -23,7 +23,7 @@ class AjaxController extends Controller
         
         $id = json_decode($request->id, true);
         
-        echo json_encode(Articulo::info($id));
+        return response()->json(Articulo::info($id));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function atributosItem(Request $request)
@@ -38,7 +38,7 @@ class AjaxController extends Controller
         if($request->input("opciones") != NULL)
             $opciones = json_decode($request->input("opciones"),true);
         
-        echo json_encode(AtributoArticulo::search($id, $opciones));
+        return response()->json(AtributoArticulo::search($id, $opciones));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function updateCart(Request $request, ShoppingCartService $shoppingCartService)
@@ -53,11 +53,11 @@ class AjaxController extends Controller
             $atributosId    = json_decode($request->input("atributos_id"),  true);
             $cantidad       = json_decode($request->input("cantidad"),      true);
 
-            echo json_encode($shoppingCartService->updateCart($id, $cantidad, $atributosId));
+            return response()->json($shoppingCartService->updateCart($id, $cantidad, $atributosId));
         }
         else
         {
-            echo json_encode($shoppingCartService->totalItems());
+            return response()->json($shoppingCartService->totalItems());
         }
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -71,7 +71,7 @@ class AjaxController extends Controller
         $newsletter = new Newsletter;
         $response   = $newsletter->suscribe($email);
 
-        echo json_encode($response);
+        return response()->json($response);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function agregaFavorito(Request $request, FavoritosService $favoritoService)
@@ -90,7 +90,7 @@ class AjaxController extends Controller
         $articuloId = $request->input("articulo_id");
         $response   = $favoritoService->addItem(Auth::id(), $articuloId);
 
-        echo json_encode($response);
+        return response()->json($response);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function eliminaFavorito(Request $request)
@@ -111,7 +111,7 @@ class AjaxController extends Controller
 
         $response = $favoritoService->removeItem(Auth::id(), $articulo_id);
 
-        echo json_encode($response);
+        return response()->json($response);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function aplicaCupon(Request $request)
@@ -120,12 +120,12 @@ class AjaxController extends Controller
         // Método que aplica un cupón a la compra //
         //========================================//
 
-        echo json_encode("");
+        return response()->json("");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function costoEnvio(Request $request)
     {
-        echo json_encode(MedioEnvio::costo($request->input("medio_id")));
+        return response()->json(MedioEnvio::costo($request->input("medio_id")));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function getItemInfoAndAttributes($id) {
