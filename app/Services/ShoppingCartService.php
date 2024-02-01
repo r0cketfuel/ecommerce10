@@ -36,7 +36,7 @@
             //==============================================================//
 
             for($i=0;$i<count(session(self::SESSION_CART_ITEMS_KEY));$i++)
-                if(session(self::SESSION_CART_ITEMS_KEY)[$i]["id"] == $id && session(self::SESSION_CART_ITEMS_KEY)[$i]["attributos_id"] == $atributos_id)
+                if(session(self::SESSION_CART_ITEMS_KEY)[$i]["id"] == $id && session(self::SESSION_CART_ITEMS_KEY)[$i]["atributos_id"] == $atributos_id)
                     return $i;
 
             return -1;
@@ -114,7 +114,8 @@
             // Método que elimina un item del carrito de compras //
             //===================================================//
 
-            array_splice(session(self::SESSION_CART_ITEMS_KEY), $index, 1);
+            //array_splice(session(self::SESSION_CART_ITEMS_KEY), $index, 1);
+            session()->forget(self::SESSION_CART_ITEMS_KEY . ".$index");
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function checkOut(): array

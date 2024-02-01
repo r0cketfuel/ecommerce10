@@ -273,12 +273,12 @@
 					credentials:    "same-origin",
 					headers: 
 					{
-									"Content-Type": "application/x-www-form-urlencoded",
+									"Content-Type": "application/json",
 									"X-CSRF-TOKEN": token,
 					},
 					redirect:       "follow",
 					referrerPolicy: "strict-origin-when-cross-origin",
-					body:           parameters
+					body: 			JSON.stringify(parameters)
 				});
 				
 				return response.json();
@@ -288,15 +288,12 @@
 			{
 				let parametros = {
 					id:         	dataset.id,
-					atributosId:	dataset.atributos_id,
+					atributos_id:	dataset.atributos_id,
 					cantidad:   	'0'
 				};
 
-				console.log(parametros);
-
 				const url           = "/shop/ajax/updateCart";
-				const parameters    = encodeURIComponent(JSON.stringify(parametros));
-				const promise       = ajax(url,parameters);
+				const promise       = ajax(url,parametros);
 				
 				promise.then((data) => 
 				{
