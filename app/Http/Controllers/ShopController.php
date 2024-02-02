@@ -356,12 +356,40 @@ class ShopController extends Controller
 
                 case(3):
                 {
+                    if($request->has("radio_medioPago") && is_numeric($request->input("radio_medioPago")) && (int)$request->input("radio_medioPago")>0)
+                        if((int)$request->input("radio_medioPago")<=MedioPago::count())
+                        {
+                            $medio = MedioPago::find($request->input("radio_medioPago"));
+                            session()->put("shop.checkout.medio_pago.id",    $medio["id"]);
+                            session()->put("shop.checkout.medio_pago.medio", $medio["medio"]);
+                        }
+
                     return response()->json(['success' => true]);
                     break;
                 }
 
                 case(4):
                 {
+                    if($request->has("radio_medioEnvio") && is_numeric($request->input("radio_medioEnvio")) && (int)$request->input("radio_medioEnvio")>0)
+                        if((int)$request->input("radio_medioEnvio")<=MedioEnvio::count())
+                        {
+                            $medio = MedioEnvio::find($request->input("radio_medioEnvio"));
+                            session()->put("shop.checkout.medio_envio.id",      $medio["id"]);
+                            session()->put("shop.checkout.medio_envio.medio",   $medio["medio"]);
+                            session()->put("shop.checkout.medio_envio.costo",   $medio["costo"]);
+                        }
+    
+                    if(session("shop.checkout.medio_envio.id")==2)
+                    {
+                        if($request->has("input_codigoPostal"))     session()->put("shop.checkout.envio.codigo_postal",       $request->input("input_codigoPostal"));
+                        if($request->has("input_ciudad"))           session()->put("shop.checkout.envio.ciudad",              $request->input("input_ciudad"));
+                        if($request->has("input_domicilio"))        session()->put("shop.checkout.envio.domicilio",           $request->input("input_domicilio"));
+                        if($request->has("input_domicilioNro"))     session()->put("shop.checkout.envio.domicilio_nro",       $request->input("input_domicilioNro"));
+                        if($request->has("input_domicilioPiso"))    session()->put("shop.checkout.envio.domicilio_piso",      $request->input("input_domicilioPiso"));
+                        if($request->has("input_domicilioDepto"))   session()->put("shop.checkout.envio.domicilio_depto",     $request->input("input_domicilioDepto"));
+                        if($request->has("textarea_aclaraciones"))  session()->put("shop.checkout.envio.aclaraciones",        $request->input("textarea_aclaraciones"));
+                    }
+                    
                     return response()->json(['success' => true]);
                     break;
                 }

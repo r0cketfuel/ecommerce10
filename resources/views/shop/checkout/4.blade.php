@@ -5,47 +5,60 @@
     </div>
     <br>
     <!-- Contenido -->
-    @include("shop.modals.payment")
-    <div class="panel" id="user">
-        <div class="panel-title panel-title-underlined">3 - Datos de contacto</div>
+    <div class="panel" id="shipmentPanel">
+        <div class="panel-title panel-title-underlined">4 - Envío</div>
         <div class="panel-content">
             <div class="input-group">
-
-                <div class="flex gap-3">
-                    <label>
-                        Localidad
-                        <input type="text" name="localidad" value="{{session('shop.usuario.datos.localidad')}}">
-                    </label>
-
-                    <label>
-                        Código postal
-                        <input type="text" name="codigo_postal" pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.codigo_postal')}}">
-                    </label>
-                </div>
-
-                <label>
-                    Domicilio
-                    <input type="text" name="domicilio" value="{{session('shop.usuario.datos.domicilio')}}">
-                </label>
-
-                <div class="flex gap-3">
-                    <label>
-                        Domicilio número
-                        <input type="text" name="domicilio_nro" pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.domicilio_nro')}}">
-                    </label>
-                    
-                    <label>
-                        Domicilio piso
-                        <input type="text" name="domicilio_piso" value="{{session('shop.usuario.datos.domicilio_piso')}}">
-                    </label>
-
-                    <label>
-                        Domicilio depto
-                        <input type="text" name="domicilio_depto" value="{{session('shop.usuario.datos.domicilio_depto')}}">
-                    </label>
-                </div>
-            
+                @foreach($mediosEnvioListado as $envio)
+                    <div class="radio-fix">
+                        @if($medioEnvioSeleccionado == $envio["id"])
+                            <input type="radio" required name="radio_medioEnvio" id="radio_medioEnvio_{{ $envio['id'] }}" value="{{ $envio['id'] }}" checked>
+                        @else
+                            <input type="radio" required name="radio_medioEnvio" id="radio_medioEnvio_{{ $envio['id'] }}" value="{{ $envio['id'] }}">
+                        @endif
+                        <label for="radio_medioEnvio_{{ $envio['id'] }}">{{ $envio["medio"] }} @if(isset($envio["costo"])) ({{ _money($envio["costo"]) }}) @endif</label>
+                    </div>
+                @endforeach
             </div>
+
+            <!-- Datos envío -->
+            <div id="shipmentData">
+                <br>
+                <div class="input-group">
+                    <label>
+                        Código Postal:
+                        <input type="text" name="input_codigoPostal" value="{{ session('shop.usuario.datos.codigo_postal') }}">
+                    </label>
+                    <label>
+                        Ciudad:
+                        <input type="text" name="input_ciudad" value="{{ session('shop.usuario.datos.localidad') }}">
+                    </label>
+                    <label>
+                        Domicilio
+                        <input type="text" name="input_domicilio" value="{{ session('shop.usuario.datos.domicilio') }}">
+                    </label>
+                    <div class="flex">
+                        <label>
+                            Número
+                            <input name="input_domicilioNro" value="{{ session('shop.usuario.datos.domicilio_nro') }}">
+                        </label>
+                        <label>
+                            Piso
+                            <input name="input_domicilioPiso" value="{{ session('shop.usuario.datos.domicilio_piso') }}">
+                        </label>
+                        <label>
+                            Departamento
+                            <input name="input_domicilioDepto" value="{{ session('shop.usuario.datos.domicilio_depto') }}">
+                        </label>
+                    </div>
+                    <label>
+                        Instrucciones de entrega
+                        <textarea name="textarea_aclaraciones">{{ session('shop.usuario.datos.domicilio_aclaraciones') }}</textarea>
+                    </label>
+                </div>
+            </div>
+            <!-- /Datos envío -->
+
         </div>
     </div>
 </div>
