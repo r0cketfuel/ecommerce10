@@ -200,7 +200,6 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 item.classList.remove('current-step');
                 item.classList.add('success');
-                item.classList.add('success');
             }
             else if (index === curSlide)
             {
@@ -217,7 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (index < curSlide)
             {
                 item.classList.remove('current-step');
-                item.classList.add('success');
                 item.classList.add('success');
             }
             else if (index === curSlide)
