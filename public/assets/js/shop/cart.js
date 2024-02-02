@@ -381,21 +381,34 @@ function addOption(selectElement,value,text,disabled,selected)
 // FUNCION QUE AGREGA ITEMS AL CARRITO //
 //=====================================//
 function addToCart(id) {
-    let modal = document.getElementById("modal-add");
     const url = "/shop/ajax/updateCart";
     
     let carticon = document.getElementById("qty");
-    let cartQtyBefore = document.getElementById("qty").innerHTML;
-    let cartQtyAfter = document.getElementById("qty").innerHTML;
+    let cartQtyBefore = carticon.innerHTML;
+    let cartQtyAfter = carticon.innerHTML;
 
     let inputQty = inputField.value;
     let buttonLabel = addToCartButton.innerHTML;
 
     // Obtén la combinación seleccionada directamente
-    let selectedCombination = data.atributos.combinaciones.find(comb => comb.talle_id == selectSizes.value && comb.color === selectColors.value);
+    let selectedCombination = data.atributos.combinaciones.find(comb => {
+        // Verifica si la combinación actual tiene los mismos atributos seleccionados
+        if (
+            (selectSizes.value === "" || comb.talle_id == selectSizes.value) &&
+            (selectColors.value === "" || comb.color === selectColors.value)
+        ) {
+            return true;
+        }
+        return false;
+    });
 
     // Si no hay talles y colores seleccionados, asumimos que siempre hay una combinación id
-    const atributosId = selectedCombination ? selectedCombination.id : data.atributos.combinaciones[0].id;
+    const atributosId = selectedCombination ? selectedCombination.id : (data.atributos.combinaciones[0] ? data.atributos.combinaciones[0].id : null);
+
+    if (!atributosId) {
+        console.error("No se pudo determinar la combinación correcta.");
+        return;
+    }
 
     const parameters = "id=" + id + "&cantidad=" + inputQty + "&atributos_id=" + atributosId;
     const promise = ajax(url, parameters);
@@ -419,6 +432,7 @@ function addToCart(id) {
         }, 1000);
     });
 }
+
 
 
 //======================================================//
