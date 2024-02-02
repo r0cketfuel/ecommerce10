@@ -6,12 +6,26 @@
 
     class FavoritosService
     {
+        const SESSION_FAVOURITES_KEY = "shop.usuario.favoritos";
+
+
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function __construct()
 		{
-            if(!session()->has("shop.usuario.favoritos"))
-                session()->put("shop.usuario.favoritos", array());
-		}
+            if(!session()->has(self::SESSION_FAVOURITES_KEY))
+                $this->init();
+        }
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        public function init(): int
+        {
+			//=====================================//
+			// Método que inicializa los favoritos //
+			//=====================================//
+
+            session()->put(self::SESSION_FAVOURITES_KEY, []);
+
+            return $this->totalItems();
+        }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function totalItems(): int
         {
@@ -19,7 +33,7 @@
             // Método que retorna el total de items agregados a favoritos //
             //============================================================//
 
-            return(count(session("shop.usuario.favoritos")));
+            return count(session(self::SESSION_FAVOURITES_KEY));
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function load(int $usuario_id): void
@@ -28,7 +42,7 @@
             // Método que carga en sesión los items agregados a favoritos //
             //============================================================//
 
-            session()->put("shop.usuario.favoritos", Favorito::where("usuario_id", $usuario_id)->get()->toArray());
+            session()->put(self::SESSION_FAVOURITES_KEY, Favorito::where("usuario_id", $usuario_id)->get()->toArray());
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function addItem(int $usuario_id, int $articulo_id): array

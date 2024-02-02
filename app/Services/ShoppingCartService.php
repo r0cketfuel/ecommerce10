@@ -7,8 +7,8 @@
 
     class ShoppingCartService
     {
-        const SESSION_CART_KEY                  = "shop.usuario.carrito";
-        const SESSION_CART_ITEMS_KEY            = "shop.usuario.carrito.items";
+        const SESSION_CART_KEY          = "shop.usuario.carrito";
+        const SESSION_CART_ITEMS_KEY    = "shop.usuario.carrito.items";
         
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function __construct()
@@ -19,9 +19,9 @@
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function init(): int
         {
-			//=========================================//
-			// Método que limpia el carrito de compras //
-			//=========================================//
+			//=============================================//
+			// Método que inicializa el carrito de compras //
+			//=============================================//
 
             session()->put(self::SESSION_CART_KEY,          []);
             session()->put(self::SESSION_CART_ITEMS_KEY,    []);
