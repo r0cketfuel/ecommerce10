@@ -53,32 +53,21 @@
                 $articulo           = Articulo::find($id);
                 $atributoArticulo   = AtributoArticulo::find($id);
                 $limiteCompra       = $atributoArticulo->maximoCompra($atributos_id);
-
-                $index = $this->itemIndex($id, $atributos_id);
+                $index              = $this->itemIndex($id, $atributos_id);
 
                 if($index<0)
                 {
-                    //----------------------------------------//
-                    // ITEM NO EXISTE EN EL CARRITO - AGREGAR //
-                    //----------------------------------------//
+                    // Agregar item al carrito
                     if($cantidad<=$limiteCompra && $cantidad>0)
-                    {
                         $this->addItem($articulo, $atributoArticulo, $cantidad);
-                    }
                 }
                 else
                 {
-                    //---------------------------------------------------//
-                    // ITEM EXISTE EN EL CARRITO - ACTUALIZAR O ELIMINAR //
-                    //---------------------------------------------------//
+                    // Actualizar o eliminar item del carrito
                     if($cantidad<=$limiteCompra && $cantidad>0)
-                    {
                         $this->updateItem($index, $cantidad);
-                    }
                     else
-                    {
                         $this->removeItem($index);
-                    }
                 }
             }
 
