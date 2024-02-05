@@ -12,7 +12,7 @@ use App\Models\Newsletter;
 use App\Models\MedioEnvio;
 use App\Services\FavoritosService;
 
-class AjaxController extends Controller
+class RequestController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function infoItem(Request $request)

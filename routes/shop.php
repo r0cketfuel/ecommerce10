@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ShopController;
-use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\RequestController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\MailController;
@@ -57,7 +57,7 @@ Route::controller(UsuarioController::class)->group(function () {
 Route::post('process_payment', [PaymentController::class, 'process_payment']);
 
 // Shop AJAX requests
-Route::controller(AjaxController::class)->group(function () {
+Route::controller(RequestController::class)->group(function () {
     Route::post('ajax/infoItem',           'infoItem');
     Route::post('ajax/atributosItem',      'atributosItem');
     Route::post('ajax/getItemInfoAndAttributes/{id}',      'getItemInfoAndAttributes');
