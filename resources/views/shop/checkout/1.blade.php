@@ -43,7 +43,6 @@
                     <li>Subtotal</li>
                     <li>{{ $subtotal }}</li>
                     <div class="product-checkout-card-extra">
-                        <button class="btn-link" data-id="{{ $id }}" data-atributos_id="{{ $atributosId }}" onclick="modalUpdateItem(this.dataset)"><i class="fa-solid fa-pen"></i></button>
                         <button class="btn-link" data-id="{{ $id }}" data-atributos_id="{{ $atributosId }}" onclick="itemRemove(this.dataset)"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                 </ul>
