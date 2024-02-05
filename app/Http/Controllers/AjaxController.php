@@ -53,12 +53,14 @@ class AjaxController extends Controller
             $atributosId    = json_decode($request->input("atributos_id"),  true);
             $cantidad       = json_decode($request->input("cantidad"),      true);
 
-            return response()->json($shoppingCartService->updateCart($id, $cantidad, $atributosId));
+            $itemQtyBefore  = $shoppingCartService->totalItems();
+            $itemQtyAfter   = $shoppingCartService->updateCart($id, $cantidad, $atributosId);
+
+            if($itemQtyBefore != $itemQtyAfter)
+                return response()->json(["success" => True, "data" => ["itemQty" => $itemQtyAfter]]);
         }
-        else
-        {
-            return response()->json($shoppingCartService->totalItems());
-        }
+
+        return response()->json(["success" => False, "data" => ["itemQty" => $shoppingCartService->totalItems()]]);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function suscribe(Request $request)

@@ -51,7 +51,6 @@
             if($id>0 && $cantidad>=0)
             {
                 $articulo           = Articulo::find($id);
-                //$atributoArticulo   = AtributoArticulo::search($id, $opciones)->first();
                 $atributoArticulo   = AtributoArticulo::find($id);
                 $limiteCompra       = $atributoArticulo->maximoCompra($atributos_id);
 

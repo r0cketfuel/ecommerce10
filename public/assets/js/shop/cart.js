@@ -381,24 +381,17 @@ function addOption(selectElement,value,text,disabled,selected)
 // FUNCION QUE AGREGA ITEMS AL CARRITO //
 //=====================================//
 function addToCart(id) {
-    const url = "/shop/ajax/updateCart";
-    
-    let carticon = document.getElementById("qty");
-    let cartQtyBefore = carticon.innerHTML;
-    let cartQtyAfter = carticon.innerHTML;
 
-    let inputQty = inputField.value;
-    let buttonLabel = addToCartButton.innerHTML;
+    const url           = "/shop/ajax/updateCart";
 
-    // Obtén la combinación seleccionada directamente
+    let carticon        = document.getElementById("qty");
+    let inputQty        = inputField.value;
+    let buttonLabel     = addToCartButton.innerHTML;
+
     let selectedCombination = data.atributos.combinaciones.find(comb => {
-        // Verifica si la combinación actual tiene los mismos atributos seleccionados
-        if (
-            (selectSizes.value === "" || comb.talle_id == selectSizes.value) &&
-            (selectColors.value === "" || comb.color === selectColors.value)
-        ) {
+        if((selectSizes.value === "" || comb.talle_id == selectSizes.value) && (selectColors.value === "" || comb.color === selectColors.value))
             return true;
-        }
+
         return false;
     });
 
@@ -410,26 +403,31 @@ function addToCart(id) {
         return;
     }
 
-    const parameters = "id=" + id + "&cantidad=" + inputQty + "&atributos_id=" + atributosId;
-    const promise = ajax(url, parameters);
+    const parameters    = "id=" + id + "&cantidad=" + inputQty + "&atributos_id=" + atributosId;
+    const promise       = ajax(url, parameters);
+
+    addToCartButton.disabled    = true;
+    addToCartButton.innerHTML   = "";
+    addToCartButton.classList.add('button--loading');
 
     promise.then((data) => {
-        carticon.innerHTML = data;
-        cartQtyAfter = data;
 
-        addToCartButton.disabled = true;
-        addToCartButton.innerHTML = "";
-        addToCartButton.classList.add('button--loading');
+        addToCartButton.classList.remove('button--loading');
+        addToCartButton.innerHTML = buttonLabel;
+        addToCartButton.disabled = false;
 
-        setTimeout(function () {
-            addToCartButton.classList.remove('button--loading');
-            addToCartButton.innerHTML = buttonLabel;
-            addToCartButton.disabled = false;
+        if(data['success'] == true)
+        {
+            carticon.innerHTML = data['data']['itemQty'];
 
-            if (cartQtyAfter != cartQtyBefore)
+            setTimeout(function () {
                 closeModal("modal-add");
-
-        }, 1000);
+            }, 1000);
+        }
+        else
+        {
+            console.log("Error");
+        }
     });
 }
 
