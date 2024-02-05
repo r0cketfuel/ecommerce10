@@ -44,7 +44,7 @@ function calculaTotal()
 
 function shipment(value)
 {
-    const url           = "/shop/ajax/costoEnvio";
+    const url           = "/shop/requests/costoEnvio";
     const parameters    = "medio_id=" + value;
 
     const response = ajax(url,parameters);
@@ -62,7 +62,7 @@ function shipment(value)
 function couponSubmit()
 {
     const input_code    = document.getElementsByName("input_coupon")[0];
-    const url           = "/shop/ajax/aplicaCupon";
+    const url           = "/shop/requests/aplicaCupon";
     const parameters    = "code=" + input_code.value;
 
     const response = ajax(url,parameters);

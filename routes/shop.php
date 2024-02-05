@@ -56,20 +56,20 @@ Route::controller(UsuarioController::class)->group(function () {
 // Procesador de pagos
 Route::post('process_payment', [PaymentController::class, 'process_payment']);
 
-// Shop AJAX requests
+// Shop requests
 Route::controller(RequestController::class)->group(function () {
-    Route::post('ajax/infoItem',           'infoItem');
-    Route::post('ajax/atributosItem',      'atributosItem');
-    Route::post('ajax/getItemInfoAndAttributes/{id}',      'getItemInfoAndAttributes');
+    Route::post('requests/infoItem',                        'infoItem');
+    Route::post('requests/atributosItem',                   'atributosItem');
+    Route::post('requests/getItemInfoAndAttributes/{id}',   'getItemInfoAndAttributes');
     
-    Route::post('ajax/updateCart',         'updateCart');
-    Route::post('ajax/suscribe',           'suscribe');
+    Route::post('requests/updateCart',                      'updateCart');
+    Route::post('requests/suscribe',                        'suscribe');
 
     // Rutas que requieren autenticación
     Route::middleware(['auth:web'])->group(function () {
-        Route::post('ajax/agregaFavorito',     'agregaFavorito');
-        Route::post('ajax/aplicaCupon',        'aplicaCupon');
-        Route::post('ajax/eliminaFavorito',    'eliminaFavorito');
-        Route::post('ajax/costoEnvio',         'costoEnvio');
+        Route::post('requests/agregaFavorito',              'agregaFavorito');
+        Route::post('requests/aplicaCupon',                 'aplicaCupon');
+        Route::post('requests/eliminaFavorito',             'eliminaFavorito');
+        Route::post('requests/costoEnvio',                  'costoEnvio');
     });
 });

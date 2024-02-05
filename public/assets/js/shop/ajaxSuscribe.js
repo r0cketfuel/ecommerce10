@@ -12,7 +12,7 @@ function logSubmit(e) {
     e.preventDefault();
 
     const input = document.getElementById("suscribe");
-    const url = "/shop/ajax/suscribe";
+    const url = "/shop/requests/suscribe";
     const parameters = "email=" + input.value;
     const promise = ajax(url, parameters);
 

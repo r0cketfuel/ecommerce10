@@ -81,7 +81,7 @@ async function ajax(url = "", parameters = {})
 //===========================================================//
 async function infoItem(id)
 {
-    const url           = "/shop/ajax/infoItem";
+    const url           = "/shop/requests/infoItem";
     const parameters    = "id=" + id;
     const promise       = ajax(url,parameters);
     
@@ -93,7 +93,7 @@ async function infoItem(id)
 //=============================================================//
 async function atributosItem(id)
 {
-    const url           = "/shop/ajax/atributosItem";
+    const url           = "/shop/requests/atributosItem";
     const parameters    = "articulo_id=" + id;
     const promise       = ajax(url,parameters);
     
@@ -382,7 +382,7 @@ function addOption(selectElement,value,text,disabled,selected)
 //=====================================//
 function addToCart(id) {
 
-    const url           = "/shop/ajax/updateCart";
+    const url           = "/shop/requests/updateCart";
 
     let carticon        = document.getElementById("qty");
     let inputQty        = inputField.value;
@@ -445,7 +445,7 @@ function itemUpdate(dataset)
     if(parseInt(dataset.talle_id)>0)  parametros["talle_id"] = dataset.talle_id;
     if(parseInt(dataset.idcolor)>0) parametros["color_id"] = dataset.idcolor;
 
-    const url           = "/shop/ajax/updateCart";
+    const url           = "/shop/requests/updateCart";
     const parameters    = "parameters=" + encodeURIComponent(JSON.stringify(parametros));
     const promise       = ajax(url,parameters);
     
@@ -469,7 +469,7 @@ function itemRemove(dataset)
     if(parseInt(dataset.talle_id)>0)  parametros["talle_id"]     = dataset.talle_id;
     if(parseInt(dataset.idcolor)>0) parametros["color_id"]    = dataset.idcolor;
 
-    const url           = "/shop/ajax/updateCart";
+    const url           = "/shop/requests/updateCart";
     const parameters    = "parameters=" + encodeURIComponent(JSON.stringify(parametros));
     const promise       = ajax(url,parameters);
     

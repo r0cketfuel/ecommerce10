@@ -293,7 +293,7 @@
 					cantidad:   	'0'
 				};
 
-				const url           = "/shop/ajax/updateCart";
+				const url           = "/shop/requests/updateCart";
 				const promise       = ajax(url,parametros);
 				
 				promise.then((data) => 
