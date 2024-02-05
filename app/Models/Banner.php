@@ -26,6 +26,12 @@ class Banner extends Model
         'valido_desde',
         'valido_hasta'
     ];
+        
+    protected $hidden = [
+        'creado',
+        'actualizado',
+        'eliminado'
+    ];
     
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function vigentes()

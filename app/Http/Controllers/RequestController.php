@@ -20,10 +20,33 @@ class RequestController extends Controller
         //========================================================//
         // Método que devuelve la información básica del artículo //
         //========================================================//
-        
-        $id = json_decode($request->id, true);
-        
-        return response()->json(Articulo::info($id));
+    
+        // Decodificar el id del artículo desde el cuerpo de la solicitud JSON
+        $itemId = json_decode($request->id, true);
+    
+        // Verificar si el id es válido
+        if (empty($itemId))
+            return response()->json(['error' => 'ID de artículo no válido.'], 400);
+    
+        try
+        {
+            // Obtener la información del artículo utilizando el modelo Articulo
+            $itemInfo = Articulo::info($itemId);
+    
+            // Verificar si se encontró el artículo
+            if ($itemInfo) {
+                // Devolver la información del artículo en formato JSON
+                return response()->json($itemInfo);
+            } else {
+                // Devolver una respuesta de error si el artículo no se encontró
+                return response()->json(['error' => 'Artículo no encontrado.'], 404);
+            }
+        }
+        catch (\Exception $e)
+        {
+            // Manejar cualquier excepción inesperada y devolver una respuesta de error
+            return response()->json(['error' => 'Error al procesar la solicitud.'], 500);
+        }
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function atributosItem(Request $request)
@@ -32,11 +55,11 @@ class RequestController extends Controller
         // Método que devuelve registros segun los parámetros solicitados //
         //================================================================//
 
-        $id = json_decode($request->input("articulo_id"),true);
+        $id = json_decode($request->input("articulo_id"), true);
 
         $opciones = array();
         if($request->input("opciones") != NULL)
-            $opciones = json_decode($request->input("opciones"),true);
+            $opciones = json_decode($request->input("opciones"), true);
         
         return response()->json(AtributoArticulo::search($id, $opciones));
     }

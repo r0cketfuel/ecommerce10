@@ -24,7 +24,13 @@ class Subcategoria extends Model
         'nombre',
         'descripcion'
     ];
-
+    
+    protected $hidden = [
+        'creado',
+        'actualizado',
+        'eliminado'
+    ];
+    
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function articulo()
     {

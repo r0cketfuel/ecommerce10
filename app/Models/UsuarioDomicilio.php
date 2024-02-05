@@ -33,7 +33,13 @@ class UsuarioDomicilio extends Model
         'codigo_postal',
         'principal'
     ];
-
+    
+    protected $hidden = [
+        'creado',
+        'actualizado',
+        'eliminado'
+    ];
+    
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function usuario()
     {

@@ -22,5 +22,11 @@ class Favorito extends Model
         'usuario_id',
         'articulo_id'
     ];
-
+    
+    protected $hidden = [
+        'creado',
+        'actualizado',
+        'eliminado'
+    ];
+    
 }

@@ -24,7 +24,13 @@ class Newsletter extends Model
         'fecha_alta',
         'estado'
     ];
-
+    
+    protected $hidden = [
+        'creado',
+        'actualizado',
+        'eliminado'
+    ];
+    
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function find(string $email, int $estado = 1)
 	{

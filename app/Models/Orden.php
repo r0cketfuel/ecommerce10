@@ -20,7 +20,13 @@ class Orden extends Model
         'factura_id',
         'estado_id'
     ];
-
+    
+    protected $hidden = [
+        'creado',
+        'actualizado',
+        'eliminado'
+    ];
+    
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function estado()
     {

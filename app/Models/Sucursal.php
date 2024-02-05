@@ -38,4 +38,11 @@ class Sucursal extends Model
         'geolocalizacion',
         'principal'
     ];
+    
+    protected $hidden = [
+        'creado',
+        'actualizado',
+        'eliminado'
+    ];
+    
 }

@@ -20,7 +20,13 @@ class DetalleArticulo extends Model
         'articulo_id',
         'detalle'
     ];
-
+    
+    protected $hidden = [
+        'creado',
+        'actualizado',
+        'eliminado'
+    ];
+    
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function articulo()
     {
