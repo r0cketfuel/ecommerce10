@@ -76,21 +76,6 @@ class Articulo extends Model
         return $this->hasOne(Promocion::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public static function rutaImagenes($items)
-    {
-        foreach ($items as $item) 
-        {
-            if($item->imagenes->isNotEmpty())
-            {
-                foreach ($item->imagenes as $imagen)
-                {
-                    $imagen->miniatura  = asset(config('constants.product_images') . '/' . $item->id . '/thumbs/'   . $imagen->ruta);
-                    $imagen->ruta       = asset(config('constants.product_images') . '/' . $item->id . '/'          . $imagen->ruta);
-                }
-            }
-        }
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function info(int $id)
     {
         //=====================================================================//
@@ -111,10 +96,7 @@ class Articulo extends Model
                 ->first();
     
             if($articulo)
-            {
-                self::rutaImagenes([$articulo]);
                 return($articulo);
-            }
         }
     
         return NULL;
@@ -126,7 +108,7 @@ class Articulo extends Model
         // Método que devuelve un listado de artículos //
         //=============================================//
 
-        $query = self::where('estado', 1)->with('imagenes');
+        $query = self::where('estado', 1);
 
         if(isset($search['query']))
         {
@@ -149,8 +131,6 @@ class Articulo extends Model
                 $query->orderBy($search['sort'], $search['order']);
         
         $items = $query->paginate(config('constants.pagination'));
-
-        self::rutaImagenes($items);
     
         return $items;
 	}

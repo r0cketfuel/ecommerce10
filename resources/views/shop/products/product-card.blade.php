@@ -1,9 +1,7 @@
 <li class="product-card">
     <div class="product-card-image">
         @if ($item->imagenes->isNotEmpty())
-            @foreach ($item->imagenes as $imagen)
-                <img loading="lazy" src="{{ $imagen->ruta }}" alt="{{ $imagen->nombre }}">
-            @endforeach
+            <img loading="lazy" src="{{ $item->imagenes[0]->miniatura }}" alt="{{ $item->imagenes[0]->descripcion }}">
         @else
             <img loading="lazy" src="{{ asset('images/content/no-image.png') }}" alt="imagen">
         @endif

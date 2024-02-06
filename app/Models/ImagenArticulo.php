@@ -19,7 +19,15 @@ class ImagenArticulo extends Model
         'ruta',
         'descripcion'
     ];
-    
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    protected static function booted()
+    {
+        static::retrieved(function ($imagen) {
+            $imagen->miniatura  = asset(config('constants.product_images') . '/' . $imagen->articulo->id . '/thumbs/'   . $imagen->ruta);
+            $imagen->ruta       = asset(config('constants.product_images') . '/' . $imagen->articulo->id . '/'          . $imagen->ruta);
+        });
+    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function articulo()
     {
