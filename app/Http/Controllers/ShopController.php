@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Services\ShoppingCartService;
 use App\Services\Barcode128;
 use App\Services\MercadoPago;
 use Illuminate\Support\Facades\Hash;
+
 
 use App\Models\Usuario;
 use App\Models\Articulo;
@@ -76,18 +78,23 @@ class ShopController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function item($id)
 	{
-        if(is_numeric($id) && $id>0)
+        // Validación de id
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'required|numeric|min:1',
+        ]);
+    
+        if($validator->fails())
+            return redirect("shop");
+
+        $item = Articulo::info($id);
+        
+        if($item && $item->estado == 1)
         {
-            $item = Articulo::info($id);    
-            
-            if($item && $item->estado == 1)
-            {
-                if($item->promocion)
-                    $item->precio = $item->precio - ($item->precio * $item->promocion->descuento / 100);
-            
-                Rating::incrementaVisualizacion($id);
-                return view("shop.item.index", compact("item"));
-            }
+            if($item->promocion)
+                $item->precio = $item->precio - ($item->precio * $item->promocion->descuento / 100);
+        
+            Rating::incrementaVisualizacion($id);
+            return view("shop.item.index", compact("item"));
         }
 
         return redirect("shop");
