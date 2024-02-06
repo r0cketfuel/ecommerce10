@@ -1,11 +1,3 @@
-.wrapper {
-    min-height: 		    100vh;
-    flex: 				    1;
-    display: 			    flex;
-    flex-flow: 			    column nowrap;
-    opacity: 			    0;
-}
-
 #loader {
     position:               absolute;
     height:                 100vh;
@@ -17,9 +9,18 @@
             transform:      translate(-50%, -50%);
     
     display:                flex;
+    flex-direction:         column;
+    gap:                    10px;
     justify-content:        center;
     align-items:            center;
     z-index:                99999;
+}
+
+#loader div {
+    background-color:       rgb(50,50,50);
+    padding:                5px 20px;
+    border-radius:          10px;
+    color:                  white;
 }
 
 .loader {
@@ -35,4 +36,4 @@
 
 @keyframes rotation {
     0% { transform: rotate(0deg);} 100% {transform: rotate(360deg); }
-} 
+}

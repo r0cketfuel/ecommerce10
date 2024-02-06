@@ -24,6 +24,16 @@
         <script defer src="{{ config('constants.framework_js') }}navbar.js"></script>
 		@yield("js")
 
+        <style>
+            .wrapper {
+                min-height: 		    100vh;
+                flex: 				    1;
+                display: 			    flex;
+                flex-flow: 			    column nowrap;
+                opacity: 			    0;
+            }
+        </style>
+
         @yield("inlineCSS")
 	</head>
 	<body id="top">
