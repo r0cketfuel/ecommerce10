@@ -1,4 +1,10 @@
 <div class="carousel-slide">
+    <!-- Botones -->
+    <div class="flex justify-content-between">
+        <button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</button>
+        <button class="btnNext btn-primary">Completar registro</button>
+    </div>
+    <br>
     <!-- Contenido -->
     <div class="panel">
         <div class="panel-title panel-title-underlined">Usuario y contraseña</div>
@@ -18,9 +24,5 @@
                 <input type="password" name="password_repeat" autocomplete="off">
             </label>
         </div>
-    </div>
-    <!-- Botones -->
-    <div class="flex justify-content-end mt-4">
-        <button class="btnNext btn-primary">Completar registro</button>
     </div>
 </div>
