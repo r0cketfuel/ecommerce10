@@ -27,82 +27,8 @@
                                     <i class="fa-solid fa-caret-right more-arrow arrow"></i>
                                 </div>
                                 <ul class="more-sub-menu sub-menu">
-                                    @foreach($subcategorias as $subcategoria)
-                                        @if($subcategoria->categoria_id == $categoria->id)
-                                            <li><a href="/shop?subcategoria={{ $subcategoria->id }}">{{ $subcategoria->nombre }}</a></li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </li>
-                        @endforeach
-                    </ul>
-                </li>
-
-                <li class="main-menu">
-                    <div>
-                        <a class="main-menu-link" href="#">Menu 2</a>
-                        <i class="fa-solid fa-caret-down menu-arrow arrow"></i>
-                    </div>
-                    <ul class="main-menu-links sub-menu">
-                        @foreach($categorias as $categoria)
-                            <li class="more">
-                                <div>
-                                    <a class="submenu-link" href="/shop?categoria={{ $categoria->id }}">{{ $categoria->nombre }}</a>
-                                    <i class="fa-solid fa-caret-right more-arrow arrow"></i>
-                                </div>
-                                <ul class="more-sub-menu sub-menu">
-                                    @foreach($subcategorias as $subcategoria)
-                                        @if($subcategoria->categoria_id == $categoria->id)
-                                            <li><a href="/shop?subcategoria={{ $subcategoria->id }}">{{ $subcategoria->nombre }}</a></li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </li>
-                        @endforeach
-                    </ul>
-                </li>
-
-                <li class="main-menu">
-                    <div>
-                        <a class="main-menu-link" href="#">Menu 3</a>
-                        <i class="fa-solid fa-caret-down menu-arrow arrow"></i>
-                    </div>
-                    <ul class="main-menu-links sub-menu">
-                        @foreach($categorias as $categoria)
-                            <li class="more">
-                                <div>
-                                    <a class="submenu-link" href="/shop?categoria={{ $categoria->id }}">{{ $categoria->nombre }}</a>
-                                    <i class="fa-solid fa-caret-right more-arrow arrow"></i>
-                                </div>
-                                <ul class="more-sub-menu sub-menu">
-                                    @foreach($subcategorias as $subcategoria)
-                                        @if($subcategoria->categoria_id == $categoria->id)
-                                            <li><a href="/shop?subcategoria={{ $subcategoria->id }}">{{ $subcategoria->nombre }}</a></li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </li>
-                        @endforeach
-                    </ul>
-                </li>
-
-                <li class="main-menu">
-                    <div>
-                        <a class="main-menu-link" href="#">Menu 4</a>
-                        <i class="fa-solid fa-caret-down menu-arrow arrow"></i>
-                    </div>
-                    <ul class="main-menu-links sub-menu">
-                        @foreach($categorias as $categoria)
-                            <li class="more">
-                                <div>
-                                    <a class="submenu-link" href="/shop?categoria={{ $categoria->id }}">{{ $categoria->nombre }}</a>
-                                    <i class="fa-solid fa-caret-right more-arrow arrow"></i>
-                                </div>
-                                <ul class="more-sub-menu sub-menu">
-                                    @foreach($subcategorias as $subcategoria)
-                                        @if($subcategoria->categoria_id == $categoria->id)
-                                            <li><a href="/shop?subcategoria={{ $subcategoria->id }}">{{ $subcategoria->nombre }}</a></li>
-                                        @endif
+                                    @foreach($categoria->subcategoria as $subcategoria)
+                                        <li><a href="/shop?subcategoria={{ $subcategoria->id }}">{{ $subcategoria->nombre }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>

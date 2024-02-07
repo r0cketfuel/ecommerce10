@@ -169,11 +169,15 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-                // Proveedor de servicio del carrito
-                App\Providers\CartServiceProvider::class,
+        // Proveedor de servicio de las categorías y subcategorías
+        App\Providers\CategoriaServiceProvider::class,
 
-                // Proveedor de servicio de los favoritos
-                App\Providers\FavoritosServiceProvider::class,
+        // Proveedor de servicio del carrito
+        App\Providers\CartServiceProvider::class,
+
+        // Proveedor de servicio de los favoritos
+        App\Providers\FavoritosServiceProvider::class,
+
     ])->toArray(),
 
     /*

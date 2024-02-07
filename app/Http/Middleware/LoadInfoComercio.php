@@ -22,12 +22,12 @@ class LoadInfoComercio
     {
         if (!Session::has("infoComercio"))
         {
+            $this->registrarVisita($request);
+
             Session::put("infoComercio",            InfoComercio::first()->toArray());
             Session::put("infoComercio.sucursales", Sucursal::all()->toArray());
             Session::put("shop.marquesinas",        Marquesina::vigentes());
             Session::put("shop.newsletter",         array());
-
-            $this->registrarVisita($request);
         }
 
         return $next($request);
