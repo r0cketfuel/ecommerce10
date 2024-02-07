@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        //Model::preventLazyLoading(! $this->app->isProduction());
+
         if (App::environment('local')) {
             DB::listen(function($query) {
                 File::append(

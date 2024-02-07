@@ -38,7 +38,11 @@ class ArticuloController extends Controller
                     $query->onlyTrashed();
                 }
     
-        $articulos = $query->with("ratings")->get();
+        $articulos = $query
+            ->with("categoria")
+            ->with("subcategoria")
+            ->with("ratings")
+            ->get();
     
         return view("admin.articulos.index", compact('articulos'));
     }

@@ -108,7 +108,9 @@ class Articulo extends Model
         // Método que devuelve un listado de artículos //
         //=============================================//
 
-        $query = self::where('estado', 1);
+        $query = self::with('imagenes')
+            ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now()); }])
+            ->where('estado', 1);
 
         if(isset($search['query']))
         {

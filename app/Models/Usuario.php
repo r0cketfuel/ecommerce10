@@ -92,6 +92,11 @@ class Usuario extends Authenticatable implements MustVerifyEmail
         return($this->hasMany(UsuarioDomicilio::class));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function reviews()
+    {
+        return($this->hasMany(Review::class));
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     protected function username(): Attribute
     {
         return new Attribute(

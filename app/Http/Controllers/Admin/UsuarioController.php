@@ -32,7 +32,9 @@ class UsuarioController extends Controller
                 });
             }
     
-        $usuarios = $query->get();
+        $usuarios = $query
+            ->with('tipoDocumento')
+            ->get();
     
         return view("admin.usuarios.index", compact('usuarios'));
     }
