@@ -25,9 +25,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //Model::preventLazyLoading(! $this->app->isProduction());
+        /** @var \Illuminate\Foundation\Application $app */
+        $app = $this->app;
 
-        if (App::environment('local')) {
+        Model::preventLazyLoading(!$app->isProduction());
+
+        if(App::environment('local')) {
             DB::listen(function($query) {
                 File::append(
                     storage_path('/logs/query.log'),
