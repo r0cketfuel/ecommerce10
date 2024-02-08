@@ -32,9 +32,13 @@ class AppServiceProvider extends ServiceProvider
 
         if(App::environment('local')) {
             DB::listen(function($query) {
+
+                // format the bindings as string
+                $bindings = implode(", ", $query->bindings);
+                
                 File::append(
                     storage_path('/logs/query.log'),
-                    '[' . date('Y-m-d H:i:s') . ']' . PHP_EOL . $query->sql . ' [' . implode(', ', $query->bindings) . ']' . PHP_EOL . PHP_EOL
+                    '[' . date('Y-m-d H:i:s') . ']' . PHP_EOL . $query->sql . ' [' . $bindings . ']' . ' (' . $query->time . ' ms)' . PHP_EOL . PHP_EOL
                 );
             });
         }
