@@ -49,15 +49,15 @@
             <div class="col-span-7 col-span-900p-12">
                 <div class="product-tile">
                     <div class="tiles-container">
-                        @if ($item->imagenes->isNotEmpty())
-                            @foreach ($item->imagenes as $imagen)
+                        @if ($item->imagen->isNotEmpty())
+                            @foreach ($item->imagen as $imagen)
                                 @if ($loop->first)
                                     <div class="tile active">
                                         <img src="{{ $imagen->miniatura }}" alt="{{ $imagen->descripcion }}">
                                     </div>
                                     <div class="tile main">
-                                        <a href="{{ $item->imagenes[0]->ruta }}">
-                                            <img id="image" src="{{ $item->imagenes[0]->miniatura }}" alt="vista_previa">
+                                        <a href="{{ $item->imagen[0]->ruta }}">
+                                            <img id="image" src="{{ $item->imagen[0]->miniatura }}" alt="vista_previa">
                                         </a>
                                         <button class="btn btn-next"><i class="fa-solid fa-chevron-right"></i></button>
                                         <button class="btn btn-prev"><i class="fa-solid fa-chevron-left"></i></button>

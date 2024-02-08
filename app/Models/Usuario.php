@@ -92,7 +92,7 @@ class Usuario extends Authenticatable implements MustVerifyEmail
         return($this->hasMany(UsuarioDomicilio::class));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function reviews()
+    public function review()
     {
         return($this->hasMany(Review::class));
     }

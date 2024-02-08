@@ -31,8 +31,8 @@
                     <li class="favourite-card">
                         <div>{{ $item["descripcion"] }}</div>
                         <div class="favourite-card-image">
-                            @if ($item->imagenes->isNotEmpty())
-                                <img loading="lazy" src="{{ $item->imagenes[0]->ruta }}" alt="{{ $item->imagenes[0]->descripcion }}">
+                            @if ($item->imagen->isNotEmpty())
+                                <img loading="lazy" src="{{ $item->imagen[0]->ruta }}" alt="{{ $item->imagen[0]->descripcion }}">
                             @else
                                 <img loading="lazy" src="{{ asset('images/content/no-image.png') }}" alt="imagen">
                             @endif

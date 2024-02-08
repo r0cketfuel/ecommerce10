@@ -41,12 +41,12 @@ class Articulo extends Model
         return $this->hasOne(DetalleArticulo::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function reviews()
+    public function review()
     {
         return $this->hasMany(Review::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function atributos()
+    public function atributo()
     {
         return $this->hasMany(AtributoArticulo::class);
     }
@@ -61,12 +61,12 @@ class Articulo extends Model
         return $this->belongsTo(Subcategoria::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function ratings()
+    public function rating()
     {
         return $this->hasOne(Rating::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function imagenes()
+    public function imagen()
     {
         return $this->hasMany(ImagenArticulo::class);
     }
@@ -85,16 +85,17 @@ class Articulo extends Model
         if($id > 0)
         {
             $articulo = self::where('id', $id)
-                ->with('atributos')
-                ->with('imagenes')
+                ->with('atributo')
+                ->with('imagen')
                 ->with('detalle')
-                ->with('categoria')
-                ->with('subcategoria')
-                ->with('ratings')
-                ->with('reviews')
+                ->with('categoria.subcategoria')
+                ->with('rating')
+                ->with('review.usuario')
                 ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now()); }])
                 ->first();
     
+            //dd($articulo);
+
             if($articulo)
                 return($articulo);
         }
@@ -108,7 +109,7 @@ class Articulo extends Model
         // Método que devuelve un listado de artículos //
         //=============================================//
 
-        $query = self::with('imagenes')
+        $query = self::with('imagen')
             ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now()); }])
             ->where('estado', 1);
 

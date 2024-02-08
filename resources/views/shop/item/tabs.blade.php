@@ -1,6 +1,6 @@
 <ul class="tabs">
     <li class="tab active">Información</li>
-    <li class="tab">Reseñas({{ count($item->reviews) }})</li>
+    <li class="tab">Reseñas({{ count($item->review) }})</li>
 </ul>
 
 <div class="tab-content">
@@ -12,7 +12,7 @@
 </div>
 
 <div class="tab-content">
-    @foreach ($item->reviews as $review)
+    @foreach ($item->review as $review)
         <div class="user-review">
             <div>
                 <div class="user-review-picture"><i class="fa-solid fa-user fa-2x"></i></div>
