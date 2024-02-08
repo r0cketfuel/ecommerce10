@@ -114,7 +114,7 @@ class ShopController extends Controller
             $articulo = Articulo::info($item["id"]);
         
             $item["descripcion"]    = $articulo->descripcion ?? NULL;
-            $item["imagen"]         = count($articulo->imagenes) ? $articulo->imagenes[0]["miniatura"] : NULL;
+            $item["imagen"]         = count($articulo->imagen) ? $articulo->imagen[0]["miniatura"] : NULL;
         }
 
         if($request->isMethod("post"))
@@ -336,7 +336,7 @@ class ShopController extends Controller
             $articulo = Articulo::info($item["id"]);
         
             $item["descripcion"]    = $articulo->descripcion ?? NULL;
-            $item["imagen"]         = count($articulo->imagenes) ? $articulo->imagenes[0]["miniatura"] : NULL;
+            $item["imagen"]         = count($articulo->imagen) ? $articulo->imagen[0]["miniatura"] : NULL;
         }
 
 

@@ -181,8 +181,8 @@ function modalAdd(data)
 {
     let itemImage = document.getElementById("image");
     
-    if(data["info"]["imagenes"].length>0)
-        itemImage.src = data["info"]["imagenes"][0]["miniatura"];
+    if(data["info"]["imagen"].length>0)
+        itemImage.src = data["info"]["imagen"][0]["miniatura"];
 
     addToCartButton.value = data["info"]["id"];
 
