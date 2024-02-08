@@ -363,7 +363,7 @@
 
                 function costoEnvio(medioPagoSeleccionado)
                 {
-                    const url           = "/shop/ajax/costoEnvio";
+                    const url           = "/shop/requests/costoEnvio";
                     const parameters    = "medio_id=" + medioPagoSeleccionado;
 
                     const response = ajax(url,parameters);

@@ -58,7 +58,7 @@
 
         function removeFavorite(id)
         {
-            const url           = "/shop/ajax/eliminaFavorito";
+            const url           = "/shop/requests/eliminaFavorito";
             const parameters    = "articulo_id=" + id;
             const promise       = ajax(url, parameters);
 
