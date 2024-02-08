@@ -21,7 +21,7 @@ class CategoriaServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->composer('*', function($view)
+        view()->composer('shop.layout.master', function($view)
         {
             // Obtener las categorías con subcategorías cargadas ansiosamente
             $categorias = Categoria::with('subcategoria')->get();

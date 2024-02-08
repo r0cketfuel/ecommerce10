@@ -20,7 +20,7 @@ class FavoritosServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->composer('*', function ($view) {
+        view()->composer('shop.layout.master', function ($view) {
             $favoritoService = app(FavoritosService::class);
             $totalItems = $favoritoService->totalItems();
             $view->with('favoritosItemQty', $totalItems);

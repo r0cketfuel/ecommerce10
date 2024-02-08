@@ -20,7 +20,7 @@ class CartServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->composer('*', function ($view) {
+        view()->composer('shop.layout.master', function ($view) {
             $cartService = app(ShoppingCartService::class);
             $totalItems = $cartService->totalItems();
             $view->with('shoppingCartItemQty', $totalItems);
