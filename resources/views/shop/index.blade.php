@@ -72,7 +72,7 @@
                 const icon = document.getElementById("heart");
                 const itemsQty = parseInt(icon.innerHTML);
 
-                const url = "/shop/ajax/agregaFavorito";
+                const url = "/shop/requests/agregaFavorito";
                 const parameters = "articulo_id=" + id;
                 const promise = ajax(url, parameters);
 
