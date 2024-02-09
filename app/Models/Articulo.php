@@ -94,8 +94,6 @@ class Articulo extends Model
                 ->with('review.usuario')
                 ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now()); }])
                 ->first();
-    
-            //dd($articulo);
 
             if($articulo)
                 return($articulo);
