@@ -28,9 +28,6 @@ class ShopController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	public function index(Request $request)
 	{
-        // Banners con las promociones vigentes
-        $banners = Banner::vigentes();
-        
         // Sistema de búsqueda de artículos
         $busqueda = [
             "titulo"    => "Todos los artículos",
@@ -73,7 +70,7 @@ class ShopController extends Controller
         // Listado de artículos
         $items = Articulo::search($busqueda["params"])->appends(request()->query());
 
-        return view("shop.index", compact("busqueda", "banners", "items"));
+        return view("shop.index", compact("busqueda", "items"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function item($id)
