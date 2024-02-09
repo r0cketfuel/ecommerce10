@@ -90,7 +90,6 @@ class Articulo extends Model
                 ->with('detalle')
                 ->with('categoria')
                 ->with('subcategoria')
-                ->with('rating')
                 ->with('review.usuario')
                 ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now()); }])
                 ->first();
