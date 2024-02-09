@@ -181,6 +181,9 @@ return [
         // Proveedor de servicio de los favoritos
         App\Providers\FavoritosServiceProvider::class,
 
+        // Proveedor de servicio de las estadísitcas de los artículos
+        //App\Providers\RatingServiceProvider::class,
+
     ])->toArray(),
 
     /*

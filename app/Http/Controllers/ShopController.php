@@ -90,7 +90,6 @@ class ShopController extends Controller
             if($item->promocion)
                 $item->precio = $item->precio - ($item->precio * $item->promocion->descuento / 100);
         
-            Rating::incrementaVisualizacion($id);
             return view("shop.item.index", compact("item"));
         }
 

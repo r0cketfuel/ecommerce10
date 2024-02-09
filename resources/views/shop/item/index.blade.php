@@ -87,7 +87,7 @@
                     </div>
 
                     @if (env('RATING_SYSTEM')==true)
-                        @include ("shop.layout.rating")
+                        @include ("shop.item.rating")
                     @endif
 
                     @if ($item->categoria)
