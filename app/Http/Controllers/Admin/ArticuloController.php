@@ -41,7 +41,7 @@ class ArticuloController extends Controller
         $articulos = $query
             ->with("categoria")
             ->with("subcategoria")
-            ->with("ratings")
+            ->with("rating")
             ->get();
     
         return view("admin.articulos.index", compact('articulos'));

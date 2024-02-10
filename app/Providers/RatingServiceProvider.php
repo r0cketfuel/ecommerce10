@@ -25,7 +25,7 @@ class RatingServiceProvider extends ServiceProvider
         {
             // Obtener el $id del artículo de la ruta
             $id = $request->route('id');
-            
+
             // Obtener las calificaciones del artículo
             $ratings = Rating::find($id);
 
