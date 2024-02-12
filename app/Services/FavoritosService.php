@@ -53,8 +53,6 @@
             // Método que agrega un item al listado de favoritos //
             //===================================================//
 
-            $favorito = new Favorito;
-
             // Verificar si el item ya se encontraba agregado a favoritos
             if(Favorito::where("usuario_id", $usuario_id)->where("articulo_id", $articulo_id)->withTrashed()->count())
             {
