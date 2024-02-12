@@ -14,9 +14,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Usuario extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
-    use SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     const CREATED_AT        = 'creado';
     const UPDATED_AT        = 'actualizado';
