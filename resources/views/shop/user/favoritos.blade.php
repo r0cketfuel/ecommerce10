@@ -25,7 +25,7 @@
     <div class="main-container">
         @include("shop.layout.breadcrumb")
 
-        @if($favoritosItemQty)
+        @if(count($items))
             <ul class="favourites-list">
                 @foreach($items as $item)
                     <li class="favourite-card">
