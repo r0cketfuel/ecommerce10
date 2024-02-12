@@ -123,36 +123,31 @@ class UsuarioController extends Controller
         return view("shop.recovery", ["success" => 0]);
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function login(UserLoginRequest $request, FavoritosService $favoritos)
+    public function login(UserLoginRequest $request)
 	{
         // Almacena usuario y contraseña despues de la validación
         $credentials = $request->getCredentials();
 
-        // Verificación de credenciales
-        if(!Auth::validate($credentials))
+        if(!Auth::attempt($credentials, $request->input("check_remember")))
             return redirect()->back()->withErrors(trans("auth.failed"));
 
-        // Ejecuta Login y session
-        if(Auth::attempt($credentials, $request->input("check_remember")))
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        // Verifica si la cuenta de usuario se encuentra verificada
+        if($user->alta == NULL)
         {
-            /** @var \App\Models\User $user */
-            $user = Auth::user();
-
-            // Verifica si la cuenta de usuario se encuentra verificada
-            if($user->alta == NULL)
-            {
-                Auth::logout();
-                return redirect()->back()->withErrors(trans("auth.unconfirmed"));
-            }
-    
-            // Carga los datos del usuario en sesión
-            session()->put("shop.usuario.datos", $user->toArray());
-
-            if(Newsletter::where('email', session("shop.usuario.datos.email"))->count())
-                session()->put("shop.newsletter", session("shop.usuario.datos.email"));
-
-            return redirect()->back();
+            Auth::logout();
+            return redirect()->back()->withErrors(trans("auth.unconfirmed"));
         }
+
+        // Carga los datos del usuario en sesión
+        session()->put("shop.usuario.datos", $user->toArray());
+
+        if(Newsletter::where('email', session("shop.usuario.datos.email"))->count())
+            session()->put("shop.newsletter", session("shop.usuario.datos.email"));
+
+        return redirect()->back();
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function loginGuest()
