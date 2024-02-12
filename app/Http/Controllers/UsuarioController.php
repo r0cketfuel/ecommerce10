@@ -135,26 +135,21 @@ class UsuarioController extends Controller
         // Ejecuta Login y session
         if(Auth::attempt($credentials, $request->input("check_remember")))
         {
+            /** @var \App\Models\User $user */
             $user = Auth::user();
 
-            // Verifica si el usuario está confirmado
-            if($user->estado == 0)
+            // Verifica si la cuenta de usuario se encuentra verificada
+            if($user->alta == NULL)
             {
                 Auth::logout();
                 return redirect()->back()->withErrors(trans("auth.unconfirmed"));
             }
-
-            // Carga los favoritos del usuario
-            $favoritos->load(Auth::id());
     
             // Carga los datos del usuario en sesión
-            $usuario = Usuario::find(Auth::id())->toArray();
-    
-            foreach($usuario as $key => $value)
-                session()->put("shop.usuario.datos.$key", $value);
+            session()->put("shop.usuario.datos", $user->toArray());
 
-            if(Newsletter::where('email', $usuario['email'])->count())
-                session()->put("shop.newsletter", $usuario['email']);
+            if(Newsletter::where('email', session("shop.usuario.datos.email"))->count())
+                session()->put("shop.newsletter", session("shop.usuario.datos.email"));
 
             return redirect()->back();
         }
