@@ -34,7 +34,7 @@ return new class extends Migration
             $table->dateTime('creado');
             $table->dateTime('actualizado')->nullable();
             $table->dateTime('eliminado')->nullable();
-            $table->timestamp('alta')->nullable();
+            $table->dateTime('alta')->nullable();
             $table->rememberToken();
             $table->comment('Tabla con los usuarios del sistema');
         });

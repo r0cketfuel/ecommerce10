@@ -16,8 +16,6 @@ use App\Mail\Recovery;
 use App\Models\Usuario;
 use App\Models\Newsletter;
 
-use App\Services\FavoritosService;
-
 class UsuarioController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -92,7 +90,6 @@ class UsuarioController extends Controller
             }
 
             Mail::to($usuario->email)->send(new SignUp($usuario->apellidos, $usuario->nombres, "http://ecommerce.dell/shop/activate/" . $usuario->token_verificacion_email));
-            //return response()->json(['success' => true, 'redirect_url' => '/shop/login']);
         }
 
         // Lógica adicional según el paso actual
