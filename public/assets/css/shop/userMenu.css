@@ -30,14 +30,14 @@
 	from {opacity: 0} to {opacity: 1}
 }
 
-.user-menu .main-menu-link:hover + .main-menu-submenu,
-.user-menu .main-menu-submenu:hover {
+.user-menu .menu-container:hover .main-menu-link .menu-arrow,
+.user-menu .menu-container:hover .main-menu-submenu {
     display:                flex;
     flex-flow:              column nowrap;
 }
 
 .submenu-item:hover {
-    background-color:   rgba(0, 0, 0, 0.1);
+    background-color:       rgba(0, 0, 0, 0.1);
 }
 
 .user-menu .main-menu-submenu .submenu-item a {
@@ -63,6 +63,6 @@
     backface-visibility:    hidden
 }
 
-.user-menu .main-menu-link:hover .menu-arrow {
+.user-menu .menu-container:hover .menu-arrow {
     transform:              rotate(180deg);
 }

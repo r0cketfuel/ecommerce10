@@ -8,36 +8,38 @@
             </marquee>
             @auth
                 <nav class="user-menu">
-                    <div class="main-menu-link">
-                        <div class="menu-link"><a href="#"><i class="fa-regular fa-user"></i>&nbsp;{{ explode(' ', auth()->user()->nombres)[0] }}</a></div>
-                        <div class="menu-arrow"><i class="fa-solid fa-chevron-down fa-sm"></i></div>
+                    <div class="menu-container">
+                        <div class="main-menu-link">
+                            <div class="menu-link"><a href="#"><i class="fa-regular fa-user"></i>&nbsp;{{ explode(' ', auth()->user()->nombres)[0] }}</a></div>
+                            <div class="menu-arrow"><i class="fa-solid fa-chevron-down fa-sm"></i></div>
+                        </div>
+                        <ul class="main-menu-submenu">
+                            <li class="submenu-item">
+                                <a href="/shop/account">
+                                    <div class="user-menu-icon"><i class="fa-solid fa-user-gear"></i></div>
+                                    <div class="user-menu-link">Mi cuenta</div>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="/shop/compras">
+                                    <div class="user-menu-icon"><i class="fa-solid fa-shopping-bag"></i></div>
+                                    <div class="user-menu-link">Mis compras</div>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="/shop/favoritos">
+                                    <div class="user-menu-icon"><i class="fa-solid fa-heart"></i></div>
+                                    <div class="user-menu-link">Favoritos</div>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="/shop/logout">
+                                    <div class="user-menu-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+                                    <div class="user-menu-link">Salir</div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="main-menu-submenu">
-                        <li class="submenu-item">
-                            <a href="/shop/account">
-                                <div class="user-menu-icon"><i class="fa-solid fa-user-gear"></i></div>
-                                <div class="user-menu-link">Mi cuenta</div>
-                            </a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="/shop/compras">
-                                <div class="user-menu-icon"><i class="fa-solid fa-shopping-bag"></i></div>
-                                <div class="user-menu-link">Mis compras</div>
-                            </a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="/shop/favoritos">
-                                <div class="user-menu-icon"><i class="fa-solid fa-heart"></i></div>
-                                <div class="user-menu-link">Favoritos</div>
-                            </a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="/shop/logout">
-                                <div class="user-menu-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
-                                <div class="user-menu-link">Salir</div>
-                            </a>
-                        </li>
-                    </ul>
                 </nav>
             @endauth
             @guest
