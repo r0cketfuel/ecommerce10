@@ -22,6 +22,7 @@ use App\Models\MedioEnvio;
 use App\Models\Rating;
 use App\Models\Subcategoria;
 use App\Models\TipoDocumento;
+use App\Services\FavoritosService;
 
 class ShopController extends Controller
 {
@@ -179,9 +180,9 @@ class ShopController extends Controller
         return view("shop.payment", compact("tiposDocumentos", "cuentaBancaria"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function favoritos()
+    public function favoritos(FavoritosService $favoritoService)
 	{
-        $favoritos  = session("shop.usuario.favoritos");
+        $favoritos  = $favoritoService->items();
         $items      = [];
 
         for($i=0;$i<count($favoritos);++$i)
