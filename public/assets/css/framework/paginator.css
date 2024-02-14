@@ -13,13 +13,13 @@
 	display: 						-ms-flexbox;
 	display: 						flex;
 	-webkit-box-pack:  				center;
-	    -ms-flex-pack:  				center;
-	        justify-content:  				center;
+		-ms-flex-pack:  			center;
+			justify-content:		center;
 	gap:							10px;
-	-webkit-user-select: 					none;
-	   -moz-user-select: 					none;
-	    -ms-user-select: 					none;
-	        user-select: 					none;
+	-webkit-user-select: 			none;
+		-moz-user-select:			none;
+		-ms-user-select: 			none;
+			user-select: 			none;
 }
 
 .paginator-area .paginator-page
@@ -28,23 +28,24 @@
 	display: 						-ms-inline-flexbox;
 	display: 						inline-flex;
 	-webkit-box-pack: 				center;
-	    -ms-flex-pack: 				center;
-	        justify-content: 				center;
-	-webkit-box-align: 					center;
-	    -ms-flex-align: 					center;
-	        align-items: 					center;
+		-ms-flex-pack: 				center;
+			justify-content:		center;
+	-webkit-box-align: 				center;
+		-ms-flex-align: 			center;
+			align-items:			center;
 	height: 						30px;
 	width: 							30px;
 	border: 						1px solid rgb(220,220,220);
 	border-radius: 					4px;
-	-webkit-box-ordinal-group: 							3;
-	    -ms-flex-order: 							2;
-	        order: 							2;
+	-webkit-box-ordinal-group:		3;
+		-ms-flex-order: 			2;
+			order: 					2;
 }
 
 .paginator-area .paginator-page
 {
 	color: 							unset;
+
 }
 
 .paginator-area .paginator-page:hover:not(.page-active)
