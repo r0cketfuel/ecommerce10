@@ -144,7 +144,7 @@ class UsuarioController extends Controller
         if(Newsletter::where('email', session("shop.usuario.datos.email"))->count())
             session()->put("shop.newsletter", session("shop.usuario.datos.email"));
 
-        return redirect()->back();
+        return redirect()->intended("shop");
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function loginGuest()
@@ -158,6 +158,8 @@ class UsuarioController extends Controller
     public function logout()
     {
         Auth::logout();
+        
+        session()->put("shop.usuario.datos", []);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
