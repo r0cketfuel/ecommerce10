@@ -22,6 +22,7 @@ use App\Models\MedioEnvio;
 use App\Models\Rating;
 use App\Models\Subcategoria;
 use App\Models\TipoDocumento;
+use App\Providers\CartServiceProvider;
 use App\Services\FavoritosService;
 
 class ShopController extends Controller
@@ -105,14 +106,6 @@ class ShopController extends Controller
     public function checkout(ShoppingCartService $shoppingCart, Request $request)
 	{
         $checkout = $shoppingCart->checkOut();
-
-        foreach ($checkout["items"] as &$item)
-        {
-            $articulo = Articulo::info($item["id"]);
-        
-            $item["descripcion"]    = $articulo->descripcion ?? NULL;
-            $item["imagen"]         = count($articulo->imagen) ? $articulo->imagen[0]["miniatura"] : NULL;
-        }
 
         if($request->isMethod("post"))
         {
@@ -305,13 +298,14 @@ class ShopController extends Controller
         return view("shop.success", compact("order"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function logout(UsuarioController $user, FavoritosService $favoritosService)
+    public function logout(UsuarioController $user, FavoritosService $favoritosService, ShoppingCartService $shoppingCartService)
     {
         $user->logout();
     
         session()->put("shop.usuario.datos", []);
         
         $favoritosService->init();
+        $shoppingCartService->init();
 
         return redirect("shop");
     }
