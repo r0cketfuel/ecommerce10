@@ -58,10 +58,14 @@
             {
                 Favorito::where("usuario_id", $usuario_id)->where("articulo_id", $articulo_id)->restore();
 
+                $this->init();
+                $this->load($usuario_id);
+
                 $response   = array(
                     "success"       => false,
                     "data"          => array(
-                        "message"   => "El item ya se encontraba en tus favoritos"
+                        "message"   => "El item ya se encontraba en tus favoritos",
+                        "itemQty"   => $this->totalItems()
                     ),
                 );
                 

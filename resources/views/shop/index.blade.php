@@ -77,14 +77,16 @@
                 const promise = ajax(url, parameters);
 
                 promise.then((data) => {
-                    if (data["success"]) {
-                        if (itemsQty < parseInt(data["data"]["itemQty"])) {
-                            icon.innerHTML = data["data"]["itemQty"];
-                            displayAlert("success", data["data"]["message"]);
-                        }
-                    } else {
+                    if (data["success"])
+                    {
+                        displayAlert("success", data["data"]["message"]);
+                    }
+                    else
+                    {
                         displayAlert("danger", data["data"]["message"]);
                     }
+                    
+                    icon.innerHTML = data["data"]["itemQty"];
                 });
             }
         });
