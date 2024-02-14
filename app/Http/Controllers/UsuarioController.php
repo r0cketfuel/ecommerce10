@@ -15,6 +15,7 @@ use App\Mail\Recovery;
 
 use App\Models\Usuario;
 use App\Models\Newsletter;
+use App\Services\FavoritosService;
 
 class UsuarioController extends Controller
 {
@@ -158,8 +159,6 @@ class UsuarioController extends Controller
     public function logout()
     {
         Auth::logout();
-        
-        session()->put("shop.usuario.datos", []);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

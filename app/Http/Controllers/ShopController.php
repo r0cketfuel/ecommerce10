@@ -305,10 +305,14 @@ class ShopController extends Controller
         return view("shop.success", compact("order"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function logout(UsuarioController $user)
+    public function logout(UsuarioController $user, FavoritosService $favoritosService)
     {
         $user->logout();
     
+        session()->put("shop.usuario.datos", []);
+        
+        $favoritosService->init();
+
         return redirect("shop");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
