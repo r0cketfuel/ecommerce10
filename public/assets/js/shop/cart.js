@@ -291,7 +291,7 @@ function updatePhoto(combinacion)
 
     if(imagenId)
     {
-        let imagen = data.info.imagenes.find(img => img.id === imagenId);
+        let imagen = data.info.imagen.find(img => img.id === imagenId);
 
         if(imagen)
         {
