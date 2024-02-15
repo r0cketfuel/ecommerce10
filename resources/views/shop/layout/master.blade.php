@@ -94,6 +94,9 @@
                     loginForm.addEventListener("submit", function(event) {
                         event.preventDefault();
                         
+                        document.getElementsByName("username")[0].classList.remove("form-error");
+                        document.getElementsByName("password")[0].classList.remove("form-error");
+
                         loading(true);
 
                         const formData = new FormData(loginForm);
@@ -109,7 +112,7 @@
 
                             setTimeout(function() {
                                 loading(false);
-                            }, 250);
+                            }, 300);
                             
                             if (response.ok)
                             {
@@ -117,7 +120,8 @@
                             }
                             else
                             {
-                                console.error('Error al iniciar sesión');
+                                document.getElementsByName("username")[0].classList.add("form-error");
+                                document.getElementsByName("password")[0].classList.add("form-error");
                             }
                         })
                         .catch(error => {
@@ -129,13 +133,14 @@
                     {
                         if(status)
                         {
-                            modalContainer.style.transition = "filter 0.3s ease";
-                            modalContainer.style.filter     = "blur(3px)";
+                            //modalContainer.style.transition = "filter 0.15s ease-in";
+                            //modalContainer.style.filter     = "blur(1px)";
                             loader.style.display            = "flex"
                         }
                         else
                         {
-                            modalContainer.style.filter     = "none";
+                            //modalContainer.style.transition = "filter 0.1s ease-out";
+                            //modalContainer.style.filter     = "none";
                             loader.style.display            = "none"
                         }
                     }

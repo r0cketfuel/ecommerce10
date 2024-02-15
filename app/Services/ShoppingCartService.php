@@ -50,16 +50,16 @@
 
             if($id>0 && $cantidad>=0)
             {
-                $articulo           = Articulo::find($id);
-                $atributoArticulo   = AtributoArticulo::find($id);
-                $limiteCompra       = $atributoArticulo->maximoCompra($atributos_id);
-                $index              = $this->itemIndex($id, $atributos_id);
+                $articulo       = Articulo::with(['atributo' => function($query) use ($atributos_id) {$query->where('id', $atributos_id);}])->find($id);
+
+                $limiteCompra   = AtributoArticulo::maximoCompra($articulo->atributo[0]->id);
+                $index          = $this->itemIndex($id, $articulo->atributo[0]->id);
 
                 if($index<0)
                 {
                     // Agregar item al carrito
                     if($cantidad<=$limiteCompra && $cantidad>0)
-                        $this->addItem($articulo, $atributoArticulo, $cantidad);
+                        $this->addItem($articulo, $articulo->atributo[0], $cantidad);
                 }
                 else
                 {
@@ -81,9 +81,11 @@
             //=====================================================//
             
             session()->push(self::SESSION_CART_ITEMS_KEY, [
-                "id"             => $articulo->id,
-                "atributos_id"   => $atributoArticulo->id,
-                "cantidad"       => $cantidad
+                "id"            => $articulo->id,
+                "nombre"        => $articulo->nombre,
+                "imagen"        => count($articulo->imagen) ? $articulo->imagen[0]["miniatura"] : NULL,
+                "atributos_id"  => $atributoArticulo->id,
+                "cantidad"      => $cantidad
             ]);
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
