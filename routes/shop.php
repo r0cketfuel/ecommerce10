@@ -48,6 +48,7 @@ Route::controller(MailController::class)->group(function () {
 
 Route::controller(UsuarioController::class)->group(function () {
     Route::post('login',                'login')->name('login.user');
+    Route::post('modal-login',          'modalLogin')->name('login.modal');
     Route::post('login/guest',          'loginGuest')->name('login.guest');
     Route::post('register',          	'register');
     Route::post('recovery',             'recovery');

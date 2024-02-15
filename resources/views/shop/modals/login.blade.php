@@ -1,5 +1,5 @@
 <div class="modal" id="modal-login">
-    <div class="modal-container" style="width: 600px">
+    <div class="modal-container" style="width: 600px" id="modal-container">
         <div class="modal-header">
             <div class="modal-title">
             </div>
@@ -41,5 +41,5 @@
     </div>
 </div>
 
-<form id="form-login" method="post" action="{{ route('login.user') }}">@csrf</form>
+<form id="form-login" method="post" action="{{ route('login.modal') }}">@csrf</form>
 <form id="form-guest" method="post" action="{{ route('login.guest') }}">@csrf</form>

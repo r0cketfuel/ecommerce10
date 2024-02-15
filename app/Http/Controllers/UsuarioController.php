@@ -148,6 +148,20 @@ class UsuarioController extends Controller
         return redirect()->intended("shop");
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function modalLogin(UserLoginRequest $request)
+	{
+        $credentials = $request->getCredentials();
+
+        if(!Auth::attempt($credentials, $request->input("check_remember")))
+        {
+            return response()->json(['error' => 'Credenciales inválidas'], 401);
+        }
+        else
+        {
+            return response()->json(['message' => 'Inicio de sesión rápido exitoso'], 200);
+        }
+	}
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function loginGuest()
     {
         session()->put("shop.usuario.datos.id", -1);

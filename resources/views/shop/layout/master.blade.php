@@ -42,7 +42,7 @@
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 <div class="alert danger">
-                    {{$error}}
+                    {{ $error }}
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 </div>
             @endforeach
@@ -50,14 +50,14 @@
 
         @if (session("success"))
             <div class="alert success">
-                {{session("success")}}
+                {{ session("success") }}
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             </div>
         @endif
 
         @if (session("error"))
             <div class="alert danger">
-                {{session("error")}}
+                {{ session("error") }}
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             </div>
         @endif
@@ -80,15 +80,65 @@
         @guest
             <script>
                 document.addEventListener("DOMContentLoaded", () => {
-
-                    const loginLink   = document.getElementById("login-link");
-                    const modalLogin  = document.getElementById("modal-login");
+                    
+                    const loginLink         = document.getElementById("login-link");
+                    const modalLogin        = document.getElementById("modal-login");
+                    const modalContainer    = document.getElementById("modal-container");
+                    const loginForm         = document.getElementById("form-login");
 
                     loginLink.addEventListener("click", function(event) {
                         event.preventDefault();
-
                         modalLogin.style.display = "block";
                     });
+
+                    loginForm.addEventListener("submit", function(event) {
+                        event.preventDefault();
+                        
+                        loading(true);
+
+                        const formData = new FormData(loginForm);
+
+                        fetch("{{ route('login.modal') }}", {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                        })
+                        .then(response => {
+
+                            setTimeout(function() {
+                                loading(false);
+                            }, 250);
+                            
+                            if (response.ok)
+                            {
+                                window.location.reload();
+                            }
+                            else
+                            {
+                                console.error('Error al iniciar sesión');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error al iniciar sesión:', error);
+                        });
+                    });
+
+                    function loading(status)
+                    {
+                        if(status)
+                        {
+                            modalContainer.style.transition = "filter 0.3s ease";
+                            modalContainer.style.filter     = "blur(3px)";
+                            loader.style.display            = "flex"
+                        }
+                        else
+                        {
+                            modalContainer.style.filter     = "none";
+                            loader.style.display            = "none"
+                        }
+                    }
                 });
             </script>
         @endguest
