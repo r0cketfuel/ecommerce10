@@ -18,10 +18,18 @@
         <!-- Font awesome -->
 		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         
-        <!-- Scripts -->
+        <!-- Framework Scripts -->
         <script src="{{ config('constants.framework_js') }}scroll.js"></script>
         <script src="{{ config('constants.framework_js') }}loader.js"></script>
         <script src="{{ config('constants.framework_js') }}navbar.js"></script>
+        
+        <!-- Shop Scripts -->
+        <script src="{{ config('constants.shop_js') }}searchBar.js"></script>
+
+        @guest
+            <script src="{{ config('constants.shop_js') }}loginModal.js"></script>
+        @endguest
+
 		@yield("js")
 
         <style>
@@ -41,12 +49,12 @@
 
         @include("shop.layout.alerts")
 
+        @guest
+            @include("shop.modals.login")
+        @endguest
+
         <!-- Wrapper -->
         <div class="wrapper" id="wrapper">
-            @guest
-                @include("shop.modals.login")
-            @endguest
-
             @include("shop.layout.headers")
             @include("shop.layout.backToTop")
             @include("shop.layout.whatsappBubble")
@@ -55,59 +63,6 @@
         @include("shop.layout.footers")
 
         @yield("scripts")
-
-        @guest
-            <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                    
-                    const loginLink         = document.getElementById("login-link");
-                    const modalLogin        = document.getElementById("modal-login");
-                    const modalContainer    = document.getElementById("modal-container");
-                    const loginForm         = document.getElementById("form-login");
-
-                    loginLink.addEventListener("click", function(event) {
-                        event.preventDefault();
-                        modalLogin.style.display = "block";
-                    });
-
-                    loginForm.addEventListener("submit", function(event) {
-                        event.preventDefault();
-                        
-                        document.getElementsByName("username")[0].classList.remove("form-error");
-                        document.getElementsByName("password")[0].classList.remove("form-error");
-
-                        loading(true);
-
-                        const formData = new FormData(loginForm);
-
-                        fetch("{{ route('login.modal') }}", {
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            },
-                        })
-                        .then(response => {
-                            
-                            if (response.ok)
-                            {
-                                window.location.reload();
-                            }
-                            else
-                            {
-                                loading(false);
-                                
-                                document.getElementsByName("username")[0].classList.add("form-error");
-                                document.getElementsByName("password")[0].classList.add("form-error");
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error al iniciar sesión:', error);
-                        });
-                    });
-                });
-            </script>
-        @endguest
 
         <script>
             window.addEventListener("load", function () {
@@ -119,14 +74,5 @@
             });
         </script>
 
-        <script>
-            document.getElementById('search_form').addEventListener('submit', function (event) {
-                
-                const searchInput = document.getElementById('busqueda').value.trim();
-
-                if(searchInput === '')
-                    event.preventDefault();
-            });
-        </script>
 	</body>
 </html>
