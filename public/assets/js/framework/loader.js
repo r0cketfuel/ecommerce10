@@ -1,11 +1,23 @@
 window.addEventListener("load", function () 
 {
-    const wrapper   = document.getElementById("wrapper");
-    const loader    = document.getElementById("loader");
-
-    wrapper.style.transition    = "opacity 0.5s";
-    wrapper.style.opacity       = 1;
-
-    loader.style.display        = "none"
-
+    // Esconde el loader al finalizar la carga de la página
+    loading(false);
+    
 });
+
+// Función que muestra / oculta el loader
+function loading(status)
+{
+    const loader    = document.getElementById("loader");
+    if(status)
+    {
+        loader.classList.add("loader-active");
+    }
+    else
+    {
+        // Permanencia mínima del loader de 500ms
+        setTimeout(function() {
+            loader.classList.remove("loader-active");
+        }, 500);
+    }
+}

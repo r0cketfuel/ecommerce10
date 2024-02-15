@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextButtons 	    = document.querySelectorAll(".btnNext");
     const prevButtons 	    = document.querySelectorAll(".btnPrev");
     const forms             = document.getElementsByClassName('step-form');
-    const loader            = document.getElementById("loader");
     
     let curSlide = 0;
     let datosRecopilados = {};
@@ -65,22 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
     {
         document.querySelectorAll('.field-validation-msg').forEach(el => el.remove());
         document.querySelectorAll('.form-error').forEach(el => el.classList.remove("form-error"));
-    }
-
-    function loading(status)
-    {
-        carouselContainer.style.transition  = "opacity 0.4s";
-
-        if(status)
-        {
-            carouselContainer.style.opacity     = 0.4;
-            loader.style.display                = "flex"
-        }
-        else
-        {
-            carouselContainer.style.opacity     = 1;
-            loader.style.display                = "none"
-        }
     }
 
     function submitForm()

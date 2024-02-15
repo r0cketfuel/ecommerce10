@@ -19,9 +19,9 @@
 		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         
         <!-- Scripts -->
-        <script defer src="{{ config('constants.framework_js') }}scroll.js"></script>
-        <script defer src="{{ config('constants.framework_js') }}loader.js"></script>
-        <script defer src="{{ config('constants.framework_js') }}navbar.js"></script>
+        <script src="{{ config('constants.framework_js') }}scroll.js"></script>
+        <script src="{{ config('constants.framework_js') }}loader.js"></script>
+        <script src="{{ config('constants.framework_js') }}navbar.js"></script>
 		@yield("js")
 
         <style>
@@ -109,10 +109,6 @@
                             },
                         })
                         .then(response => {
-
-                            setTimeout(function() {
-                                loading(false);
-                            }, 300);
                             
                             if (response.ok)
                             {
@@ -120,6 +116,8 @@
                             }
                             else
                             {
+                                loading(false);
+                                
                                 document.getElementsByName("username")[0].classList.add("form-error");
                                 document.getElementsByName("password")[0].classList.add("form-error");
                             }
@@ -128,25 +126,19 @@
                             console.error('Error al iniciar sesión:', error);
                         });
                     });
-
-                    function loading(status)
-                    {
-                        if(status)
-                        {
-                            //modalContainer.style.transition = "filter 0.15s ease-in";
-                            //modalContainer.style.filter     = "blur(1px)";
-                            loader.style.display            = "flex"
-                        }
-                        else
-                        {
-                            //modalContainer.style.transition = "filter 0.1s ease-out";
-                            //modalContainer.style.filter     = "none";
-                            loader.style.display            = "none"
-                        }
-                    }
                 });
             </script>
         @endguest
+
+        <script>
+            window.addEventListener("load", function () {
+
+                const wrapper = document.getElementById("wrapper");
+
+                wrapper.style.transition    = "opacity 1s";
+                wrapper.style.opacity       = 1;
+            });
+        </script>
 
         <script>
             document.getElementById('search_form').addEventListener('submit', function (event) {
