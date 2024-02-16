@@ -66,87 +66,53 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.form-error').forEach(el => el.classList.remove("form-error"));
     }
 
-    function submitForm()
-    {
-        const button    = event.target;
-        const form      = button.closest(".step-form");
-
-        if(form)
-        {
+    function submitForm() {
+        const button = event.target;
+        const form = button.closest(".step-form");
+    
+        if (form) {
             limpiarErrores();
             loading(true);
-
-            // Recopilar datos de todos los formularios anteriores y el formulario actual
-            const allForms = document.querySelectorAll(".step-form");
-            const formData = new FormData();
-
-            allForms.forEach((form, index) => {
-                // Solo recopila datos del formulario actual y los formularios anteriores
-                if(index <= curSlide) {
-                    const formFields = new FormData(form);
-                    formFields.forEach((value, key) => {
-                        formData.append(key, value);
-                    });
-                }
-            });
-
+    
+            // Recopilar datos solo del formulario actual
+            const formData = new FormData(form);
+    
             fetch(form.action, {
                 method: form.method,
-                body:   formData,
+                body: formData,
             })
             .then(response => response.json())
             .then(data => {
-
+    
                 loading(false);
-
-                if(data["success"] === true)
-                {
-                    if(data['redirect_url'])
-                    {
+    
+                if (data["success"] === true) {
+                    if (data['redirect_url']) {
                         window.location.href = data['redirect_url'];
-                    }
-                    else
-                    {
+                    } else {
                         moveRight();
                     }
-                }
-                else
-                {
-                    // Función para recorrer el JSON y agregar mensajes de error debajo de los inputs
-                    function mostrarErrores(errors)
-                    {
+                } else {
+                    function mostrarErrores(errors) {
                         limpiarErrores();
-
-                        // Recorre cada campo en los errores
+    
                         for (var campo in errors) {
-                            if (errors.hasOwnProperty(campo))
-                            {
-                                // Obtiene el mensaje de error para el campo actual
+                            if (errors.hasOwnProperty(campo)) {
                                 var mensajes = errors[campo];
-
-                                // Agrega un mensaje de error debajo del input correspondiente
-
-                                // Buscar el elemento dentro del formulario actual
                                 var input = document.querySelector('.step-form [name="' + campo + '"]');
-
-                                if(input)
-                                {
-                                    // Crea un elemento <p> con la clase 'field-validation-msg' y agrega el mensaje
+                                if (input) {
                                     input.classList.add("form-error");
                                     mensajes.forEach(function (mensaje) {
-                                    var p = document.createElement("p");
-                                    p.className = "field-validation-msg";
-                                    p.innerHTML = mensaje;
-
-                                    // Inserta el mensaje de error debajo del input
-                                    input.parentNode.insertBefore(p, input.nextSibling);
+                                        var p = document.createElement("p");
+                                        p.className = "field-validation-msg";
+                                        p.innerHTML = mensaje;
+                                        input.parentNode.insertBefore(p, input.nextSibling);
                                     });
                                 }
                             }
                         }
                     }
-
-                    // Llama a la función con el JSON de errores
+    
                     mostrarErrores(data.errors);
                 }
             })

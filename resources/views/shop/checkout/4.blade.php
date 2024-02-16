@@ -12,9 +12,9 @@
                 @foreach($mediosEnvioListado as $envio)
                     <div class="radio-fix">
                         @if($medioEnvioSeleccionado == $envio["id"])
-                            <input type="radio" required name="radio_medioEnvio" id="radio_medioEnvio_{{ $envio['id'] }}" value="{{ $envio['id'] }}" checked>
+                            <input type="radio" name="radio_medioEnvio" id="radio_medioEnvio_{{ $envio['id'] }}" value="{{ $envio['id'] }}" checked>
                         @else
-                            <input type="radio" required name="radio_medioEnvio" id="radio_medioEnvio_{{ $envio['id'] }}" value="{{ $envio['id'] }}">
+                            <input type="radio" name="radio_medioEnvio" id="radio_medioEnvio_{{ $envio['id'] }}" value="{{ $envio['id'] }}">
                         @endif
                         <label for="radio_medioEnvio_{{ $envio['id'] }}">{{ $envio["medio"] }} @if(isset($envio["costo"])) ({{ _money($envio["costo"]) }}) @endif</label>
                     </div>
@@ -27,33 +27,33 @@
                 <div class="input-group">
                     <label>
                         Código Postal:
-                        <input type="text" name="input_codigoPostal" value="{{ session('shop.usuario.datos.codigo_postal') }}">
+                        <input type="text" name="codigo_postal">
                     </label>
                     <label>
                         Ciudad:
-                        <input type="text" name="input_ciudad" value="{{ session('shop.usuario.datos.localidad') }}">
+                        <input type="text" name="localidad">
                     </label>
                     <label>
                         Domicilio
-                        <input type="text" name="input_domicilio" value="{{ session('shop.usuario.datos.domicilio') }}">
+                        <input type="text" name="domicilio">
                     </label>
                     <div class="flex">
                         <label>
                             Número
-                            <input name="input_domicilioNro" value="{{ session('shop.usuario.datos.domicilio_nro') }}">
+                            <input name="domicilio_nro">
                         </label>
                         <label>
                             Piso
-                            <input name="input_domicilioPiso" value="{{ session('shop.usuario.datos.domicilio_piso') }}">
+                            <input name="domicilio_piso">
                         </label>
                         <label>
                             Departamento
-                            <input name="input_domicilioDepto" value="{{ session('shop.usuario.datos.domicilio_depto') }}">
+                            <input name="domicilio_depto">
                         </label>
                     </div>
                     <label>
                         Instrucciones de entrega
-                        <textarea name="textarea_aclaraciones">{{ session('shop.usuario.datos.domicilio_aclaraciones') }}</textarea>
+                        <textarea name="domicilio_aclaraciones"></textarea>
                     </label>
                 </div>
             </div>
