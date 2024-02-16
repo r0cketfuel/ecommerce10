@@ -37,7 +37,7 @@
                         Domicilio
                         <input type="text" name="domicilio">
                     </label>
-                    <div class="flex">
+                    <div class="flex gap-3">
                         <label>
                             Número
                             <input name="domicilio_nro">
