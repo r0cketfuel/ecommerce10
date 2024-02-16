@@ -339,19 +339,27 @@ class ShopController extends Controller
         {
             $currentStep = $request->input("currentStep");
     
+            $rules = [];
+
             switch($currentStep)
             {
                 case(1):
                 {
                     session()->put("shop.checkout.confirmation", now());
 
-                    return response()->json(['success' => true]);
                     break;
                 }
 
                 case(2):
                 {
-                    return response()->json(['success' => true]);
+                    $rules = [
+                        "apellidos"         => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
+                        "nombres"           => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
+                        "tipo_documento_id" => ["required","integer","min:1","exists:tipos_documentos,id"],
+                        "documento_nro"     => ["required","integer","min:6","max:99999999"],
+                        "email"             => ["required","email"],
+                    ];
+
                     break;
                 }
 
@@ -365,7 +373,6 @@ class ShopController extends Controller
                             session()->put("shop.checkout.medio_pago.medio", $medio["medio"]);
                         }
 
-                    return response()->json(['success' => true]);
                     break;
                 }
 
@@ -390,23 +397,26 @@ class ShopController extends Controller
                         if($request->has("input_domicilioDepto"))   session()->put("shop.checkout.envio.domicilio_depto",     $request->input("input_domicilioDepto"));
                         if($request->has("textarea_aclaraciones"))  session()->put("shop.checkout.envio.aclaraciones",        $request->input("textarea_aclaraciones"));
                     }
-                    
-                    return response()->json(['success' => true]);
+
                     break;
                 }
 
                 case(5):
                 {
-                    return response()->json(['success' => true]);
                     break;
                 }
 
                 case(6):
                 {
-                    return response()->json(['success' => true]);
                     break;
                 }
             }
+
+            // Validar campos y manejar errores
+            $validator = Validator::make($request->all(), $rules);
+
+            if($validator->fails())
+                return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
 
             session()->put("shop.checkout.total", $checkout["total"]);
 
@@ -438,7 +448,7 @@ class ShopController extends Controller
                 if($request->has("textarea_aclaraciones"))  session()->put("shop.checkout.envio.aclaraciones",        $request->input("textarea_aclaraciones"));
             }
 
-            // return redirect("shop/payment");
+            return response()->json(['success' => true]);
         }
 
         $generos            = Genero::all();

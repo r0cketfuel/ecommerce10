@@ -158,6 +158,15 @@ class UsuarioController extends Controller
         }
         else
         {
+            /** @var \App\Models\User $user */
+            $user = Auth::user();
+
+            // Carga los datos del usuario en sesión
+            session()->put("shop.usuario.datos", $user->toArray());
+
+            if(Newsletter::where('email', session("shop.usuario.datos.email"))->count())
+                session()->put("shop.newsletter", session("shop.usuario.datos.email"));
+
             return response()->json(['message' => 'Inicio de sesión rápido exitoso'], 200);
         }
 	}
