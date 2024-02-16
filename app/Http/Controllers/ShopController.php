@@ -386,17 +386,16 @@ class ShopController extends Controller
                 }
             }
 
-            // Validar campos y manejar errores
-            $validator = Validator::make($request->all(), $rules);
-
             // Antes de aplicar las reglas de validación predeterminadas
             $additionalRules = [];
 
-            if ($currentStep == 4) {
+            if($currentStep == 4)
+            {
                 $selectedOption = $request->input('radio_medioEnvio');
 
                 // Si el usuario ha seleccionado envío y el valor es igual a 2, aplicar reglas de validación adicionales
-                if ($selectedOption == 2) {
+                if($selectedOption == 2)
+                {
                     // Definir las reglas de validación adicionales
                     $additionalRules = [
                         "codigo_postal"             => ["required","min:1000","max:9999"],
@@ -417,10 +416,13 @@ class ShopController extends Controller
             $validator = Validator::make($request->all(), $rules);
 
             // Manejar los errores de validación
-            if ($validator->fails()) {
+            if($validator->fails())
                 return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
-            }
 
+
+
+
+            
             session()->put("shop.checkout.total", $checkout["total"]);
 
             if($request->has("radio_medioPago") && is_numeric($request->input("radio_medioPago")) && (int)$request->input("radio_medioPago")>0)
