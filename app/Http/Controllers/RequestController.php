@@ -163,6 +163,8 @@ class RequestController extends Controller
     public function rating (Request $request)
     {
         Rating::setRatingArticulo($request->id, $request->puntuacion);
+
+        return response()->json();
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

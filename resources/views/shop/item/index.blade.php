@@ -209,54 +209,55 @@
         });
     </script>
 
-    <script>
-        // Espera a que el DOM esté completamente cargado
-        document.addEventListener("DOMContentLoaded", function() {
-            // Obtiene todas las estrellas
-            const stars = document.querySelectorAll('.product-stars span');
-            const token = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-            
-            // Recorre cada estrella y agrega un event listener para el clic
-            stars.forEach(function(star, index) {
-                star.addEventListener('click', function() {
-                    const rating = index + 1; // Índice + 1 es la puntuación
-                    const productId = obtenerIdDelURL(); // Obtener el ID del producto de la URL
+    @auth
+        <script>
+            // Espera a que el DOM esté completamente cargado
+            document.addEventListener("DOMContentLoaded", function() {
+                // Obtiene todas las estrellas
+                const stars = document.querySelectorAll('.product-stars span');
+                const token = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+                
+                // Recorre cada estrella y agrega un event listener para el clic
+                stars.forEach(function(star, index) {
+                    star.addEventListener('click', function() {
+                        const rating = index + 1; // Índice + 1 es la puntuación
+                        const productId = obtenerIdDelURL(); // Obtener el ID del producto de la URL
 
-                    // Realizar la solicitud POST
-                    fetch('/shop/requests/rating', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            "X-CSRF-TOKEN": token,
-                        },
-                        body: JSON.stringify({
-                            id: productId,
-                            puntuacion: rating
-                        }),
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Hubo un problema al enviar la calificación.');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        // Manejar la respuesta si es necesario
-                        console.log('Calificación enviada con éxito:', data);
-                    })
-                    .catch(error => {
-                        console.error('Error al enviar la calificación:', error);
+                        // Realizar la solicitud POST
+                        fetch('/shop/requests/rating', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                "X-CSRF-TOKEN": token,
+                            },
+                            body: JSON.stringify({
+                                id: productId,
+                                puntuacion: rating
+                            }),
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Hubo un problema al enviar la calificación.');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            // Manejar la respuesta si es necesario
+                            console.log('Calificación enviada con éxito:', data);
+                        })
+                        .catch(error => {
+                            console.error('Error al enviar la calificación:', error);
+                        });
                     });
                 });
             });
-        });
 
-        // Función para obtener el ID del producto de la URL
-        function obtenerIdDelURL() {
-            const url = window.location.href;
-            const parts = url.split('/');
-            return parts[parts.length - 1];
-        }
-    </script>
-
+            // Función para obtener el ID del producto de la URL
+            function obtenerIdDelURL() {
+                const url = window.location.href;
+                const parts = url.split('/');
+                return parts[parts.length - 1];
+            }
+        </script>
+    @endauth
 @endsection
