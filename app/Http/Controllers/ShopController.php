@@ -72,15 +72,14 @@ class ShopController extends Controller
         return view("shop.index", compact("busqueda", "items"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function item($id)
+    public function item($id, Request $request)
 	{
-        // Validación de id
-        $validator = Validator::make(['id' => $id], [
-            'id' => 'required|numeric|min:1',
+        $validator = Validator::make(["id" => $id], [
+            "id" => "required|numeric|min:1|exists:articulos,id",
         ]);
     
         if($validator->fails())
-            return redirect("shop");
+            return redirect("shop")->withErrors($validator->errors());
 
         $item = Articulo::info($id);
         
