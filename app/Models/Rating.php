@@ -31,16 +31,10 @@ class Rating extends Model
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function incrementaVisualizacion(int $id): int
     {
-        try
-        {
-            $articulo = self::findOrFail($id);
-            $articulo->increment('visualizaciones');
-            return $articulo->visualizaciones;
-        }
-        catch (ModelNotFoundException $e)
-        {
-            throw new \Exception(trans('messages.article_not_found'));
-        }
+        $articulo = self::findOrFail($id);
+        $articulo->increment('visualizaciones');
+
+        return $articulo->visualizaciones;
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function getRatingArticulo(int $id)
@@ -55,9 +49,10 @@ class Rating extends Model
     {
         $productRating = self::find($id);
 
-        $productRating->puntuaciones += 1;
-        $productRating->sumatoria += $puntuacion;
-        $productRating->estrellas = ($productRating->sumatoria + $puntuacion) / ($productRating->puntuaciones + 1);
+        $productRating->increment('puntuaciones');
+        $productRating->increment('sumatoria', $puntuacion);
+        
+        $productRating->promedio = ($productRating->sumatoria + $puntuacion) / ($productRating->puntuaciones + 1);
         
         $productRating->save();
     }

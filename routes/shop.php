@@ -66,6 +66,8 @@ Route::controller(RequestController::class)->group(function () {
     Route::post('requests/updateCart',                      'updateCart');
     Route::post('requests/suscribe',                        'suscribe');
 
+    Route::post('requests/rating',                          'rating');
+
     // Rutas que requieren autenticación
     Route::middleware(['auth:web'])->group(function () {
         Route::post('requests/agregaFavorito',              'agregaFavorito');

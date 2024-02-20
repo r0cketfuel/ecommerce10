@@ -1,3 +1,7 @@
+.product-rating {
+	user-select: 					none;
+}
+
 .product-stars span {
 	font-size:						20px;
 	color:							rgb(240,240,50);

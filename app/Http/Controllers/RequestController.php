@@ -10,6 +10,7 @@ use App\Models\Articulo;
 use App\Models\AtributoArticulo;
 use App\Models\Newsletter;
 use App\Models\MedioEnvio;
+use App\Models\Rating;
 use App\Services\FavoritosService;
 
 class RequestController extends Controller
@@ -159,5 +160,9 @@ class RequestController extends Controller
         return response()->json(['itemInfo' => $articulo]);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-
+    public function rating (Request $request)
+    {
+        Rating::setRatingArticulo($request->id, $request->puntuacion);
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
