@@ -352,7 +352,7 @@ class ShopController extends Controller
                     $rules = [
                         "apellidos"         => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
                         "nombres"           => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
-                        "tipo_documento_id" => ["required","integer","min:1","exists:tipos_documentos,id"],
+
                         "documento_nro"     => ["required","integer","min:6","max:99999999"],
                         "email"             => ["required","email"],
                     ];

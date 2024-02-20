@@ -38,7 +38,7 @@
 		.carousel-slider {
 			display: 				flex;
 			flex-flow: 				row nowrap;
-			width: 					600%;
+			width: 					500%;
 		}
 
 		.carousel-slide {
@@ -113,6 +113,8 @@
 		
 		@if(count($checkout["items"])>0)
 
+		<div id="total">$100,00</div>
+
 			<ul class="progress-indicator">
 				<li>1</li>
 				<div></div>
@@ -123,15 +125,13 @@
 				<li>4</li>
 				<div></div>
 				<li>5</li>
-				<div></div>
-				<li>6</li>
 			</ul>
 
 			<div class="carousel-container">
 				<div class="carousel-slider">
 
 					<!-- Pantalla 1 -->
-					<form method="post" class="step-form">
+					<form method="post" class="step-form" id="form-checkout">
 						<input type="hidden" name="currentStep" value="1">
 						@csrf
 						@include('shop.checkout.1')
@@ -161,15 +161,8 @@
 					<!-- Pantalla 5 -->
 					<form method="post" class="step-form">
 						<input type="hidden" name="currentStep" value="5">
-						@csrf
 						@include("shop.checkout.5")
-					</form>
-
-					<!-- Pantalla 6 -->
-					<form method="post" class="step-form">
-						<input type="hidden" name="currentStep" value="6">
 						@csrf
-						@include("shop.checkout.6")
 					</form>
 
 				</div>

@@ -5,27 +5,8 @@
     </div>
     <br>
     <!-- Contenido -->
-    <div class="panel">
-        <div class="panel-title panel-title-underlined">Forma de pago</div>
-        <div class="panel-content">
-            <div class="input-group">
-                @foreach($mediosPagoListado as $medio)
-                    <div class="radio-fix">
-                        @if($medioPagoSeleccionado == $medio["id"])
-                            <input type="radio" required name="radio_medioPago" id="radio_medioPago_{{ $medio['id'] }}" value="{{ $medio['id'] }}" checked>
-                        @else
-                            <input type="radio" required name="radio_medioPago" id="radio_medioPago_{{ $medio['id'] }}" value="{{ $medio['id'] }}">
-                        @endif
-                        <label for="radio_medioPago_{{ $medio['id'] }}">{{ $medio["medio"] }}</label>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <br>
-    <!-- Contenido -->
     <div class="panel" id="shipmentPanel">
-        <div class="panel-title panel-title-underlined">Envío</div>
+        <div class="panel-title panel-title-underlined">4 - Envío</div>
         <div class="panel-content">
             <div class="input-group">
                 @foreach($mediosEnvioListado as $envio)
