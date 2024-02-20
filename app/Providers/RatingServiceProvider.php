@@ -19,9 +19,9 @@ class RatingServiceProvider extends ServiceProvider
     /**
      * Bootstrap services.
      */
-    public function boot(Request $request): void // Asegúrate de incluir Request como parámetro
+    public function boot(Request $request): void
     {
-        view()->composer('shop.item.rating', function($view) use ($request) // Pasa $request al callback usando use()
+        view()->composer('shop.item.rating', function($view) use ($request)
         {
             // Obtener el $id del artículo de la ruta
             $id = $request->route('id');
