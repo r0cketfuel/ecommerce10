@@ -43,7 +43,7 @@ class PaymentController extends Controller
                 "id"            => $info["id"],
                 "title"         => $info["descripcion"],
                 "description"   => "",
-                "picture_url"   => count($info["imagenes"]) ? $info["imagenes"][0]["miniatura"] : null,
+                "picture_url"   => null,
                 "category_id"   => "",
                 "quantity"      => $item["cantidad"],
                 "unit_price"    => $info["precio"],

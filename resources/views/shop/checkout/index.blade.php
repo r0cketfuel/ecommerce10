@@ -131,7 +131,7 @@
 				<div class="carousel-slider">
 
 					<!-- Pantalla 1 -->
-					<form method="post" class="step-form" id="form-checkout">
+					<form method="post" class="step-form">
 						<input type="hidden" name="currentStep" value="1">
 						@csrf
 						@include('shop.checkout.1')
@@ -171,6 +171,8 @@
 			<p>Todavía no agregaste ningún item al carrito de compras</p>
 		@endif
     </div>
+
+	<form id="form-checkout" action="/shop/process_payment" method="post">@csrf</form>
 @endsection
 
 @if(count($checkout["items"])>0)

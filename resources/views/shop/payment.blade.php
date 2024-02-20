@@ -118,33 +118,33 @@
 
                         <label>
                             Localidad
-                            <input form="form-checkout" type="text" id="localidad" name="localidad" required value="{{session('shop.usuario.datos.localidad')}}">
+                            <input form="form-checkout" type="text" id="localidad" name="localidad" required value="Bahía Blanca">
                         </label>
 
                         <label>
                             Codigo postal
-                            <input form="form-checkout" type="text" id="codigo_postal" name="codigo_postal" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.codigo_postal')}}">
+                            <input form="form-checkout" type="text" id="codigo_postal" name="codigo_postal" required pattern="[0-9]+" title="Sólo se permiten números" value="8000">
                         </label>
 
                         <label>
                             Domicilio
-                            <input form="form-checkout" type="text" id="domicilio" name="domicilio" required value="{{session('shop.usuario.datos.domicilio')}}">
+                            <input form="form-checkout" type="text" id="domicilio" name="domicilio" required value="Domicilio">
                         </label>
 
                         <div class="flex">
                             <label>
                                 Domicilio número
-                                <input form="form-checkout" type="text" id="domicilio_nro" name="domicilio_nro" required pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.domicilio_nro')}}">
+                                <input form="form-checkout" type="text" id="domicilio_nro" name="domicilio_nro" required pattern="[0-9]+" title="Sólo se permiten números" value="1234">
                             </label>
                             
                             <label>
                                 Domicilio piso
-                                <input form="form-checkout" type="text" id="domicilio_piso" name="domicilio_piso" value="{{session('shop.usuario.datos.domicilio_piso')}}">
+                                <input form="form-checkout" type="text" id="domicilio_piso" name="domicilio_piso" value="PB">
                             </label>
 
                             <label>
                                 Domicilio depto
-                                <input form="form-checkout" type="text" id="domicilio_depto" name="domicilio_depto" value="{{session('shop.usuario.datos.domicilio_depto')}}">
+                                <input form="form-checkout" type="text" id="domicilio_depto" name="domicilio_depto" value="1">
                             </label>
                         </div>
 

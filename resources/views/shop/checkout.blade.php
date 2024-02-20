@@ -65,7 +65,7 @@
 
                                 @php
                                     $id             = $checkout["items"][$i]["id"];
-                                    $descripcion    = $checkout["items"][$i]["descripcion"];
+                                    $descripcion    = $checkout["items"][$i]["nombre"];
                                     $precio         = $checkout["items"][$i]["precio"];
                                     $imagen         = $checkout["items"][$i]["imagen"] ? $checkout["items"][$i]["imagen"] : asset('images/content/no-image.png');
                                     $cantidad 	    = $checkout["items"][$i]["cantidad"];
