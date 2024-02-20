@@ -85,7 +85,7 @@ class Articulo extends Model
         if($id > 0)
         {
             $articulo = self::where('id', $id)
-                ->with('atributo')
+                ->with('atributo.talle')
                 ->with('imagen')
                 ->with('detalle')
                 ->with('categoria')
