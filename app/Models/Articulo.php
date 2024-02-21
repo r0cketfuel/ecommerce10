@@ -113,11 +113,14 @@ class Articulo extends Model
 
         if(isset($search['query']))
         {
-            $query->where(function ($q) use ($search)
+            $busqueda = strtolower($search['query']);
+
+            $query->where(function ($q) use ($busqueda)
             {
-                $q->where('codigo',         'like', '%' . $search['query'] . '%')
-                ->orWhere('nombre',         'like', '%' . $search['query'] . '%')
-                ->orWhere('descripcion',    'like', '%' . $search['query'] . '%');
+                $q->where('codigo',         'like', '%' . $busqueda . '%')
+                ->orWhere('nombre',         'like', '%' . $busqueda . '%')
+                ->orWhere('descripcion',    'like', '%' . $busqueda . '%')
+                ->orWhereJsonContains('tags', $busqueda);
             });
         }
     

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('SET NULL');
             $table->unsignedTinyInteger('subcategoria_id')->nullable();
             $table->foreign('subcategoria_id')->references('id')->on('subcategorias')->onDelete('SET NULL');
+            $table->json('tags')->nullable();
             $table->unsignedTinyInteger('estado')->default(1);
             $table->datetime('creado');
             $table->datetime('actualizado')->nullable();
