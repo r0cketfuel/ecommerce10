@@ -15,4 +15,5 @@ return [
 	"banners"           => "/images/banners",
 
 	"pagination"        => 25,
+    'paginator_range'   => 4,
 ];

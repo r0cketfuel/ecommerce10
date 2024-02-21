@@ -45,7 +45,7 @@
 .paginator-area .paginator-page
 {
 	color: 							unset;
-
+	padding: 						2px 4px;
 }
 
 .paginator-area .paginator-page:hover:not(.page-active)
