@@ -76,6 +76,11 @@ class Articulo extends Model
         return $this->hasOne(Promocion::class);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function promocionVigente()
+    {
+        return $this->hasOne(Promocion::class)->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now());
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function info(int $id)
     {
         //=====================================================================//
@@ -91,7 +96,7 @@ class Articulo extends Model
                 ->with('categoria')
                 ->with('subcategoria')
                 ->with('review.usuario')
-                ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now()); }])
+                ->with('promocionVigente')
                 ->first();
 
             if($articulo)
@@ -107,9 +112,7 @@ class Articulo extends Model
         // Método que devuelve un listado de artículos //
         //=============================================//
 
-        $query = self::with('imagen')
-            ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now()); }])
-            ->where('estado', 1);
+        $query = self::with('imagen')->with('promocionVigente')->where('estado', 1);
 
         if(isset($search['query']))
         {
@@ -147,9 +150,7 @@ class Articulo extends Model
 
         if($id > 0)
         {
-            $articulo = self::where("id", $id)
-                ->with(['promocion' => function ($query) { $query->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now()); }])
-                ->first();
+            $articulo = self::where("id", $id)->with('promocionVigente')->first();
             
             $precio = $articulo->precio;
 
