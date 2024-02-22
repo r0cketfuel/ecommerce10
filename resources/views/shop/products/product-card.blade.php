@@ -6,9 +6,9 @@
             <img loading="lazy" src="{{ asset('images/content/no-image.png') }}" alt="imagen">
         @endif
     </div>
-    @if($item->promocion)
+    @if($item->promocionVigente)
         <div class="product-card-discount">
-            <span>{{ $item->promocion->descuento }}% OFF</span>
+            <span>{{ $item->promocionVigente->descuento }}% OFF</span>
         </div>
     @endif
     <div class="product-card-extra">
