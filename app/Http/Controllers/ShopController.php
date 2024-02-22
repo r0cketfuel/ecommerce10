@@ -294,7 +294,8 @@ class ShopController extends Controller
         {
             $currentStep = (int)$request->input("currentStep");
     
-            $rules = [];
+            $rules              = [];
+            $additionalRules    = [];
 
             switch($currentStep)
             {
@@ -302,6 +303,8 @@ class ShopController extends Controller
                 {
                     session()->put("shop.checkout.confirmation", now());
 
+                    return response()->json(['success' => true, "next-step" => 2]);
+                    
                     break;
                 }
 
@@ -315,57 +318,49 @@ class ShopController extends Controller
                         "email"             => ["required","email"],
                     ];
 
+                    return response()->json(['success' => true, "next-step" => 3]);
+                    
                     break;
                 }
 
                 case(3):
                 {
-                    $rules = ["radio_medioPago" => ["required","exists:medios_pagos,id"]];
+                    $rules = [
+                        "radio_medioPago"   => ["required","exists:medios_pagos,id"],
+                        "radio_medioEnvio"  => ["required","exists:medios_envios,id"],
+                    ];
+
+                    $selectedOption = $request->input('radio_medioEnvio');
+    
+                    // Si el usuario ha seleccionado envío y el valor es igual a 2, aplicar reglas de validación adicionales
+                    if($selectedOption == 2)
+                    {
+                        // Definir las reglas de validación adicionales
+                        $additionalRules = [
+                            "codigo_postal"             => ["required","numeric", "between:1000,9999"],
+                            "localidad"                 => ["required","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
+                            "domicilio"                 => ["required","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
+                            "domicilio_nro"             => ["required","min:1","max:99999"],
+                            "domicilio_piso"            => ["required","min:1","max:99"],
+                            "domicilio_depto"           => ["required"],
+                            "domicilio_aclaraciones"    => ["required"],
+                        ];
+    
+                        // Fusionar las reglas de validación adicionales con las reglas actuales
+                        $rules = array_merge($rules, $additionalRules);
+                    }
 
                     break;
                 }
 
                 case(4):
                 {
-                    $rules = ["radio_medioEnvio" => ["required","exists:medios_envios,id"]];
-
                     break;
                 }
 
                 case(5):
                 {
                     break;
-                }
-
-                case(6):
-                {
-                    break;
-                }
-            }
-
-            // Antes de aplicar las reglas de validación predeterminadas
-            $additionalRules = [];
-
-            if($currentStep == 4)
-            {
-                $selectedOption = $request->input('radio_medioEnvio');
-
-                // Si el usuario ha seleccionado envío y el valor es igual a 2, aplicar reglas de validación adicionales
-                if($selectedOption == 2)
-                {
-                    // Definir las reglas de validación adicionales
-                    $additionalRules = [
-                        "codigo_postal"             => ["required","min:1000","max:9999"],
-                        "localidad"                 => ["required","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
-                        "domicilio"                 => ["required","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
-                        "domicilio_nro"             => ["required","min:1","max:99999"],
-                        "domicilio_piso"            => ["required","min:1","max:99"],
-                        "domicilio_depto"           => ["required"],
-                        "domicilio_aclaraciones"    => ["required"],
-                    ];
-
-                    // Fusionar las reglas de validación adicionales con las reglas actuales
-                    $rules = array_merge($rules, $additionalRules);
                 }
             }
 
@@ -375,7 +370,6 @@ class ShopController extends Controller
             // Manejar los errores de validación
             if($validator->fails())
                 return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
-
 
 
 
