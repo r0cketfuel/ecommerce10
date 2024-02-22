@@ -117,6 +117,7 @@ class Articulo extends Model
         if(isset($search['query']))
         {
             $busqueda = strtolower($search['query']);
+            $busqueda = strtr($busqueda, 'áéíóúüñ', 'aeiouun');
 
             $query->where(function ($q) use ($busqueda)
             {
