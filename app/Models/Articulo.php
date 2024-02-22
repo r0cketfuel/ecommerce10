@@ -106,7 +106,7 @@ class Articulo extends Model
         return NULL;
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-	public static function search(array $search)
+	public static function search($search = [])
 	{
         //=============================================//
         // Método que devuelve un listado de artículos //

@@ -25,51 +25,9 @@ use App\Services\FavoritosService;
 class ShopController extends Controller
 {
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-	public function index(Request $request)
+	public function index()
 	{
-        // Sistema de búsqueda de artículos
-        $busqueda = [
-            "titulo"    => "Todos los artículos",
-            "searchbar" => "",
-            "params"    => []
-        ];
-
-        if($request->filled("busqueda") && $request->input("busqueda") != "")
-        {
-            $busqueda["titulo"]     = "Resultados de la búsqueda: '" . $request->input("busqueda") . "'";
-            $busqueda["searchbar"]  = $request->input("busqueda");
-            $busqueda["params"]     = ["query" => $request->input("busqueda")];
-        }
-        else
-        {
-            if($request->filled("categoria"))
-            {
-                $busqueda["titulo"] = Categoria::find($request->input("categoria"))["nombre"];
-                $busqueda["params"] = ["categoria" => $request->input("categoria")];
-            }
-            else
-            {
-                if($request->filled("subcategoria"))
-                {
-                    $subcategoria   = Subcategoria::find($request->input("subcategoria"));
-                    $categoria      = Categoria::find($subcategoria["categoria_id"]);
-
-                    $busqueda["titulo"] = $categoria["nombre"] . " > " . $subcategoria["nombre"];
-                    $busqueda["params"] = ["subcategoria" => $request->input("subcategoria")];
-                }
-            }
-        }
-        
-        if($request->filled("sort") && $request->filled("order"))
-        {
-            $busqueda["params"]["sort"]     = $request->input("sort");
-            $busqueda["params"]["order"]    = $request->input("order");
-        }
-
-        // Listado de artículos
-        $items = Articulo::search($busqueda["params"])->appends(request()->query());
-
-        return view("shop.index", compact("busqueda", "items"));
+        return view("shop.index");
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function item($id, Request $request)
