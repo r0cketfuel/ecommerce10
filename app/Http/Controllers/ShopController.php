@@ -249,7 +249,7 @@ class ShopController extends Controller
     {
         $shoppingCart->init();
 
-        return view("shop.success", compact("order"));
+        return view("shop.checkout.success", compact("order"));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function logout(UsuarioController $user, FavoritosService $favoritosService, ShoppingCartService $shoppingCartService)

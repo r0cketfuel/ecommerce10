@@ -140,7 +140,7 @@ class PaymentController extends Controller
         }
 
         // Respuesta de la api
-        return response()->json($response);
+        echo json_encode($response);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function pagofacil($data, $itemsMp)

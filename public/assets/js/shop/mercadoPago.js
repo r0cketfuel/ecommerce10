@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", function ()
     const monto     = document.getElementById("total").innerHTML.replace('$','').replace(/\./g,'').replace(",",'.');
     const _token    = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 
+    const domicilio         = document.getElementById("domicilio");
+    const domicilio_nro     = document.getElementById("domicilio_nro");
+    const domicilio_piso    = document.getElementById("domicilio_piso");
+    const domicilio_depto   = document.getElementById("domicilio_depto");
+
+
     const cardForm = mp.cardForm({
         amount: monto,
         iframe: true,
