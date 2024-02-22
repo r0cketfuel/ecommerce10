@@ -46,33 +46,33 @@
                 <div class="input-group">
                     <label>
                         Código Postal:
-                        <input type="text" name="codigo_postal">
+                        <input type="text" id="codigo_postal" name="codigo_postal" value="8000">
                     </label>
                     <label>
                         Ciudad:
-                        <input type="text" name="localidad">
+                        <input type="text" id="localidad" name="localidad" value="Bahía Blanca">
                     </label>
                     <label>
                         Domicilio
-                        <input type="text" name="domicilio">
+                        <input type="text" id="domicilio" name="domicilio" value="Sócrates">
                     </label>
                     <div class="flex gap-3">
                         <label>
                             Número
-                            <input name="domicilio_nro">
+                            <input type="text" id="domicilio_nro" name="domicilio_nro" value="1234">
                         </label>
                         <label>
                             Piso
-                            <input name="domicilio_piso">
+                            <input type="text" id="domicilio_piso" name="domicilio_piso" value="PB">
                         </label>
                         <label>
                             Departamento
-                            <input name="domicilio_depto">
+                            <input type="text" id="domicilio_depto" name="domicilio_depto" value="3">
                         </label>
                     </div>
                     <label>
                         Instrucciones de entrega
-                        <textarea name="domicilio_aclaraciones"></textarea>
+                        <textarea name="domicilio_aclaraciones">Portón blanco</textarea>
                     </label>
                 </div>
             </div>

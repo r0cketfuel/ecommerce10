@@ -104,6 +104,15 @@
 		.progress-indicator div.success {
 			background-color: 		rgb(80, 210, 80);
 		}
+
+		.container {
+            height:                         28px;
+            width:                          100%;
+            border:                         1px solid rgb(220,220,220);
+            padding:                        5px;
+            background-color:               white;
+            box-sizing:                     border-box;
+        }
 	</style>
 @endsection
 
