@@ -229,8 +229,6 @@ class ShopController extends Controller
         if($request->isMethod("post"))
         {
             $currentStep = (int)$request->input("currentStep");
-    
-            $rules = [];
 
             switch($currentStep)
             {
