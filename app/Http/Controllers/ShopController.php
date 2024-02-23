@@ -17,6 +17,7 @@ use App\Models\CuentaBancaria;
 use App\Models\Genero;
 use App\Models\MedioPago;
 use App\Models\MedioEnvio;
+use App\Models\Rating;
 use App\Models\TipoDocumento;
 use App\Services\FavoritosService;
 
@@ -43,8 +44,14 @@ class ShopController extends Controller
         {
             if($item->promocion)
                 $item->precio = $item->precio - ($item->precio * $item->promocion->descuento / 100);
-        
-            return view("shop.item.index", compact("item"));
+
+            // Obtener las calificaciones del artículo
+            $ratings = Rating::find($id);
+
+            // Incrementar las visualizaciones del artículo
+            Rating::incrementaVisualizacion($id);
+
+            return view("shop.item.index", compact("item", "ratings"));
         }
 
         return redirect("shop");

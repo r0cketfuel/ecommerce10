@@ -183,9 +183,6 @@ return [
         
         // Proveedor de servicio de búsqueda
         App\Providers\SearchServiceProvider::class,
-        
-        // Proveedor de servicio de las estadísitcas de los artículos
-        App\Providers\RatingServiceProvider::class,
 
     ])->toArray(),
 
