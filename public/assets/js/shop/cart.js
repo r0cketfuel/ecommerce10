@@ -412,9 +412,12 @@ function addToCart(id) {
 
     promise.then((data) => {
 
-        addToCartButton.classList.remove('button--loading');
-        addToCartButton.innerHTML = buttonLabel;
-        addToCartButton.disabled = false;
+        // Permanencia mínima del loader de 500ms
+        setTimeout(function() {
+            addToCartButton.classList.remove('button--loading');
+            addToCartButton.innerHTML = buttonLabel;
+            addToCartButton.disabled = false;
+        }, 1000);
 
         if(data['success'] == true)
         {
@@ -426,7 +429,7 @@ function addToCart(id) {
         }
         else
         {
-            console.log("Error");
+            console.log("Error al agregar el item al carrito");
         }
     });
 }
