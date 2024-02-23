@@ -253,10 +253,12 @@ class ShopController extends Controller
                 case(2):
                 {
                     $rules = [
-                        "apellidos"         => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
-                        "nombres"           => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
-                        "documento_nro"     => ["required","integer","min:6","max:99999999"],
-                        "email"             => ["required","email"],
+                        "apellidos"         => ["required","alpha","min:4","max:50"],
+                        "nombres"           => ["required","alpha","min:4","max:50"],
+                        "documento_nro"     => ["required","integer","between:1000000,99999999",'regex:/^\d{7,8}$/'],
+                        "telefono_celular"  => ["required","integer","between:1000000000,999999999999999",'regex:/^\d{10,15}$/'],
+                        "telefono_alt"      => ["nullable","integer","between:1000000000,999999999999999",'regex:/^\d{10,15}$/'],
+                        "email"             => ["required",'email:rfc,dns',"min:12","max:50"],
                     ];
 
                     // Validar campos y manejar errores

@@ -11,12 +11,12 @@
             <div class="flex gap-3">
                 <label>
                     Apellidos
-                    <input type="text" id="apellidos" name="apellidos" pattern="[a-zA-Z]+" title="Sólo se permiten letras" value="{{session('shop.usuario.datos.apellidos')}}">
+                    <input type="text" id="apellidos" name="apellidos" value="{{session('shop.usuario.datos.apellidos')}}">
                 </label>
 
                 <label>
                     Nombres
-                    <input type="text" id="nombres" name="nombres" pattern="[a-zA-Z]+" title="Sólo se permiten letras" value="{{session('shop.usuario.datos.nombres')}}">
+                    <input type="text" id="nombres" name="nombres" value="{{session('shop.usuario.datos.nombres')}}">
                 </label>
             </div>
             <div class="flex gap-3">
@@ -31,25 +31,25 @@
                 </label>
 
                 <label>
-                    Número de documento
-                    <input type="text" id="documento_nro" name="documento_nro" pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.documento_nro')}}">
+                    Número de documento (sólo números)
+                    <input type="text" id="documento_nro" name="documento_nro" value="{{session('shop.usuario.datos.documento_nro')}}">
                 </label>
             </div>
             <div class="flex gap-3">
                 <label>
-                    Teléfono celular
-                    <input type="text" id="telefono_celular" name="telefono_celular" pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.telefono_celular')}}">
+                    Teléfono celular (sólo números)
+                    <input type="text" id="telefono_celular" name="telefono_celular" value="{{session('shop.usuario.datos.telefono_celular')}}">
                 </label>
 
                 <label>
-                    Teléfono alternativo
-                    <input type="text" id="telefono_alt" name="telefono_alt" pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.telefono_alt')}}">
+                    Teléfono alternativo (sólo números)
+                    <input type="text" id="telefono_alt" name="telefono_alt" value="{{session('shop.usuario.datos.telefono_alt')}}">
                 </label>
             </div>
 
             <label>
                 Correo electrónico
-                <input type="email" id="email" name="email" value="{{session('shop.usuario.datos.email')}}" autocomplete="off">
+                <input type="text" id="email" name="email" value="{{session('shop.usuario.datos.email')}}">
             </label>
         </div>
     </div>
