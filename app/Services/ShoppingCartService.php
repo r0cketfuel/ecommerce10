@@ -109,48 +109,33 @@
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function checkOut(): array
         {
-			//=========================================================================================//
-			// Método que devuelve un array con los items del carrito, información, total y subtotales //
-			//=========================================================================================//
-
             $chekOutArray = [
                 "items" => session(self::SESSION_CART_ITEMS_KEY),
-                "total" => $this->total()
+                "total" => 0
             ];
-
-            for($i=0;$i<count($chekOutArray["items"]);$i++)
+        
+            foreach ($chekOutArray["items"] as &$item)
             {
-                $articulo   = Articulo::find(session(self::SESSION_CART_ITEMS_KEY)[$i]["id"]);
-                $precio     = Articulo::precio($articulo->id);
-                $cantidad   = session(self::SESSION_CART_ITEMS_KEY)[$i]["cantidad"];
+                $articulo   = Articulo::find($item["id"]);
+                $precio     = $articulo->precioConDescuento;
+                $cantidad   = $item["cantidad"];
                 $subtotal   = $precio * $cantidad;
-
-                $chekOutArray["items"][$i]["precio"]    = $precio;
-                $chekOutArray["items"][$i]["subtotal"]  = $subtotal;
-                $chekOutArray["items"][$i]["opciones"]  = [];
+        
+                $item["precio"]     = $precio;
+                $item["subtotal"]   = $subtotal;
+                $item["opciones"]   = [];
+        
+                $chekOutArray["total"] += $subtotal;
             }
-
+        
             return $chekOutArray;
         }
-		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function total(): float
         {
-            //==========================================================//
-			// Método que calcula el monto total del carrito de compras //
-			//==========================================================//
+            $checkoutData = $this->checkOut();
 
-            $total = 0;
-
-            for($i=0;$i<count(session(self::SESSION_CART_ITEMS_KEY));$i++)
-            {
-                $articulo   = Articulo::find(session(self::SESSION_CART_ITEMS_KEY)[$i]["id"]);
-                $precio     = Articulo::precio($articulo->id);
-                $cantidad   = session(self::SESSION_CART_ITEMS_KEY)[$i]["cantidad"];
-                $subtotal   = $precio * $cantidad;
-                $total      = $total + $subtotal;
-            }
-
-            return $total;
+            return $checkoutData["total"];
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function totalItems(): int
