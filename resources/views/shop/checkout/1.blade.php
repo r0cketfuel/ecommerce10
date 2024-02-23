@@ -5,7 +5,7 @@
     <br>
     <!-- Contenido -->
     <div class="panel">
-        <div class="panel-title panel-title-underlined">1 - Carrito de compras</div>
+        <div class="panel-title panel-title-underlined">Carrito de compras</div>
         <div class="panel-content">
 
             @for($i=0;$i < count($checkout["items"]);++$i)

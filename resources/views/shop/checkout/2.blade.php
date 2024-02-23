@@ -6,7 +6,7 @@
     <br>
     <!-- Contenido -->
     <div class="panel">
-        <div class="panel-title panel-title-underlined">2 - Datos facturación</div>
+        <div class="panel-title panel-title-underlined">Datos facturación</div>
         <div class="panel-content">
             <div class="flex gap-3">
                 <label>
