@@ -109,7 +109,7 @@
                         <div>Precio:</div>
                         @if ($item->promocion)
                             <div class="flex align-items-center gap-2">
-                                <div class="discount">{{ _money($item->precio) }}</div>
+                                <div class="discount">{{ _money($item->precioConDescuento) }}</div>
                                 <div id="precio" class="text-line-through">{{ $item->getOriginal('precio') }}</div>
                             </div>
                         @else

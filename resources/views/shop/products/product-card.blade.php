@@ -30,7 +30,7 @@
             <div>{{ $item->nombre }}</div>
             <div>{{ $item->descripcion }}</div>
         </div>
-        <div class="precio">{{ _money($item->precio) }}</div>
+        <div class="precio">{{ _money($item->precioConDescuento) }}</div>
     </div>
     <div class="product-card-cart">
         <button class="btn-primary btn-rounded" value="{{ $item->id }}"><span><i class="fa-solid fa-cart-plus"></i></span>{{ __('buttons.addToCart') }}</button>

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\Usuario;
 use App\Models\Articulo;
+use App\Models\Banner;
 use App\Models\CuentaBancaria;
 use App\Models\Genero;
 use App\Models\MedioPago;
@@ -26,7 +27,10 @@ class ShopController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	public function index()
 	{
-        return view("shop.index");
+        // Obtener los Banners promocionales vigentes
+        $banners = Banner::vigentes();
+
+        return view("shop.index", compact("banners"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function item($id, Request $request)
@@ -42,9 +46,6 @@ class ShopController extends Controller
         
         if($item && $item->estado == 1)
         {
-            if($item->promocion)
-                $item->precio = $item->precio - ($item->precio * $item->promocion->descuento / 100);
-
             // Obtener las calificaciones del artículo
             $ratings = Rating::find($id);
 
