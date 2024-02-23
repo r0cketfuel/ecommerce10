@@ -282,14 +282,6 @@ class ShopController extends Controller
 	{
         $checkout = $shoppingCart->checkOut();
 
-        foreach ($checkout["items"] as &$item)
-        {
-            $articulo = Articulo::info($item["id"]);
-        
-            $item["descripcion"]    = $articulo->descripcion ?? NULL;
-            $item["imagen"]         = count($articulo->imagen) ? $articulo->imagen[0]["miniatura"] : NULL;
-        }
-
         if($request->isMethod("post"))
         {
             $currentStep = (int)$request->input("currentStep");
@@ -379,7 +371,7 @@ class ShopController extends Controller
                 case(4):
                 {
                     return response()->json(['success' => true, "next-step" => 5]);
-                    
+
                     break;
                 }
 
@@ -420,7 +412,6 @@ class ShopController extends Controller
             }
         }
 
-        $generos            = Genero::all();
         $tiposDocumentos    = TipoDocumento::all();
         $cuentaBancaria     = CuentaBancaria::first();
 
@@ -444,7 +435,7 @@ class ShopController extends Controller
         if(session()->has("shop.checkout.medio_pago"))
             $medioEnvioSeleccionado = session("shop.checkout.medio_envio.id");
 
-        return view("shop.checkout.index", compact("checkout", "mediosPagoListado", "mediosEnvioListado", "medioPagoSeleccionado", "medioEnvioSeleccionado", "generos", "tiposDocumentos", "cuentaBancaria"));
+        return view("shop.checkout.index", compact("checkout", "mediosPagoListado", "mediosEnvioListado", "medioPagoSeleccionado", "medioEnvioSeleccionado", "tiposDocumentos", "cuentaBancaria"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function compras()

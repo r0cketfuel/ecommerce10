@@ -65,7 +65,7 @@
 
                                 @php
                                     $id             = $checkout["items"][$i]["id"];
-                                    $descripcion    = $checkout["items"][$i]["nombre"];
+                                    $nombre         = $checkout["items"][$i]["nombre"];
                                     $precio         = $checkout["items"][$i]["precio"];
                                     $imagen         = $checkout["items"][$i]["imagen"] ? $checkout["items"][$i]["imagen"] : asset('images/content/no-image.png');
                                     $cantidad 	    = $checkout["items"][$i]["cantidad"];
@@ -82,7 +82,7 @@
                                 @endphp
             
                                 <ul class="product-checkout-card" data-id="{{ $id }}">
-                                    <li>{{ $cantidad }} x <span>{{ $descripcion }}</span></li>
+                                    <li>{{ $cantidad }} x <span>{{ $nombre }}</span></li>
                                     <li>
                                         <img src="{{ $imagen }}" alt="imagen">
                                     </li>
