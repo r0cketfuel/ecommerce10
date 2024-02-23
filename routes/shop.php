@@ -28,8 +28,8 @@ Route::controller(ShopController::class)->group(function () {
     Route::middleware(['auth:web'])->group(function () {
         Route::get('favoritos',        	'favoritos');
 
-        Route::get('checkout',         	'checkoutV2');
-        Route::post('checkout',        	'checkoutV2');
+        Route::get('checkout',         	'checkout');
+        Route::post('checkout',        	'checkout');
         
         Route::get('payment',          	'payment');
         Route::get('success',          	'success');
