@@ -230,19 +230,12 @@ class ShopController extends Controller
         {
             $currentStep = (int)$request->input("currentStep");
     
-            $rules              = [];
+            $rules = [];
 
             switch($currentStep)
             {
                 case(1):
                 {
-                    // Validar campos y manejar errores
-                    $validator = Validator::make($request->all(), $rules);
-
-                    // Manejar los errores de validación
-                    if($validator->fails())
-                        return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
-
                     session()->put("shop.checkout.confirmation", now());
 
                     return response()->json(['success' => true, "next-step" => 2]);
