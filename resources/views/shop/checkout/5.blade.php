@@ -5,47 +5,56 @@
     </div>
     <br>
     <!-- Contenido -->
-    @include("shop.modals.payment")
-    <div class="panel" id="user">
-        <div class="panel-title panel-title-underlined">3 - Datos de contacto</div>
+    <div class="panel" id="payment">
+        <div class="panel-title panel-title-underlined">Pago</div>
         <div class="panel-content">
-            <div class="input-group">
 
-                <div class="flex gap-3">
-                    <label>
-                        Localidad
-                        <input type="text" name="localidad" value="{{session('shop.usuario.datos.localidad')}}">
-                    </label>
+            <!-- Efectivo -->
+            @if(session("shop.checkout.medio_pago.id")==1)
+                <button form='form-checkout' class='btn-primary' type='submit'>Confirmar compra</button>
+            @endif
 
-                    <label>
-                        Código postal
-                        <input type="text" name="codigo_postal" pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.codigo_postal')}}">
-                    </label>
+            <!-- Transferencia bancaria -->
+            @if(session("shop.checkout.medio_pago.id")==2)
+                <div class="grid" style="grid-template-columns: auto 1fr; gap: 20px;">
+                    <div class="text-bold">Banco:</div>
+                    <div>{{$cuentaBancaria["banco"]}}</div>
+                    <div class="text-bold">Cuit:</div>
+                    <div>{{$cuentaBancaria["cuit"]}}</div>
+                    <div class="text-bold">Titular:</div>
+                    <div>{{$cuentaBancaria["titular"]}}</div>
+                    <div class="text-bold">Cuenta:</div>
+                    <div>{{$cuentaBancaria["cuenta"]}}</div>
+                    <div class="text-bold">CBU:</div>
+                    <div>{{$cuentaBancaria["cbu"]}}</div>
+                    <div class="text-bold">Alias:</div>
+                    <div>{{$cuentaBancaria["alias"]}}</div>
                 </div>
+                <button form='form-checkout' class='btn-primary' type='submit'>Confirmar compra</button>
+            @endif
 
-                <label>
-                    Domicilio
-                    <input type="text" id="domicilio" name="domicilio" value="{{session('shop.usuario.datos.domicilio')}}">
-                </label>
+            <!-- Tarjeta de crédito o débito mercadopago -->
+            @if(session("shop.checkout.medio_pago.id")==3)
+                <script defer src="https://sdk.mercadopago.com/js/v2"></script>
+                <script defer src="/assets/js/shop/mercadoPago.js"></script>
 
-                <div class="flex gap-3">
-                    <label>
-                        Domicilio número
-                        <input type="text" id="domicilio_nro" name="domicilio_nro" pattern="[0-9]+" title="Sólo se permiten números" value="{{session('shop.usuario.datos.domicilio_nro')}}">
-                    </label>
-                    
-                    <label>
-                        Domicilio piso
-                        <input type="text" id="domicilio_piso" name="domicilio_piso" value="{{session('shop.usuario.datos.domicilio_piso')}}">
-                    </label>
+                <div>5031 7557 3453 0604</div>
 
-                    <label>
-                        Domicilio depto
-                        <input type="text" id="domicilio_depto" name="domicilio_depto" value="{{session('shop.usuario.datos.domicilio_depto')}}">
-                    </label>
-                </div>
-            
-            </div>
+                <label>Número de tarjeta<div id="form-checkout__cardNumber"         class="container"></div></label>
+                <label>Fecha de expiración<div id="form-checkout__expirationDate"   class="container"></div></label>
+                <label>Código de seguridad<div id="form-checkout__securityCode"     class="container"></div></label>
+                <label>Titular de la tarjeta<input id="form-checkout__cardholderName"></label>
+                <label>Banco emisor<select id="form-checkout__issuer"></select></label>
+                <label>Cuotas<select id="form-checkout__installments"></select></label>
+                <progress value="0" class="progress-bar">Cargando...</progress>
+                <button id="prueba" form="form-checkout" class="btn-primary" type="submit" id="form-checkout__submit">Confirmar compra</button>
+            @endif
+
+            <!-- Pagofácil o Rapipago mercadopago -->
+            @if(session("shop.checkout.medio_pago.id")==4 || session("shop.checkout.medio_pago.id")==5)
+                <button form="form-checkout" type="submit">Pagar</button>
+            @endif
+
         </div>
     </div>
 </div>

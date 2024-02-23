@@ -47,11 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Función desplazamiento de las pantallas a la derecha
-    function moveRight()
+    function moveRight(step)
     {
         if (curSlide < (slides.length - 1))
         {
-            ++curSlide;
+            //++curSlide;
+            curSlide = step - 1;
             updateProgressIndicator();
         }
 
@@ -90,7 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (data['redirect_url']) {
                         window.location.href = data['redirect_url'];
                     } else {
-                        moveRight();
+                        if(data["next-step"])
+                            moveRight(data["next-step"]);
                     }
                 } else {
                     function mostrarErrores(errors) {

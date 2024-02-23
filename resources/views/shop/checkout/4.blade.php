@@ -6,54 +6,80 @@
     <br>
     <!-- Contenido -->
     <div class="panel" id="payment">
-        <div class="panel-title panel-title-underlined">Pago</div>
+        <div class="panel-title panel-title-underlined">Resumen de compra</div>
         <div class="panel-content">
 
-            <!-- Efectivo -->
-            @if(session("shop.checkout.medio_pago.id")==1)
-                <button form='form-checkout' class='btn-primary' type='submit'>Confirmar compra</button>
-            @endif
+            <!-- Contenido -->
+            <div class="panel">
+                <div class="panel-title panel-title-underlined">1 - Carrito de compras</div>
+                <div class="panel-content">
+                    @for($i=0;$i < count($checkout["items"]);++$i)
 
-            <!-- Transferencia bancaria -->
-            @if(session("shop.checkout.medio_pago.id")==2)
-                <div class="grid" style="grid-template-columns: auto 1fr; gap: 20px;">
-                    <div class="text-bold">Banco:</div>
-                    <div>{{$cuentaBancaria["banco"]}}</div>
-                    <div class="text-bold">Cuit:</div>
-                    <div>{{$cuentaBancaria["cuit"]}}</div>
-                    <div class="text-bold">Titular:</div>
-                    <div>{{$cuentaBancaria["titular"]}}</div>
-                    <div class="text-bold">Cuenta:</div>
-                    <div>{{$cuentaBancaria["cuenta"]}}</div>
-                    <div class="text-bold">CBU:</div>
-                    <div>{{$cuentaBancaria["cbu"]}}</div>
-                    <div class="text-bold">Alias:</div>
-                    <div>{{$cuentaBancaria["alias"]}}</div>
+                        @php
+                            $id             = $checkout["items"][$i]["id"];
+                            $atributosId    = $checkout["items"][$i]["atributos_id"];
+                            $descripcion    = $checkout["items"][$i]["descripcion"];
+                            $precio         = $checkout["items"][$i]["precio"];
+                            $imagen         = $checkout["items"][$i]["imagen"] ? $checkout["items"][$i]["imagen"] : asset('images/content/no-image.png');
+                            $cantidad 	    = $checkout["items"][$i]["cantidad"];
+                            $subtotal       = $checkout["items"][$i]["subtotal"];
+                            $total          = $checkout["total"];
+
+                            $precio         = _money($precio);
+                            $subtotal       = _money($subtotal);
+                            $total          = _money($total);
+
+                            $opciones       = $checkout["items"][$i]["opciones"];
+                            $talle_id       = $checkout["items"][$i]["opciones"]["talle_id"]    ?? null;
+                            $color          = $checkout["items"][$i]["opciones"]["color"]       ?? null;
+                        @endphp
+
+                        <ul class="product-checkout-card" data-id="{{ $id }}">
+                            <li>{{ $cantidad }} x <span>{{ $descripcion }}</span></li>
+                            <li>
+                                <img src="{{ $imagen }}" alt="imagen">
+                            </li>
+                            <li>Talle</li>
+                            <li>{{ $talle_id }}</li>
+                            <li>Color</li>
+                            <li>{{ $color }}</li>
+                            <li>Precio</li>
+                            <li>{{ $precio }}</li>
+                            <li>Subtotal</li>
+                            <li>{{ $subtotal }}</li>
+                            <div class="product-checkout-card-extra">
+                                <button class="btn-link" data-id="{{ $id }}" data-atributos_id="{{ $atributosId }}" onclick="itemRemove(this.dataset)"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </ul>
+                    @endfor
                 </div>
-                <button form='form-checkout' class='btn-primary' type='submit'>Confirmar compra</button>
-            @endif
+            </div>
 
-            <!-- Tarjeta de crédito o débito mercadopago -->
-            @if(session("shop.checkout.medio_pago.id")==3)
-                <script defer src="https://sdk.mercadopago.com/js/v2"></script>
-                <script defer src="/assets/js/shop/mercadoPago.js"></script>
+            <!-- Contenido -->
+            <div class="panel">
+                <div class="panel-title panel-title-underlined">Datos facturación</div>
+                <div class="panel-content">
+                    <div class="grid grid-cols-2">
+                        <p>Apellidos:</p><p>Apellidos</p>
+                        <p>Nombres:</p><p>Nombres</p>
+                        <p>Tipo de documento:</p><p>Tipo de documento</p>
+                        <p>Número de documento:</p><p>Número de documento</p>
+                        <p>Teléfono celular:</p><p>Teléfono celular</p>
+                        <p>Correo electrónico:</p><p>Correo electrónico</p>
+                    </div>
+                </div>
+            </div>
 
-                <div>5031 7557 3453 0604</div>
-
-                <label>Número de tarjeta<div id="form-checkout__cardNumber"         class="container"></div></label>
-                <label>Fecha de expiración<div id="form-checkout__expirationDate"   class="container"></div></label>
-                <label>Código de seguridad<div id="form-checkout__securityCode"     class="container"></div></label>
-                <label>Titular de la tarjeta<input id="form-checkout__cardholderName"></label>
-                <label>Banco emisor<select id="form-checkout__issuer"></select></label>
-                <label>Cuotas<select id="form-checkout__installments"></select></label>
-                <progress value="0" class="progress-bar">Cargando...</progress>
-                <button id="prueba" form="form-checkout" class="btn-primary" type="submit" id="form-checkout__submit">Confirmar compra</button>
-            @endif
-
-            <!-- Pagofácil o Rapipago mercadopago -->
-            @if(session("shop.checkout.medio_pago.id")==4 || session("shop.checkout.medio_pago.id")==5)
-                <button form="form-checkout" type="submit">Pagar</button>
-            @endif
+            <!-- Contenido -->
+            <div class="panel">
+                <div class="panel-title panel-title-underlined">Forma de pago y envío</div>
+                <div class="panel-content">
+                    <div class="grid grid-cols-2">
+                        <p>Forma de pago:</p><p>Forma de pago</p>
+                        <p>Envío:</p><p>Envío</p>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

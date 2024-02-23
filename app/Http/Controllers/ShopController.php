@@ -318,6 +318,13 @@ class ShopController extends Controller
                         "email"             => ["required","email"],
                     ];
 
+                    // Validar campos y manejar errores
+                    $validator = Validator::make($request->all(), $rules);
+
+                    // Manejar los errores de validación
+                    if($validator->fails())
+                        return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
+
                     return response()->json(['success' => true, "next-step" => 3]);
                     
                     break;
@@ -330,10 +337,11 @@ class ShopController extends Controller
                         "radio_medioEnvio"  => ["required","exists:medios_envios,id"],
                     ];
 
-                    $selectedOption = $request->input('radio_medioEnvio');
-    
+                    $medioPagoSeleccionado  = $request->input('radio_medioPago');
+                    $medioEnvioSeleccionado = $request->input('radio_medioEnvio');
+
                     // Si el usuario ha seleccionado envío y el valor es igual a 2, aplicar reglas de validación adicionales
-                    if($selectedOption == 2)
+                    if($medioEnvioSeleccionado == 2)
                     {
                         // Definir las reglas de validación adicionales
                         $additionalRules = [
@@ -350,11 +358,53 @@ class ShopController extends Controller
                         $rules = array_merge($rules, $additionalRules);
                     }
 
+                    // Validar campos y manejar errores
+                    $validator = Validator::make($request->all(), $rules);
+
+                    // Manejar los errores de validación
+                    if($validator->fails())
+                        return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
+
+                    switch($medioPagoSeleccionado)
+                    {
+                        case(1):
+                        {
+                            return response()->json(['success' => true, "next-step" => 4]);
+                            break;
+                        }
+
+                        case(2):
+                        {
+                            return response()->json(['success' => true, "next-step" => 4]);
+                            break;
+                        }
+
+                        case(3):
+                        {
+                            return response()->json(['success' => true, "next-step" => 4]);
+                            break;
+                        }
+
+                        case(4):
+                        {
+                            return response()->json(['success' => true, "next-step" => 4]);
+                            break;
+                        }
+
+                        case(5):
+                        {
+                            return response()->json(['success' => true, "next-step" => 4]);
+                            break;
+                        }
+                    }
+                    
                     break;
                 }
 
                 case(4):
                 {
+                    return response()->json(['success' => true, "next-step" => 5]);
+                    
                     break;
                 }
 
@@ -363,15 +413,6 @@ class ShopController extends Controller
                     break;
                 }
             }
-
-            // Validar campos y manejar errores
-            $validator = Validator::make($request->all(), $rules);
-
-            // Manejar los errores de validación
-            if($validator->fails())
-                return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
-
-
 
             
             session()->put("shop.checkout.total", $checkout["total"]);
