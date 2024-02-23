@@ -13,9 +13,6 @@
 		{
             if(!session()->has(self::SESSION_FAVOURITES_KEY))
                 $this->init();
-
-            if(session()->has("shop.usuario.datos.id") && session("shop.usuario.datos.id")>0)
-                $this->load(session("shop.usuario.datos.id"));
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function init(): int

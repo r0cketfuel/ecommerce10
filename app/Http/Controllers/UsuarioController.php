@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SignUp;
 use App\Mail\Recovery;
-
+use App\Models\Favorito;
 use App\Models\Usuario;
 use App\Models\Newsletter;
 use App\Services\FavoritosService;
@@ -121,7 +121,7 @@ class UsuarioController extends Controller
         return view("shop.recovery", ["success" => 0]);
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function login(UserLoginRequest $request)
+    public function login(UserLoginRequest $request, FavoritosService $favoritosService)
 	{
         // Almacena usuario y contraseña despues de la validación
         $credentials = $request->getCredentials();
@@ -142,13 +142,15 @@ class UsuarioController extends Controller
         // Carga los datos del usuario en sesión
         session()->put("shop.usuario.datos", $user->toArray());
 
+        $favoritosService->load($user->id);
+
         if(Newsletter::where('email', session("shop.usuario.datos.email"))->count())
             session()->put("shop.newsletter", session("shop.usuario.datos.email"));
 
         return redirect()->intended("shop");
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function modalLogin(UserLoginRequest $request)
+    public function modalLogin(UserLoginRequest $request, FavoritosService $favoritosService)
 	{
         $credentials = $request->getCredentials();
 
@@ -163,6 +165,8 @@ class UsuarioController extends Controller
 
             // Carga los datos del usuario en sesión
             session()->put("shop.usuario.datos", $user->toArray());
+
+            $favoritosService->load($user->id);
 
             if(Newsletter::where('email', session("shop.usuario.datos.email"))->count())
                 session()->put("shop.newsletter", session("shop.usuario.datos.email"));
