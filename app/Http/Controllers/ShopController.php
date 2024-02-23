@@ -236,7 +236,7 @@ class ShopController extends Controller
                 {
                     session()->put("shop.checkout.confirmation", now());
 
-                    return response()->json(['success' => true, "next-step" => 2]);
+                    return response()->json(['success' => true]);
                     
                     break;
                 }
@@ -259,12 +259,14 @@ class ShopController extends Controller
                     if($validator->fails())
                         return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
                     
-                    session()->put("shop.checkout.datos.apellidos",     $validator->valid()["apellidos"]);
-                    session()->put("shop.checkout.datos.nombres",       $validator->valid()["nombres"]);
-                    session()->put("shop.checkout.datos.documento_nro", $validator->valid()["documento_nro"]);
-                    session()->put("shop.checkout.datos.email",         $validator->valid()["email"]);
+                    session()->put("shop.checkout.datos.apellidos",         $validator->valid()["apellidos"]);
+                    session()->put("shop.checkout.datos.nombres",           $validator->valid()["nombres"]);
+                    session()->put("shop.checkout.datos.documento_nro",     $validator->valid()["documento_nro"]);
+                    session()->put("shop.checkout.datos.telefono_celular",  $validator->valid()["telefono_celular"]);
+                    session()->put("shop.checkout.datos.telefono_alt",      $validator->valid()["telefono_alt"]);
+                    session()->put("shop.checkout.datos.email",             $validator->valid()["email"]);
 
-                    return response()->json(['success' => true, "next-step" => 3]);
+                    return response()->json(['success' => true]);
                     
                     break;
                 }
@@ -325,14 +327,14 @@ class ShopController extends Controller
                                 session()->put("shop.checkout.envio.$key", $request->input($key));
                     }
 
-                    return response()->json(['success' => true, "next-step" => 4]);
+                    return response()->json(['success' => true]);
 
                     break;
                 }
 
                 case(4):
                 {
-                    return response()->json(['success' => true, "next-step" => 5]);
+                    return response()->json(['success' => true]);
 
                     break;
                 }

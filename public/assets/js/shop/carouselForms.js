@@ -97,6 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     } else {
                         if(data["next-step"])
                             moveRight(data["next-step"]);
+                        else
+                            moveRight();
                     }
                 } else {
                     function mostrarErrores(errors) {
