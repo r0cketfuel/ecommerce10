@@ -230,7 +230,6 @@ class ShopController extends Controller
             $currentStep = (int)$request->input("currentStep");
     
             $rules              = [];
-            $additionalRules    = [];
 
             switch($currentStep)
             {
@@ -255,7 +254,6 @@ class ShopController extends Controller
                     $rules = [
                         "apellidos"         => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
                         "nombres"           => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
-
                         "documento_nro"     => ["required","integer","min:6","max:99999999"],
                         "email"             => ["required","email"],
                     ];
@@ -267,6 +265,11 @@ class ShopController extends Controller
                     if($validator->fails())
                         return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
                     
+                    session()->put("shop.checkout.datos.apellidos",     $validator->valid()["apellidos"]);
+                    session()->put("shop.checkout.datos.nombres",       $validator->valid()["nombres"]);
+                    session()->put("shop.checkout.datos.documento_nro", $validator->valid()["documento_nro"]);
+                    session()->put("shop.checkout.datos.email",         $validator->valid()["email"]);
+
                     return response()->json(['success' => true, "next-step" => 3]);
                     
                     break;
@@ -279,13 +282,29 @@ class ShopController extends Controller
                         "radio_medioEnvio"  => ["required","exists:medios_envios,id"],
                     ];
 
-                    $selectedOption = $request->input('radio_medioEnvio');
-    
-                    // Si el usuario ha seleccionado envío y el valor es igual a 2, aplicar reglas de validación adicionales
-                    if($selectedOption == 2)
+                    // Validar campos y manejar errores
+                    $validator = Validator::make($request->all(), $rules);
+
+                    // Manejar los errores de validación
+                    if($validator->fails())
+                        return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
+                    
+                    // Información sobre el medio de pago seleccionado
+                    $medioPagoSeleccionado = MedioPago::find($request->input('radio_medioPago'));
+                    session()->put("shop.checkout.medio_pago.id",    $medioPagoSeleccionado->id);
+                    session()->put("shop.checkout.medio_pago.medio", $medioPagoSeleccionado->medio);
+
+                    // Información sobre el medio de envío seleccionado
+                    $medioEnvioSeleccionado = MedioEnvio::find($request->input('radio_medioEnvio'));
+                    session()->put("shop.checkout.medio_envio.id",      $medioEnvioSeleccionado->id);
+                    session()->put("shop.checkout.medio_envio.medio",   $medioEnvioSeleccionado->medio);
+                    session()->put("shop.checkout.medio_envio.costo",   $medioEnvioSeleccionado->costo);
+
+                    // Si el usuario ha seleccionado envío, aplicar reglas de validación adicionales
+                    if($medioEnvioSeleccionado->id != 1)
                     {
                         // Definir las reglas de validación adicionales
-                        $additionalRules = [
+                        $rules = [
                             "codigo_postal"             => ["required","numeric", "between:1000,9999"],
                             "localidad"                 => ["required","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
                             "domicilio"                 => ["required","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
@@ -294,9 +313,6 @@ class ShopController extends Controller
                             "domicilio_depto"           => ["nullable"],
                             "domicilio_aclaraciones"    => ["nullable"],
                         ];
-    
-                        // Fusionar las reglas de validación adicionales con las reglas actuales
-                        $rules = array_merge($rules, $additionalRules);
                     }
 
                     // Validar campos y manejar errores
@@ -305,6 +321,15 @@ class ShopController extends Controller
                     // Manejar los errores de validación
                     if($validator->fails())
                         return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
+
+                    if($medioEnvioSeleccionado->id != 1)
+                    {
+                        $keys = ["codigo_postal", "localidad", "domicilio", "domicilio_nro", "domicilio_piso", "domicilio_depto", "domicilio_aclaraciones"];
+                        
+                        foreach ($keys as $key)
+                            if($request->has($key))
+                                session()->put("shop.checkout.envio.$key", $request->input($key));
+                    }
 
                     return response()->json(['success' => true, "next-step" => 4]);
 
@@ -325,35 +350,9 @@ class ShopController extends Controller
             }
             
             session()->put("shop.checkout.total", $checkout["total"]);
-
-            if($request->has("radio_medioPago") && is_numeric($request->input("radio_medioPago")) && (int)$request->input("radio_medioPago")>0)
-                if((int)$request->input("radio_medioPago")<=MedioPago::count())
-                {
-                    $medio = MedioPago::find($request->input("radio_medioPago"));
-                    session()->put("shop.checkout.medio_pago.id",    $medio["id"]);
-                    session()->put("shop.checkout.medio_pago.medio", $medio["medio"]);
-                }
-
-            if($request->has("radio_medioEnvio") && is_numeric($request->input("radio_medioEnvio")) && (int)$request->input("radio_medioEnvio")>0)
-                if((int)$request->input("radio_medioEnvio")<=MedioEnvio::count())
-                {
-                    $medio = MedioEnvio::find($request->input("radio_medioEnvio"));
-                    session()->put("shop.checkout.medio_envio.id",      $medio["id"]);
-                    session()->put("shop.checkout.medio_envio.medio",   $medio["medio"]);
-                    session()->put("shop.checkout.medio_envio.costo",   $medio["costo"]);
-                }
-
-            if(session("shop.checkout.medio_envio.id")==2)
-            {
-                if($request->has("input_codigoPostal"))     session()->put("shop.checkout.envio.codigo_postal",       $request->input("input_codigoPostal"));
-                if($request->has("input_ciudad"))           session()->put("shop.checkout.envio.ciudad",              $request->input("input_ciudad"));
-                if($request->has("input_domicilio"))        session()->put("shop.checkout.envio.domicilio",           $request->input("input_domicilio"));
-                if($request->has("input_domicilioNro"))     session()->put("shop.checkout.envio.domicilio_nro",       $request->input("input_domicilioNro"));
-                if($request->has("input_domicilioPiso"))    session()->put("shop.checkout.envio.domicilio_piso",      $request->input("input_domicilioPiso"));
-                if($request->has("input_domicilioDepto"))   session()->put("shop.checkout.envio.domicilio_depto",     $request->input("input_domicilioDepto"));
-                if($request->has("textarea_aclaraciones"))  session()->put("shop.checkout.envio.aclaraciones",        $request->input("textarea_aclaraciones"));
-            }
         }
+
+        //dd(session("shop.checkout"));
 
         $tiposDocumentos    = TipoDocumento::all();
         $cuentaBancaria     = CuentaBancaria::first();

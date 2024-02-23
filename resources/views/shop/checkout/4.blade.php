@@ -60,12 +60,10 @@
                 <div class="panel-title panel-title-underlined">Datos facturación</div>
                 <div class="panel-content">
                     <div class="grid grid-cols-2">
-                        <p>Apellidos:</p><p>Apellidos</p>
-                        <p>Nombres:</p><p>Nombres</p>
-                        <p>Tipo de documento:</p><p>Tipo de documento</p>
-                        <p>Número de documento:</p><p>Número de documento</p>
-                        <p>Teléfono celular:</p><p>Teléfono celular</p>
-                        <p>Correo electrónico:</p><p>Correo electrónico</p>
+                        <p>Apellidos:</p><p>{{ session('shop.checkout.datos.apellidos') }}</p>
+                        <p>Nombres:</p><p>{{ session('shop.checkout.datos.nombres') }}</p>
+                        <p>Número de documento:</p><p>{{ session('shop.checkout.datos.documento_nro') }}</p>
+                        <p>Correo electrónico:</p><p>{{ session('shop.checkout.datos.email') }}</p>
                     </div>
                 </div>
             </div>
@@ -75,8 +73,8 @@
                 <div class="panel-title panel-title-underlined">Forma de pago y envío</div>
                 <div class="panel-content">
                     <div class="grid grid-cols-2">
-                        <p>Forma de pago:</p><p>Forma de pago</p>
-                        <p>Envío:</p><p>Envío</p>
+                        <p>Forma de pago:</p><p>{{ session('shop.checkout.medio_pago.medio') }}</p>
+                        <p>Envío:</p><p>{{ session('shop.checkout.medio_envio.medio') }}</p>
                     </div>
                 </div>
             </div>
