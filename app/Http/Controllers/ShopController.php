@@ -301,6 +301,13 @@ class ShopController extends Controller
             {
                 case(1):
                 {
+                    // Validar campos y manejar errores
+                    $validator = Validator::make($request->all(), $rules);
+
+                    // Manejar los errores de validación
+                    if($validator->fails())
+                        return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
+
                     session()->put("shop.checkout.confirmation", now());
 
                     return response()->json(['success' => true, "next-step" => 2]);
@@ -324,7 +331,7 @@ class ShopController extends Controller
                     // Manejar los errores de validación
                     if($validator->fails())
                         return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
-
+                    
                     return response()->json(['success' => true, "next-step" => 3]);
                     
                     break;
@@ -337,21 +344,20 @@ class ShopController extends Controller
                         "radio_medioEnvio"  => ["required","exists:medios_envios,id"],
                     ];
 
-                    $medioPagoSeleccionado  = $request->input('radio_medioPago');
-                    $medioEnvioSeleccionado = $request->input('radio_medioEnvio');
-
+                    $selectedOption = $request->input('radio_medioEnvio');
+    
                     // Si el usuario ha seleccionado envío y el valor es igual a 2, aplicar reglas de validación adicionales
-                    if($medioEnvioSeleccionado == 2)
+                    if($selectedOption == 2)
                     {
                         // Definir las reglas de validación adicionales
                         $additionalRules = [
                             "codigo_postal"             => ["required","numeric", "between:1000,9999"],
                             "localidad"                 => ["required","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
                             "domicilio"                 => ["required","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
-                            "domicilio_nro"             => ["required","min:1","max:99999"],
-                            "domicilio_piso"            => ["required","min:1","max:99"],
-                            "domicilio_depto"           => ["required"],
-                            "domicilio_aclaraciones"    => ["required"],
+                            "domicilio_nro"             => ["required","numeric", "min:1","max:99999"],
+                            "domicilio_piso"            => ["nullable"],
+                            "domicilio_depto"           => ["nullable"],
+                            "domicilio_aclaraciones"    => ["nullable"],
                         ];
     
                         // Fusionar las reglas de validación adicionales con las reglas actuales
@@ -365,39 +371,8 @@ class ShopController extends Controller
                     if($validator->fails())
                         return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
 
-                    switch($medioPagoSeleccionado)
-                    {
-                        case(1):
-                        {
-                            return response()->json(['success' => true, "next-step" => 4]);
-                            break;
-                        }
+                    return response()->json(['success' => true, "next-step" => 4]);
 
-                        case(2):
-                        {
-                            return response()->json(['success' => true, "next-step" => 4]);
-                            break;
-                        }
-
-                        case(3):
-                        {
-                            return response()->json(['success' => true, "next-step" => 4]);
-                            break;
-                        }
-
-                        case(4):
-                        {
-                            return response()->json(['success' => true, "next-step" => 4]);
-                            break;
-                        }
-
-                        case(5):
-                        {
-                            return response()->json(['success' => true, "next-step" => 4]);
-                            break;
-                        }
-                    }
-                    
                     break;
                 }
 
@@ -413,7 +388,6 @@ class ShopController extends Controller
                     break;
                 }
             }
-
             
             session()->put("shop.checkout.total", $checkout["total"]);
 
@@ -444,8 +418,6 @@ class ShopController extends Controller
                 if($request->has("input_domicilioDepto"))   session()->put("shop.checkout.envio.domicilio_depto",     $request->input("input_domicilioDepto"));
                 if($request->has("textarea_aclaraciones"))  session()->put("shop.checkout.envio.aclaraciones",        $request->input("textarea_aclaraciones"));
             }
-
-            return response()->json(['success' => true]);
         }
 
         $generos            = Genero::all();

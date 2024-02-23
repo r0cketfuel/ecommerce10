@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Event listener para los botones 'Siguiente'
     nextButtons.forEach(button => {
-        button.addEventListener("click", function () { submitForm(); });
+        button.addEventListener("click", function () { submitForm(button); });
     });
 
     // Función desplazamiento de las pantallas a la izquierda
@@ -70,11 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.form-error').forEach(el => el.classList.remove("form-error"));
     }
 
-    function submitForm() {
-        const button = event.target;
+    function submitForm(button)
+    {
         const form = button.closest(".step-form");
     
-        if (form) {
+        if(form)
+        {
             limpiarErrores();
             loading(true);
     
@@ -128,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Obtén todos los elementos interactivos dentro del formulario actual
-    const formElements = document.querySelectorAll('.step-form input, .step-form select, .step-form button');
+    const formElements = document.querySelectorAll('.step-form input, .step-form select, .step-form button', '.step-form textarea');
 
     formElements.forEach(function (element, index) {
         // Agrega un evento de escucha al elemento
