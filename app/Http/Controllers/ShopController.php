@@ -27,13 +27,12 @@ class ShopController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	public function index()
 	{
-        // Obtener los Banners promocionales vigentes
         $banners = Banner::vigentes();
 
         return view("shop.index", compact("banners"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function item($id, Request $request)
+    public function item($id)
 	{
         $validator = Validator::make(["id" => $id], [
             "id" => "required|numeric|min:1|exists:articulos,id",
@@ -46,11 +45,8 @@ class ShopController extends Controller
         
         if($item && $item->estado == 1)
         {
-            // Obtener las calificaciones del artículo
-            $ratings = Rating::find($id);
-
-            // Incrementar las visualizaciones del artículo
-            Rating::incrementaVisualizacion($id);
+            // Incrementar y obtener las calificaciones del artículo
+            $ratings = Rating::incrementaVisualizacion($id);
 
             return view("shop.item.index", compact("item", "ratings"));
         }

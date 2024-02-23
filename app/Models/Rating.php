@@ -29,12 +29,12 @@ class Rating extends Model
         return($this->belongsTo(Articulo::class));
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public static function incrementaVisualizacion(int $id): int
+    public static function incrementaVisualizacion(int $id): Rating
     {
-        $articulo = self::findOrFail($id);
-        $articulo->increment('visualizaciones');
+        $rating = self::findOrFail($id);
+        $rating->increment('visualizaciones');
 
-        return $articulo->visualizaciones;
+        return $rating;
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function getRatingArticulo(int $id)
