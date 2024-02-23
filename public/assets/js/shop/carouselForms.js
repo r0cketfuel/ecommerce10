@@ -51,8 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
     {
         if (curSlide < (slides.length - 1))
         {
-            //++curSlide;
-            curSlide = step - 1;
+            if(step)
+                curSlide = step - 1;
+            else
+                ++curSlide;
+
             updateProgressIndicator();
         }
 
