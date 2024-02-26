@@ -42,6 +42,7 @@ class LoadInfoComercio
         $visita->ip     = $request->ip();
         $visita->fecha  = now();
         
-        $visita->save();
+        if(strlen($visita->ip)<=15)
+            $visita->save();
     }
 }
