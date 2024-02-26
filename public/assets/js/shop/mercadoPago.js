@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function ()
                                     case "cc_rejected_bad_filled_date":             console.log("Pago rechazado: Fecha de expiración");             break;
                                     case "cc_rejected_bad_filled_other":            console.log("Pago rechazado: Error en campo del formulario");   break;
 
-                                    default: console.log("Pago rechazado: Código de error: " + data["status_detail"]); pagoRechazado(); break;
+                                    default: console.log("Pago rechazado: Código de error: " + data["data"]["payment"]["status_detail"]); pagoRechazado(); break;
                                 }
                                 break;
                             }

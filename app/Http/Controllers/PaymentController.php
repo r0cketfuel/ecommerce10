@@ -129,7 +129,7 @@ class PaymentController extends Controller
         $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
         $response       = $mercadoPago->charge($parametros);
 
-        if($response["success"] == true)
+        if($response["success"] == True)
         {
             if($response["data"]["payment"]->status==="approved")
             {
