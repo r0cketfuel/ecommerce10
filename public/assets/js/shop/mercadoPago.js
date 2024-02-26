@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function ()
     const monto     = document.getElementById("total").innerHTML.replace('$','').replace(/\./g,'').replace(",",'.');
     const _token    = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 
+    const tipo_documento    = document.getElementById("tipo_documento_id");
     const domicilio         = document.getElementById("domicilio");
     const domicilio_nro     = document.getElementById("domicilio_nro");
     const domicilio_piso    = document.getElementById("domicilio_piso");
@@ -38,10 +39,6 @@ document.addEventListener("DOMContentLoaded", function ()
             },
             installments: {
                 id: "form-checkout__installments",
-                placeholder: "",
-            },        
-            identificationType: {
-                id: "tipo_documento_id",
                 placeholder: "",
             },
             identificationNumber: {
@@ -100,7 +97,6 @@ document.addEventListener("DOMContentLoaded", function ()
                     token,
                     installments,
                     identificationNumber,
-                    identificationType,
                 } = cardForm.getCardFormData();
                 
                 fetch("/shop/process_payment",
@@ -121,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function ()
                         description:                "Descripción del producto",
                         apellidos:                  apellidos.value,
                         nombres:                    nombres.value,
-                        tipo_documento_id:          tipo_documento_id.value,
+                        tipo_documento_id:          tipo_documento.value,
                         documento_nro:              documento_nro.value,
                         localidad:                  localidad.value,
                         codigo_postal:              codigo_postal.value,
@@ -136,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function ()
                             email,
                             identification: 
                             {
-                                type:           identificationType,
+                                type:           tipo_documento.value,
                                 number:         identificationNumber,
                             },
                         },

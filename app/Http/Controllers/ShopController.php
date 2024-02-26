@@ -114,10 +114,11 @@ class ShopController extends Controller
         //1319858771 -> Pagofácil
 
         $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
-        $estado         = $mercadoPago->infoPago($id);
+        $response       = $mercadoPago->infoPago($id);
 
-        if($estado)
+        if($response["success"] == True)
         {
+            $estado = $response["data"]["payment"];
             $image = NULL;
             if(isset($estado->transaction_details->barcode["content"]))
             {
@@ -131,7 +132,7 @@ class ShopController extends Controller
             return view("shop.user.infoPago", compact("estado", "image"));
         }
 
-        return redirect("shop");
+        return redirect("shop")->withErrors("Pago no encontrado");
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function account(Request $request)
