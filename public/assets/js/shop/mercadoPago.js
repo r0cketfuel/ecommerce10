@@ -146,16 +146,16 @@ document.addEventListener("DOMContentLoaded", function ()
                 .then((response) => response.json())
                 .then((data) => 
                 {
-                    if(data)
+                    if(data["success"] == true)
                     {
-                        switch(data["status"])
+                        switch(data["data"]["payment"]["status"])
                         {
                             case "approved":    pagoAprobado();     break;
                             case "in_process":  pagoPendiente();    break;
                             
                             case "rejected":
                             {
-                                switch(data["status_detail"])
+                                switch(data["data"]["payment"]["status_detail"])
                                 {
                                     case "cc_rejected_other_reason":                console.log("Pago rechazado: Sin razón específica");            break;
                                     case "cc_rejected_call_for_authorize":          console.log("Pago rechazado: Llamar para pedir autorización");  break;

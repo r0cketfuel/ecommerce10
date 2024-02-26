@@ -129,15 +129,19 @@ class PaymentController extends Controller
         $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
         $response       = $mercadoPago->charge($parametros);
 
-        if($response && $response->status==="approved")
+        if($response["success"] == true)
         {
-            $facturaId = $this->crearFacturas($data);
-            
-            PagoMercadoPago::create([
-                "mercadopago_id"    => $response->id,
-                "factura_id"        => $facturaId
-            ]);
+            if($response["data"]["payment"]->status==="approved")
+            {
+                $facturaId = $this->crearFacturas($data);
+                
+                PagoMercadoPago::create([
+                    "mercadopago_id"    => $response["data"]["payment"]->id,
+                    "factura_id"        => $facturaId
+                ]);
+            }
         }
+
 
         // Respuesta de la api
         echo json_encode($response);
@@ -187,7 +191,7 @@ class PaymentController extends Controller
             $facturaId      = $this->crearFacturas($data);
 
             PagoMercadoPago::create([
-                "mercadopago_id"    => $response->id,
+                "mercadopago_id"    => $response["data"]["payment"]->id,
                 "factura_id"        => $facturaId
             ]);
             
@@ -239,7 +243,7 @@ class PaymentController extends Controller
             $facturaId      = $this->crearFacturas($data);
 
             PagoMercadoPago::create([
-                "mercadopago_id"    => $response->id,
+                "mercadopago_id"    => $response["data"]["payment"]->id,
                 "factura_id"        => $facturaId
             ]);
 

@@ -25,7 +25,12 @@
             {
                 $payment = $client->create($request);
                 
-                return $payment;
+                return [
+                    "success"       => True, 
+                    "data"          => [
+                        "payment"   => $payment
+                    ]
+                ];
             }
             catch (MPApiException $e)
             {
