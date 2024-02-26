@@ -231,6 +231,7 @@ class ShopController extends Controller
                 case(1):
                 {
                     session()->put("shop.checkout.confirmation", now());
+                    session()->put("shop.checkout.total", $checkout["total"]);
 
                     return response()->json(['success' => true]);
                     
@@ -340,8 +341,6 @@ class ShopController extends Controller
                     break;
                 }
             }
-            
-            session()->put("shop.checkout.total", $checkout["total"]);
         }
 
         //dd(session("shop.checkout"));
