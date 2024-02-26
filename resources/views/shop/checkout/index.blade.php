@@ -306,5 +306,43 @@
 				});
 			}
 		</script>
+
+		<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var radios = document.querySelectorAll('input[name="radio_medioPago"]');
+			var selectedOption = document.querySelector('input[name="radio_medioPago"]:checked').value;
+			console.log("Opción seleccionada:", selectedOption);
+			change(selectedOption);
+		});
+
+    document.addEventListener('change', async function(event) {
+        if (event.target.matches('[name="radio_medioPago"]')) {
+            const medioPagoId = event.target.value;
+			change(medioPagoId);
+        }
+});
+
+async function change(medioPagoId)
+	{
+		try {
+                const response = await fetch(`requests/views/payment-methods/${medioPagoId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Agrega el token CSRF si es necesario
+                    },
+                    // Puedes incluir cualquier dato adicional que necesites enviar en el cuerpo de la solicitud
+                    // body: JSON.stringify({ medioPagoId: medioPagoId })
+                });
+                if (!response.ok) {
+                    throw new Error('Error al obtener la vista del medio de pago');
+                }
+                const html = await response.text();
+                document.getElementById('selected_payment_method').innerHTML = html;
+            } catch (error) {
+                console.error(error);
+            }
+	}
+</script>
 	@endsection
 @endif

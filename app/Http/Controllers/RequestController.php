@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Services\ShoppingCartService;
+use Illuminate\Support\Facades\View;
 
 use App\Models\Articulo;
 use App\Models\AtributoArticulo;
+use App\Models\CuentaBancaria;
 use App\Models\Newsletter;
 use App\Models\MedioEnvio;
 use App\Models\Rating;
@@ -160,11 +162,41 @@ class RequestController extends Controller
         return response()->json(['itemInfo' => $articulo]);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function rating (Request $request)
+    public function rating(Request $request)
     {
         Rating::setRatingArticulo($request->id, $request->puntuacion);
 
         return response()->json();
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function paymentViews(Request $request)
+    {
+        $cuentaBancaria = CuentaBancaria::first();
+
+        switch($request->id)
+        {
+            case(1):
+                $vista = View::make('shop.checkout.efectivo')->render();
+                break;
+
+            case(2):
+                $vista = View::make('shop.checkout.banco', compact("cuentaBancaria"))->render();
+                break;
+
+            case(3):
+                $vista = View::make('shop.checkout.cardForm')->render();
+                break;
+
+            case(4):
+                $vista = View::make('shop.checkout.pagofacil')->render();
+                break;
+
+            case(5):
+                $vista = View::make('shop.checkout.rapipago')->render();
+                break;
+        }
+
+        return ($vista);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

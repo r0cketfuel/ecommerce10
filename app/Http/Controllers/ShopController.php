@@ -116,8 +116,6 @@ class ShopController extends Controller
         $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
         $response       = $mercadoPago->infoPago($id);
 
-        //dd($response);
-
         if($response["success"] == True)
         {
             $estado = $response["data"]["payment"];
@@ -346,10 +344,7 @@ class ShopController extends Controller
             }
         }
 
-        //dd(session("shop.checkout"));
-
-        $tiposDocumentos    = TipoDocumento::all();
-        $cuentaBancaria     = CuentaBancaria::first();
+        $tiposDocumentos = TipoDocumento::all();
 
         // Medios de pago activos
         $mediosPagoListado = MedioPago::activos();
@@ -371,7 +366,7 @@ class ShopController extends Controller
         if(session()->has("shop.checkout.medio_pago"))
             $medioEnvioSeleccionado = session("shop.checkout.medio_envio.id");
 
-        return view("shop.checkout.index", compact("checkout", "mediosPagoListado", "mediosEnvioListado", "medioPagoSeleccionado", "medioEnvioSeleccionado", "tiposDocumentos", "cuentaBancaria"));
+        return view("shop.checkout.index", compact("checkout", "mediosPagoListado", "mediosEnvioListado", "medioPagoSeleccionado", "medioEnvioSeleccionado", "tiposDocumentos"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function compras()
