@@ -22,11 +22,15 @@
         <div class="panel w500px">
             <div class="panel-title panel-title-underlined">Info</div>
             <div class="panel-content">
+
+                <div class="flex justify-content-between">
+                    <div class="text-bold">Fecha de creación:</div>
+                    <div>{{ _datetimezone($estado->date_created) }}</div>
+                </div>
                 <div class="flex justify-content-between">
                     <div class="text-bold">Medio de pago:</div>
-                    <div>{{ $estado->payment_method_id }}</div>
+                    <div>{{ __("mercadopago.payment_types.$estado->payment_type_id") }}</div>
                 </div>
-
                 @isset($estado->card->cardholder->name)
                     <div class="flex justify-content-between">
                         <div class="text-bold">Titular de la tarjeta:</div>
@@ -37,21 +41,23 @@
                         <div>{{ $estado->installments }}</div>
                     </div>
                 @endisset
-
+                
+                <div class="panel-title panel-title-underlined">Datos del comprador</div>
                 <div class="flex justify-content-between">
-                    <div class="text-bold">Fecha de creación:</div>
-                    <div>
-                        @if(isset($estado->card->date_created))
-                            {{ _date(explode("T", $estado->card->date_created)[0]) }}
-                        @else
-                            {{ _date(explode("T", $estado->date_created)[0]) }}
-                        @endif
-                    </div>
+                    <div class="text-bold">Apellidos:</div><div>{{ $estado->additional_info->payer->last_name }}</div>
                 </div>
+                <div class="flex justify-content-between">
+                    <div class="text-bold">Nombres:</div><div>{{ $estado->additional_info->payer->first_name }}</div>
+                </div>
+
+
+                <div class="panel-title panel-title-underlined">Datos de la compra</div>
                 <div class="flex justify-content-between">
                     <div class="text-bold">Total:</div>
                     <div>{{ _money($estado->transaction_details->total_paid_amount) }}</div>
                 </div>
+
+                <div class="panel-title panel-title-underlined">Estado del pago</div>
                 <div class="flex justify-content-between">
                     <div class="text-bold">Estado:</div>
                     <div>{{ $estado->status }}</div>

@@ -116,6 +116,8 @@ class ShopController extends Controller
         $mercadoPago    = new MercadoPago(env('MERCADOPAGO_ACCESS_TOKEN'));
         $response       = $mercadoPago->infoPago($id);
 
+        //dd($response);
+
         if($response["success"] == True)
         {
             $estado = $response["data"]["payment"];
