@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateProgressIndicator();
         }
 
-        slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%)`; });
+        slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%) translateX(${-100 * curSlide}px)`; });
 
         smoothScroll("top");
     }
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateProgressIndicator();
         }
 
-        slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%)`; });
+        slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%) translateX(${-100 * curSlide}px)`; });
 
         smoothScroll("top");
     }

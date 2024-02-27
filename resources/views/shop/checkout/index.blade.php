@@ -38,7 +38,8 @@
 		.carousel-slider {
 			display: 				flex;
 			flex-flow: 				row nowrap;
-			width: 					500%;
+			width: 					calc(500% + 400px);
+			gap:					100px;
 		}
 
 		.carousel-slide {
