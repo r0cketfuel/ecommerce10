@@ -104,7 +104,14 @@
             // Método que elimina un item del carrito de compras //
             //===================================================//
 
-            session()->forget(self::SESSION_CART_ITEMS_KEY . ".$index");
+            $sessionKey     = self::SESSION_CART_ITEMS_KEY;
+            $sessionItems   = session($sessionKey);
+
+            if(isset($sessionItems[$index]))
+            {
+                array_splice($sessionItems, $index, 1);
+                session([$sessionKey => $sessionItems]);
+            }
         }
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         public function checkOut(): array
