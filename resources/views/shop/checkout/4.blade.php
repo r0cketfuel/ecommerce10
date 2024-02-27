@@ -31,42 +31,39 @@
                             $color          = $checkout["items"][$i]["opciones"]["color"]       ?? null;
                         @endphp
 
-                        <ul class="product-checkout-card" data-id="{{ $id }}">
-                            <li>{{ $cantidad }} x <span>{{ $nombre }}</span></li>
-                            <li>Talle</li>
-                            <li>{{ $talle_id }}</li>
-                            <li>Color</li>
-                            <li>{{ $color }}</li>
-                            <li>Precio</li>
-                            <li>{{ $precio }}</li>
-                            <li>Subtotal</li>
-                            <li>{{ $subtotal }}</li>
-                        </ul>
+                        <div class="grid grid-cols-2">
+                            <p>Artículo:</p><p>{{ $nombre }}</p>
+                            <p>Cantidad:</p><p>{{ $cantidad }}</p>
+                            <p>Talle:</p><p>{{ $talle_id }}</p>
+                            <p>Color:</p><p>{{ $color }}</p>
+                            <p>Precio:</p><p>{{ $precio }}</p>
+                            <p>Subtotal:</p><p>{{ $subtotal }}</p>
+                        </div>
                     @endfor
 
             <!-- Contenido -->
-            <div class="panel">
+
                 <div class="panel-title panel-title-underlined">Datos facturación</div>
-                <div class="panel-content">
+
                     <div class="grid grid-cols-2">
                         <p>Apellidos:</p><p>{{ session('shop.checkout.datos.apellidos') }}</p>
                         <p>Nombres:</p><p>{{ session('shop.checkout.datos.nombres') }}</p>
                         <p>Número de documento:</p><p>{{ session('shop.checkout.datos.documento_nro') }}</p>
                         <p>Correo electrónico:</p><p>{{ session('shop.checkout.datos.email') }}</p>
                     </div>
-                </div>
-            </div>
+
+
 
             <!-- Contenido -->
-            <div class="panel">
+
                 <div class="panel-title panel-title-underlined">Forma de pago y envío</div>
-                <div class="panel-content">
+
                     <div class="grid grid-cols-2">
                         <p>Forma de pago:</p><p>{{ session('shop.checkout.medio_pago.medio') }}</p>
                         <p>Envío:</p><p>{{ session('shop.checkout.medio_envio.medio') }}</p>
                     </div>
-                </div>
-            </div>
+
+
 
         </div>
     </div>
