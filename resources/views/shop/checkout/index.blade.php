@@ -331,10 +331,8 @@
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
-							'X-CSRF-TOKEN': '{{ csrf_token() }}' // Agrega el token CSRF si es necesario
+							'X-CSRF-TOKEN': '{{ csrf_token() }}'
 						},
-						// Puedes incluir cualquier dato adicional que necesites enviar en el cuerpo de la solicitud
-						// body: JSON.stringify({ medioPagoId: medioPagoId })
 					});
 					if (!response.ok) {
 						throw new Error('Error al obtener la vista del medio de pago');
