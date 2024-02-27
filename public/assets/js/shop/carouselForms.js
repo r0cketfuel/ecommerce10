@@ -1,13 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const carouselContainer = document.querySelector(".carousel-container");
     const slides 		    = document.querySelectorAll(".carousel-slide");
     const nextButtons 	    = document.querySelectorAll(".btnNext");
     const prevButtons 	    = document.querySelectorAll(".btnPrev");
     const forms             = document.getElementsByClassName('step-form');
     
-    let curSlide = 0;
-    let datosRecopilados = {};
+    let curSlide            = 0;
+    let datosRecopilados    = {};
 
     updateProgressIndicator();
 
@@ -22,15 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })};
 
-    // Event listener para los botones 'Anterior'
-    prevButtons.forEach(button => {
-        button.addEventListener("click", function () { moveLeft(); });
-    });
-
-    // Event listener para los botones 'Siguiente'
-    nextButtons.forEach(button => {
-        button.addEventListener("click", function () { submitForm(button); });
-    });
+    // Event listener para los botones 'Anterior' & 'Siguiente'
+    prevButtons.forEach(button => { button.addEventListener("click", () => { moveLeft() }) });
+    nextButtons.forEach(button => { button.addEventListener("click", () => { submitForm(button) })});
 
     // Función desplazamiento de las pantallas a la izquierda
     function moveLeft()
@@ -38,12 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (curSlide > 0)
         {
             --curSlide;
+            
+            slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%) translateX(${-100 * curSlide}px)` });
+            
             updateProgressIndicator();
+            smoothScroll("top");
         }
-
-        slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%) translateX(${-100 * curSlide}px)`; });
-
-        smoothScroll("top");
     }
 
     // Función desplazamiento de las pantallas a la derecha
@@ -56,12 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
             else
                 ++curSlide;
 
+            slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%) translateX(${-100 * curSlide}px)` });
+            
             updateProgressIndicator();
+            smoothScroll("top");
         }
-
-        slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%) translateX(${-100 * curSlide}px)`; });
-
-        smoothScroll("top");
     }
 
     function limpiarErrores()
@@ -84,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
             fetch(form.action, {
                 method: form.method,
-                body: formData,
+                body:   formData,
             })
             .then(response => response.json())
             .then(data => {
@@ -148,8 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    function updateProgressIndicator() {
-        const progressIndicatorItems = document.querySelectorAll('.progress-indicator li');
+    function updateProgressIndicator()
+    {
+        const progressIndicatorItems    = document.querySelectorAll('.progress-indicator li');
         const progressIndicatorDivision = document.querySelectorAll('.progress-indicator div');
     
         progressIndicatorItems.forEach((item, index) => {
