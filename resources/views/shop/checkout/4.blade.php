@@ -10,9 +10,6 @@
         <div class="panel-content">
 
             <!-- Contenido -->
-            <div class="panel">
-                <div class="panel-title panel-title-underlined">Carrito de compras</div>
-                <div class="panel-content">
                     @for($i=0;$i < count($checkout["items"]);++$i)
 
                         @php
@@ -36,9 +33,6 @@
 
                         <ul class="product-checkout-card" data-id="{{ $id }}">
                             <li>{{ $cantidad }} x <span>{{ $nombre }}</span></li>
-                            <li>
-                                <img src="{{ $imagen }}" alt="imagen">
-                            </li>
                             <li>Talle</li>
                             <li>{{ $talle_id }}</li>
                             <li>Color</li>
@@ -47,13 +41,8 @@
                             <li>{{ $precio }}</li>
                             <li>Subtotal</li>
                             <li>{{ $subtotal }}</li>
-                            <div class="product-checkout-card-extra">
-                                <button class="btn-link" data-id="{{ $id }}" data-atributos_id="{{ $atributosId }}" onclick="itemRemove(this.dataset)"><i class="fa-solid fa-xmark"></i></button>
-                            </div>
                         </ul>
                     @endfor
-                </div>
-            </div>
 
             <!-- Contenido -->
             <div class="panel">
