@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Favorito\StoreFavoritoRequest;
 use App\Http\Requests\Favorito\UpdateFavoritoRequest;
 
+use Illuminate\Database\QueryException;
+
 use App\Models\Favorito;
 
 class FavoritoController extends Controller
@@ -26,10 +28,55 @@ class FavoritoController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function store(StoreFavoritoRequest $request, Favorito $favorito)
     {
-        $favorito = Favorito::make($request->validated());
-        $favorito->save();
+        // Se debe obtener el usuario autenticado en lugar de esperar el id como parámetro. Dejo pendiente
+        try
+        {
+            $favorito = Favorito::withTrashed()->where('usuario_id', $request->usuario_id)->where('articulo_id', $request->articulo_id)->first();
     
-        return response()->json($favorito, 201, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+            if($favorito)
+            {
+                if($favorito->trashed())
+                {
+                    $favorito->restore();
+
+                    $response = [
+                        'success'   => true,
+                        'message'   => 'El artículo ha sido agregado a favoritos'
+                    ];
+
+                    return response()->json($response, 201, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+                }
+                else
+                {
+                    $response = [
+                        'success'   => false,
+                        'message'   => 'El artículo ya se encontraba en tu lista de favoritos'
+                    ];
+
+                    return response()->json($response, 201, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+                }
+            }
+    
+            $favorito = Favorito::make($request->validated());
+            $favorito->save();
+
+            $response = [
+                'success'   => true,
+                'message'   => 'El artículo ha sido agregado a favoritos'
+            ];
+
+            return response()->json($response, 201, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        }
+        
+        catch(QueryException $exception)
+        {
+            $response = [
+                'success'   => false,
+                'message'   => 'Error al agregar el item a favoritos'
+            ];
+
+            return response()->json($response, 201, ['Content-type'=>'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        }
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function show(Favorito $favorito)
