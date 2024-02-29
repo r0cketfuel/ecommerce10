@@ -66,16 +66,16 @@
 		}
 
 		.progress-indicator {
-			user-select: 			none;
-			list-style: 			none;
-			margin: 				0;
-			padding: 				0;
-			display: 				flex;
-			justify-content: 		center;
-			align-items: 			center;
+			display: 				grid;
+			grid-template-columns: 	repeat(5, 1fr);
+			grid-template-rows: 	repeat(2, 40px);
+			justify-content: 		space-between;
+			justify-items: 			center;
+			gap: 					5px;
+			text-align: 			center;
 		}
 
-		.progress-indicator li {
+		.progress-indicator .step-number {
 			border-radius: 			50%;
 			height: 				32px;
 			width: 					32px;
@@ -86,21 +86,21 @@
 			font-weight: 			bold;
 		}
 
-		.progress-indicator li.current-step {
+		.progress-indicator .step-number.current-step {
 			border: 				3px solid rgb(30, 200, 30);
 		}
 
-		.progress-indicator li.success {
+		.progress-indicator .success {
 			background-color: 		rgb(80, 210, 80);
 			border: 				3px solid rgb(30, 200, 30);
 			color: 					white;
 		}
 
-		.progress-indicator div {
+		/* .progress-indicator div {
 			height: 				3px;
 			flex:					1;
 			background-color: 		rgb(200,200,200);
-		}
+		} */
 		
 		.progress-indicator div.success {
 			background-color: 		rgb(80, 210, 80);
@@ -125,17 +125,18 @@
 
 		<div id="total">$100,00</div>
 
-			<ul class="progress-indicator">
-				<li>1</li>
-				<div></div>
-				<li>2</li>
-				<div></div>
-				<li>3</li>
-				<div></div>
-				<li>4</li>
-				<div></div>
-				<li>5</li>
-			</ul>
+			<div class="progress-indicator">
+				<div class="step-number">1</div>
+				<div class="step-number">2</div>
+				<div class="step-number">3</div>
+				<div class="step-number">4</div>
+				<div class="step-number">5</div>
+				<div class="step-description">Carrito de compras</div>
+				<div class="step-description">Datos facturación</div>
+				<div class="step-description">Medios de pago y envío</div>
+				<div class="step-description">Resumen de compra</div>
+				<div class="step-description">Pago</div>
+			</div>
 
 			<div class="carousel-container">
 				<div class="carousel-slider">
