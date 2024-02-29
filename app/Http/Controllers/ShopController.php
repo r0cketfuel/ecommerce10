@@ -344,29 +344,30 @@ class ShopController extends Controller
             }
         }
 
-        $tiposDocumentos = TipoDocumento::all();
+        if($shoppingCart->totalItems()>0)
+        {
+            $tiposDocumentos    = TipoDocumento::all();
+            $mediosPagoListado  = MedioPago::all();
+            $mediosEnvioListado = MedioEnvio::all();
 
-        // Medios de pago activos
-        $mediosPagoListado = MedioPago::activos();
-        
-        // Medios de envío activos
-        $mediosEnvioListado = MedioEnvio::activos();
+            // Seleccionar el primer medio de pago por defecto
+            $medioPagoSeleccionado = $mediosPagoListado[0]["id"];
+    
+            // Seleccionar el medio de pago guardado en sesión
+            if(session()->has("shop.checkout.medio_pago"))
+                $medioPagoSeleccionado = session("shop.checkout.medio_pago.id");
+            
+            // Seleccionar el primer medio de envío por defecto
+            $medioEnvioSeleccionado = $mediosEnvioListado[0]["id"];
+    
+            // Seleccionar el medio de envío guardado en sesión
+            if(session()->has("shop.checkout.medio_pago"))
+                $medioEnvioSeleccionado = session("shop.checkout.medio_envio.id");
 
-        // Seleccionar el primer medio de pago por defecto
-        $medioPagoSeleccionado = $mediosPagoListado[0]["id"];
+            return view("shop.checkout.index", compact("checkout", "mediosPagoListado", "mediosEnvioListado", "medioPagoSeleccionado", "medioEnvioSeleccionado", "tiposDocumentos"));
+        }
 
-        // Seleccionar el medio de pago guardado en sesión
-        if(session()->has("shop.checkout.medio_pago"))
-            $medioPagoSeleccionado = session("shop.checkout.medio_pago.id");
-        
-        // Seleccionar el primer medio de envío por defecto
-        $medioEnvioSeleccionado = $mediosEnvioListado[0]["id"];
-
-        // Seleccionar el medio de envío guardado en sesión
-        if(session()->has("shop.checkout.medio_pago"))
-            $medioEnvioSeleccionado = session("shop.checkout.medio_envio.id");
-
-        return view("shop.checkout.index", compact("checkout", "mediosPagoListado", "mediosEnvioListado", "medioPagoSeleccionado", "medioEnvioSeleccionado", "tiposDocumentos"));
+        return view("shop.checkout.index", compact("checkout"));
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function compras()

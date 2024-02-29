@@ -3,11 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MedioPago extends Model
 {
-    protected $table    = "medios_pagos";
-    public $timestamps  = false;
+    use SoftDeletes;
+
+    const CREATED_AT = 'creado';
+    const UPDATED_AT = 'actualizado';
+    const DELETED_AT = 'eliminado';
+
+    protected $table = "medios_pagos";
 
     /**
      * The attributes that are mass assignable.
@@ -15,6 +21,7 @@ class MedioPago extends Model
      * @var array<int, string>
      * 
      */
+
     protected $fillable = [
         "medio",
         "estado"
@@ -25,7 +32,11 @@ class MedioPago extends Model
      *
      * @var array<int, string>
      */
+
     protected $hidden = [
+        'creado',
+        'actualizado',
+        'eliminado'
     ];
 
     /**

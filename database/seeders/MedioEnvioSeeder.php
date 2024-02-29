@@ -15,14 +15,12 @@ class MedioEnvioSeeder extends Seeder
     {
         MedioEnvio::create([
             "medio"         => "Retiro en sucursal",
-            "costo"         => NULL,
-            "estado"        => 1,
+            "costo"         => NULL
         ]);
 
         MedioEnvio::create([
             "medio"         => "Envío a domicilio",
-            "costo"         => 1250.00,
-            "estado"        => 1,
+            "costo"         => 1250.00
         ]);
     }
 }

@@ -15,7 +15,9 @@ return new class extends Migration
             $table->unsignedTinyInteger('id', true);
             $table->string('medio',25);
             $table->decimal('costo',$precision = 7,$scale = 2)->nullable();
-            $table->unsignedTinyInteger('estado')->default(1);
+            $table->datetime('creado');
+            $table->datetime('actualizado')->nullable();
+            $table->datetime('eliminado')->nullable();
             $table->comment('Tabla con los medios de envío del sistema');
         });
     }

@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('medios_pagos', function (Blueprint $table) {
             $table->unsignedTinyInteger('id', true);
             $table->string('medio',30)->unique();
-            $table->unsignedTinyInteger('estado')->default(1);
+            $table->datetime('creado');
+            $table->datetime('actualizado')->nullable();
+            $table->datetime('eliminado')->nullable();
             $table->comment('Tabla con los medios de pago del sistema');
         });
     }

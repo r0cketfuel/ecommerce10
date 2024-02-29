@@ -19,6 +19,7 @@ class Articulo extends Model
      * @var array<int, string>
      * 
      */
+
     protected $fillable = [
         'codigo',
         'nombre',
@@ -28,7 +29,13 @@ class Articulo extends Model
         'subcategoria_id',
         'estado'
     ];
-    
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+
     protected $hidden = [
         'creado',
         'actualizado',

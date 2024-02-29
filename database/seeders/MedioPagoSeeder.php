@@ -14,28 +14,23 @@ class MedioPagoSeeder extends Seeder
     public function run(): void
     {
         MedioPago::create([
-            "medio"         => "Efectivo",
-            "estado"        => 1,
+            "medio"         => "Efectivo"
         ]);
 
         MedioPago::create([
-            "medio"         => "Transferencia bancaria",
-            "estado"        => 1,
+            "medio"         => "Transferencia bancaria"
         ]);
 
         MedioPago::create([
-            "medio"         => "Tarjeta de crédito o débito",
-            "estado"        => 1,
+            "medio"         => "Tarjeta de crédito o débito"
         ]);
 
         MedioPago::create([
-            "medio"         => "PagoFácil",
-            "estado"        => 1,
+            "medio"         => "PagoFácil"
         ]);
 
         MedioPago::create([
-            "medio"         => "RapiPago",
-            "estado"        => 1,
+            "medio"         => "RapiPago"
         ]);
     }
 }
