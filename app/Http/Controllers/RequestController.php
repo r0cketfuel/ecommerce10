@@ -171,8 +171,6 @@ class RequestController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function paymentViews(Request $request)
     {
-        $cuentaBancaria = CuentaBancaria::first();
-
         switch($request->id)
         {
             case(1):
@@ -180,6 +178,7 @@ class RequestController extends Controller
                 break;
 
             case(2):
+                $cuentaBancaria = CuentaBancaria::first();
                 $vista = View::make('shop.checkout.banco', compact("cuentaBancaria"))->render();
                 break;
 
