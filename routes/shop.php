@@ -7,6 +7,7 @@ use App\Http\Controllers\RequestController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\CheckoutController;
 
 
 //============================//
@@ -23,13 +24,9 @@ Route::controller(ShopController::class)->group(function () {
     Route::get('infopago/{id}',     	'infoPago');
     Route::get('logout',				'logout');
 
-
     // Rutas que requieren autenticación
     Route::middleware(['auth:web'])->group(function () {
         Route::get('favoritos',        	'favoritos');
-
-        Route::get('checkout',         	'checkout');
-        Route::post('checkout',        	'checkout');
         
         Route::get('payment',          	'payment');
         Route::get('success',          	'success');
@@ -39,6 +36,12 @@ Route::controller(ShopController::class)->group(function () {
 
         Route::get('compras',           'compras');
         Route::get('compras/estado',    'estadocompras');
+    });
+});
+
+Route::controller(CheckoutController::class)->group(function () {
+    Route::middleware(['auth:web'])->group(function () {
+        Route::match(['get', 'post'], 'checkout', 'checkout');
     });
 });
 
