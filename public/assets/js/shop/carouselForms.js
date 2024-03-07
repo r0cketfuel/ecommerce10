@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    const carouselContainer = document.querySelector(".carousel-container");
     const slides 		    = document.querySelectorAll(".carousel-slide");
     const nextButtons 	    = document.querySelectorAll(".btnNext");
     const prevButtons 	    = document.querySelectorAll(".btnPrev");
     const forms             = document.getElementsByClassName('step-form');
     
-    let curSlide            = 0;
-    let datosRecopilados    = {};
+    let curSlide = 0;
+    let datosRecopilados = {};
 
     updateProgressIndicator();
 
@@ -21,9 +22,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })};
 
-    // Event listener para los botones 'Anterior' & 'Siguiente'
-    prevButtons.forEach(button => { button.addEventListener("click", () => { moveLeft() }) });
-    nextButtons.forEach(button => { button.addEventListener("click", () => { submitForm(button) })});
+    // Event listener para los botones 'Anterior'
+    prevButtons.forEach(button => {
+        button.addEventListener("click", function () { moveLeft(); });
+    });
+
+    // Event listener para los botones 'Siguiente'
+    nextButtons.forEach(button => {
+        button.addEventListener("click", function () { submitForm(); });
+    });
 
     // Función desplazamiento de las pantallas a la izquierda
     function moveLeft()
@@ -31,29 +38,26 @@ document.addEventListener("DOMContentLoaded", () => {
         if (curSlide > 0)
         {
             --curSlide;
-            
-            slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%) translateX(${-100 * curSlide}px)` });
-            
             updateProgressIndicator();
-            smoothScroll("top");
         }
+
+        slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%) translateX(${-100 * curSlide}px)` });
+
+        smoothScroll("top");
     }
 
     // Función desplazamiento de las pantallas a la derecha
-    function moveRight(step)
+    function moveRight()
     {
         if (curSlide < (slides.length - 1))
         {
-            if(step)
-                curSlide = step - 1;
-            else
-                ++curSlide;
-
-            slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%) translateX(${-100 * curSlide}px)` });
-            
+            ++curSlide;
             updateProgressIndicator();
-            smoothScroll("top");
         }
+
+        slides.forEach((slide, indx) => { slide.style.transform = `translateX(${-100 * curSlide}%) translateX(${-100 * curSlide}px)` });
+
+        smoothScroll("top");
     }
 
     function limpiarErrores()
@@ -62,57 +66,87 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.form-error').forEach(el => el.classList.remove("form-error"));
     }
 
-    function submitForm(button)
+    function submitForm()
     {
-        const form = button.closest(".step-form");
-    
+        const button    = event.target;
+        const form      = button.closest(".step-form");
+
         if(form)
         {
             limpiarErrores();
             loading(true);
-    
-            // Recopilar datos solo del formulario actual
-            const formData = new FormData(form);
-    
+
+            // Recopilar datos de todos los formularios anteriores y el formulario actual
+            const allForms = document.querySelectorAll(".step-form");
+            const formData = new FormData();
+
+            allForms.forEach((form, index) => {
+                // Solo recopila datos del formulario actual y los formularios anteriores
+                if(index <= curSlide) {
+                    const formFields = new FormData(form);
+                    formFields.forEach((value, key) => {
+                        formData.append(key, value);
+                    });
+                }
+            });
+
             fetch(form.action, {
                 method: form.method,
                 body:   formData,
             })
             .then(response => response.json())
             .then(data => {
-    
+
                 loading(false);
-    
-                if (data["success"] === true) {
-                    if (data['redirect_url']) {
+
+                if(data["success"] === true)
+                {
+                    if(data['redirect_url'])
+                    {
                         window.location.href = data['redirect_url'];
-                    } else {
-                        if(data["next-step"])
-                            moveRight(data["next-step"]);
-                        else
-                            moveRight();
                     }
-                } else {
-                    function mostrarErrores(errors) {
+                    else
+                    {
+                        moveRight();
+                    }
+                }
+                else
+                {
+                    // Función para recorrer el JSON y agregar mensajes de error debajo de los inputs
+                    function mostrarErrores(errors)
+                    {
                         limpiarErrores();
-    
+
+                        // Recorre cada campo en los errores
                         for (var campo in errors) {
-                            if (errors.hasOwnProperty(campo)) {
+                            if (errors.hasOwnProperty(campo))
+                            {
+                                // Obtiene el mensaje de error para el campo actual
                                 var mensajes = errors[campo];
+
+                                // Agrega un mensaje de error debajo del input correspondiente
+
+                                // Buscar el elemento dentro del formulario actual
                                 var input = document.querySelector('.step-form [name="' + campo + '"]');
-                                if (input) {
+
+                                if(input)
+                                {
+                                    // Crea un elemento <p> con la clase 'field-validation-msg' y agrega el mensaje
                                     input.classList.add("form-error");
                                     mensajes.forEach(function (mensaje) {
-                                        var p = document.createElement("p");
-                                        p.className = "field-validation-msg";
-                                        p.innerHTML = mensaje;
-                                        input.parentNode.insertBefore(p, input.nextSibling);
+                                    var p = document.createElement("p");
+                                    p.className = "field-validation-msg";
+                                    p.innerHTML = mensaje;
+
+                                    // Inserta el mensaje de error debajo del input
+                                    input.parentNode.insertBefore(p, input.nextSibling);
                                     });
                                 }
                             }
                         }
                     }
-    
+
+                    // Llama a la función con el JSON de errores
                     mostrarErrores(data.errors);
                 }
             })
@@ -123,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Obtén todos los elementos interactivos dentro del formulario actual
-    const formElements = document.querySelectorAll('.step-form input, .step-form select, .step-form button', '.step-form textarea');
+    const formElements = document.querySelectorAll('.step-form input, .step-form select, .step-form button');
 
     formElements.forEach(function (element, index) {
         // Agrega un evento de escucha al elemento
@@ -140,9 +174,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    function updateProgressIndicator()
-    {
-        const progressIndicatorItems    = document.querySelectorAll('.progress-indicator li');
+    function updateProgressIndicator() {
+        const progressIndicatorItems = document.querySelectorAll('.progress-indicator li');
         const progressIndicatorDivision = document.querySelectorAll('.progress-indicator div');
     
         progressIndicatorItems.forEach((item, index) => {

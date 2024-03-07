@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\Usuario\StoreUsuarioRequest;
 use App\Http\Requests\Usuario\UserLoginRequest;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SignUp;
 use App\Mail\Recovery;
-use App\Models\Favorito;
 use App\Models\Usuario;
 use App\Models\Newsletter;
 use App\Services\FavoritosService;
@@ -22,50 +21,45 @@ class UsuarioController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function register(Request $request)
 	{
-        $currentStep = $request->input("currentStep");
+        // Validación del campo indicador del paso
+        $rules = ['currentStep' => ['required', Rule::in(['1','2'])]];
 
-        $rules = [];
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails())
+            return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
 
-        switch($currentStep)
+        // El paso actual es válido, se procede a verificar las reglas de cada paso
+        switch($request->input("currentStep"))
         {
-            case(1):
-                {
-                    $rules = [
-                        "apellidos"         => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
-                        "nombres"           => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
-                        "tipo_documento_id" => ["required","integer","min:1", "exists:tipos_documentos,id"],
-                        "documento_nro"     => ["required","unique:usuarios,documento_nro","integer","min:6","max:99999999"],
-                        "email"             => ["required","unique:usuarios,email"],
-                    ];
-    
-                    break;
-                }
+            case('1'):
+            {
+                $rules = [
+                    "apellidos"         => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
+                    "nombres"           => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
+                    "tipo_documento_id" => ["required","integer","min:1", "exists:tipos_documentos,id"],
+                    "documento_nro"     => ["required","unique:usuarios,documento_nro","integer","min:6","max:99999999"],
+                    "email"             => ["required",'email:rfc,dns',"min:12","max:50"]
+                ];
 
-            case(2):
+                // Validar campos y manejar errores
+                $validator = Validator::make($request->all(), $rules);
+
+                // Manejar los errores de validación
+                if($validator->fails())
+                    return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
+
+                // Validación OK
+                return response()->json(['success' => true]);
+
+                break;
+            }
+
+            case('2'):
             {
                 $rules = [
                     "username"          => ["required","unique:usuarios,username","min:5","max:16","regex:#^[a-zA-Z0-9]*$#"],
                     "password"          => ["required","min:8","max:16"],
                     "password_repeat"   => ["same:password"],
-                ];
-
-                break;
-            }
-
-            case(3):
-            {
-                $rules = [
-                ];
-
-                break;
-            }
-
-            case(4):
-            {
-                $rules = [
-                    "telefono_fijo"     => ["nullable","numeric","max:999999999999999"],
-                    "telefono_celular"  => ["required","numeric","max:999999999999999"],
-                    "telefono_alt"      => ["nullable","numeric","max:999999999999999"],
                 ];
 
                 break;
@@ -78,7 +72,7 @@ class UsuarioController extends Controller
         if($validator->fails())
             return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
 
-        if($currentStep == 2)
+        if($request->input("currentStep") == '2')
         {
             $usuario = Usuario::make($request->all());
             $usuario->token_verificacion_email = Str::random(32);
