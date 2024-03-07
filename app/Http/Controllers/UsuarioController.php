@@ -57,38 +57,43 @@ class UsuarioController extends Controller
             case('2'):
             {
                 $rules = [
+                    "apellidos"         => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
+                    "nombres"           => ["required","min:4","max:50","regex:#^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]*$#"],
+                    "tipo_documento_id" => ["required","integer","min:1", "exists:tipos_documentos,id"],
+                    "documento_nro"     => ["required","unique:usuarios,documento_nro","integer","min:6","max:99999999"],
+                    "email"             => ["required",'email:rfc,dns',"min:12","max:50"],
                     "username"          => ["required","unique:usuarios,username","min:5","max:16","regex:#^[a-zA-Z0-9]*$#"],
                     "password"          => ["required","min:8","max:16"],
                     "password_repeat"   => ["same:password"],
                 ];
 
+                // Validar campos y manejar errores
+                $validator = Validator::make($request->all(), $rules);
+
+                // Manejar los errores de validación
+                if($validator->fails())
+                    return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
+
+                $usuario = Usuario::make($request->all());
+                $usuario->token_verificacion_email = Str::random(32);
+                $usuario->save();
+    
+                if($request->input("check_suscribe"))
+                {
+                    $newsletter = new Newsletter;
+                    $newsletter->suscribe($usuario->email);
+                }
+    
+                Mail::to($usuario->email)->send(new SignUp($usuario->apellidos, $usuario->nombres, "http://ecommerce.dell/shop/activate/" . $usuario->token_verificacion_email));
+
+                // Validación OK
+                return response()->json(['success' => true]);
+
                 break;
             }
         }
 
-        // Validar campos y manejar errores
-        $validator = Validator::make($request->all(), $rules);
-
-        if($validator->fails())
-            return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
-
-        if($request->input("currentStep") == '2')
-        {
-            $usuario = Usuario::make($request->all());
-            $usuario->token_verificacion_email = Str::random(32);
-            $usuario->save();
-
-            if($request->input("check_suscribe"))
-            {
-                $newsletter = new Newsletter;
-                $newsletter->suscribe($usuario->email);
-            }
-
-            Mail::to($usuario->email)->send(new SignUp($usuario->apellidos, $usuario->nombres, "http://ecommerce.dell/shop/activate/" . $usuario->token_verificacion_email));
-        }
-
-        // Lógica adicional según el paso actual
-        return response()->json(['success' => true]);
+        return response()->json(['success' => false]);
 	}
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function recovery(Request $request)
