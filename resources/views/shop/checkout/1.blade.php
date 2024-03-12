@@ -1,8 +1,5 @@
 <div class="carousel-slide">
-    <div class="flex justify-content-end">
-        <button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
-    </div>
-    <br>
+
     <!-- Contenido -->
     <div class="panel">
         <div class="panel-title panel-title-underlined">Carrito de compras</div>
@@ -49,5 +46,9 @@
             @endfor
 
         </div>
+    </div>
+    <br>
+    <div class="flex justify-content-end">
+        <button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
     </div>
 </div>

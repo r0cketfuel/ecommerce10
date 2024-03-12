@@ -11,7 +11,7 @@
             <div class="flex-column gap-1">
                 <div class="flex justify-content-between">
                     <div class="text-bold">Subtotal:</div>
-                    <div id="sub-total">{{ $total }}</div>
+                    <div id="sub-total">{{ _money(0) }}</div>
                 </div>
                 <div class="flex justify-content-between">
                     <div class="text-bold">Envío:</div>

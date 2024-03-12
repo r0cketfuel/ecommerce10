@@ -68,11 +68,15 @@
 		.progress-indicator {
 			display: 				grid;
 			grid-template-columns: 	repeat(5, 1fr);
-			grid-template-rows: 	repeat(2, 40px);
+			grid-template-rows: 	repeat(2, auto);
 			justify-content: 		space-between;
 			justify-items: 			center;
 			gap: 					5px;
 			text-align: 			center;
+			background-color: 		#fafafa;
+			border: 				1px solid rgb(220, 220, 220);
+			border-radius: 			4px;
+			padding: 				25px;
 		}
 
 		.progress-indicator .step-number {
@@ -125,18 +129,7 @@
 
 		<div id="total">$100,00</div>
 
-			<div class="progress-indicator">
-				<div class="step-number">1</div>
-				<div class="step-number">2</div>
-				<div class="step-number">3</div>
-				<div class="step-number">4</div>
-				<div class="step-number">5</div>
-				<div class="step-description">Carrito de compras</div>
-				<div class="step-description">Datos facturación</div>
-				<div class="step-description">Medios de pago y envío</div>
-				<div class="step-description">Resumen de compra</div>
-				<div class="step-description">Pago</div>
-			</div>
+			@include("shop.checkout.step-indicator")
 
 			<div class="carousel-container">
 				<div class="carousel-slider">
