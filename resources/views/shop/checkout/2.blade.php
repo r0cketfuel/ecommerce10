@@ -51,7 +51,7 @@
     </div>
     <br>
     <div class="flex justify-content-between">
-        <button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Anterior</button>
-        <button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
+        <button class="btnPrev"><i class="fa-solid fa-chevron-left fa-xs"></i> Carrito de compras</button>
+        <button class="btnNext">Pago y envío <i class="fa-solid fa-chevron-right fa-xs"></i></button>
     </div>
 </div>

@@ -71,7 +71,7 @@ Route::controller(RequestController::class)->group(function () {
 
     Route::post('requests/rating',                          'rating');
 
-    Route::post('requests/views/payment-methods/{id}',      'paymentViews');
+    Route::post('requests/views/payment-methods',           'paymentViews');
 
     // Rutas que requieren autenticación
     Route::middleware(['auth:web'])->group(function () {

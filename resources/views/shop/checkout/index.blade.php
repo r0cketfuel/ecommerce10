@@ -38,7 +38,7 @@
 		.carousel-slider {
 			display: 				flex;
 			flex-flow: 				row nowrap;
-			width: 					calc(500% + 400px);
+			width: 					calc(400% + 300px);
 			gap:					100px;
 		}
 
@@ -66,8 +66,9 @@
 		}
 
 		.progress-indicator {
+			user-select: 			none;
 			display: 				grid;
-			grid-template-columns: 	repeat(5, 1fr);
+			grid-template-columns: 	repeat(4, 1fr);
 			grid-template-rows: 	repeat(2, auto);
 			justify-content: 		space-between;
 			justify-items: 			center;
@@ -127,8 +128,6 @@
 		
 		@if(count($checkout["items"])>0)
 
-		<div id="total">$100,00</div>
-
 			@include("shop.checkout.step-indicator")
 
 			<div class="carousel-container">
@@ -162,19 +161,13 @@
 						@include("shop.checkout.4")
 					</form>
 
-					<!-- Pantalla 5 -->
-					<form method="post" class="step-form">
-						<input type="hidden" name="currentStep" value="5">
-						@include("shop.checkout.5")
-						@csrf
-					</form>
-
 				</div>
 			</div>
 		@else
 			<p>Todavía no agregaste ningún item al carrito de compras</p>
 		@endif
     </div>
+	<br>
 
 	<form id="form-checkout" action="/shop/process_payment" method="post">@csrf</form>
 @endsection
@@ -319,6 +312,8 @@
 
 			async function change(medioPagoId)
 			{
+				return;
+
 				try
 				{
 					const response = await fetch(`requests/views/payment-methods/${medioPagoId}`, {
@@ -333,6 +328,37 @@
 					}
 					const html = await response.text();
 					document.getElementById('selected_payment_method').innerHTML = html;
+				} catch (error) {
+					console.error(error);
+				}
+			}
+		</script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				var button = document.getElementById('resume');
+				
+				button.addEventListener('click', function(event) {
+					refresh();
+				});
+			});
+
+			async function refresh()
+			{
+				try
+				{
+					const response = await fetch("requests/views/payment-methods", {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'X-CSRF-TOKEN': '{{ csrf_token() }}'
+						},
+					});
+					if (!response.ok) {
+						throw new Error('Error al obtener la vista del resumen de compra');
+					}
+					const html = await response.text();
+					document.getElementById('resumen').innerHTML = html;
 				} catch (error) {
 					console.error(error);
 				}

@@ -169,32 +169,10 @@ class RequestController extends Controller
         return response()->json();
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    public function paymentViews(Request $request)
+    public function paymentViews()
     {
-        switch($request->id)
-        {
-            case(1):
-                $vista = View::make('shop.checkout.efectivo')->render();
-                break;
-
-            case(2):
-                $cuentaBancaria = CuentaBancaria::first();
-                $vista = View::make('shop.checkout.banco', compact("cuentaBancaria"))->render();
-                break;
-
-            case(3):
-                $vista = View::make('shop.checkout.cardForm')->render();
-                break;
-
-            case(4):
-                $vista = View::make('shop.checkout.pagofacil')->render();
-                break;
-
-            case(5):
-                $vista = View::make('shop.checkout.rapipago')->render();
-                break;
-        }
-
+        $vista = View::make('shop.checkout.resumen')->render();
+    
         return ($vista);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

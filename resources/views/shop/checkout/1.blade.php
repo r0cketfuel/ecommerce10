@@ -49,6 +49,6 @@
     </div>
     <br>
     <div class="flex justify-content-end">
-        <button class="btnNext">Siguiente <i class="fa-solid fa-chevron-right fa-xs"></i></button>
+        <button class="btnNext">Datos facturación <i class="fa-solid fa-chevron-right fa-xs"></i></button>
     </div>
 </div>
