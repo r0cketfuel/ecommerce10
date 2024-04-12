@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -88,6 +89,11 @@ class Articulo extends Model
         return $this->hasOne(Promocion::class)->where('valido_desde', '<=', now())->where('valido_hasta', '>=', now());
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public function scopeArticulosActivos(Builder $query): void
+    {
+        $query->where('estado', 1);
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public static function info(int $id)
     {
         //=====================================================================//
@@ -119,7 +125,7 @@ class Articulo extends Model
         // Método que devuelve un listado de artículos //
         //=============================================//
 
-        $query = self::with('imagen')->with('promocionVigente')->where('estado', 1);
+        $query = self::ArticulosActivos()->with('imagen')->with('promocionVigente');
 
         if(isset($search['query']))
         {
