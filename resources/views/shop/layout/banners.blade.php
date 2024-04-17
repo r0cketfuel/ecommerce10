@@ -14,4 +14,5 @@
     </div>
     <button class="btn btn-next"><i class="fa-solid fa-chevron-right"></i></button>
     <button class="btn btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="gradient"></div>
 </div>
