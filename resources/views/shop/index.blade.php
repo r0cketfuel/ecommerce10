@@ -27,11 +27,11 @@
 @section("body")
     @include("shop.modals.addItem")
 
+    <!-- Banners promocionales -->
+    @include("shop.layout.banners")
+
     <!-- Contenido de la página -->
     <div class="main-container">
-
-        <!-- Banners promocionales -->
-        @include("shop.layout.banners")
 
         <!-- Barra superior de búsqueda -->
         <div class="flex justify-content-between align-items-center">

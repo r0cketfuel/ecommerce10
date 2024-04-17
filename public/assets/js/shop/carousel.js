@@ -1,15 +1,9 @@
-
-const slides    = document.querySelectorAll(".slide");
+const slides    = document.querySelectorAll(".carousel-slide");
 let maxSlide    = slides.length - 1;
 let curSlide    = 0;
 
 const nextSlide = document.querySelector(".btn-next");
 const prevSlide = document.querySelector(".btn-prev");
-
-// loop through slides and set each slides translateX property to index * 100% 
-slides.forEach((slide, indx) => {
-    slide.style.transform = `translateX(${indx * 100}%)`;
-});
 
 //======================================//
 // NEXT SLIDE BUTTON ADD EVENT LISTENER //
@@ -22,8 +16,7 @@ if(nextSlide)
 
         // move slide by -100%
         slides.forEach((slide, indx) => {
-            slide.style.visibility = 'visible';
-            slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+            slide.style.transform = `translateX(${-100 * curSlide}%)`;
         });
 
         // switch interval to 6 seconds
@@ -48,8 +41,7 @@ if(prevSlide)
 
         // move slide by 100%
         slides.forEach((slide, indx) => {
-            slide.style.visibility = 'visible';
-            slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+            slide.style.transform = `translateX(${-100 * curSlide}%)`;
         });
 
         // switch interval to 6 seconds
@@ -97,11 +89,11 @@ class Timer {
 
 var timer = new Timer(function()
 {
-	if(curSlide === maxSlide) curSlide = 0; else ++curSlide;
+    if(curSlide === maxSlide) curSlide = 0; else ++curSlide;
 
-	// move slide by -100%
-	slides.forEach((slide, indx) => {
-        slide.style.visibility = 'visible';
-		slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
-	});
+    // move slide by -100%
+    slides.forEach((slide, indx) => {
+
+        slide.style.transform = `translateX(${-100 * curSlide}%)`;
+    });
 }, 6000);
