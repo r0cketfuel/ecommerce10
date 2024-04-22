@@ -53,7 +53,7 @@
 		
 		@if(count($checkout["items"])>0)
 
-			@include("shop.checkout.step-indicator")
+			@include("shop.checkout.includes.step-indicator")
 
 			<div class="carousel-container">
 				<div class="carousel-slider">
@@ -62,28 +62,28 @@
 					<form method="post" class="step-form">
 						<input type="hidden" name="currentStep" value="1">
 						@csrf
-						@include('shop.checkout.1')
+						@include('shop.checkout.includes.1')
 					</form>
 
 					<!-- Pantalla 2 -->
 					<form method="post" class="step-form">
 						<input type="hidden" name="currentStep" value="2">
 						@csrf
-						@include('shop.checkout.2')
+						@include('shop.checkout.includes.2')
 					</form>
 
 					<!-- Pantalla 3 -->
 					<form method="post" class="step-form">
 						<input type="hidden" name="currentStep" value="3">
 						@csrf
-						@include("shop.checkout.3")
+						@include("shop.checkout.includes.3")
 					</form>
 
 					<!-- Pantalla 4 -->
 					<form method="post" class="step-form">
 						<input type="hidden" name="currentStep" value="4">
 						@csrf
-						@include("shop.checkout.4")
+						@include("shop.checkout.includes.4")
 					</form>
 
 				</div>
