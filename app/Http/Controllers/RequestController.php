@@ -171,7 +171,7 @@ class RequestController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public function paymentViews()
     {
-        $vista = View::make('shop.checkout.resumen')->render();
+        $vista = View::make('shop.checkout.includes.resumen')->render();
     
         return ($vista);
     }
