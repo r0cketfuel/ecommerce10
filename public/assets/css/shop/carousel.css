@@ -55,11 +55,10 @@
 }
 
 .carousel-container .gradient {
-    background: linear-gradient(180deg,transparent,#ebebeb);
-    bottom: 0;
-    height: 30%;
-    left: 0;
-    position: absolute;
-    width: 100%;
-    z-index: 3;
+    background: 			linear-gradient(180deg, transparent, rgb(220, 220, 220));
+    bottom: 				0;
+    height: 				30%;
+    left: 					0;
+    position: 				absolute;
+    width: 					100%;
 }
