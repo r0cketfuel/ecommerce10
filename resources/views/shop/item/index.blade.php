@@ -143,9 +143,9 @@
                     <div id="qtyControl" class="tile-info-row">
                         <div>Cantidad:</div>
                         <div class="flex">
-                            <button id="minusButton"><i class="fa-solid fa-minus"></i></button>
-                            <input 	id="addToCartQty" type="number" disabled>
-                            <button id="plusButton"><i class="fa-solid fa-plus"></i></button>
+                            <button class="minusButton" id="minusButton"><i class="fa-solid fa-minus"></i></button>
+                            <input 	class="addToCartQty" id="addToCartQty" type="number" disabled>
+                            <button class="plusButton" id="plusButton"><i class="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
 

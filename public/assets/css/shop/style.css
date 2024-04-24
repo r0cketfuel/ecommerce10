@@ -163,14 +163,3 @@ p.info-msg {
 	background: 					#183153;
 	color: 							white
 }
-
-#minusButton, #plusButton {
-    background:                     none;
-    border:                         none;
-    color:                          unset;
-}
-
-#addToCartQty {
-    text-align:                     center;
-    border:                         none;
-}
