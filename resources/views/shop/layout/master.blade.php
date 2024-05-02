@@ -16,7 +16,7 @@
         @yield("css")
 
         <!-- Font awesome -->
-		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
         
         <!-- Framework Scripts -->
         <script src="{{ config('constants.framework_js') }}scroll.js"></script>
