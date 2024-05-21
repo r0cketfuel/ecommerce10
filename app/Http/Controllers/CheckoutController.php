@@ -136,29 +136,15 @@ class CheckoutController extends Controller
             }
         }
 
-        if($shoppingCart->totalItems()>0)
+        if($shoppingCart->totalItems() > 0)
         {
             $tiposDocumentos    = TipoDocumento::all();
-            $mediosPagoListado  = MedioPago::all();
-            $mediosEnvioListado = MedioEnvio::all();
-
-            // Seleccionar el primer medio de pago por defecto
-            $medioPagoSeleccionado = $mediosPagoListado[0]["id"];
-    
-            // Seleccionar el medio de pago guardado en sesión
-            if(session()->has("shop.checkout.medio_pago"))
-                $medioPagoSeleccionado = session("shop.checkout.medio_pago.id");
-            
-            // Seleccionar el primer medio de envío por defecto
-            $medioEnvioSeleccionado = $mediosEnvioListado[0]["id"];
-    
-            // Seleccionar el medio de envío guardado en sesión
-            if(session()->has("shop.checkout.medio_pago"))
-                $medioEnvioSeleccionado = session("shop.checkout.medio_envio.id");
-
-            return view("shop.checkout.index", compact("checkout", "mediosPagoListado", "mediosEnvioListado", "medioPagoSeleccionado", "medioEnvioSeleccionado", "tiposDocumentos"));
+            $mediosPago         = MedioPago::all();
+            $mediosEnvio        = MedioEnvio::all();
+        
+            return view("shop.checkout.index", compact("checkout", "mediosPago", "mediosEnvio", "tiposDocumentos"));
         }
-
+        
         return view("shop.checkout.index", compact("checkout"));
 	}
 }

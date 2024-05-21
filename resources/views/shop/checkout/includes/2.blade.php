@@ -45,7 +45,7 @@
 
             <label>
                 Correo electrónico
-                <input type="text" id="email" name="email" value="{{session('shop.usuario.datos.email')}}">
+                <input type="text" id="email" name="email" value="{{session('shop.usuario.datos.email')}}" autocomplete="off">
             </label>
         </div>
     </div>

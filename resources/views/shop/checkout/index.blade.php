@@ -97,60 +97,55 @@
 	<form id="form-checkout" action="/shop/process_payment" method="post">@csrf</form>
 @endsection
 
-@if(count($checkout["items"])>0)
-	@section("scripts")
+@if(count($checkout["items"]) > 0)
+    @section("scripts")
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
-
 				const radiosMedioPago   = document.querySelectorAll('input[name="radio_medioPago"]');
 				const radiosMedioEnvio  = document.querySelectorAll("input[type='radio'][name='radio_medioEnvio']");
 				
 				const panelEnvios       = document.getElementById('shipmentPanel');
 				const dataFields        = document.getElementById("shipmentData");
 
-				radiosMedioPago.forEach(function (radio) {
-					radio.addEventListener("change", function () { handleMediosPago(this); return false });
+				radiosMedioPago.forEach(radio => {
+					radio.addEventListener("change", () => handleMediosPago(radio));
 				});
 
-				radiosMedioEnvio.forEach(function (radio) {
-					radio.addEventListener("change", function () { handleMediosEnvio(this); return false });
+				radiosMedioEnvio.forEach(radio => {
+					radio.addEventListener("change", () => handleMediosEnvio(radio));
 				});
 
 				medioPagoSeleccionado();
 
-				function handleMediosPago(radio)
-				{
-					if(radio.value !== '1')
-					{
+				function handleMediosPago(radio) {
+					if (radio.value !== '1') {
 						habilitaEnvio();
-					}
-					else
-					{
+					} else {
 						restablecerMedioEnvio();
 						deshabilitaEnvio();
 					}
 				}
 
-				function handleMediosEnvio(radio)
-				{
-					if(radio.value === '1')
-					{
+				function handleMediosEnvio(radio) {
+					if (radio.value === '1') {
 						ocultarCamposEnvio();
-					}
-					else
-					{
+					} else {
 						mostrarCamposEnvio();
 					}
 				}
 
 				function habilitaEnvio() {
 					const medio = document.querySelectorAll('input[name="radio_medioEnvio"]');
-					medio[1].removeAttribute("disabled");
+					if (medio.length > 1) {
+						medio[1].removeAttribute("disabled");
+					}
 				}
 
 				function deshabilitaEnvio() {
 					const medio = document.querySelectorAll('input[name="radio_medioEnvio"]');
-					medio[1].disabled = "disabled";
+					if (medio.length > 1) {
+						medio[1].setAttribute("disabled", "disabled");
+					}
 				}
 
 				function mostrarCamposEnvio() {
@@ -161,17 +156,20 @@
 					dataFields.style.display = "none";
 				}
 
-				function medioPagoSeleccionado()
-				{
+				function medioPagoSeleccionado() {
 					const medio = document.querySelector('input[name="radio_medioPago"]:checked');
-					handleMediosPago(medio);
+					if (medio) {
+						handleMediosPago(medio);
+					}
+					const medioEnvioSeleccionado = document.querySelector('input[name="radio_medioEnvio"]:checked');
+					if (medioEnvioSeleccionado && medioEnvioSeleccionado.value === '1') {
+						ocultarCamposEnvio();
+					}
 				}
 
-				function restablecerMedioEnvio()
-				{
-					const primerMedioEnvio = document.querySelector("input[type='radio'][name='radio_medioEnvio']:first-child");
-					if (primerMedioEnvio)
-					{
+				function restablecerMedioEnvio() {
+					const primerMedioEnvio = document.querySelector("input[name='radio_medioEnvio']");
+					if (primerMedioEnvio) {
 						primerMedioEnvio.checked = true;
 						ocultarCamposEnvio();
 					}
@@ -179,115 +177,108 @@
 			});
 		</script>
 
-		<script>
-			async function ajax(url = "", parameters = {})
-			{
-				let token = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+        <script>
+            async function ajax(url = "", parameters = {}) {
+                let token = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 
-				const response = await fetch(url,
-				{
-					method:         "POST",
-					cache:          "no-cache",
-					credentials:    "same-origin",
-					headers: 
-					{
-									"Content-Type": "application/json",
-									"X-CSRF-TOKEN": token,
-					},
-					redirect:       "follow",
-					referrerPolicy: "strict-origin-when-cross-origin",
-					body: 			JSON.stringify(parameters)
-				});
-				
-				return response.json();
-			}
+                const response = await fetch(url, {
+                    method: "POST",
+                    cache: "no-cache",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": token,
+                    },
+                    redirect: "follow",
+                    referrerPolicy: "strict-origin-when-cross-origin",
+                    body: JSON.stringify(parameters)
+                });
 
-			function itemRemove(dataset)
-			{
-				let parametros = {
-					id:         	dataset.id,
-					atributos_id:	dataset.atributos_id,
-					cantidad:   	'0'
-				};
+                return response.json();
+            }
 
-				const url           = "/shop/requests/updateCart";
-				const promise       = ajax(url,parametros);
-				
-				promise.then((data) => 
-				{
-					window.location.replace("/shop/checkout");
-				});
-			}
-		</script>
+            function itemRemove(dataset) {
+                let parametros = {
+                    id: dataset.id,
+                    atributos_id: dataset.atributos_id,
+                    cantidad: '0'
+                };
 
-		<script>
-			document.addEventListener("DOMContentLoaded", () => {
-				var radios 			= document.querySelectorAll('input[name="radio_medioPago"]');
-				var selectedOption 	= document.querySelector('input[name="radio_medioPago"]:checked').value;
-				
-				change(selectedOption);
-			});
+                const url = "/shop/requests/updateCart";
+                const promise = ajax(url, parametros);
 
-			document.addEventListener('change', async function(event) {
-				if (event.target.matches('[name="radio_medioPago"]')) {
-					const medioPagoId = event.target.value;
-					change(medioPagoId);
-				}
-			});
+                promise.then((data) => {
+                    window.location.replace("/shop/checkout");
+                });
+            }
+        </script>
 
-			async function change(medioPagoId)
-			{
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const selectedOption = document.querySelector('input[name="radio_medioPago"]:checked');
+
+                if (selectedOption) {
+                    change(selectedOption.value);
+                }
+            });
+
+            document.addEventListener('change', async function(event) {
+                if (event.target.matches('[name="radio_medioPago"]')) {
+                    const medioPagoId = event.target.value;
+                    change(medioPagoId);
+                }
+            });
+
+            async function change(medioPagoId) {
+
 				return;
 
-				try
-				{
-					const response = await fetch(`requests/views/payment-methods/${medioPagoId}`, {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-							'X-CSRF-TOKEN': '{{ csrf_token() }}'
-						},
-					});
-					if (!response.ok) {
-						throw new Error('Error al obtener la vista del medio de pago');
-					}
-					const html = await response.text();
-					document.getElementById('selected_payment_method').innerHTML = html;
-				} catch (error) {
-					console.error(error);
-				}
-			}
-		</script>
+                try {
+                    const response = await fetch(`requests/views/payment-methods/${medioPagoId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                    });
+                    if (!response.ok) {
+                        throw new Error('Error al obtener la vista del medio de pago');
+                    }
+                    const html = await response.text();
+                    document.getElementById('selected_payment_method').innerHTML = html;
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        </script>
 
-		<script>
-			document.addEventListener("DOMContentLoaded", () => {
-				var button = document.getElementById('resume');
-				
-				button.addEventListener('click', function(event) {
-					refresh();
-				});
-			});
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const button = document.getElementById('resume');
 
-			async function refresh()
-			{
-				try
-				{
-					const response = await fetch("requests/views/payment-methods", {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-							'X-CSRF-TOKEN': '{{ csrf_token() }}'
-						},
-					});
-					if (!response.ok) {
-						throw new Error('Error al obtener la vista del resumen de compra');
-					}
-					const html = await response.text();
-					document.getElementById('resumen').innerHTML = html;
-				} catch (error) {
-					console.error(error);
-				}
-			}
-		</script>
-	@endsection
+                button.addEventListener('click', function(event) {
+                    refresh();
+                });
+            });
+
+            async function refresh() {
+                try {
+                    const response = await fetch("requests/views/payment-methods", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                    });
+                    if (!response.ok) {
+                        throw new Error('Error al obtener la vista del resumen de compra');
+                    }
+                    const html = await response.text();
+                    document.getElementById('resumen').innerHTML = html;
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        </script>
+    @endsection
 @endif

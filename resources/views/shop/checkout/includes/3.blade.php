@@ -5,13 +5,12 @@
         <div class="panel-title panel-title-underlined">Forma de pago</div>
         <div class="panel-content">
             <div class="input-group">
-                @foreach($mediosPagoListado as $medio)
+                @foreach($mediosPago as $medio)
+                    @php
+                        $selectedMedioPago = session('shop.checkout.medio_pago.id', $mediosPago[0]['id']);
+                    @endphp
                     <div class="radio-fix">
-                        @if($medioPagoSeleccionado == $medio["id"])
-                            <input type="radio" required name="radio_medioPago" id="radio_medioPago_{{ $medio['id'] }}" value="{{ $medio['id'] }}" checked>
-                        @else
-                            <input type="radio" required name="radio_medioPago" id="radio_medioPago_{{ $medio['id'] }}" value="{{ $medio['id'] }}">
-                        @endif
+                        <input type="radio" required name="radio_medioPago" id="radio_medioPago_{{ $medio['id'] }}" value="{{ $medio['id'] }}" @if($selectedMedioPago == $medio['id']) checked @endif>
                         <label for="radio_medioPago_{{ $medio['id'] }}">{{ $medio["medio"] }}</label>
                     </div>
                 @endforeach
@@ -24,13 +23,12 @@
         <div class="panel-title panel-title-underlined">Envío</div>
         <div class="panel-content">
             <div class="input-group">
-                @foreach($mediosEnvioListado as $envio)
+                @foreach($mediosEnvio as $envio)
+                    @php
+                        $selectedMedioEnvio = session('shop.checkout.medio_envio.id', $mediosEnvio[0]['id']);
+                    @endphp
                     <div class="radio-fix">
-                        @if($medioEnvioSeleccionado == $envio["id"])
-                            <input type="radio" name="radio_medioEnvio" id="radio_medioEnvio_{{ $envio['id'] }}" value="{{ $envio['id'] }}" checked>
-                        @else
-                            <input type="radio" name="radio_medioEnvio" id="radio_medioEnvio_{{ $envio['id'] }}" value="{{ $envio['id'] }}">
-                        @endif
+                        <input type="radio" name="radio_medioEnvio" id="radio_medioEnvio_{{ $envio['id'] }}" value="{{ $envio['id'] }}" @if($selectedMedioEnvio == $envio['id']) checked @endif>
                         <label for="radio_medioEnvio_{{ $envio['id'] }}">{{ $envio["medio"] }} @if(isset($envio["costo"])) ({{ _money($envio["costo"]) }}) @endif</label>
                     </div>
                 @endforeach
