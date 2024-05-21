@@ -52,12 +52,11 @@ class CheckoutController extends Controller
                     if($validator->fails())
                         return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
                     
-                    session()->put("shop.checkout.datos.apellidos",         $validator->valid()["apellidos"]);
-                    session()->put("shop.checkout.datos.nombres",           $validator->valid()["nombres"]);
-                    session()->put("shop.checkout.datos.documento_nro",     $validator->valid()["documento_nro"]);
-                    session()->put("shop.checkout.datos.telefono_celular",  $validator->valid()["telefono_celular"]);
-                    session()->put("shop.checkout.datos.telefono_alt",      $validator->valid()["telefono_alt"]);
-                    session()->put("shop.checkout.datos.email",             $validator->valid()["email"]);
+                        $keys = ["apellidos", "nombres", "documento_nro", "telefono_celular", "telefono_alt", "email"];
+                        
+                        // Guardar los datos validados en la sesión
+                        foreach ($keys as $key)
+                            session()->put("shop.checkout.datos.$key", $validator->valid()[$key]);
 
                     return response()->json(['success' => true]);
                     
