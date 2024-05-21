@@ -52,9 +52,9 @@
                 <div id="qtyControl" class="flex justify-content-between align-items-center">
                     <div>{{ __('general.quantity') }}:</div>
                     <div class="flex" style="max-width: 120px">
-                        <button id="minusButton"><i class="fa-solid fa-minus"></i></button>
-                        <input 	id="addToCartQty" type="number">
-                        <button id="plusButton"><i class="fa-solid fa-plus"></i></button>
+                        <button id="minusButton" class="minusButton"><i class="fa-solid fa-minus"></i></button>
+                        <input 	id="addToCartQty" class="addToCartQty" type="number">
+                        <button id="plusButton" class="plusButton"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
 
